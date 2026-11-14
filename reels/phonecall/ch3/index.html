@@ -1,0 +1,337 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ch3 Into the air</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.mono{font-family:"JetBrains Mono";font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.pk{position:absolute;width:90px;height:52px;border-radius:12px;background:rgba(62,224,255,.2);border:3px solid #3EE0FF;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono";font-weight:800;font-size:16px;color:#3EE0FF}
+.spec{position:absolute;top:610px;font-family:"JetBrains Mono";font-weight:700;font-size:20px;letter-spacing:.08em;color:#cfd6ea;text-align:center;width:240px;margin-left:-120px}
+.stat{position:absolute;padding:22px 30px;border-radius:20px;background:rgba(10,15,30,.8);white-space:nowrap}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/art.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" style="background:radial-gradient(ellipse at 30% 50%,#1d2a7a 0%,#070b24 70%)"></div>
+    <canvas id="rings" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div id="aPhone" class="abs" style="inset:0"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="ant" d="M340 230 L340 150 Q340 118 372 118 L640 118 Q672 118 672 150 L672 300" stroke="#3EE0FF" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="chip" id="aAnt" style="left:700px;top:110px;color:#3EE0FF">ANTENNA</div>
+    <div class="lbl" id="aHead" style="left:900px;top:330px;font-size:200px;color:#fff">Radio<br><span style="color:#3EE0FF">waves</span></div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:linear-gradient(180deg,#05060f 0%,#141836 100%)"></div>
+    <div class="lbl" id="bHead" style="left:120px;top:120px;font-size:120px;color:#fff">You can't see them</div>
+    <canvas id="chirp" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="abs" id="band" style="left:120px;top:520px;width:1680px;height:70px;border-radius:12px;background:linear-gradient(90deg,#3b1c4a 0%,#6b2a6b 18%,#a23b4a 36%,#d4572a 50%,#ff2a2a 54%,#ff9a1a 57%,#ffee33 60%,#33dd55 63%,#3399ff 66%,#7a33ff 69%,#a57bff 78%,#c9d2ff 100%)"></div>
+    <div id="specL"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="brk" d="M300 690 Q300 760 640 760 L1000 760 Q1110 760 1110 690" stroke="#FFB547" stroke-width="6" fill="none"/></svg>
+    <div class="chip" id="bSame" style="left:520px;top:790px;color:#FFB547">THE SAME ENERGY, A BIGGER WAVE</div>
+    <div class="abs" id="eyeX" style="left:255px;top:380px"></div>
+    <div id="speed" class="abs" style="inset:0;opacity:0">
+      <div class="bg" style="background:linear-gradient(180deg,#05060f 0%,#141836 100%)"></div>
+      <canvas id="orbit" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+      <div class="lbl" style="left:120px;top:200px;font-size:210px;color:#fff">300,000<br><span style="font-size:110px;color:#3EE0FF">km every second</span></div>
+      <div class="stat" style="left:126px;top:640px"><div class="mono" style="font-size:20px;color:#9fefff">LAPS AROUND EARTH IN ONE SECOND</div><div class="big" style="font-size:110px;color:#FFB547;margin-top:6px" id="laps">0.0</div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="sC">
+    <div class="bg" style="background:#0e1b24"></div>
+    <svg id="map" class="abs" style="left:0;top:0" width="1920" height="1080"></svg>
+    <div id="cityT" class="abs" style="inset:0"></div>
+    <div class="lbl" id="cHead" style="left:110px;top:120px;font-size:150px;color:#fff;text-shadow:0 8px 30px rgba(0,0,0,.6)">Cells</div>
+    <div class="abs" id="cellPhone" style="left:110px;top:780px;display:flex;align-items:center;gap:24px">
+      <div class="lbl" style="position:static;font-size:150px;color:#0A0F1E;background:#3EE0FF;padding:14px 26px 4px;border-radius:16px">Cell</div>
+      <div class="lbl" style="position:static;font-size:150px;color:#fff">phone</div>
+    </div>
+  </section>
+
+  <section class="scene" id="sD">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 55%,#2b2380 0%,#110d3a 75%)"></div>
+    <canvas id="crowd" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="abs" style="left:880px;top:330px" id="dTower"></div>
+    <div class="lbl" id="dHead" style="left:110px;top:120px;font-size:130px;color:#fff"><span id="dNum">0</span> phones<br><span style="color:#FFB547">one tower</span></div>
+    <div id="grid" class="abs" style="left:1040px;top:200px;width:760px;height:600px;opacity:0">
+      <div id="gCells" class="abs" style="left:60px;top:0;width:700px;height:540px;overflow:hidden;border-radius:14px;background:#0a0830"></div>
+      <div class="abs mono" style="left:-30px;top:270px;font-size:20px;color:#cfd6ea;transform:rotate(-90deg);transform-origin:50% 50%;white-space:nowrap;margin-left:-70px">FREQUENCY</div>
+      <div class="abs mono" style="left:360px;top:560px;font-size:20px;color:#cfd6ea">TIME</div>
+    </div>
+    <div class="chip" id="dSlice" style="left:1150px;top:830px;color:#FF5D73">YOUR TINY SLICE</div>
+  </section>
+
+  <section class="scene" id="sD2">
+    <div class="bg" style="background:#24262e"></div>
+    <div id="road" class="abs" style="inset:0"></div>
+    <div class="lbl" id="d2Head" style="left:110px;top:90px;font-size:120px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.6)">Every phone,<br><span style="color:#FFB547">its own lane</span></div>
+  </section>
+
+  <section class="scene" id="sE">
+    <div class="bg" style="background:linear-gradient(180deg,#2a1a6a 0%,#b4507a 55%,#ffad6a 100%)"></div>
+    <div class="abs" style="left:0;top:520px" id="eSky"></div>
+    <div class="abs" style="left:0;top:820px;width:1920px;height:260px;background:#1b1240"></div>
+    <div class="abs" style="left:0;top:860px;width:1920px;height:90px;background:#2c2d3a"></div>
+    <div id="dash" class="abs" style="left:0;top:900px;width:3840px;height:8px;background:repeating-linear-gradient(90deg,#f2e9c9 0 60px,transparent 60px 120px)"></div>
+    <div class="abs" style="left:300px;top:380px" id="towA"></div>
+    <div class="abs" style="left:1420px;top:380px" id="towB"></div>
+    <div class="chip" style="left:310px;top:340px;color:#fff;opacity:1;visibility:visible">TOWER A</div>
+    <div class="chip" style="left:1430px;top:340px;color:#fff;opacity:1;visibility:visible">TOWER B</div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><line id="linkA" x1="0" y1="0" x2="0" y2="0" stroke="#3EE0FF" stroke-width="6" stroke-dasharray="14 12"/><line id="linkB" x1="0" y1="0" x2="0" y2="0" stroke="#5BE49B" stroke-width="6" stroke-dasharray="14 12"/></svg>
+    <div id="car" class="abs" style="left:0;top:770px"></div>
+    <div class="abs" id="callPill" style="left:760px;top:110px;display:flex;align-items:center;gap:16px;padding:16px 30px;border-radius:999px;background:#0A0F1E;font-family:'JetBrains Mono';font-weight:800;font-size:28px;color:#fff"><span style="width:16px;height:16px;border-radius:50%;background:#5BE49B"></span>ON CALL <span id="clk" style="color:#5BE49B">01:12</span></div>
+    <div class="lbl" id="eHand" style="left:0;right:0;top:220px;text-align:center;font-size:150px;color:#fff;text-shadow:0 8px 30px rgba(0,0,0,.4)">Handover</div>
+    <div class="serif" id="eNever" style="position:absolute;left:0;right:0;top:400px;text-align:center;font-size:76px;color:#fff">so smooth, you never notice</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, pop, rise, fade, hide, draw, SVG, chip, show, every } = EX;
+EX.chrome(3, 7, "Into the air");
+EX.subtitles();
+EX.chapterCard(0.05, 2.3);
+const END = W.last() + 1.8;
+const T = { A: 2.2, B: w("you can't see") - 0.25, B2: w("so they travel") - 0.2, C: w("they head") - 0.25, D: w("thousands of phones") - 0.25, D2: w("like giving") - 0.25, E: w("and if you're") - 0.25 };
+
+// ================================================= A: antenna, radio waves
+show("#sA", T.A, T.B + 0.5);
+const ph = EX.phoneBox("#aPhone", { x: 330, y: 110, w: 360, accent: "#5d7fd0" });
+ph.scr.innerHTML = `<div class="abs" style="inset:0;background:repeating-linear-gradient(0deg,rgba(62,224,255,.05) 0 2px,transparent 2px 22px),#0b1236"></div>`;
+gsap.set(["#aAnt", "#aHead"], { autoAlpha: 0 });
+draw("#ant", w("antenna") - 0.3, 0.6);
+pop("#aAnt", w("antenna"));
+for (let k = 0; k < 4; k++) {
+  ph.scr.insertAdjacentHTML("beforeend", `<div class="pk" style="left:${40 + (k % 2) * 110}px;top:${560 - k * 40}px">PKT</div>`);
+}
+$$("#aPhone .pk").forEach((p, k) => { gsap.set(p, { autoAlpha: 0 }); const t = w("now those") + 0.2 + k * 0.35; tl.fromTo(p, { autoAlpha: 1, y: 0 }, { y: -560 + k * 40, duration: 0.9, ease: "power2.in", immediateRender: false }, t); tl.to(p, { autoAlpha: 0, duration: 0.15 }, t + 0.85); sfx(t, "bloop", { gain: 0.1 }); });
+const tRadio = w("radio waves");
+tl.fromTo("#aHead", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "expo.out", immediateRender: false }, tRadio);
+sfx(tRadio, "whoosh", { gain: 0.22, dur: 0.6 });
+(function () {
+  const c = $("#rings").getContext("2d");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < tRadio - 0.6 || t > T.B + 0.6) return;
+    for (let k = 0; k < 9; k++) {
+      const age = ((t - tRadio + 0.6) * 0.9 + k / 9) % 1;
+      const r = 40 + age * 1500;
+      c.beginPath(); c.arc(672, 160, r, 0, 7); c.strokeStyle = `rgba(62,224,255,${(1 - age) * 0.6})`; c.lineWidth = 6; c.stroke();
+    }
+  });
+})();
+
+// ================================================= B: you can't see them, same as light; speed
+show("#sB", T.B, T.C + 0.5, { y: 0 });
+sfx(T.B, "whoosh", { gain: 0.24, dur: 0.5 });
+const SL = [["RADIO", 0.1], ["MICROWAVE", 0.27], ["INFRARED", 0.45], ["VISIBLE LIGHT", 0.61], ["ULTRAVIOLET", 0.76], ["X RAYS", 0.92]];
+$("#specL").innerHTML = SL.map(([n, f]) => `<div class="spec" style="left:${120 + f * 1680}px">${n}</div>`).join("");
+gsap.set(["#bHead", "#bSame", "#band", ".spec"], { autoAlpha: 0 });
+rise("#bHead", T.B + 0.05);
+tl.fromTo("#band", { autoAlpha: 0, scaleX: 0, transformOrigin: "0 50%" }, { autoAlpha: 1, scaleX: 1, duration: 0.8, ease: "power3.inOut", immediateRender: false }, T.B + 0.2);
+tl.to(".spec", { autoAlpha: 1, duration: 0.25, stagger: 0.08 }, T.B + 0.6);
+$("#eyeX").innerHTML = `<svg width="130" height="90" viewBox="0 0 130 90"><path d="M6 45 Q65 -10 124 45 Q65 100 6 45Z" fill="none" stroke="#fff" stroke-width="7"/><circle cx="65" cy="45" r="18" fill="#fff"/><line x1="14" y1="84" x2="116" y2="6" stroke="#FF5D73" stroke-width="10" stroke-linecap="round"/></svg>`;
+pop("#eyeX", w("see them"));
+(function () {
+  const c = $("#chirp").getContext("2d");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.B || t > T.B2 + 0.4) return;
+    c.beginPath(); let ph = 0;
+    for (let x = 120; x <= 1800; x += 2) { const u = (x - 120) / 1680; ph += 0.006 + Math.pow(u, 2.2) * 0.5; const y = 430 - Math.sin(ph - t * 6) * 52; x === 120 ? c.moveTo(x, y) : c.lineTo(x, y); }
+    c.strokeStyle = "#EEF2F7"; c.lineWidth = 4; c.stroke();
+  });
+})();
+draw("#brk", w("same kind") , 0.6);
+pop("#bSame", w("energy as light"));
+// speed sub scene
+tl.to("#speed", { opacity: 1, duration: 0.4 }, T.B2);
+sfx(T.B2, "whoosh", { gain: 0.25, dur: 0.6 });
+const tLap = w("three hundred");
+EX.countUp("#laps", 0, 7.5, tLap, 1.0, (v) => v.toFixed(1), "none");
+(function () {
+  const c = $("#orbit").getContext("2d"), CX = 1400, CY = 560, R = 250;
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.B2 || t > T.C + 0.6) return;
+    const g = c.createRadialGradient(CX - 80, CY - 80, 20, CX, CY, R);
+    g.addColorStop(0, "#3a7bd5"); g.addColorStop(1, "#0b2a6b");
+    c.beginPath(); c.arc(CX, CY, R, 0, 7); c.fillStyle = g; c.fill();
+    c.beginPath(); c.arc(CX, CY, R + 40, 0, 7); c.strokeStyle = "rgba(255,181,71,.18)"; c.lineWidth = 3; c.stroke();
+    const p = Math.max(0, Math.min(1, (t - tLap) / 1.0)) * 7.5 * Math.PI * 2 + Math.max(0, t - tLap - 1) * 6;
+    for (let k = 0; k < 40; k++) { const a = p - k * 0.05; c.beginPath(); c.arc(CX + Math.cos(a - Math.PI / 2) * (R + 40), CY + Math.sin(a - Math.PI / 2) * (R + 40), 12 - k * 0.28, 0, 7); c.fillStyle = `rgba(255,${200 - k * 2},${120 - k * 2},${1 - k / 40})`; c.fill(); }
+  });
+})();
+sfx(tLap, "riser", { gain: 0.14, dur: 1.0 });
+
+// ================================================= C: cells on a city map
+show("#sC", T.C, T.D + 0.5, { scale: 1.15 });
+sfx(T.C, "whoosh", { gain: 0.25, dur: 0.5 });
+(function () {
+  const r = rng(3);
+  let s = "";
+  for (let x = 0; x < 1920; x += 120) s += `<rect x="${x}" y="0" width="${r() < 0.2 ? 18 : 8}" height="1080" fill="#1d3240"/>`;
+  for (let y = 0; y < 1080; y += 110) s += `<rect x="0" y="${y}" width="1920" height="${r() < 0.2 ? 18 : 8}" fill="#1d3240"/>`;
+  s += `<path d="M-50 760 C 400 640 700 980 1100 820 S 1700 620 1990 700" stroke="#1f5a8a" stroke-width="60" fill="none"/>`;
+  for (let i = 0; i < 6; i++) s += `<rect x="${200 + r() * 1500}" y="${150 + r() * 700}" width="${100 + r() * 120}" height="${80 + r() * 100}" rx="20" fill="#18402e"/>`;
+  // hex cells
+  const R = 170, hx = R * 1.5, hy = R * Math.sqrt(3);
+  const centers = [];
+  for (let c = -1; c < 14; c++) for (let rr = -1; rr < 8; rr++) {
+    const x = c * hx, y = rr * hy + (c % 2 ? hy / 2 : 0);
+    if (x < -R || x > 1920 + R || y < -R || y > 1080 + R) continue;
+    centers.push([x, y]);
+    const pts = Array.from({ length: 6 }, (_, k) => [x + R * Math.cos((k * Math.PI) / 3), y + R * Math.sin((k * Math.PI) / 3)].map((v) => v.toFixed(1)).join(",")).join(" ");
+    s += `<polygon class="hex" points="${pts}" fill="rgba(62,224,255,.05)" stroke="#3EE0FF" stroke-width="3"/>`;
+  }
+  s += `<line id="cLink" x1="0" y1="0" x2="0" y2="0" stroke="#FF5D73" stroke-width="5" stroke-dasharray="10 8"/>`;
+  s += `<circle id="cMe" cx="1010" cy="600" r="16" fill="#FF5D73"/><circle id="cMeR" cx="1010" cy="600" r="30" fill="none" stroke="#FF5D73" stroke-width="4"/>`;
+  $("#map").innerHTML = s;
+  window.__centers = centers;
+})();
+const centers = window.__centers;
+const near = centers.reduce((b, c) => (Math.hypot(c[0] - 1010, c[1] - 600) < Math.hypot(b[0] - 1010, b[1] - 600) ? c : b));
+gsap.set("#cLink", { attr: { x1: 1010, y1: 600, x2: 1010, y2: 600 } });
+tl.to("#cLink", { attr: { x2: near[0], y2: near[1] }, duration: 0.6, ease: "power2.out" }, w("nearest"));
+every(T.C, T.D, 0.8, (t) => tl.fromTo("#cMeR", { attr: { r: 18 }, opacity: 1 }, { attr: { r: 60 }, opacity: 0, duration: 0.7, immediateRender: false }, t));
+const hexes = $$("#map .hex");
+gsap.set(hexes, { opacity: 0 });
+tl.to(hexes, { opacity: 1, duration: 0.25, stagger: { each: 0.02, from: "center" } }, w("divided"));
+sfx(w("divided"), "swish", { gain: 0.2 });
+centers.forEach(([x, y], i) => {
+  if (x < 20 || x > 1900 || y < 20 || y > 1060) return;
+  const el = document.createElement("div");
+  el.className = "abs";
+  el.style.cssText = `left:${x - 22}px;top:${y - 60}px`;
+  el.innerHTML = SVG.tower({ h: 70 });
+  $("#cityT").appendChild(el);
+  gsap.set(el, { autoAlpha: 0 });
+  tl.fromTo(el, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.25, immediateRender: false }, w("each cell") + (i % 7) * 0.05);
+});
+const nearT = document.createElement("div");
+nearT.className = "abs"; nearT.style.cssText = `left:${near[0] - 30}px;top:${near[1] - 82}px`;
+nearT.innerHTML = SVG.tower({ h: 96, accent: "#FF5D73" });
+$("#cityT").appendChild(nearT);
+gsap.set(nearT, { autoAlpha: 0 });
+pop(nearT, w("tower", W.find("nearest")));
+gsap.set(["#cHead", "#cellPhone"], { autoAlpha: 0 });
+rise("#cHead", w("called cells"));
+tl.fromTo("#cellPhone", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("cell phone"));
+sfx(w("cell phone"), "slam", { gain: 0.22 });
+EX.drift("#map", T.C, T.D, 1.05);
+
+// ================================================= D: thousands share a tower; slices of frequency and time
+show("#sD", T.D, T.D2 + 0.5, { y: 0 });
+sfx(T.D, "whoosh", { gain: 0.25, dur: 0.5 });
+$("#dTower").innerHTML = SVG.tower({ h: 360, accent: "#FFB547" });
+gsap.set(["#dHead", "#dSlice"], { autoAlpha: 0 });
+rise("#dHead", w("thousands of phones"));
+EX.countUp("#dNum", 0, 3000, w("thousands of phones"), 1.6);
+const UC = ["#3EE0FF", "#FF5D73", "#FFB547", "#5BE49B", "#9B8CFF", "#EEF2F7"];
+(function () {
+  const c = $("#crowd").getContext("2d"), r = rng(17);
+  const P = Array.from({ length: 140 }, (_, i) => { const a = r() * 6.28, d = 220 + r() * 620; return { x: 980 + Math.cos(a) * d * 1.3, y: 500 + Math.sin(a) * d * 0.6, c: UC[i % 6], ph: r() * 6, born: r() * 1.5 }; });
+  const tGrid = w("to keep them");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.D || t > T.D2 + 0.6) return;
+    const k = Math.max(0, Math.min(1, (t - tGrid) / 0.6));
+    for (const p of P) {
+      if (t - T.D < p.born) continue;
+      const x = p.x - k * (p.x - 600) * 0.35, y = p.y;
+      const pulse = 0.25 + 0.35 * Math.abs(Math.sin(t * 3 + p.ph));
+      c.strokeStyle = p.c; c.globalAlpha = pulse * (1 - k * 0.7); c.lineWidth = 1.5; c.beginPath(); c.moveTo(x, y); c.lineTo(970, 360); c.stroke();
+      c.globalAlpha = 1 - k * 0.5; c.fillStyle = p.c; c.fillRect(x - 6, y - 10, 12, 20);
+    }
+    c.globalAlpha = 1;
+  });
+})();
+const tGrid = w("to keep them");
+tl.to("#dTower", { x: -420, scale: 0.8, duration: 0.6, ease: "power3.inOut" }, tGrid);
+tl.to("#grid", { opacity: 1, duration: 0.4 }, tGrid + 0.2);
+(function () {
+  const COLS = 14, ROWS = 10, cw = 700 / COLS, ch = 540 / ROWS, r = rng(5);
+  let s = "";
+  for (let cI = 0; cI < COLS * 2; cI++) for (let rI = 0; rI < ROWS; rI++) {
+    const u = (cI * 7 + rI * 3 + Math.floor(r() * 3)) % 6;
+    const mine = (cI % 4 === 1 && rI === 6) || (cI % 4 === 3 && rI === 2);
+    s += `<div class="abs gc" style="left:${cI * cw + 2}px;top:${rI * ch + 2}px;width:${cw - 4}px;height:${ch - 4}px;border-radius:6px;background:${mine ? "#FF5D73" : UC[u]};opacity:${mine ? 1 : 0.32}"></div>`;
+  }
+  $("#gCells").innerHTML = `<div id="gScroll" class="abs" style="left:0;top:0;width:1400px;height:540px">${s}</div>`;
+})();
+const gcs = $$("#gCells .gc");
+gsap.set(gcs, { autoAlpha: 0 });
+tl.to(gcs, { autoAlpha: (i, el) => (el.style.background.includes("255, 93, 115") || el.style.background === "rgb(255, 93, 115)" ? 1 : 0.32), duration: 0.12, stagger: { each: 0.004, from: "start" } }, w("gives every"));
+tl.fromTo("#gScroll", { x: 0 }, { x: -700, duration: 6, ease: "none", immediateRender: false }, w("gives every"));
+pop("#dSlice", w("tiny slices"));
+every(w("gives every"), T.D2, 0.4, (t) => sfx(t, "tick", { gain: 0.05 }));
+
+// ================================================= D2: highway lanes
+show("#sD2", T.D2, T.E + 0.5, { x: 300 });
+sfx(T.D2, "whoosh", { gain: 0.25, dur: 0.5 });
+(function () {
+  let s = "";
+  const lanes = 6, top = 360, lh = 110;
+  for (let l = 0; l <= lanes; l++) s += `<div class="abs" style="left:0;top:${top + l * lh}px;width:1920px;height:${l === 0 || l === lanes ? 8 : 0}px;background:#f2e9c9"></div>` + (l > 0 && l < lanes ? `<div class="abs lane" style="left:0;top:${top + l * lh - 3}px;width:3840px;height:6px;background:repeating-linear-gradient(90deg,#f2e9c9 0 70px,transparent 70px 140px)"></div>` : "");
+  $("#road").innerHTML = s;
+  const r = rng(44);
+  for (let l = 0; l < lanes; l++) for (let k = 0; k < 2; k++) {
+    const car = document.createElement("div");
+    car.className = "abs";
+    const col = UC[l % 6];
+    car.style.cssText = `left:${-300 - k * 900 - r() * 300}px;top:${top + l * lh + 22}px;width:150px;height:66px;border-radius:18px;background:${col};box-shadow:0 8px 0 rgba(0,0,0,.35)`;
+    car.innerHTML = `<div class="abs" style="left:90px;top:10px;width:40px;height:46px;border-radius:8px;background:rgba(10,15,30,.55)"></div><div class="abs mono" style="left:14px;top:20px;font-size:18px;color:#0A0F1E">${["PHONE", "YOU", "PHONE", "PHONE", "PHONE", "PHONE"][l] }</div>`;
+    $("#road").appendChild(car);
+    tl.fromTo(car, { x: 0 }, { x: 2600 + r() * 300, duration: 3 + r() * 1.2, ease: "none", immediateRender: false }, T.D2 + k * 0.6);
+  }
+  $$("#road .lane").forEach((ln) => tl.fromTo(ln, { x: 0 }, { x: -560, duration: 3, ease: "none", immediateRender: false }, T.D2));
+})();
+gsap.set("#d2Head", { autoAlpha: 0 });
+rise("#d2Head", w("its own lane"));
+
+// ================================================= E: handover while driving
+show("#sE", T.E, null, { y: 0 });
+sfx(T.E, "whoosh", { gain: 0.25, dur: 0.5 });
+$("#eSky").innerHTML = ART.skyline({ w: 1920, h: 300, seed: 41, color: "#2a1c5c", win: "#FFD27A", lit: 0.2, minH: 120, maxH: 280 });
+$("#towA").innerHTML = SVG.tower({ h: 470, accent: "#3EE0FF" });
+$("#towB").innerHTML = SVG.tower({ h: 470, accent: "#5BE49B" });
+$("#car").innerHTML = `<svg width="260" height="120" viewBox="0 0 260 120"><path d="M20 80 Q20 56 44 54 L70 26 Q80 14 98 14 H170 Q188 14 198 28 L220 54 Q244 58 244 80 V92 H20 Z" fill="#FF5D73"/><path d="M84 30 H128 V54 H64 Z M140 30 H186 L204 54 H140 Z" fill="#cfe8ff"/><circle cx="70" cy="94" r="22" fill="#0A0F1E"/><circle cx="196" cy="94" r="22" fill="#0A0F1E"/><circle cx="70" cy="94" r="9" fill="#8d897d"/><circle cx="196" cy="94" r="9" fill="#8d897d"/></svg>`;
+const carX = { x: 120 }, tHO = w("passed from") + 0.4, tEndE = END;
+tl.fromTo(carX, { x: 120 }, { x: 1600, duration: tEndE - T.E, ease: "none", immediateRender: false }, T.E);
+tl.fromTo("#dash", { x: 0 }, { x: -1200, duration: tEndE - T.E, ease: "none", immediateRender: false }, T.E);
+REEL.onFrame((t) => {
+  if (t < T.E - 0.1) return;
+  const x = carX.x;
+  gsap.set("#car", { x });
+  const cx = x + 130, cy = 790, handed = t >= tHO;
+  const A = $("#linkA"), B = $("#linkB");
+  A.setAttribute("x1", cx); A.setAttribute("y1", cy); A.setAttribute("x2", 392); A.setAttribute("y2", 410);
+  B.setAttribute("x1", cx); B.setAttribute("y1", cy); B.setAttribute("x2", 1512); B.setAttribute("y2", 410);
+  A.style.opacity = handed ? 0 : 1; B.style.opacity = handed ? 1 : 0;
+  A.style.strokeDashoffset = -t * 60; B.style.strokeDashoffset = -t * 60;
+  const s = 72 + Math.floor(t - T.E);
+  $("#clk").textContent = `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+});
+gsap.set(["#eHand", "#eNever"], { autoAlpha: 0 });
+tl.fromTo("#eHand", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)", immediateRender: false }, w("handover"));
+sfx(tHO, "chime", { gain: 0.2 });
+sfx(w("handover"), "slam", { gain: 0.2 });
+rise("#eNever", w("so smoothly"));
+tl.fromTo("#towB", { filter: "drop-shadow(0 0 0px #5BE49B)" }, { filter: "drop-shadow(0 0 30px #5BE49B)", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, tHO);
+
+REEL.finish(END);
+</script>
+</body></html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>UPI Ch4 The PIN</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.stampR{position:absolute;padding:6px 18px;border:7px solid #FF5D73;border-radius:12px;color:#FF5D73;font-family:Archivo;font-weight:900;font-stretch:72%;font-size:54px;text-transform:uppercase;white-space:nowrap}
+.rule{position:absolute;top:340px;width:560px;height:330px;text-align:center}
+.rule .ic{font-family:Archivo;font-weight:900;font-size:130px;line-height:1;margin-top:10px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script><script src="../../../lib/iso.js"></script><script src="../../../lib/explainer2.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" style="background:linear-gradient(180deg,#DDEBFB 0%,#F0F5FD 100%)"></div><div id="vault" class="abs" style="left:560px;top:120px;width:800px;height:800px;border-radius:50%;border:40px solid rgba(62,123,250,.08);box-shadow:inset 0 0 0 60px rgba(62,123,250,.05)"></div>
+    <div id="phoneBox" class="abs" data-ob="phone" style="left:200px;top:200px;width:280px;height:574px"></div>
+    <div class="chip" id="cLock" data-ob="clock" style="left:150px;top:810px;color:#B9770E">LOCKED RIGHT ON YOUR PHONE</div>
+    <div id="bankBox" class="abs" data-ob="bank" style="left:1300px;top:150px"></div>
+    <svg id="key" class="abs" data-ob="bank" style="left:1560px;top:610px;overflow:visible" width="200" height="90" viewBox="0 0 200 90"><circle cx="40" cy="45" r="34" fill="none" stroke="#E39A12" stroke-width="14"/><path d="M74 45 H190 M150 45 V75 M175 45 V68" stroke="#E39A12" stroke-width="14" stroke-linecap="round"/></svg>
+    <div class="chip" id="cKey" data-ob="ckey" style="left:1290px;top:740px;color:#3E7BFA">ONLY YOUR BANK HAS THE KEY</div>
+    <div id="envBox" class="abs" data-ob="env" style="left:720px;top:380px;width:340px;height:220px">
+      <div id="envArt"></div><div class="abs" style="left:0;width:340px;top:112px;text-align:center;font-family:Archivo;font-weight:900;font-size:26px;color:#fff">PIN</div>
+    </div>
+    <div class="stampR" id="noPeek" data-ob="nopeek" style="left:700px;top:640px;transform:rotate(-6deg)">No peeking</div>
+    <div class="serif" id="respect" data-ob="respect" style="position:absolute;left:740px;top:150px;font-size:130px;color:#1B2340">Respect.</div>
+    <div id="host" class="abs" data-ob="host" data-bleed style="left:1500px;top:420px"></div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:linear-gradient(160deg,#FFE3E6 0%,#FFCBD1 100%)"></div>
+    <div class="abs" style="left:0;top:0;width:1920px;height:22px;background:repeating-linear-gradient(135deg,#F5A524 0 30px,#1B2340 30px 60px)"></div>
+    <div id="siren" class="bg" style="background:#F0566E;opacity:0"></div>
+    <div class="lbl x3d" id="bHead" data-ob="bhead" style="left:110px;top:100px;font-size:110px;--xf:#fff;--xs:#C7364C">Most important thing</div>
+    <div class="serif" id="bSub" data-ob="bsub" style="position:absolute;left:116px;top:200px;font-size:60px;color:#C7364C">in this entire video</div>
+    <div class="pcard rule" id="rSend" data-ob="rsend" style="left:140px"><div class="tape"></div><div class="m" style="font-size:24px">SEND MONEY</div><div class="ic" style="color:#1f9d5a">✓ PIN</div><div class="serif" style="font-size:36px;color:#3a3f55">yes, you need your PIN</div></div>
+    <div class="pcard rule" id="rRecv" data-ob="rrecv" style="left:760px"><div class="tape"></div><div class="m" style="font-size:24px">RECEIVE MONEY</div><div class="ic" style="color:#c7364c">✗ PIN</div><div class="serif" style="font-size:36px;color:#3a3f55">never. ever. ever.</div></div>
+    <div id="bait" class="abs" data-ob="sms" data-bleed style="left:170px;top:560px;width:420px;height:360px"><svg class="abs" style="left:0;top:-700px;overflow:visible" width="420" height="1060"><path d="M200 0 V640" stroke="#1B2340" stroke-width="5"/><path d="M200 640 V700 Q200 730 226 730 Q250 730 250 706" stroke="#1B2340" stroke-width="9" fill="none" stroke-linecap="round"/></svg><div id="giftArt" class="abs" style="left:0;top:20px"></div></div>
+    <div class="pcard" id="sms" data-ob="sms" style="left:140px;top:320px;width:760px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">NEW MESSAGE · FROM: UNKNOWN</div><div class="h" style="font-size:44px;margin-top:10px;line-height:1.15">Congratulations! Enter your UPI PIN to <u>receive</u> your ₹5,000 prize.</div></div>
+    <div id="confetti" class="abs" style="inset:0"></div>
+    <div class="pcard" id="bal" data-ob="bal" style="left:960px;top:330px;width:420px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">YOUR ACCOUNT</div><div class="big" style="font-size:80px;margin-top:6px">₹<span id="balN">48,250</span></div></div>
+    <div class="stampR" id="scam" data-ob="sms" style="left:420px;top:560px;font-size:90px;border-width:10px;color:#E0324B;border-color:#E0324B;background:rgba(255,255,255,.92);transform:rotate(-10deg)">Scam</div>
+    <div id="host2" class="abs" data-ob="host2" data-bleed style="left:1500px;top:420px"></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw, SVG } = EX;
+const { ART } = PAPER;
+EX.chrome(4, 7, "The PIN");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+EX.chapterCard2(4, "The PIN", 0.05, 2.3, { hero: `<div class="abs" style="left:40px;top:120px">${ISO.phone({ w: 270 })}</div><div class="abs" id="heroLock" style="left:330px;top:260px">${ISO.lock({ w: 360, id: "hl" })}</div>`, heroAnim: (el, t) => { tl.fromTo("#hlShackle", { y: -40 }, { y: 0, duration: 0.35, ease: "bounce.out", immediateRender: false }, t + 0.5); sfx(t + 0.75, "clunk", { gain: 0.25 }); } });
+const END = W.last() + 1.6;
+const T = { A: 2.2, B: w("and now the") - 0.05 };
+
+// ================================================= A: your app can't read your PIN
+show("#sA", T.A, T.B + 0.01, { y: 0 });
+tl.fromTo("#vault", { rotation: 0 }, { rotation: 90, duration: 20, ease: "none", immediateRender: false }, T.A);
+const ph = EX.phoneBox("#phoneBox", { x: 0, y: 0, w: 280, accent: "#3EE0FF", id: "ph" });
+ph.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;flex-direction:column;align-items:center">
+  <svg width="200" height="90" viewBox="0 0 200 90" style="margin-top:50px"><circle class="eye" cx="60" cy="45" r="22" fill="#fff"/><circle class="pupil" cx="60" cy="45" r="10" fill="#0A0F1E"/><circle class="eye" cx="140" cy="45" r="22" fill="#fff"/><circle class="pupil" cx="140" cy="45" r="10" fill="#0A0F1E"/><rect id="blind" x="20" y="25" width="160" height="40" rx="10" fill="#FF5D73" opacity="0"/></svg>
+  <div class="m" style="font-size:16px;color:#8A94B0;margin-top:30px">ENTER UPI PIN</div>
+  <div style="margin-top:30px;display:flex;gap:16px">${[0, 1, 2, 3].map(() => `<div class="pd" style="width:28px;height:28px;border-radius:50%;border:5px solid #cfd6ea"></div>`).join("")}</div>
+  <svg id="lock" width="120" height="140" viewBox="0 0 120 140" style="margin-top:40px;opacity:0"><path id="shackle" d="M30 60 V40 Q30 10 60 10 Q90 10 90 40 V60" stroke="#FFB547" stroke-width="12" fill="none"/><rect x="14" y="58" width="92" height="76" rx="14" fill="#FFB547"/><circle cx="60" cy="92" r="10" fill="#0A0F1E"/></svg></div>`;
+gsap.set(["#phoneBox", "#cLock", "#bankBox", "#key", "#cKey", "#envBox", "#noPeek", "#respect", "#host"], { autoAlpha: 0 });
+tl.fromTo("#phoneBox", { autoAlpha: 0, y: 200 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "back.out(1.4)", immediateRender: false }, T.A + 0.1);
+$$(".pd").forEach((d, k) => { tl.to(d, { backgroundColor: "#FFB547", borderColor: "#FFB547", duration: 0.05 }, w("when you type") + 0.1 + k * 0.12); sfx(w("when you type") + 0.1 + k * 0.12, "click", { gain: 0.15 }); });
+tl.to("#blind", { opacity: 1, duration: 0.15 }, w("can't actually"));
+sfx(w("can't actually"), "swish", { gain: 0.2 });
+tl.fromTo("#lock", { opacity: 1, y: -60 }, { y: 0, duration: 0.35, ease: "bounce.out", immediateRender: false }, w("locked up"));
+sfx(w("locked up") + 0.25, "clunk", { gain: 0.35 });
+pop("#cLock", w("right there"));
+$("#bankBox").innerHTML = ISO.bank({ w: 470, color: "#3E7BFA", id: "kb", label: "YOUR BANK" });
+$("#envArt").innerHTML = ISO.env({ w: 340, seal: "#C7364C" });
+pop("#bankBox", w("with a lock"), { from: 0.5 });
+tl.fromTo("#key", { autoAlpha: 0, rotation: -40, x: 40 }, { autoAlpha: 1, rotation: 0, x: 0, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("only your bank"));
+sfx(w("only your bank"), "chime", { gain: 0.18 });
+pop("#cKey", w("can open"));
+// sealed envelope, app tries to peek
+tl.fromTo("#envBox", { autoAlpha: 0, y: -300, rotation: -8 }, { autoAlpha: 1, y: 0, rotation: -2, duration: 0.6, ease: "power3.out", immediateRender: false }, w("so the app"));
+sfx(w("so the app"), "paper", { gain: 0.3 });
+tl.to("#blind", { opacity: 0, duration: 0.1 }, w("isn't allowed") - 0.4);
+tl.to("#sA .pupil", { x: 9, duration: 0.2 }, w("isn't allowed") - 0.4);
+tl.fromTo("#noPeek", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, w("peek into"));
+sfx(w("peek into") + 0.14, "stamp", { gain: 0.5 });
+tl.to("#sA .pupil", { x: 0, duration: 0.2 }, w("peek into") + 0.3);
+tl.to("#blind", { opacity: 1, duration: 0.1 }, w("peek into") + 0.3);
+tl.to(["#bankBox", "#key", "#cKey"], { autoAlpha: 0, duration: 0.2 }, w("respect") - 0.75);
+tl.fromTo("#respect", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("respect"));
+sfx(w("respect"), "chime", { gain: 0.2 });
+$("#host").innerHTML = ART.host({ w: 330, id: "h", male: true });
+tl.fromTo("#host", { autoAlpha: 1, x: 500 }, { x: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, w("respect") - 0.5);
+PAPER.lipSync($("#hMouth"), { from: w("respect") - 0.45, open: 18 });
+tl.to("#hArm", { rotation: -30, svgOrigin: "300 450", duration: 0.25, yoyo: true, repeat: 1 }, w("respect"));
+
+// ================================================= B: the most important thing (paper rip)
+EX.iris("#sB", T.B, 340, 480, { color: "#F0566E" });
+show("#sB", T.B, null, { y: 0 });
+gsap.set(["#bHead", "#bSub", "#rSend", "#rRecv", "#sms", "#bal", "#scam", "#host2", "#bait"], { autoAlpha: 0 });
+$("#giftArt").innerHTML = `<svg width="420" height="340" viewBox="0 0 420 340" style="overflow:visible">${ISO.shadow(220, 330, 200, 20, 0.2)}${ISO.box(40, 130, 0, 300, 190, 110, "#F0566E")}<rect x="170" y="130" width="40" height="190" fill="#F5A524"/><polygon points="170,130 230.5,83.8 270.5,83.8 210,130" fill="#FFC75A"/>${ISO.box(20, 96, -6, 340, 36, 122, "#E0465E")}<rect x="170" y="96" width="40" height="36" fill="#F5A524"/><path d="M200 96 Q150 40 160 70 Q170 96 200 96 Q250 40 240 70 Q230 96 200 96" fill="#F5A524" stroke="#C98A1A" stroke-width="4"/><rect x="60" y="190" width="100" height="56" rx="8" fill="#fff" transform="rotate(-8 110 218)"/><text x="110" y="226" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="26" fill="#1B2340" transform="rotate(-8 110 218)">₹5,000</text></svg>`;
+tl.fromTo("#bait", { autoAlpha: 1, y: -900 }, { y: 0, duration: 0.7, ease: "back.out(1.2)", immediateRender: false }, w("enter your pin") + 0.2);
+sfx(w("enter your pin") + 0.2, "swish", { gain: 0.2 });
+tl.fromTo("#bHead", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "expo.out", immediateRender: false }, w("most important"));
+sfx(w("most important"), "slam", { gain: 0.25 });
+rise("#bSub", w("in this entire"));
+every(w("most important"), w("you need your"), 0.4, (t) => { tl.to("#siren", { opacity: 0.14, duration: 0.1 }, t); tl.to("#siren", { opacity: 0, duration: 0.2 }, t + 0.12); sfx(t, "beep", { gain: 0.08, pitch: 1.2 }); });
+tl.fromTo("#rSend", { autoAlpha: 0, y: 80, rotation: -6 }, { autoAlpha: 1, y: 0, rotation: -2, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("you need your"));
+sfx(w("you need your"), "ding", { gain: 0.2 });
+tl.fromTo("#rRecv", { autoAlpha: 0, y: 80, rotation: 6 }, { autoAlpha: 1, y: 0, rotation: 2, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("you never"));
+sfx(w("never ever"), "impact", { gain: 0.25 });
+REEL.shake($("#shake"), w("never ever"), 10);
+$("#host2").innerHTML = ART.host({ w: 330, id: "h2", male: true });
+tl.fromTo("#host2", { autoAlpha: 1, x: 500 }, { x: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, w("you need your") - 0.2);
+PAPER.lipSync($("#h2Mouth"), { from: w("you need your") - 0.2, open: 18 });
+tl.to(["#h2BrowL", "#h2BrowR"], { y: -12, duration: 0.15 }, w("never ever"));
+tl.to(["#h2BrowL", "#h2BrowR"], { y: 0, duration: 0.2 }, w("so if a"));
+// the scam
+tl.to(["#rSend", "#rRecv", "#bHead", "#bSub"], { autoAlpha: 0, y: -40, duration: 0.3, stagger: 0.03 }, w("so if a") - 0.1);
+tl.fromTo("#sms", { autoAlpha: 0, x: -200, rotation: -4 }, { autoAlpha: 1, x: 0, rotation: -1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("enter your pin"));
+sfx(w("enter your pin"), "bloop", { gain: 0.25 });
+const r = rng(5), cols = ["#FFB547", "#3EE0FF", "#5BE49B", "#fff", "#9B8CFF"];
+for (let i = 0; i < 60; i++) { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${200 + r() * 1100}px;top:-30px;width:${10 + r() * 10}px;height:${16 + r() * 14}px;background:${cols[i % 5]}`; $("#confetti").appendChild(el); gsap.set(el, { autoAlpha: 0 }); tl.fromTo(el, { autoAlpha: 1, y: 0, rotation: 0 }, { y: 700 + r() * 300, rotation: r() * 720, autoAlpha: 0, duration: 1.4 + r() * 0.6, ease: "power1.in", immediateRender: false }, w("congratulations") + r() * 0.3); }
+sfx(w("congratulations"), "crowd", { gain: 0.15, dur: 1.2 });
+pop("#bal", w("the only prize") - 0.2, { from: 0.8, sfx: false });
+tl.to("#bait", { rotation: 4, transformOrigin: "50% -200px", duration: 0.6, yoyo: true, repeat: 5, ease: "sine.inOut" }, w("congratulations"));
+tl.to("#bait", { keyframes: { scaleY: [1, 0.86, 1] }, transformOrigin: "50% 100%", duration: 0.3 }, w("your account") + 0.14);
+EX.countUp("#balN", 48250, 0, w("emptying"), 0.9, (v) => Math.round(v).toLocaleString("en-US"), "power2.in");
+every(w("emptying"), w("emptying") + 0.9, 0.06, (t) => sfx(t, "tick", { gain: 0.06 }));
+tl.fromTo("#scam", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, w("your account"));
+sfx(w("your account") + 0.14, "stamp", { gain: 0.6 });
+REEL.shake($("#shake"), w("your account") + 0.14, 14);
+
+REEL.finish(END);
+</script>
+</body></html>

@@ -1,0 +1,291 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ch6 Back into a voice</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.mono{font-family:"JetBrains Mono";font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.panel{position:absolute;top:0;width:1920px;height:1080px;overflow:hidden}
+.pk{position:absolute;width:96px;height:64px;border-radius:14px;background:rgba(62,224,255,.18);border:4px solid #3EE0FF;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono";font-weight:800;font-size:28px;color:#3EE0FF}
+.tile{position:absolute;font-family:"JetBrains Mono";font-weight:700;font-size:30px;padding:8px 14px;border-radius:10px;background:#0A0F1E;color:#fff}
+#mm{position:absolute;left:560px;top:84px;width:800px;height:96px;border-radius:999px;background:rgba(10,15,30,.88)}
+#mm .d{position:absolute;top:24px;width:22px;height:22px;border-radius:50%;background:#1E2846;border:3px solid #3a4a78}
+#mm .t{position:absolute;top:56px;width:160px;margin-left:-69px;text-align:center;font-family:"JetBrains Mono";font-weight:700;font-size:14px;letter-spacing:.12em;color:#8A94B0}
+.lane{position:absolute;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,#3a4a78 0 14px,transparent 14px 26px)}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/art.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" style="background:linear-gradient(180deg,#5db6ff 0%,#cdeeff 100%)"></div>
+    <div class="abs" style="left:0;top:560px" id="aSky"></div>
+    <div class="abs" style="left:0;top:880px;width:1920px;height:200px;background:#3b4f6e"></div>
+    <div class="abs" id="ex" style="left:120px;top:560px;width:380px;height:320px;border-radius:16px 16px 0 0;background:#eef2fa"><div class="abs" style="left:0;right:0;top:0;height:54px;background:#FF5D73;border-radius:16px 16px 0 0"></div><div class="abs mono" style="left:22px;top:14px;font-size:20px;color:#fff">PRIYA'S OPERATOR</div><div class="abs" style="left:34px;top:96px;width:312px;height:180px;background:repeating-linear-gradient(90deg,#0A0F1E 0 36px,#2a3a6a 36px 48px)"></div></div>
+    <div class="abs" style="left:830px;top:400px" id="aTow"></div>
+    <div class="abs" style="left:1380px;top:440px" id="pri"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="aCable" d="M500 860 L 910 860 L 910 870" stroke="#3EE0FF" stroke-width="10" fill="none"/></svg>
+    <canvas id="aFx" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="lbl" id="aHead" style="left:110px;top:110px;font-size:130px;color:#0A0F1E">On the <span style="color:#FF5D73">other side</span></div>
+    <div class="chip" id="c1" style="left:170px;top:500px;color:#0A0F1E;background:#fff">OPERATOR</div>
+    <div class="chip" id="c2" style="left:840px;top:340px;color:#0A0F1E;background:#fff">TOWER NEAR HER</div>
+    <div class="chip" id="c3" style="left:1420px;top:380px;color:#fff;background:#FF5D73;border-color:#FF5D73">HER PHONE</div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#6b35d1 0%,#2a145c 75%)"></div>
+    <svg id="rew" class="abs" style="left:760px;top:180px" width="400" height="260" viewBox="0 0 400 260"><path d="M200 20 L40 130 L200 240 Z M380 20 L220 130 L380 240 Z" fill="#fff"/></svg>
+    <div class="serif" id="bRev" style="position:absolute;left:0;right:0;top:470px;text-align:center;font-size:150px;color:#fff">in reverse</div>
+    <div id="bRow" class="abs" style="left:0;top:720px;width:1920px;height:100px"></div>
+  </section>
+
+  <section class="scene" id="sC">
+    <div id="strip" class="abs" style="left:0;top:0;width:7680px;height:1080px">
+      <div class="panel" id="p1" style="left:0;background:#EEF2F7"></div>
+      <div class="panel" id="p2" style="left:1920px;background:#0b1d4a;background-image:linear-gradient(rgba(62,224,255,.08) 2px,transparent 2px),linear-gradient(90deg,rgba(62,224,255,.08) 2px,transparent 2px);background-size:60px 60px"></div>
+      <div class="panel" id="p3" style="left:3840px;background:linear-gradient(135deg,#FFB547 0%,#FF7A3D 100%)"></div>
+      <div class="panel" id="p4" style="left:5760px;background:#FF5D73"></div>
+    </div>
+    <div id="mm"></div>
+  </section>
+
+  <section class="scene" id="sD">
+    <div class="bg" style="background:#0A0F1E"></div>
+    <div class="lbl" id="dHead" style="left:110px;top:100px;font-size:110px;color:#fff">Networks aren't <span style="color:#FFB547">smooth</span></div>
+    <div class="lane" style="top:430px"></div><div class="lane" style="top:820px"></div>
+    <div class="abs mono" style="left:110px;top:380px;font-size:20px;color:#8A94B0" id="l1">ARRIVING</div>
+    <div class="abs mono" style="left:110px;top:770px;font-size:20px;color:#8A94B0" id="l2">PLAYING</div>
+    <div class="abs" id="buf" style="left:1060px;top:330px;width:560px;height:330px;border-radius:30px;border:5px solid #FFB547;background:rgba(255,181,71,.08)">
+      <div class="abs mono" style="left:24px;top:-50px;font-size:24px;color:#FFB547">JITTER BUFFER · A WAITING AREA</div>
+      <div id="slots" class="abs" style="left:24px;top:110px;right:24px;height:90px;display:flex;gap:10px"></div>
+    </div>
+    <div id="pks" class="abs" style="inset:0"></div>
+    <div class="chip" id="cEarly" style="left:0;top:0;color:#5BE49B">EARLY</div>
+    <div class="chip" id="cLate" style="left:0;top:0;color:#FFB547">LATE</div>
+    <div class="chip" id="cMiss" style="left:0;top:0;color:#FF5D73">NOT AT ALL</div>
+    <div class="chip" id="cSteady" style="left:1180px;top:880px;color:#3EE0FF">A STEADY RHYTHM</div>
+  </section>
+
+  <section class="scene" id="sE">
+    <div class="bg" style="background:linear-gradient(160deg,#0a5566 0%,#062b38 100%)"></div>
+    <canvas id="wave" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="chip" id="eMiss" style="left:0;top:0;color:#FF5D73">PACKET MISSING</div>
+    <div class="chip" id="eGuess" style="left:0;top:0;color:#FFB547">SMART GUESS</div>
+    <div class="lbl" id="eHead" style="left:110px;top:110px;font-size:110px;color:#fff">Fill <span style="color:#FFB547">the gap</span></div>
+    <div class="lbl" id="eBad" style="left:110px;top:110px;font-size:110px;color:#FF5D73">Bad network</div>
+    <div id="robo" class="abs" style="left:0;right:0;top:640px;text-align:center"></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, pop, rise, fade, hide, draw, SVG, chip, show, every } = EX;
+EX.chrome(6, 7, "Back into a voice");
+EX.subtitles();
+EX.chapterCard(0.05, 2.3);
+const END = W.last() + 1.8;
+const T = { A: 2.2, B: w("here everything") - 0.25, C: w("the codec unpacks") - 0.25, D: w("but networks") - 0.25, E: w("if a packet") - 0.25 };
+
+// ================================================= A: operator, tower, her phone
+show("#sA", T.A, T.B + 0.5, { y: 0 });
+$("#aSky").innerHTML = ART.skyline({ w: 1920, h: 340, seed: 23, color: "#3b6aa8", win: "#cfe8ff", lit: 0.2, minH: 140, maxH: 320 });
+$("#aTow").innerHTML = SVG.tower({ h: 480, accent: "#FF5D73" });
+$("#pri").innerHTML = ART.caller({ w: 320, shirt: "#FF5D73", hair: "#3a1a1a", phone: "#FF5D73", id: "pr" });
+gsap.set(["#aHead", "#c1", "#c2", "#c3"], { autoAlpha: 0 });
+rise("#aHead", w("on the other"));
+pop("#c1", w("operator"));
+draw("#aCable", w("then the tower") - 0.3, 0.6);
+pop("#c2", w("then the tower"));
+pop("#c3", w("their phone"));
+(function () {
+  const c = $("#aFx").getContext("2d"), t1 = w("reach your"), t2 = w("then the tower"), t3 = w("and fly");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.A || t > T.B + 0.6) return;
+    // packets arriving into the operator from the left
+    for (let k = 0; k < 6; k++) { const u = (t - t1) * 1.4 - k * 0.18; if (u < 0 || u > 1) continue; c.fillStyle = "#3EE0FF"; c.fillRect(-80 + u * 260, 700, 50, 30); }
+    // cable pulses operator -> tower
+    if (t > t2) for (let k = 0; k < 4; k++) { const u = ((t - t2) * 1.2 + k / 4) % 1; c.beginPath(); c.arc(500 + u * 410, 860, 9, 0, 7); c.fillStyle = "#fff"; c.fill(); }
+    // radio rings tower -> her phone
+    if (t > t3) for (let k = 0; k < 4; k++) { const a = ((t - t3) * 0.9 + k / 4) % 1; c.beginPath(); c.arc(915, 420, 30 + a * 640, -0.6, 0.6); c.strokeStyle = `rgba(62,224,255,${(1 - a) * 0.8})`; c.lineWidth = 8; c.stroke(); }
+  });
+})();
+every(w("and fly"), T.B, 0.5, (t) => sfx(t, "swish", { gain: 0.05 }));
+
+// ================================================= B: in reverse
+show("#sB", T.B, T.C + 0.5, { scale: 1.1 });
+sfx(T.B, "glitch", { gain: 0.14 });
+gsap.set(["#rew", "#bRev"], { autoAlpha: 0 });
+tl.fromTo("#rew", { autoAlpha: 0, scale: 1.5, x: 200 }, { autoAlpha: 1, scale: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.B + 0.05);
+rise("#bRev", w("in reverse"));
+const ROW = [["VOICE", "#FFB547"], ["NUMBERS", "#EEF2F7"], ["WAVES", "#3EE0FF"], ["CABLES", "#3EE0FF"], ["SOUND", "#FF5D73"]];
+$("#bRow").innerHTML = ROW.map(([n, c], i) => `<div class="abs rw" style="left:${260 + i * 300}px;top:0;width:260px;text-align:center;font-family:'JetBrains Mono';font-weight:800;font-size:30px;color:${c};padding:18px 0;border-radius:999px;border:3px solid ${c}">${n}</div>`).join("");
+const rws = $$("#bRow .rw");
+gsap.set(rws, { autoAlpha: 0 });
+tl.to(rws, { autoAlpha: 1, duration: 0.2, stagger: 0.08 }, T.B + 0.2);
+rws.forEach((r, i) => tl.to(r, { x: (4 - i) * 300 - i * 300, duration: 0.7, ease: "power3.inOut" }, w("happens") + 0.1));
+sfx(w("happens") + 0.1, "whoosh", { gain: 0.2, dur: 0.7 });
+
+// ================================================= C: unpack, convert, speaker, she hears you
+show("#sC", T.C, T.D + 0.5, { x: 300 });
+sfx(T.C, "whoosh", { gain: 0.25, dur: 0.5 });
+const MM = ["UNPACK", "CONVERT", "SPEAKER", "EAR"], MMC = ["#EEF2F7", "#3EE0FF", "#FFB547", "#FF5D73"];
+$("#mm").innerHTML = `<div class="abs" style="left:100px;right:100px;top:34px;height:4px;background:#1E2846"></div>` + MM.map((m, i) => `<div class="d" style="left:${100 + i * 200 - 11}px"></div><div class="t" style="left:${100 + i * 200}px">${m}</div>`).join("");
+const stops = [T.C, w("a converter") - 0.3, w("that signal drives") - 0.3, w("and your friend hears") - 0.3];
+const dots = $$("#mm .d"), tts = $$("#mm .t");
+stops.forEach((t, i) => {
+  if (i) { tl.to("#strip", { x: -1920 * i, duration: 0.6, ease: "power3.inOut" }, t); sfx(t, "whoosh", { gain: 0.22, dur: 0.6 }); }
+  tl.to(dots[i], { backgroundColor: MMC[i], borderColor: MMC[i], scale: 1.3, duration: 0.3 }, t + 0.3);
+  tl.to(tts[i], { color: "#fff", duration: 0.3 }, t + 0.3);
+  if (i) { tl.to(dots[i - 1], { scale: 1, duration: 0.3 }, t + 0.3); tl.to(tts[i - 1], { color: "#8A94B0", duration: 0.3 }, t + 0.3); }
+});
+// p1: codec unpacks a packet, numbers spill out
+$("#p1").innerHTML = `<div class="lbl" style="left:110px;top:220px;font-size:150px;color:#0A0F1E">Codec<br><span style="color:#3a7bd5">unpacks</span></div>
+  <div class="abs" id="box" style="left:1020px;top:300px;width:300px;height:220px;border-radius:24px;background:rgba(62,224,255,.18);border:6px solid #0A0F1E"><div class="abs mono" style="left:0;right:0;top:80px;text-align:center;font-size:40px;color:#0A0F1E">PKT</div></div>
+  <div class="abs" id="lid" style="left:1012px;top:280px;width:316px;height:40px;border-radius:14px;background:#0A0F1E;transform-origin:0% 100%"></div>
+  <div id="spill" class="abs" style="inset:0"></div>
+  <div class="abs mono" id="p1Sub" style="left:116px;top:560px;font-size:28px;color:#5a6280">AND REBUILDS THE NUMBERS</div>`;
+const tUn = w("unpacks");
+tl.to("#lid", { rotation: -28, x: -30, y: -20, duration: 0.4, ease: "back.out(2)" }, tUn);
+sfx(tUn, "pop", { gain: 0.2 });
+const r = rng(4);
+for (let k = 0; k < 12; k++) $("#spill").insertAdjacentHTML("beforeend", `<div class="tile" style="left:1140px;top:360px">${Math.round((r() - 0.5) * 180)}</div>`);
+$$("#spill .tile").forEach((el, k) => { gsap.set(el, { autoAlpha: 0 }); tl.fromTo(el, { autoAlpha: 1, x: 0, y: 0, scale: 0.4 }, { x: -760 + (k % 6) * 150, y: 420 + Math.floor(k / 6) * 90, scale: 1, duration: 0.7, ease: "power3.out", immediateRender: false }, w("rebuilds") - 0.2 + k * 0.05); });
+gsap.set("#p1Sub", { autoAlpha: 0 });
+rise("#p1Sub", w("rebuilds"));
+// p2: converter -> smooth electrical signal
+$("#p2").innerHTML = `<div class="lbl" style="left:110px;top:220px;font-size:140px;color:#fff">Numbers <span style="color:#3EE0FF">to signal</span></div>
+  <div class="abs" style="left:780px;top:470px;width:360px;height:260px;border-radius:26px;background:#151d38;border:5px solid #3EE0FF"><div class="abs mono" style="left:0;right:0;top:100px;text-align:center;font-size:34px;color:#3EE0FF">CONVERTER</div>${Array.from({ length: 6 }, (_, k) => `<div class="abs" style="left:${-26}px;top:${30 + k * 38}px;width:22px;height:10px;background:#3EE0FF"></div><div class="abs" style="right:${-26}px;top:${30 + k * 38}px;width:22px;height:10px;background:#3EE0FF"></div>`).join("")}</div>
+  <canvas id="p2c" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>`;
+(function () {
+  const c = $("#p2c").getContext("2d"), t0 = w("a converter");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < t0 - 0.6 || t > stops[2] + 0.8) return;
+    // stems on the left
+    for (let k = 0; k < 14; k++) { const x = 110 + k * 46, v = Math.sin(k * 0.7 - t * 3) * 90; c.strokeStyle = "#EEF2F7"; c.lineWidth = 4; c.beginPath(); c.moveTo(x, 600); c.lineTo(x, 600 - v); c.stroke(); c.beginPath(); c.arc(x, 600 - v, 8, 0, 7); c.fillStyle = "#3EE0FF"; c.fill(); }
+    // smooth signal on the right
+    const p = Math.max(0, Math.min(1, (t - t0 - 0.3) / 0.8));
+    c.beginPath();
+    for (let x = 1170; x <= 1170 + 650 * p; x += 3) { const y = 600 - Math.sin((x - 1170) / 46 - t * 3) * 90; x === 1170 ? c.moveTo(x, y) : c.lineTo(x, y); }
+    c.strokeStyle = "#5BE49B"; c.lineWidth = 7; c.shadowColor = "#5BE49B"; c.shadowBlur = 18; c.stroke(); c.shadowBlur = 0;
+  });
+})();
+// p3: speaker shakes the air
+$("#p3").innerHTML = `<div class="lbl" style="left:110px;top:220px;font-size:150px;color:#0A0F1E">The speaker<br><span style="color:#fff">shakes the air</span></div>
+  <svg class="abs" style="left:1050px;top:300px;overflow:visible" width="500" height="500" viewBox="-250 -250 500 500"><g id="cone"><circle r="210" fill="#0A0F1E"/><circle r="160" fill="#2a2a3a"/><circle r="110" fill="#0A0F1E"/><circle r="56" fill="#3a3a4a"/></g></svg>
+  <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080">${[0, 1, 2, 3].map((k) => `<path class="sw" d="M0 -150 Q70 0 0 150" transform="translate(${1560 + k * 70},550)" stroke="#0A0F1E" stroke-width="12" fill="none" stroke-linecap="round"/>`).join("")}</svg>`;
+const tSp = w("drives the speaker");
+for (let k = 0; k < 24; k++) tl.to("#cone", { scale: k % 2 ? 0.94 : 1.04, transformOrigin: "50% 50%", duration: 0.06 }, tSp + k * 0.12);
+$$(".sw").forEach((p, k) => { every(tSp, stops[3] + 0.6, 0.45, (t) => { tl.fromTo(p, { autoAlpha: 0, x: 0 }, { autoAlpha: 1, x: 30, duration: 0.15, immediateRender: false }, t + k * 0.08); tl.to(p, { autoAlpha: 0, x: 100, duration: 0.25 }, t + k * 0.08 + 0.18); }); });
+// p4: she hears you
+$("#p4").innerHTML = `<div class="abs" style="left:1100px;top:330px">${ART.caller({ w: 420, shirt: "#0A0F1E", hair: "#3a1a1a", phone: "#fff", id: "pr2" })}</div>
+  <div id="hHello" class="abs serif" style="left:280px;top:330px;font-size:200px;color:#fff;background:#0A0F1E;padding:0 60px 30px;border-radius:60px 60px 60px 10px">Hello!</div>
+  <div class="lbl" style="left:110px;top:700px;font-size:130px;color:#0A0F1E">She hears <span style="color:#fff">your voice</span></div>`;
+const tHear = w("hears your");
+tl.fromTo("#hHello", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)", immediateRender: false }, tHear);
+sfx(tHear, "chime", { gain: 0.2 });
+
+// ================================================= D: early, late, missing; the jitter buffer
+show("#sD", T.D, T.E + 0.5, { y: 0 });
+sfx(T.D, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set(["#dHead", "#cEarly", "#cLate", "#cMiss", "#cSteady", "#buf"], { autoAlpha: 0 });
+rise("#dHead", w("but networks"));
+const tA0 = w("packets can arrive");
+// arrival x positions on lane 1 (irregular). packet 6 never arrives.
+const ARR = [[1, 0.0], [2, 0.18], [3, 0.26], [4, 1.1], [5, 1.4], [7, 2.0], [8, 3.4]];
+ARR.forEach(([n, d]) => $("#pks").insertAdjacentHTML("beforeend", `<div class="pk ap" data-n="${n}" style="left:-120px;top:398px">${n}</div>`));
+const aps = $$("#pks .ap");
+aps.forEach((p, i) => { const t = tA0 + ARR[i][1] * 0.9; tl.fromTo(p, { x: 0 }, { x: 1250, duration: 1.7, ease: "power1.out", immediateRender: false }, t); sfx(t + 1.2, "bloop", { gain: 0.08 }); });
+$("#pks").insertAdjacentHTML("beforeend", `<div class="pk" id="ghost" style="left:640px;top:398px;border-style:dashed;border-color:#FF5D73;color:#FF5D73;background:transparent">6</div>`);
+gsap.set("#ghost", { autoAlpha: 0 });
+gsap.set("#cEarly", { x: 560, y: 320 }); gsap.set("#cLate", { x: 260, y: 320 }); gsap.set("#cMiss", { x: 600, y: 480 });
+pop("#cEarly", w("early"));
+pop("#cLate", w("late"));
+pop("#ghost", w("not at all"), { sfx: "glitch", gain: 0.1 });
+pop("#cMiss", w("not at all"), { sfx: false });
+// the waiting room
+const tBuf = w("waiting area");
+pop("#buf", tBuf - 0.3, { from: 0.8 });
+$("#slots").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `<div class="pk sl" style="position:relative;width:54px;height:54px;font-size:22px;border-width:3px;${n === 6 ? "border-style:dashed;border-color:#FF5D73;color:#FF5D73;background:transparent" : ""}">${n}</div>`).join("");
+const sls = $$("#slots .sl");
+gsap.set(sls, { autoAlpha: 0, y: -40 });
+tl.to(aps, { autoAlpha: 0, duration: 0.3 }, w("it holds"));
+tl.to(sls, { autoAlpha: 1, y: 0, duration: 0.25, stagger: 0.1, ease: "back.out(2)" }, w("it holds"));
+tl.to("#ghost", { autoAlpha: 0, duration: 0.3 }, w("it holds"));
+// steady output
+const tOut = w("so it can play");
+for (let k = 0; k < 8; k++) $("#pks").insertAdjacentHTML("beforeend", `<div class="pk op" style="left:1280px;top:788px;width:64px;height:54px;font-size:22px;${k === 5 ? "border-color:#FFB547;color:#FFB547" : ""}">${k + 1}</div>`);
+$$("#pks .op").forEach((p, k) => { gsap.set(p, { autoAlpha: 0 }); const t = tOut + k * 0.3; tl.fromTo(p, { autoAlpha: 1, x: 0 }, { x: 760, duration: 2.4, ease: "none", immediateRender: false }, t); sfx(t, "tick", { gain: 0.16 }); });
+pop("#cSteady", w("steady rhythm"));
+
+// ================================================= E: the smart guess, then a robotic voice
+show("#sE", T.E, null, { y: 0 });
+sfx(T.E, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set(["#eMiss", "#eGuess", "#eHead", "#eBad"], { autoAlpha: 0 });
+const tMiss = w("goes missing"), tGuess = w("smart guess"), tBad = w("when the network"), tRobo = w("robotic");
+rise("#eHead", tGuess - 0.4);
+tl.to("#eHead", { autoAlpha: 0, duration: 0.2 }, tBad - 0.1);
+tl.fromTo("#eBad", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.3, immediateRender: false }, tBad);
+(function () {
+  const c = $("#wave").getContext("2d"), X0 = 110, X1 = 1810, SEG = (X1 - X0) / 8, Y = 520;
+  const f = (x, t) => Y - (Math.sin(x / 38 - t * 2) * 120 * (0.6 + 0.4 * Math.sin(x / 210)));
+  gsap.set("#eMiss", { x: X0 + SEG * 5 - 40, y: 300 }); gsap.set("#eGuess", { x: X0 + SEG * 5 - 40, y: 690 });
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.E) return;
+    const bad = t > tBad + 0.3;
+    const miss = t > tMiss ? (bad ? [2, 3, 5, 6] : [5]) : [];
+    for (let s = 0; s < 8; s++) {
+      const a = X0 + s * SEG, b = a + SEG;
+      c.strokeStyle = "rgba(255,255,255,.25)"; c.lineWidth = 2; c.beginPath(); c.moveTo(a, 300); c.lineTo(a, 740); c.stroke();
+      if (miss.includes(s)) {
+        if (!bad && t > tGuess) { // smart guess: dashed amber continuation
+          c.setLineDash([12, 10]); c.strokeStyle = "#FFB547"; c.lineWidth = 7; c.beginPath();
+          for (let x = a; x <= b; x += 3) { const y = f(x, t); x === a ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke(); c.setLineDash([]);
+        } else if (bad) { // broken: flat-ish stair steps
+          c.strokeStyle = "#FF5D73"; c.lineWidth = 6; c.beginPath();
+          for (let x = a; x <= b; x += 24) { const y = Y + (Math.floor(Math.sin(x * 7.1 + Math.floor(t * 14)) * 3)) * 26; c.lineTo(x, y); c.lineTo(x + 24, y); } c.stroke();
+        } else { c.fillStyle = "rgba(255,93,115,.15)"; c.fillRect(a, 300, SEG, 440); }
+        continue;
+      }
+      c.strokeStyle = bad ? "#9fb0d0" : "#5BE49B"; c.lineWidth = 7; c.beginPath();
+      for (let x = a; x <= b; x += 3) { const jit = bad ? (Math.sin(x * 3 + t * 40) * 10) : 0; const y = f(x, t) + jit; x === a ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke();
+    }
+  });
+})();
+pop("#eMiss", tMiss, { sfx: "glitch", gain: 0.12 });
+pop("#eGuess", tGuess, { sfx: "pop", gain: 0.15 });
+tl.to(["#eMiss", "#eGuess"], { autoAlpha: 0, duration: 0.2 }, tBad);
+every(tBad + 0.3, END, 0.4, (t) => sfx(t, "glitch", { gain: 0.07 }));
+// robotic broken hello with chromatic split
+$("#robo").innerHTML = `<div style="position:relative;display:inline-block;font-family:Garamond;font-style:italic;font-size:200px;line-height:1">
+  <span class="rg" style="position:absolute;left:0;top:0;color:#FF5D73;mix-blend-mode:screen">H e l l o ?</span>
+  <span class="rb" style="position:absolute;left:0;top:0;color:#3EE0FF;mix-blend-mode:screen">H e l l o ?</span>
+  <span style="position:relative;color:#fff">H e l l o ?</span></div>`;
+gsap.set("#robo", { autoAlpha: 0 });
+tl.to("#robo", { autoAlpha: 1, duration: 0.2 }, tRobo - 0.2);
+REEL.onFrame((t) => {
+  if (t < tRobo - 0.3) return;
+  const k = Math.floor(t * 16);
+  const dx = ((k * 37) % 13) - 6, dy = ((k * 17) % 7) - 3;
+  gsap.set(".rg", { x: dx * 2, y: dy }); gsap.set(".rb", { x: -dx * 2, y: -dy });
+  gsap.set("#robo", { skewX: k % 5 === 0 ? 8 : 0, x: k % 7 === 0 ? 12 : 0 });
+});
+REEL.shake($("#shake"), tRobo, 8);
+REEL.shake($("#shake"), w("broken"), 10);
+
+REEL.finish(END);
+</script>
+</body></html>

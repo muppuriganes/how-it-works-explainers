@@ -1,0 +1,32 @@
+:root{
+  --cream:#F3E9D7; --cream2:#E9DCC3; --ink:#2B2118; --tomato:#E8553B; --mustard:#F2B33D; --teal:#2A9D8F;
+  --navy:#1D3557; --pink:#F4A6A6; --leaf:#7BB662; --sky:#A8DADC; --brown:#8A5A3B; --plum:#6D4C7D;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--cream)}
+#shake{position:absolute;inset:0}
+#stage{position:absolute;inset:0}
+.scene{position:absolute;inset:0;visibility:hidden;opacity:0;overflow:hidden}
+.abs{position:absolute}
+.bg{position:absolute;inset:0}
+.grain{position:absolute;inset:0;pointer-events:none;background-image:var(--grain);mix-blend-mode:multiply;opacity:.55}
+/* a piece of cut paper: rough edge + hard little shadow */
+.pc{filter:url(#pedge) drop-shadow(0 7px 0 rgba(43,33,24,.22))}
+.pcs{filter:url(#pedge) drop-shadow(0 4px 0 rgba(43,33,24,.22))}
+.flat{filter:url(#pedge)}
+.cut{font-family:Fraunces;font-weight:900;font-stretch:90%;letter-spacing:-0.02em;line-height:.9;color:var(--ink)}
+.hand{font-family:Caveat;font-weight:700;color:var(--tomato);line-height:1}
+.mono{font-family:"JetBrains Mono";font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sticker{position:absolute;display:inline-block;padding:10px 26px 14px;border-radius:14px;font-family:Fraunces;font-weight:900;font-size:64px;line-height:1;white-space:nowrap}
+.bubble{position:absolute;padding:18px 30px 22px;border-radius:30px;background:#fff;font-family:Fraunces;font-weight:700;font-size:48px;color:var(--ink);white-space:nowrap}
+/* chrome */
+#ptag{position:absolute;left:56px;top:40px;padding:10px 22px 12px;border-radius:12px;background:var(--ink);color:var(--cream);font-family:"JetBrains Mono";font-weight:800;font-size:20px;letter-spacing:.1em}
+#ptag b{color:var(--mustard)}
+#pprog{position:absolute;right:56px;top:50px;display:flex;gap:10px}
+#pprog i{display:block;width:22px;height:22px;border-radius:50%;background:var(--cream2);border:3px solid var(--ink)}
+#pprog i.on{background:var(--tomato)}
+#pprog i.done{background:var(--ink)}
+#subsBand{position:absolute;left:0;right:0;bottom:0;height:120px;background:var(--cream);clip-path:var(--zig);box-shadow:0 -4px 0 rgba(43,33,24,.12)}
+#subs{position:absolute;left:0;right:0;bottom:34px;text-align:center;font-family:Fraunces;font-weight:800;font-size:40px;color:rgba(43,33,24,.38)}
+#subs span{display:inline-block;margin:0 .13em}
+#subs span.on{color:var(--ink)}

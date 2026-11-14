@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+__pycache__/
+**/render/
+mix_all.wav
+video_all.mp4
+videos.txt
+**/audio/music.wav
+**/audio/*_raw.*
+*.onnx
+voices-v1.0.bin

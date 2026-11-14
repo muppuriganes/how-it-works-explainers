@@ -1,0 +1,220 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>UPI Ch6 Money debited payment failed</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.notif{position:absolute;left:560px;width:800px;padding:22px 30px;border-radius:24px;background:#fff;color:#1B2340;display:flex;align-items:center;gap:24px;box-shadow:0 20px 50px rgba(27,35,64,.22)}
+.notif .dot{width:70px;height:70px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:900;font-size:40px;color:#fff}
+.nl{position:absolute;font-family:"JetBrains Mono";font-weight:800;font-size:20px;letter-spacing:.1em;color:#1B2340;white-space:nowrap;padding:7px 16px;border-radius:999px;background:#fff;box-shadow:0 6px 16px rgba(27,35,64,.16)}
+.car{position:absolute;width:190px;height:84px;border-radius:22px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- A: the scariest message -->
+  <section class="scene" id="sA">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 55%,#FFFFFF 0%,#FFE3E6 55%,#FFCFD5 100%)"></div>
+    <div id="bigPhone" class="abs" style="left:770px;top:150px"></div>
+    <div class="lbl x3d" id="aHead" data-ob="ahead" style="left:110px;top:110px;font-size:110px;--xf:#fff">The <span style="color:#F0566E">scariest</span><br>message</div>
+    <div class="serif" id="aSub" data-ob="asub" style="position:absolute;left:116px;top:320px;font-size:60px;color:#C7364C">in India</div>
+    <div class="notif" id="n1" data-ob="n1" style="top:420px"><div class="dot" style="background:#1f9d5a">₹</div><div><div class="m" style="font-size:18px;color:#8a7f6a">YOUR BANK · NOW</div><div class="h" style="font-size:46px">₹10 debited from A/c XX42</div></div></div>
+    <div class="notif" id="n2" data-ob="n2" style="top:610px"><div class="dot" style="background:#c7364c">!</div><div><div class="m" style="font-size:18px;color:#8a7f6a">PAYMENT APP · NOW</div><div class="h" style="font-size:46px;color:#c7364c">Payment failed</div></div></div>
+    <div id="host" class="abs" data-ob="host" data-bleed style="left:1500px;top:420px"></div>
+  </section>
+
+  <!-- B: what happened — full-screen map -->
+  <section class="scene" id="sB">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#E6F5FD 100%)"></div>
+    <div id="cityB" class="abs" style="left:0;top:110px"></div>
+    <div class="abs" style="left:0;top:330px;width:1920px;height:750px;background:linear-gradient(180deg,#D9F0DF 0%,#E7F6EA 100%)"></div>
+    <div id="treesB" class="abs" style="inset:0"></div>
+    <svg id="roadsB" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="yb" class="abs" data-ob="yb" style="left:60px;top:130px"></div>
+    <div id="rfStage" class="abs" style="left:770px;top:400px;width:380px;height:420px"><div id="podB" class="abs" data-ob="rf" style="left:0;top:200px"></div><div id="rf" class="abs" data-ob="rf" style="left:95px;top:20px"></div></div>
+    <div id="cb" class="abs" data-ob="cb" style="left:1440px;top:500px"></div>
+    <div class="nl" id="lyb" data-ob="lyb" style="left:160px;top:530px">YOUR BANK</div>
+    <div class="nl" id="lcb" data-ob="lcb" style="left:1530px;top:890px">CHAI WALA'S BANK</div>
+    <div class="chip" id="took" data-ob="took" style="left:470px;top:150px;color:#1F9D5A;font-size:28px">₹10 TAKEN ✓</div>
+    <div id="env" class="abs" style="left:0;top:0;opacity:0"></div>
+    <div class="chip" id="stuck" data-ob="stuck" style="left:1080px;top:510px;color:#E0324B;font-size:24px">CONFIRMATION STUCK</div>
+    <div id="server" class="abs" data-ob="server" style="left:330px;top:600px"></div>
+    <div class="chip" id="slow" data-ob="slow" style="left:360px;top:880px;color:#B9770E">SLOW SERVER</div>
+    <svg id="cloud" class="abs" data-ob="cloud" style="left:1230px;top:150px;overflow:visible" width="320" height="170" viewBox="0 0 320 170"><path d="M40 150 Q0 150 6 110 Q12 76 52 80 Q60 30 112 34 Q140 4 184 26 Q234 12 248 60 Q306 56 312 104 Q318 150 270 150 Z" fill="#fff" stroke="#BFD3EA" stroke-width="5"/><circle cx="130" cy="96" r="8" fill="#1B2340"/><circle cx="190" cy="96" r="8" fill="#1B2340"/><ellipse cx="160" cy="124" rx="16" ry="6" fill="#1B2340"/></svg>
+    <div class="chip" id="netChip" data-ob="cloud" style="left:1270px;top:330px;color:#3E7BFA">THE NETWORK</div>
+    <div id="achoo" class="abs" data-ob="achoo" style="left:1580px;top:100px"></div>
+    <div id="qm" class="abs" data-ob="qm" style="left:920px;top:280px;width:90px;height:110px;border-radius:24px;background:#F5A524;color:#1B2340;font-family:Archivo;font-weight:900;font-size:90px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 #C98A1A">?</div>
+  </section>
+
+  <!-- C: don't panic -->
+  <section class="scene" id="sC">
+    <div class="bg" style="background:linear-gradient(180deg,#D3F2E3 0%,#EEFAF4 100%)"></div>
+    <div id="cityC" class="abs" style="left:0;top:380px"></div>
+    <div class="lbl x3d" id="cHead" data-ob="chead" style="left:110px;top:100px;font-size:150px;--xf:#fff">Don't <span style="color:#22B573">panic.</span></div>
+    <div id="road" class="abs" style="left:0;top:600px;width:1920px;height:260px;background:#7A8098"></div>
+    <div id="roadLine" class="abs" style="left:0;top:726px;width:3840px;height:8px;background:repeating-linear-gradient(90deg,#f2e9c9 0 70px,transparent 70px 140px)"></div>
+    <div class="abs" style="left:0;top:860px;width:1920px;height:220px;background:#CDEBD9"></div>
+    <div id="cars" class="abs" style="inset:0"></div>
+    <div class="chip" id="traffic" data-ob="traffic" style="left:760px;top:520px;color:#B9770E">YOUR ₹10 IS STUCK IN TRAFFIC</div>
+    <div class="pcard" id="rules" data-ob="rules" style="left:110px;top:256px;width:880px"><div class="tape"></div><div class="m" style="font-size:20px;color:#8a7f6a">THE RULES · RBI</div><div class="h" style="font-size:46px;margin-top:10px;line-height:1.15">Debited but failed? Your money comes back <b>automatically</b>.</div></div>
+    <div id="cal" class="abs" data-ob="cal" style="left:1160px;top:96px;width:340px;height:340px;perspective:900px">
+      <div class="abs" style="inset:0;border-radius:24px;background:#fff;box-shadow:14px 14px 0 #B9C6E0,0 20px 40px rgba(27,35,64,.2)"><div class="abs" style="left:0;right:0;top:0;height:76px;border-radius:24px 24px 0 0;background:#F0566E"></div><div class="abs m" style="left:0;right:0;top:120px;text-align:center;font-size:30px;color:#1B2340">NEXT</div><div class="abs big" style="left:0;right:0;top:160px;text-align:center;font-size:62px;color:#1B2340;line-height:1.05">working<br>day</div></div>
+      <div id="calTop" class="abs" style="inset:0;border-radius:24px;background:#fff;transform-origin:50% 0%"><div class="abs" style="left:0;right:0;top:0;height:76px;border-radius:24px 24px 0 0;background:#F0566E"></div><div class="abs big" style="left:0;right:0;top:140px;text-align:center;font-size:86px;color:#1B2340">Today</div></div>
+    </div>
+  </section>
+
+  <!-- D: late? bank pays you -->
+  <section class="scene" id="sD">
+    <div class="bg" style="background:radial-gradient(ellipse at 70% 40%,#FFFFFF 0%,#FFF0C2 55%,#FFE09A 100%)"></div>
+    <div class="lbl x3d" id="dHead" data-ob="dhead" style="left:110px;top:100px;font-size:120px;--xf:#fff">Bank takes longer?</div>
+    <div class="pcard" id="fine" data-ob="fine" style="left:110px;top:270px;width:760px"><div class="tape"></div><div class="m" style="font-size:20px;color:#8a7f6a">THE RULES SAY THE BANK PAYS YOU</div><div class="big" style="font-size:110px;margin-top:6px">₹100 <span style="font-size:44px;letter-spacing:0;word-spacing:.2em;font-weight:700">per extra day</span></div></div>
+    <div class="pcard" id="days" data-ob="days" style="left:940px;top:270px;width:480px;text-align:center"><div class="tape"></div><div class="m" style="font-size:20px;color:#8a7f6a">EXTRA DAYS LATE</div><div class="big" style="font-size:110px;margin-top:6px"><span id="dN">0</span> <span style="font-size:44px;letter-spacing:0;word-spacing:.2em;font-weight:700">= ₹<span id="dR">0</span></span></div></div>
+    <div id="stack" class="abs" data-ob="stack" style="left:1500px;top:200px;width:360px;height:420px"></div>
+    <div class="serif" id="tech" data-ob="tech" style="position:absolute;left:116px;top:560px;font-size:72px;color:#1B2340">technically...</div>
+    <div id="cups" class="abs" data-ob="cups" style="left:110px;top:680px;width:1700px;height:200px"></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw, SVG } = EX;
+const { ART } = PAPER;
+EX.chrome(6, 7, "Money debited, payment failed");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+const heroN = `<div class="abs" style="left:250px;top:40px">${ISO.phone({ w: 300 })}</div>
+  <div class="abs" style="left:60px;top:250px;width:620px;padding:20px 26px;border-radius:22px;background:#fff;box-shadow:0 16px 40px rgba(27,35,64,.2);font-family:Archivo;font-weight:800;font-size:40px;color:#1f9d5a">✓ ₹10 debited</div>
+  <div class="abs" id="heroFail" style="left:120px;top:400px;width:620px;padding:20px 26px;border-radius:22px;background:#fff;box-shadow:0 16px 40px rgba(27,35,64,.2);font-family:Archivo;font-weight:800;font-size:40px;color:#c7364c">✗ Payment failed</div>`;
+EX.chapterCard2(6, "Money debited, payment failed", 0.05, 2.3, { hero: heroN, heroAnim: (el, t) => { tl.fromTo("#heroFail", { x: 120, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, t + 0.4); sfx(t + 0.4, "impact", { gain: 0.2 }); } });
+const END = W.last() + 1.6;
+const T = { A: 2.25, B: w("what happened") - 0.05, C: w("don't panic") - 0.15, D: w("and if the") - 0.1 };
+
+// ================================================= A: the scariest message
+show("#sA", T.A, T.B + 0.01, { y: 0 });
+$("#bigPhone").innerHTML = ISO.phone({ w: 380, accent: "#F0566E" });
+gsap.set(["#aHead", "#aSub", "#n1", "#n2", "#host", "#bigPhone"], { autoAlpha: 0 });
+tl.fromTo("#bigPhone", { autoAlpha: 1, y: 500, rotation: 8 }, { y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.3)", immediateRender: false }, T.A + 0.05);
+tl.fromTo("#aHead", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "expo.out", immediateRender: false }, w("and now the"));
+sfx(w("scariest"), "riser", { gain: 0.12, dur: 1.4 });
+rise("#aSub", w("in india"));
+tl.fromTo("#n1", { autoAlpha: 0, y: -60, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("money debited"));
+sfx(w("money debited"), "ding", { gain: 0.25 });
+tl.fromTo("#n2", { autoAlpha: 0, y: -60, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("payment failed"));
+sfx(w("failed"), "impact", { gain: 0.4 });
+REEL.shake($("#shake"), w("failed"), 18);
+$("#host").innerHTML = ART.host({ w: 330, id: "h" });
+tl.fromTo("#host", { autoAlpha: 1, x: 500 }, { x: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, w("scariest"));
+PAPER.lipSync($("#hMouth"), { from: w("scariest"), open: 18 });
+tl.to(["#hBrowL", "#hBrowR"], { y: -14, duration: 0.12 }, w("failed"));
+tl.to("#hMouth", { attr: { rx: 30 }, duration: 0.1 }, w("failed"));
+
+// ================================================= B: what happened (colour shutters -> the map)
+EX.stripes(T.B, { colors: ["#F0566E", "#F5A524", "#3E7BFA", "#22B573", "#7B61FF"] });
+show("#sB", T.B, null, { y: 0 });
+$("#cityB").innerHTML = ISO.city({ h: 230, color: "#C3D6F0", seed: 22 });
+[[620, 380, 130], [1150, 380, 120], [40, 640, 140], [700, 760, 130], [1760, 380, 120]].forEach(([x, y, h]) => $("#treesB").insertAdjacentHTML("beforeend", `<div class="abs" style="left:${x}px;top:${y}px">${ISO.tree({ h })}</div>`));
+const RB = [["ra", "M218 446 C 420 520, 700 720, 960 700"], ["rb", "M960 700 C 1200 690, 1400 830, 1598 816"]];
+$("#roadsB").innerHTML = RB.map(([id, d]) => ISO.road(d, { wd: 50, id })).join("");
+$("#yb").innerHTML = ISO.bank({ w: 380, color: "#3E7BFA", id: "y", label: "YOUR BANK" });
+$("#cb").innerHTML = ISO.bank({ w: 380, color: "#F5A524", id: "c", label: "CHAI WALA'S" });
+$("#podB").innerHTML = ISO.podium({ w: 380, label: "NPCI" });
+$("#rf").innerHTML = ART.referee({ w: 190, id: "r" });
+$("#env").innerHTML = ISO.env({ w: 96 });
+$("#server").innerHTML = `<div style="position:relative">${ISO.server({ w: 190, color: "#4B5785", id: "srv" })}<svg class="abs" id="snail" style="left:40px;top:-40px;overflow:visible" width="100" height="60" viewBox="0 0 100 60"><path d="M10 50 Q0 50 0 40 H70 Q80 40 80 50 Z" fill="#B9A6F5"/><circle cx="40" cy="26" r="24" fill="#F5A524"/><path d="M40 26 m-14 0 a14 14 0 1 0 14 -14" stroke="#B9770E" stroke-width="5" fill="none"/><path d="M76 40 L84 18 M70 40 L74 20" stroke="#B9A6F5" stroke-width="4"/></svg></div>`;
+$("#achoo").innerHTML = ART.burst({ size: 240, text: "ACHOO!", color: "#9fdcff", fs: 40 });
+const mapEls = ["#yb", "#podB", "#rf", "#cb", "#lyb", "#lcb"];
+gsap.set([...mapEls, "#took", "#stuck", "#server", "#slow", "#cloud", "#netChip", "#achoo", "#qm"], { autoAlpha: 0 });
+draw($$("#roadsB path"), T.B + 0.3, 0.8);
+["#yb", "#podB", "#rf", "#cb"].forEach((n, i) => EX.drop(n, T.B + 0.25 + i * 0.12, { from: -900 }));
+["#lyb", "#lcb"].forEach((l, i) => pop(l, T.B + 0.9 + i * 0.1, { from: 0.6, sfx: false }));
+(window.__trans = window.__trans || []).push([T.B, T.B + 1.1]);
+pop("#took", w("take the money"), { sfx: "coin", gain: 0.2 });
+tl.to("#yFace", { y: -6, duration: 0.15, yoyo: true, repeat: 1 }, w("take the money"));
+const tStuck = w("a confirmation");
+tl.set("#env", { opacity: 1 }, w("somewhere after"));
+tl.fromTo("#env", { motionPath: { path: "#rb", align: "#rb", alignOrigin: [0.5, 0.5], start: 0, end: 0 } }, { motionPath: { path: "#rb", align: "#rb", alignOrigin: [0.5, 0.5], start: 0, end: 0.45 }, duration: 0.9, ease: "power2.out", immediateRender: false }, w("somewhere after"));
+sfx(w("somewhere after"), "swish", { gain: 0.15 });
+for (let k = 0; k < 8; k++) tl.to("#env", { rotation: k % 2 ? -10 : 10, duration: 0.06 }, tStuck + 0.4 + k * 0.06);
+tl.to("#env", { rotation: 0, duration: 0.06 }, tStuck + 0.9);
+pop("#stuck", w("got stuck"), { sfx: "glitch", gain: 0.15 });
+pop("#server", w("maybe a server"), { from: 0.6, sfx: "clunk", gain: 0.15 });
+tl.fromTo("#snail", { x: 0 }, { x: 50, duration: 3, ease: "none", immediateRender: false }, w("maybe a server"));
+pop("#slow", w("was slow"), { sfx: "swish", gain: 0.15 });
+pop("#cloud", w("maybe the network"), { from: 0.6, sfx: false });
+pop("#netChip", w("maybe the network") + 0.1, { from: 0.6, sfx: false });
+tl.to("#cloud", { scaleY: 0.85, transformOrigin: "50% 100%", duration: 0.25 }, w("sneezed") - 0.25);
+tl.to("#cloud", { scaleY: 1.08, duration: 0.08 }, w("sneezed"));
+tl.to("#cloud", { scaleY: 1, duration: 0.2 }, w("sneezed") + 0.08);
+pop("#achoo", w("sneezed"), { from: 0.4, sfx: "impact", gain: 0.2 });
+tl.fromTo("#qm", { autoAlpha: 0, scale: 0.3, rotation: -20 }, { autoAlpha: 1, scale: 1, rotation: 8, duration: 0.4, ease: "back.out(2.5)", immediateRender: false }, w("isn't sure"));
+sfx(w("isn't sure"), "bloop", { gain: 0.2 });
+tl.to("#rBrowL", { y: -8, duration: 0.15 }, w("isn't sure"));
+
+// ================================================= C: don't panic (3D cube turn)
+EX.cube("#sB", "#sC", T.C);
+gsap.set("#sC", { autoAlpha: 0 });
+$("#cityC").innerHTML = ISO.city({ h: 230, color: "#BFE3CF", seed: 31 });
+gsap.set(["#cHead", "#traffic", "#rules", "#cal"], { autoAlpha: 0 });
+tl.fromTo("#cHead", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("don't panic") + 0.4);
+const colsCar = ["#F0566E", "#3E7BFA", "#7B61FF", "#22B573", "#F5A524"];
+for (let k = 0; k < 8; k++) {
+  const lane = k % 2, x = 60 + Math.floor(k / 2) * 470 + lane * 200;
+  if (k === 5) { $("#cars").insertAdjacentHTML("beforeend", `<div class="abs carT" style="left:${x}px;top:${lane ? 750 : 630}px"><div class="car" style="position:relative;background:#fff;width:240px;box-shadow:0 8px 0 rgba(27,35,64,.25)"></div><div class="abs" style="left:10px;top:-60px">${ART.note({ w: 200 })}</div></div>`); continue; }
+  $("#cars").insertAdjacentHTML("beforeend", `<div class="abs carT" style="left:${x}px;top:${lane ? 750 : 630}px"><div class="car" style="position:relative;background:${colsCar[k % 5]};box-shadow:0 8px 0 rgba(27,35,64,.25)"></div></div>`);
+}
+const carsEl = $$("#cars .carT");
+gsap.set(carsEl, { autoAlpha: 0 });
+tl.to(carsEl, { autoAlpha: 1, duration: 0.2, stagger: 0.05 }, w("your money isn't"));
+carsEl.forEach((c, k) => { for (let j = 0; j < 6; j++) tl.to(c, { x: (j + 1) * 6, duration: 0.3, ease: "power1.inOut" }, w("your money isn't") + j * 0.45 + (k % 3) * 0.1); });
+pop("#traffic", w("stuck in traffic"), { sfx: "beep", gain: 0.15 });
+sfx(w("stuck in traffic") + 0.2, "beep", { gain: 0.12, pitch: 0.8 });
+tl.to("#traffic", { autoAlpha: 0, duration: 0.25 }, w("by the rules") - 0.3);
+tl.to(carsEl[5], { x: 1500, duration: 1.1, ease: "power2.in" }, w("automatically"));
+sfx(w("automatically"), "whoosh", { gain: 0.22, dur: 0.6 });
+carsEl.forEach((c, k) => { if (k !== 5) for (let j = 0; j < 8; j++) tl.to(c, { x: 36 + (j + 1) * 5, duration: 0.3, ease: "power1.inOut" }, w("by the rules") + j * 0.5 + (k % 3) * 0.1); });
+tl.fromTo("#rules", { autoAlpha: 0, rotation: -6, y: 60 }, { autoAlpha: 1, rotation: -1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("by the rules"));
+sfx(w("by the rules"), "paper", { gain: 0.25 });
+pop("#cal", w("by the next") - 0.3, { from: 0.6, sfx: false });
+tl.fromTo("#calTop", { rotationX: 0 }, { rotationX: -100, duration: 0.5, ease: "power2.in", immediateRender: false }, w("working day"));
+tl.set("#calTop", { autoAlpha: 0 }, w("working day") + 0.5);
+sfx(w("working day"), "paper", { gain: 0.3 });
+
+// ================================================= D: ₹100 a day, ten chais (rolling coin)
+EX.coinWipe("#sC", "#sD", T.D);
+gsap.set("#sD", { autoAlpha: 0 });
+gsap.set(["#dHead", "#fine", "#days", "#tech", "#stack"], { autoAlpha: 0 });
+rise("#dHead", w("takes longer") - 0.3);
+tl.fromTo("#fine", { autoAlpha: 0, rotation: -5, y: 60 }, { autoAlpha: 1, rotation: -1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("a hundred"));
+sfx(w("a hundred"), "coin", { gain: 0.25 });
+pop("#days", w("every extra"), { from: 0.7, sfx: false });
+const tD = w("every extra");
+REEL.onFrame((t) => { const n = Math.max(0, Math.min(3, Math.floor((t - tD) / 0.45) + 1)); if (t < tD) return; $("#dN").textContent = n; $("#dR").textContent = n * 100; });
+for (let k = 0; k < 3; k++) sfx(tD + k * 0.45, "coin", { gain: 0.15 });
+// a growing 3D coin stack
+$("#stack").innerHTML = Array.from({ length: 7 }, (_, k) => `<div class="abs stk" style="left:${100 + (k % 2) * 8}px;top:${300 - k * 42}px">${ISO.coin({ size: 150, label: "₹100" })}</div>`).join("");
+tl.set("#stack", { autoAlpha: 1 }, tD - 0.05);
+$$("#stack .stk").forEach((c, k) => { gsap.set(c, { autoAlpha: 0 }); tl.fromTo(c, { autoAlpha: 1, y: -400 }, { y: 0, duration: 0.35, ease: "bounce.out", immediateRender: false }, tD + k * 0.18); });
+rise("#tech", w("so technically"));
+$("#cups").innerHTML = Array.from({ length: 10 }, (_, k) => `<div class="abs cupI" style="left:${k * 170}px;top:0">${ART.chai({ w: 100, steam: false })}<div class="m" style="text-align:center;font-size:18px;color:#1B2340;margin-top:4px">₹10</div></div>`).join("");
+const cups = $$("#cups .cupI");
+gsap.set(cups, { autoAlpha: 0 });
+cups.forEach((c, k) => { tl.fromTo(c, { autoAlpha: 0, y: -80, scale: 0.4 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2.5)", immediateRender: false }, w("could buy") + k * 0.09); sfx(w("could buy") + k * 0.09, "pop", { gain: 0.1 }); });
+sfx(w("ten chais") + 0.2, "chime", { gain: 0.2 });
+
+REEL.finish(END);
+</script>
+</body></html>

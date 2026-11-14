@@ -1,0 +1,225 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ch7 All together</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.mono{font-family:"JetBrains Mono";font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.stn{position:absolute;width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;background:#0A0F1E;border:6px solid currentColor;display:flex;align-items:center;justify-content:center}
+.stl{position:absolute;width:300px;margin-left:-150px;text-align:center;font-family:"JetBrains Mono";font-weight:800;font-size:24px;letter-spacing:.08em}
+.panel{position:absolute;top:0;width:960px;height:1080px;overflow:hidden}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:#151d38;color:#EEF2F7;font-family:"JetBrains Mono";font-weight:700;font-size:18px;letter-spacing:.05em;white-space:nowrap}
+.pill b{color:#5BE49B}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="../../../lib/vendor/d3.min.js"></script>
+<script src="../../../lib/world.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/art.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" id="aBg" style="background:#0A0F1E"></div>
+    <div class="lbl" id="aHead" style="left:110px;top:110px;font-size:100px;color:#fff">Putting it <span style="color:#3EE0FF">all together</span></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="track" d="M220 640 C 380 640 400 400 560 400 S 740 640 900 640 S 1080 400 1240 400 S 1420 640 1580 640 S 1660 400 1700 400" stroke="rgba(255,255,255,.15)" stroke-width="10" fill="none" stroke-linecap="round"/><path id="trackOn" d="M220 640 C 380 640 400 400 560 400 S 740 640 900 640 S 1080 400 1240 400 S 1420 640 1580 640 S 1660 400 1700 400" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/></svg>
+    <div id="runner" class="abs" style="left:0;top:0;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 0 30px #fff,0 0 60px #3EE0FF"></div>
+    <div id="stns" class="abs" style="inset:0"></div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:#0A0F1E"></div>
+    <div id="bP" class="abs" style="inset:0"></div>
+    <canvas id="stream" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="abs" id="b50" style="left:0;right:0;top:110px;text-align:center"><span class="lbl" style="position:static;font-size:170px;color:#fff">50</span><span class="serif" style="font-size:80px;color:#3EE0FF"> times every second</span></div>
+    <div class="chip" id="bBoth" style="left:800px;top:760px;color:#fff">BOTH DIRECTIONS</div>
+    <div class="abs" id="bClock" style="left:810px;top:860px;display:flex;align-items:center;gap:14px;padding:14px 28px;border-radius:999px;background:#151d38;font-family:'JetBrains Mono';font-weight:800;font-size:30px;color:#fff"><span style="width:14px;height:14px;border-radius:50%;background:#5BE49B"></span>FOR THE WHOLE CALL <span id="bT" style="color:#5BE49B">00:00</span></div>
+  </section>
+
+  <section class="scene" id="sC">
+    <div id="night" class="panel" style="left:0;background:linear-gradient(180deg,#060a26 0%,#1b2a6e 100%)">
+      <div id="stars" class="abs" style="inset:0"></div>
+      <div class="abs" style="left:0;top:620px" id="skyN"></div>
+      <div class="abs" style="left:310px;top:380px" id="you"></div>
+    </div>
+    <div id="day" class="panel" style="left:960px;background:linear-gradient(180deg,#5db6ff 0%,#cdeeff 100%)">
+      <div class="abs" style="left:0;top:560px" id="skyD"></div>
+      <div class="abs" style="left:320px;top:380px" id="pri"></div>
+    </div>
+    <div class="abs" style="left:957px;top:0;width:6px;height:1080px;background:#fff"></div>
+    <div id="hY" class="abs serif" style="left:430px;top:230px;font-size:90px;background:#3EE0FF;color:#0A0F1E;padding:0 36px 14px;border-radius:40px 40px 6px 40px">Hello!</div>
+    <div id="hP" class="abs serif" style="left:1100px;top:230px;font-size:90px;background:#FF5D73;color:#fff;padding:0 36px 14px;border-radius:40px 40px 40px 6px">Hi! It's me.</div>
+  </section>
+
+  <section class="scene" id="sC2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#0d1640 0%,#03050d 70%)"></div>
+    <canvas id="globe" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="serif" id="c2T" style="position:absolute;left:0;right:0;top:110px;text-align:center;font-size:96px;color:#fff">across the world</div>
+  </section>
+
+  <section class="scene" id="sD">
+    <div class="bg" style="background:#3EE0FF"></div>
+    <div class="abs" style="left:0;right:0;top:220px;text-align:center;color:#0A0F1E">
+      <div class="m" style="font-size:30px;letter-spacing:.3em" id="dPre">AND ARRIVED IN ABOUT</div>
+      <div class="big" id="dNum" style="font-size:360px;line-height:1;margin-top:20px">0.25</div>
+      <div class="serif" id="dSec" style="font-size:110px;margin-top:-10px">of a second</div>
+    </div>
+  </section>
+
+  <section class="scene" id="sEnd">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 40%,#16204d 0%,#0A0F1E 70%)"></div>
+    <div class="abs" style="left:0;right:0;top:230px;text-align:center">
+      <div class="m" id="e1" style="font-size:26px;letter-spacing:.34em;color:#3EE0FF">HOW IT WORKS</div>
+      <div class="big" id="e2" style="font-size:120px;margin-top:22px;color:#fff">How a phone call <span style="color:#3EE0FF">connects</span></div>
+      <div class="serif" id="e3" style="font-size:90px;margin-top:40px;color:#FFB547">Thanks for watching</div>
+    </div>
+    <div id="eRoad" class="abs" style="left:0;right:0;top:720px;display:flex;justify-content:center;gap:12px"></div>
+    <div class="abs mono" id="e4" style="left:0;right:0;top:830px;text-align:center;font-size:20px;color:#8A94B0">EVERY FRAME ANIMATED IN CODE</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, pop, rise, fade, hide, draw, SVG, chip, show, every } = EX;
+EX.chrome(7, 7, "All together");
+EX.subtitles();
+EX.chapterCard(0.05, 2.3);
+const END = W.last() + 5.2;
+const T = { A: 2.2, B: w("and all of") - 0.25, C: w("so the next") - 0.25, C2: w("remember") - 0.15, D: w("and arrived") - 0.2, E: W.last() + 0.9 };
+
+// ================================================= A: the recap path
+show("#sA", T.A, T.B + 0.5, { y: 0 });
+gsap.set("#aHead", { autoAlpha: 0 });
+rise("#aHead", w("put it all"));
+const ST = [
+  ["VOICE TO NUMBERS", "#FFB547", "#2b1d06", `<div class="m" style="font-size:36px;color:#FFB547;line-height:1.05;text-align:center">0110<br>1011</div>`, "your voice becomes", [220, 640]],
+  ["RADIO WAVES", "#3EE0FF", "#071a3a", SVG.arcs({ size: 120 }), "become radio", [560, 400]],
+  ["NEAREST TOWER", "#3EE0FF", "#0a2250", SVG.tower({ h: 120, accent: "#3EE0FF" }), "flying to", [900, 640]],
+  ["FINDS AND RINGS", "#9B8CFF", "#1c0f45", `<svg width="120" height="120" viewBox="0 0 120 120"><g fill="#c9b8ff">${[[30, 40], [60, 24], [90, 44], [44, 80], [80, 86], [60, 58]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9"/>`).join("")}</g><g stroke="#9B8CFF" stroke-width="3"><path d="M30 40 L60 24 L90 44 L80 86 L44 80 Z M60 58 L30 40 M60 58 L90 44 M60 58 L44 80 M60 58 L80 86"/></g></svg>`, "the network finds", [1240, 400]],
+  ["FIBRE AND OCEAN", "#3EE0FF", "#06303a", `<svg width="130" height="90" viewBox="0 0 130 90"><path d="M0 20 Q16 10 32 20 T64 20 T96 20 T130 20" stroke="#9fdcff" stroke-width="5" fill="none"/><path d="M0 70 Q40 58 65 70 T130 64" stroke="#3EE0FF" stroke-width="9" fill="none"/></svg>`, "your packets race", [1580, 640]],
+  ["BACK INTO SOUND", "#FF5D73", "#3a0f1c", SVG.ear(100, "#FF5D73"), "then back into", [1700, 400]],
+];
+$("#stns").innerHTML = ST.map(([n, c, , icon, , [x, y]], i) => `<div class="stn" style="left:${x}px;top:${y}px;color:${c}">${icon}</div><div class="stl" style="left:${x}px;top:${y + (y > 500 ? 120 : -160)}px;color:${c}">${String(i + 1).padStart(2, "0")} ${n}</div>`).join("");
+const stn = $$("#stns .stn"), stl = $$("#stns .stl");
+gsap.set([...stn, ...stl], { autoAlpha: 0 });
+gsap.set("#trackOn", { drawSVG: "0%" });
+const fracs = [0, 0.2, 0.4, 0.6, 0.8, 1.0];
+gsap.set("#runner", { autoAlpha: 0 });
+ST.forEach(([n, c, bg, , phrase], i) => {
+  const t = w(phrase);
+  tl.to("#aBg", { backgroundColor: bg, duration: 0.6 }, t - 0.2);
+  tl.to("#trackOn", { drawSVG: `${fracs[i] * 100}%`, stroke: c, duration: 0.6, ease: "power2.inOut" }, t - 0.3);
+  tl.to("#runner", { autoAlpha: 1, motionPath: { path: "#track", align: "#track", alignOrigin: [0.5, 0.5], start: i ? fracs[i - 1] : 0, end: fracs[i] }, duration: 0.6, ease: "power2.inOut" }, t - 0.3);
+  pop(stn[i], t + 0.2, { from: 0.4, sfx: "pop", gain: 0.15 });
+  rise(stl[i], t + 0.35);
+});
+EX.pulseArcs(stn[1], w("become radio") + 0.4, T.B, 0.8);
+// rings at "makes it ring"
+tl.to(stn[3], { keyframes: { rotation: [8, -8, 6, -6, 0] }, duration: 0.5 }, w("makes it ring"));
+sfx(w("makes it ring"), "beep", { gain: 0.12, pitch: 0.8 });
+
+// ================================================= B: 50 times a second, both ways
+show("#sB", T.B, T.C + 0.5, { scale: 1.1 });
+sfx(T.B, "whoosh", { gain: 0.25, dur: 0.5 });
+const p1 = EX.phoneBox("#bP", { x: 110, y: 330, w: 200, accent: "#3EE0FF" });
+p1.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:34px;color:#3EE0FF">YOU</div>`;
+const p2 = EX.phoneBox("#bP", { x: 1610, y: 330, w: 200, accent: "#FF5D73" });
+p2.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:34px;color:#FF5D73">PRIYA</div>`;
+gsap.set(["#b50", "#bBoth", "#bClock"], { autoAlpha: 0 });
+pop("#b50", w("fifty times"), { from: 0.8, sfx: "slam", gain: 0.2 });
+pop("#bBoth", w("both directions"));
+pop("#bClock", w("for the whole"), { from: 0.8, sfx: false });
+(function () {
+  const c = $("#stream").getContext("2d"), t0 = T.B + 0.2, tBoth = w("both directions");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < t0 || t > T.C + 0.6) return;
+    for (let k = 0; k < 26; k++) {
+      const u = ((t - t0) * 1.6 + k / 26) % 1;
+      c.fillStyle = "#3EE0FF"; c.fillRect(330 + u * 1260, 480, 34, 22);
+      if (t > tBoth - 0.3) { c.fillStyle = "#FF5D73"; c.fillRect(1590 - u * 1260, 600, 34, 22); }
+    }
+    const s = Math.max(0, (t - w("for the whole")) * 160);
+    $("#bT").textContent = `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+  });
+})();
+every(T.B + 0.2, T.C, 0.25, (t) => sfx(t, "tick", { gain: 0.05 }));
+
+// ================================================= C: you and Priya, hello across night and day
+show("#sC", T.C, T.C2 + 0.4, { y: 0 });
+sfx(T.C, "whoosh", { gain: 0.25, dur: 0.5 });
+$("#skyN").innerHTML = ART.skyline({ w: 960, h: 460, seed: 11, color: "#0c1442", win: "#FFD27A", lit: 0.42, minH: 160, maxH: 400 });
+$("#skyD").innerHTML = ART.skyline({ w: 960, h: 520, seed: 23, color: "#3b6aa8", win: "#cfe8ff", lit: 0.25, minH: 140, maxH: 480 });
+$("#you").innerHTML = ART.caller({ w: 300, shirt: "#2a5bd7", id: "yo" });
+$("#pri").innerHTML = ART.caller({ w: 300, shirt: "#FF5D73", hair: "#3a1a1a", phone: "#FF5D73", id: "pr" });
+(function () { const r = rng(9); for (let i = 0; i < 60; i++) $("#stars").insertAdjacentHTML("beforeend", `<div class="abs" style="left:${r() * 960}px;top:${r() * 560}px;width:${2 + r() * 3}px;height:${2 + r() * 3}px;border-radius:50%;background:#fff;opacity:${(0.3 + r() * 0.7).toFixed(2)}"></div>`); })();
+tl.fromTo("#night", { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "expo.out", immediateRender: false }, T.C);
+tl.fromTo("#day", { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: "expo.out", immediateRender: false }, T.C + 0.15);
+gsap.set(["#hY", "#hP"], { autoAlpha: 0 });
+pop("#hY", w("say hello"), { sfx: "pop", gain: 0.18 });
+for (let k = 0; k < 6; k++) tl.to("#yoMouth", { ry: k % 2 ? 6 : 12, duration: 0.12 }, w("say hello") + k * 0.13);
+pop("#hP", w("far away"), { sfx: "pop", gain: 0.18 });
+for (let k = 0; k < 6; k++) tl.to("#prMouth", { ry: k % 2 ? 6 : 12, duration: 0.12 }, w("far away") + k * 0.13);
+
+// ================================================= C2: across the world (globe)
+show("#sC2", T.C2, T.D + 0.4, { scale: 1.3 });
+sfx(T.C2, "whoosh", { gain: 0.28, dur: 0.8 });
+gsap.set("#c2T", { autoAlpha: 0 });
+rise("#c2T", w("across the world"));
+(function () {
+  const c = $("#globe").getContext("2d");
+  const IN = [72.9, 19.1], US = [-74.0, 40.7];
+  const proj = d3.geoOrthographic().scale(400).translate([960, 600]).clipAngle(90), path = d3.geoPath(proj, c), interp = d3.geoInterpolate(IN, US), grat = d3.geoGraticule10();
+  const t0 = w("just travelled");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.C2 - 0.1 || t > T.D + 0.5) return;
+    proj.rotate([12 - (t - T.C2) * 3, -36]);
+    const [cx, cy] = proj.translate(), R = proj.scale();
+    const g = c.createRadialGradient(cx, cy, R * 0.92, cx, cy, R * 1.3); g.addColorStop(0, "rgba(62,224,255,.35)"); g.addColorStop(1, "rgba(62,224,255,0)");
+    c.fillStyle = g; c.beginPath(); c.arc(cx, cy, R * 1.3, 0, 7); c.fill();
+    c.beginPath(); path({ type: "Sphere" }); c.fillStyle = "#0f1f50"; c.fill();
+    c.beginPath(); path(grat); c.strokeStyle = "rgba(138,170,255,.1)"; c.stroke();
+    c.beginPath(); path(LAND); c.fillStyle = "#2b4a8f"; c.fill(); c.strokeStyle = "#5d7fd0"; c.stroke();
+    const lifted = (f) => { const p = proj(interp(f)); if (!p) return null; const L = Math.sin(Math.PI * f) * 0.2; return [cx + (p[0] - cx) * (1 + L), cy + (p[1] - cy) * (1 + L)]; };
+    const pts = []; for (let i = 0; i <= 90; i++) { const p = lifted(i / 90); if (p) pts.push(p); }
+    c.beginPath(); pts.forEach((p, i) => (i ? c.lineTo(...p) : c.moveTo(...p))); c.strokeStyle = "rgba(62,224,255,.6)"; c.lineWidth = 4; c.stroke();
+    if (t > t0) { const u = Math.min(1, (t - t0) / 1.0); for (let k = 0; k < 10; k++) { const p = lifted(Math.max(0, u - k * 0.015)); if (!p) continue; c.beginPath(); c.arc(p[0], p[1], 15 - k * 1.2, 0, 7); c.fillStyle = `rgba(255,181,71,${1 - k / 10})`; c.fill(); } }
+    [[IN, "#3EE0FF"], [US, "#FF5D73"]].forEach(([ll, col]) => { const p = proj(ll); if (!p) return; c.beginPath(); c.arc(p[0], p[1], 12, 0, 7); c.fillStyle = col; c.fill(); });
+  });
+  sfx(t0, "riser", { gain: 0.14, dur: 1.0 });
+})();
+
+// ================================================= D: a quarter of a second
+show("#sD", T.D, T.E + 0.4, { scale: 0.9 });
+tl.fromTo("#sD", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.6, ease: "power3.inOut", immediateRender: false }, T.D);
+sfx(T.D, "whoosh", { gain: 0.3, dur: 0.6 });
+gsap.set(["#dPre", "#dNum", "#dSec"], { autoAlpha: 0 });
+rise("#dPre", T.D + 0.2);
+tl.fromTo("#dNum", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, w("quarter"));
+sfx(w("quarter"), "slam", { gain: 0.3 });
+rise("#dSec", w("of a second", W.find("quarter")));
+sfx(we("second", W.find("quarter")) + 0.1, "chime", { gain: 0.22 });
+
+// ================================================= End card
+show("#sEnd", T.E, null, { y: 0 });
+tl.to(["#tag", "#prog"], { autoAlpha: 0, duration: 0.3 }, T.E);
+gsap.set(["#e1", "#e2", "#e3", "#e4"], { autoAlpha: 0 });
+rise("#e1", T.E + 0.2); rise("#e2", T.E + 0.4, { y: 50 }); rise("#e3", T.E + 0.9); fade("#e4", T.E + 1.6);
+const CH = ["One hello", "Voice to numbers", "Into the air", "Finding your friend", "Across the world", "Back into a voice", "All together"];
+$("#eRoad").innerHTML = CH.map((c, i) => `<div class="pill"><b>✓</b>${c}</div>`).join("");
+$$("#eRoad .pill").forEach((p, i) => { gsap.set(p, { autoAlpha: 0, y: 20 }); tl.to(p, { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, T.E + 1.1 + i * 0.1); });
+EX.drift("#sEnd", T.E, END, 1.03);
+
+REEL.finish(END);
+</script>
+</body></html>

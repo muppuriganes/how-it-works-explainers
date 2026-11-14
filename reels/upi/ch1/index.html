@@ -1,0 +1,250 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>UPI Ch1 The 10 rupee chai</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.kw{position:absolute;left:120px;font-family:Archivo;font-weight:900;font-stretch:68%;font-size:200px;line-height:.86;letter-spacing:-0.01em;white-space:nowrap}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: at the chai stall: scan, ten rupees, PIN, beep -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#FFE7D2 0%,#FFF3E6 60%,#F3DFC6 100%)"></div>
+    <div class="abs" style="left:1500px;top:90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,#FFD37A 0%,#FFE7B8 60%,rgba(255,231,184,0) 72%)"></div>
+    <div id="clouds1" class="abs" style="inset:0"></div>
+    <div id="city1" class="abs" style="left:0;top:330px"></div>
+    <div class="abs" style="left:0;top:750px;width:1920px;height:330px;background:linear-gradient(180deg,#EAD3B5,#E2C7A4)"></div>
+    <div class="abs" style="left:0;top:750px;width:1920px;height:8px;background:#D4B48D"></div>
+    <div id="stall" class="abs" data-ob="stall" data-bleed style="left:1250px;top:250px"></div>
+    <div id="spkRing" class="abs" style="left:1600px;top:530px;width:150px;height:140px;border-radius:30px;border:7px solid #22B573;opacity:0"></div>
+    <div class="kw x3d" id="k1" data-ob="k1" data-bleed style="top:150px;--xf:#fff">SCAN<span style="color:#12A4C4">.</span></div>
+    <div class="kw x3d" id="k2" data-ob="k2" data-bleed style="top:340px;--xf:#fff">₹10<span style="color:#22B573">.</span></div>
+    <div class="kw x3d" id="k3" data-ob="k3" data-bleed style="top:530px;--xf:#fff">PIN<span style="color:#F0566E">.</span></div>
+    <div class="kw x3d" id="k4" data-ob="k4" data-bleed style="top:720px;--xf:#F5A524">BEEP!</div>
+    <div id="phoneBox" class="abs" data-ob="phone" data-bleed style="left:760px;top:130px;width:300px;height:615px"></div>
+    <div class="pcard" id="recv" data-ob="recv" data-bleed style="left:1420px;top:70px;transform:rotate(3deg)"><div class="tape"></div><div class="m" style="font-size:16px;color:#5a6280">SPEAKER SAYS</div><div class="h" style="font-size:52px;margin-top:6px">₹10 received!</div></div>
+    <div id="you" class="abs" data-ob="you" data-bleed style="left:790px;top:300px"></div>
+    <div id="cup" class="abs" data-ob="you" data-bleed style="left:1100px;top:560px"></div>
+    <div class="lbl x3d" id="genius" data-ob="genius" style="left:120px;top:230px;font-size:170px;--xf:#12A4C4">Tech<br>genius</div>
+    <div id="cute" class="abs serif" data-ob="cute" style="left:150px;top:620px;font-size:150px;color:#F0566E">Cute.</div>
+    <svg id="cuteArrow" class="abs" data-ob="cutearrow" style="left:470px;top:620px;overflow:visible" width="250" height="110" viewBox="0 0 260 120"><path id="ca" d="M10 70 Q120 0 240 50" stroke="#F0566E" stroke-width="9" fill="none" stroke-linecap="round"/><path id="cah" d="M206 26 L242 52 L202 72" stroke="#F0566E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </section>
+
+  <!-- S2: the emergency meeting room -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#ECE6FC 0%,#DFD6F8 100%)"></div>
+    <div class="abs" style="left:0;top:650px;width:1920px;height:430px;background:repeating-linear-gradient(90deg,#CDBFF0 0 158px,#C4B5EC 158px 160px)"></div>
+    <div class="abs" style="left:0;top:650px;width:1920px;height:10px;background:#B9A8E6"></div>
+    <div id="alarm" class="bg" style="background:#F0566E;opacity:0"></div>
+    <div class="abs" style="left:520px;top:150px;width:290px;height:250px;border-radius:18px;background:#BFE4F8;border:12px solid #fff;box-shadow:0 12px 30px rgba(27,35,64,.15);overflow:hidden"><div id="win1" class="abs" style="left:-20px;top:70px"></div></div>
+    <div class="abs" style="left:1110px;top:150px;width:290px;height:250px;border-radius:18px;background:#BFE4F8;border:12px solid #fff;box-shadow:0 12px 30px rgba(27,35,64,.15);overflow:hidden"><div id="win2" class="abs" style="left:-60px;top:70px"></div></div>
+    <div id="meet" class="abs" style="inset:0;transform-origin:0% 70%">
+      <div id="bankA" class="abs" data-ob="m1" data-bleed style="left:0px;top:250px"></div>
+      <div id="bankB" class="abs" data-ob="m5" style="left:1390px;top:250px"></div>
+      <div id="ref" class="abs" data-ob="m3" style="left:820px;top:330px"></div>
+      <div id="spot" class="abs" style="left:700px;top:430px;width:520px;height:440px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,230,160,.75) 0%,rgba(255,230,160,0) 70%);opacity:0"></div>
+      <div id="table" class="abs" style="left:0;top:0"></div>
+      <div id="compA" class="abs" data-ob="m2" style="left:540px;top:480px"></div>
+      <div id="compB" class="abs" data-ob="m4" style="left:1170px;top:480px"></div>
+      <div id="tcup" class="abs" data-ob="m3" style="left:905px;top:590px"></div>
+      <div class="chip" id="its10" data-ob="m7" style="left:1050px;top:744px;color:#B9770E;font-size:30px">(it's ₹10)</div>
+    </div>
+    <div id="banner" class="pcard" data-ob="banner" data-bleed style="left:560px;top:52px;width:800px;padding:18px 0 30px;text-align:center;background:#F0566E"><div class="tape"></div><span class="lbl" style="position:static;font-size:64px;color:#fff">Emergency meeting</span></div>
+    <div id="crash" class="abs" data-ob="crash" style="left:1610px;top:10px"></div>
+    <div id="hostBox" class="abs" data-ob="host" data-bleed style="left:1470px;top:330px"></div>
+    <div class="chip" id="hostTag" data-ob="hosttag" style="left:1530px;top:250px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:28px">YOUR HOST</div>
+  </section>
+
+  <!-- S3: title -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 70%,#DCEFF9 100%)"></div>
+    <div id="clouds3" class="abs" style="inset:0"></div>
+    <div id="city3" class="abs" style="left:0;top:640px"></div>
+    <div id="coins3" class="abs" style="inset:0"></div>
+    <div class="abs" style="left:440px;right:80px;top:150px;text-align:center;color:#1B2340">
+      <div class="m" id="t1" data-ob="t1" style="display:inline-block;font-size:28px;letter-spacing:.34em">HOW IT WORKS</div><br>
+      <div class="big x3d" id="t2" data-ob="t2" style="display:inline-block;font-size:190px;margin-top:24px;--xf:#fff">How <span style="color:#12A4C4">UPI</span> works</div><br>
+      <div class="serif" id="t3" data-ob="t3" style="display:inline-block;font-size:72px;margin-top:30px">where your ₹10 actually goes</div>
+    </div>
+    <div id="host2" class="abs" data-ob="host2" data-bleed style="left:80px;top:420px"></div>
+    <div id="palm" class="abs" data-ob="palm" style="left:1660px;top:590px"></div>
+    <div id="note" class="abs" data-ob="note" style="left:1360px;top:700px"></div>
+    <div id="bye" class="abs serif" data-ob="bye" style="left:1150px;top:700px;font-size:84px;color:#F0566E">bye!</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw, SVG } = EX;
+const { ART } = PAPER;
+EX.chrome(1, 7, "The ₹10 chai");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+tl.to(["#tag", "#prog"], { autoAlpha: 1, duration: 0.4 }, 0.2);
+const END = W.last() + 1.6;
+const T = { s2: w("two banks") - 0.15, host: w("so today") - 0.1, s3: w("and by the end") - 0.25 };
+const clouds = (sel, seed, n, y0, y1) => { const r = rng(seed); for (let i = 0; i < n; i++) { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${r() * 1800}px;top:${y0 + r() * (y1 - y0)}px`; el.innerHTML = ISO.cloud({ w: 200 + r() * 160, o: 0.85 }); $(sel).appendChild(el); tl.fromTo(el, { x: 0 }, { x: 120 + r() * 80, duration: 30, ease: "none", immediateRender: false }, 0); } };
+
+// ================================================= S1: at the stall
+show("#s1", 0, T.s2 + 0.01, { y: 0 });
+clouds("#clouds1", 4, 4, 60, 260);
+$("#city1").innerHTML = ISO.city({ h: 420, color: "#F2D2B6", seed: 5 });
+$("#stall").innerHTML = ISO.stall({ w: 640, id: "st", qr: ART.qr({ size: 140, seed: 9 }), speaker: true });
+const ph = EX.phoneBox("#phoneBox", { x: 0, y: 0, w: 300, accent: "#12A4C4", id: "ph" });
+ph.scr.innerHTML = `
+  <div id="sv" class="abs" style="inset:0;background:#0E1530">
+    <div class="abs" style="left:38px;top:120px;width:180px;height:180px;opacity:.85">${ART.qr({ size: 180, seed: 9 })}</div>
+    <div class="abs" style="left:24px;top:106px;width:208px;height:208px;border:7px solid #3EE0FF;border-radius:18px"></div>
+    <div id="scanLine" class="abs" style="left:30px;top:120px;width:196px;height:7px;background:#FF5D73;box-shadow:0 0 18px #FF5D73"></div>
+    <div class="abs m" style="left:0;right:0;top:360px;text-align:center;font-size:16px;color:#8A94B0">SCANNING</div>
+  </div>
+  <div id="sAmt" class="abs" style="inset:0;background:#0E1530;opacity:0;display:flex;flex-direction:column;align-items:center">
+    <div class="m" style="margin-top:70px;font-size:16px;color:#8A94B0">PAYING CHAI WALA</div>
+    <div class="big" style="margin-top:50px;font-size:110px;color:#fff">₹<span id="amt"></span></div>
+  </div>
+  <div id="sPin" class="abs" style="inset:0;background:#14204a;opacity:0;display:flex;flex-direction:column;align-items:center">
+    <div class="m" style="margin-top:90px;font-size:16px;color:#cfd6ea">ENTER UPI PIN</div>
+    <div style="margin-top:60px;display:flex;gap:18px">${[0, 1, 2, 3].map(() => `<div class="pd" style="width:32px;height:32px;border-radius:50%;border:5px solid #cfd6ea"></div>`).join("")}</div>
+  </div>
+  <div id="sOk" class="abs" style="inset:0;background:#0d6a48;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <svg width="130" height="130" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="#5BE49B"/><path id="tick" d="M38 72 L62 96 L104 48" stroke="#0A0F1E" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="h" style="margin-top:20px;font-size:48px;color:#fff">Paid</div>
+  </div>`;
+tl.fromTo("#phoneBox", { y: 400, rotation: 10, autoAlpha: 0 }, { y: 0, rotation: -3, autoAlpha: 1, duration: 0.7, ease: "back.out(1.4)", immediateRender: false }, 0.05);
+tl.to("#phoneBox", { rotation: 2, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.8);
+sfx(0.05, "whoosh", { gain: 0.2, dur: 0.5 });
+gsap.set(["#stall", "#recv"], { autoAlpha: 0 });
+tl.fromTo("#stall", { autoAlpha: 1, x: 700 }, { x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 0.2);
+tl.fromTo("#scanLine", { y: 0 }, { keyframes: { y: [0, 170, 0, 170] }, duration: 1.6, ease: "none", immediateRender: false }, 0.4);
+const tType = w("type"), tPin = w("enter your pin"), tBeep = w("beep"), tRecv = w("ten rupees received");
+tl.to("#sAmt", { opacity: 1, duration: 0.15 }, tType - 0.2);
+REEL.onFrame((t) => { if (t > tType - 0.3 && t < tPin) $("#amt").textContent = t < w("ten") ? "" : "10"; });
+sfx(w("ten"), "click", { gain: 0.2 }); sfx(w("ten") + 0.15, "click", { gain: 0.2 });
+tl.to("#sPin", { opacity: 1, duration: 0.15 }, tPin - 0.15);
+$$(".pd").forEach((d, k) => { tl.to(d, { backgroundColor: "#FFB547", borderColor: "#FFB547", duration: 0.05 }, tPin + 0.25 + k * 0.17); sfx(tPin + 0.25 + k * 0.17, "click", { gain: 0.15 }); });
+tl.to("#sOk", { opacity: 1, duration: 0.12 }, tBeep - 0.05);
+draw("#tick", tBeep, 0.3);
+const KW = [["#k1", w("scan")], ["#k2", w("ten")], ["#k3", w("pin")], ["#k4", tBeep]];
+gsap.set(KW.map((k) => k[0]), { autoAlpha: 0, x: -120 });
+KW.forEach(([id, t], i) => { tl.fromTo(id, { autoAlpha: 0, x: -160, skewX: -12 }, { autoAlpha: 1, x: 0, skewX: 0, duration: 0.35, ease: "expo.out", immediateRender: false }, t); sfx(t, i === 3 ? "beep" : "swish", { gain: i === 3 ? 0.35 : 0.15 }); if (i > 0) tl.to(KW[i - 1][0], { opacity: 0.25, duration: 0.25 }, t); });
+tl.fromTo("#spkRing", { opacity: 1, scale: 0.8 }, { opacity: 0, scale: 1.4, duration: 0.5, repeat: 2, immediateRender: false }, tRecv);
+tl.to("#stall", { keyframes: { scale: [1, 1.03, 1] }, transformOrigin: "50% 100%", duration: 0.3 }, tRecv);
+tl.fromTo("#recv", { autoAlpha: 0, y: -60, rotation: -10 }, { autoAlpha: 1, y: 0, rotation: 3, duration: 0.45, ease: "back.out(2)", immediateRender: false }, tRecv);
+sfx(tRecv, "ding", { gain: 0.3 }); sfx(tRecv + 0.05, "paper", { gain: 0.2 });
+const tWalk = w("and you walk");
+tl.to(KW.map((k) => k[0]), { x: -800, duration: 0.4, ease: "power3.in", stagger: 0.04 }, tWalk - 0.3);
+tl.set(KW.map((k) => k[0]), { autoAlpha: 0 }, tWalk + 0.3);
+tl.to(["#phoneBox", "#recv"], { scale: 0.5, autoAlpha: 0, y: -40, duration: 0.35, ease: "back.in(1.6)", stagger: 0.04 }, tWalk - 0.3);
+tl.set(["#phoneBox", "#recv"], { autoAlpha: 0 }, tWalk + 0.3);
+$("#you").innerHTML = ART.you({ w: 330, id: "you", shirt: "#3E7BFA" });
+$("#cup").innerHTML = ART.chai({ w: 120, id: "yc" });
+gsap.set(["#you", "#cup", "#genius", "#cute", "#cuteArrow"], { autoAlpha: 0 });
+tl.fromTo("#you", { autoAlpha: 1, x: -1200 }, { x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, tWalk + 0.1);
+tl.fromTo("#cup", { autoAlpha: 1, x: -1200 }, { x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, tWalk + 0.16);
+for (let k = 0; k < 6; k++) tl.to(["#you", "#cup"], { y: k % 2 ? 0 : -14, duration: 0.12 }, tWalk + 0.7 + k * 0.13);
+sfx(tWalk + 0.1, "whoosh", { gain: 0.2, dur: 0.5 });
+every(tWalk, T.s2, 0.45, (t) => tl.fromTo("#ycSteam", { y: 0, opacity: 0.9 }, { y: -24, opacity: 0, duration: 0.45, ease: "none", immediateRender: false }, t));
+const tGen = w("tech genius");
+tl.fromTo("#youShades", { opacity: 1, y: -300 }, { y: 0, duration: 0.4, ease: "bounce.out", immediateRender: false }, tGen - 0.25);
+sfx(tGen + 0.1, "clunk", { gain: 0.2 });
+tl.fromTo("#genius", { autoAlpha: 0, x: -80, rotation: -4 }, { autoAlpha: 1, x: 0, rotation: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, tGen);
+sfx(tGen, "chime", { gain: 0.18 });
+const tCute = w("cute");
+tl.fromTo("#cute", { autoAlpha: 0, scale: 1.4, rotation: -10 }, { autoAlpha: 1, scale: 1, rotation: -4, duration: 0.3, ease: "back.out(2)", immediateRender: false }, tCute);
+tl.to("#cuteArrow", { autoAlpha: 1, duration: 0.01 }, tCute + 0.1);
+draw("#ca", tCute + 0.1, 0.35); draw("#cah", tCute + 0.42, 0.15);
+sfx(tCute, "swish", { gain: 0.2 });
+
+// ================================================= S2: emergency meeting — iris bursts out of your chai cup
+EX.iris("#s2", T.s2, 1160, 640, { color: "#7B61FF" });
+show("#s2", T.s2, T.s3 + 0.02, { y: 0 });
+$("#win1").innerHTML = ISO.city({ w: 400, h: 200, color: "#9DB8E8", seed: 2 });
+$("#win2").innerHTML = ISO.city({ w: 400, h: 200, color: "#9DB8E8", seed: 8 });
+$("#bankA").innerHTML = ISO.bank({ w: 520, color: "#3E7BFA", id: "bA", label: "BANK A" });
+$("#bankB").innerHTML = ISO.bank({ w: 520, color: "#F5A524", id: "bB", label: "BANK B" });
+$("#compA").innerHTML = ISO.server({ w: 180, color: "#4B5785", id: "cA" });
+$("#compB").innerHTML = ISO.server({ w: 180, color: "#6A4FD8", id: "cB" });
+$("#ref").innerHTML = ART.referee({ w: 280 });
+$("#table").innerHTML = `<svg width="1920" height="1080" style="overflow:visible">${ISO.shadow(980, 960, 800, 70, 0.22)}${ISO.box(260, 720, 0, 1380, 96, 150, "#9A6A45")}<rect x="310" y="816" width="34" height="140" fill="#7A4F31"/><rect x="1556" y="816" width="34" height="140" fill="#7A4F31"/></svg>`;
+$("#tcup").innerHTML = ART.chai({ w: 110, id: "tc" });
+["#bankA", "#bankB", "#compA", "#compB", "#ref", "#tcup", "#its10", "#banner", "#crash", "#hostBox", "#hostTag"].forEach((s) => gsap.set(s, { autoAlpha: 0 }));
+EX.drop("#bankA", T.s2 + 0.35); EX.drop("#bankB", T.s2 + 0.5);
+pop("#compA", Math.max(w("bunch of computers"), T.s2 + 0.75), { from: 0.4, sfx: "bloop" }); pop("#compB", Math.max(w("computers") + 0.1, T.s2 + 0.9), { from: 0.4, sfx: "bloop" });
+tl.fromTo("#ref", { autoAlpha: 1, y: 420 }, { y: 0, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, w("very serious"));
+sfx(w("very serious"), "slam", { gain: 0.2 });
+for (let k = 0; k < 3; k++) sfx(w("referee") + k * 0.18, "beep", { gain: 0.12, pitch: 1.6 });
+tl.to(["#bAFlag", "#bBFlag"], { keyframes: { skewY: [0, 6, -4, 0] }, duration: 1.2, repeat: 6, ease: "sine.inOut" }, T.s2 + 0.8);
+const tEm = w("emergency meeting");
+tl.fromTo("#banner", { autoAlpha: 1, y: -260, rotation: -6 }, { y: 0, rotation: -1, duration: 0.55, ease: "bounce.out", immediateRender: false }, tEm - 0.2);
+sfx(tEm - 0.1, "paper", { gain: 0.3 });
+every(tEm, w("about your chai"), 0.36, (t) => { tl.to("#alarm", { opacity: 0.22, duration: 0.12 }, t); tl.to("#alarm", { opacity: 0, duration: 0.18 }, t + 0.14); sfx(t, "beep", { gain: 0.1, pitch: 0.7 }); });
+REEL.shake($("#shake"), tEm, 8);
+const tAbout = w("about your chai");
+pop("#tcup", tAbout, { from: 0.2 });
+tl.to("#spot", { opacity: 1, duration: 0.3 }, tAbout);
+tl.to("#s2 .pupil", { x: (i, el) => (el.closest("#bankA") || el.closest("#compA") ? 5 : -5), y: 5, duration: 0.2 }, tAbout + 0.2);
+tl.fromTo("#its10", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.3, immediateRender: false }, tAbout + 0.6);
+every(tAbout, T.s3, 0.45, (t) => tl.fromTo("#tcSteam", { y: 0, opacity: 0.9 }, { y: -22, opacity: 0, duration: 0.45, ease: "none", immediateRender: false }, t));
+const tCrash = w("crashing");
+tl.to("#meet", { scale: 0.74, duration: 0.5, ease: "power2.inOut" }, T.host);
+tl.to("#banner", { x: -200, scale: 0.85, duration: 0.5, ease: "power2.inOut" }, T.host);
+tl.to(["#spot", "#its10"], { autoAlpha: 0, duration: 0.2 }, T.host);
+$("#hostBox").innerHTML = ART.host({ w: 380, id: "host", male: true });
+tl.fromTo("#hostBox", { autoAlpha: 1, x: 700, rotation: 8 }, { x: 0, rotation: 0, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, tCrash - 0.3);
+$("#crash").innerHTML = ART.burst({ size: 230, text: "CRASH!", color: "#F5A524", fs: 42 });
+pop("#crash", tCrash, { from: 0.3, sfx: "impact", gain: 0.35 });
+REEL.shake($("#shake"), tCrash + 0.05, 16);
+tl.to(["#bankA", "#bankB", "#compA", "#compB", "#ref"], { y: -40, duration: 0.12, yoyo: true, repeat: 1, stagger: 0.03 }, tCrash + 0.05);
+tl.to("#crash", { autoAlpha: 0, duration: 0.2 }, w("hi") - 0.2);
+PAPER.lipSync($("#hostMouth"), { from: T.host, open: 18 });
+PAPER.blink($("#hostEyes"), [T.host + 1.2, w("host") + 0.6]);
+tl.to("#hostArm", { keyframes: { rotation: [-18, 8, -18, 8, 0] }, svgOrigin: "300 450", duration: 1.0 }, w("hi"));
+pop("#hostTag", w("your host"), { sfx: "chime", gain: 0.2 });
+tl.to("#hostBrowR", { y: -10, duration: 0.15, yoyo: true, repeat: 1 }, tCrash);
+
+// ================================================= S3: title — colour shutters
+EX.stripes(T.s3);
+show("#s3", T.s3, null, { y: 0 });
+clouds("#clouds3", 7, 5, 40, 420);
+$("#city3").innerHTML = ISO.city({ h: 440, color: "#BFD6F2", seed: 11 });
+(function () { const r = rng(21); [[300, 170], [1760, 160], [1760, 560], [560, 560]].forEach(([x, y], i) => { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${x}px;top:${y}px`; el.innerHTML = ISO.coin({ size: 70 + r() * 40 }); $("#coins3").appendChild(el); tl.fromTo(el, { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s3 + 0.6 + i * 0.12); tl.to(el, { y: -30, rotation: 20, duration: 2, yoyo: true, repeat: 3, ease: "sine.inOut" }, T.s3 + 1); }); })();
+gsap.set(["#t1", "#t2", "#t3", "#host2", "#note", "#palm", "#bye"], { autoAlpha: 0 });
+const t3 = T.s3 + 0.4;
+rise("#t1", t3 + 0.1);
+tl.fromTo("#t2", { autoAlpha: 0, scale: 1.6, rotationX: 60 }, { autoAlpha: 1, scale: 1, rotationX: 0, duration: 0.6, ease: "back.out(1.8)", immediateRender: false }, t3 + 0.25);
+rise("#t3", w("you'll know"));
+sfx(t3 + 0.3, "chime", { gain: 0.2 });
+$("#host2").innerHTML = ART.host({ w: 330, id: "h2", male: true });
+tl.fromTo("#host2", { autoAlpha: 1, x: -500 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, t3 + 0.2);
+PAPER.lipSync($("#h2Mouth"), { from: T.s3, open: 18 });
+tl.to("#h2Arm", { rotation: 28, svgOrigin: "300 450", duration: 0.4, ease: "back.out(2)" }, t3 + 0.8);
+PAPER.blink($("#h2Eyes"), [t3 + 2.0, w("why") + 0.2]);
+$("#note").innerHTML = ART.note({ w: 240 });
+$("#palm").innerHTML = ART.palm({ w: 200 });
+const tVac = w("and why");
+pop("#palm", tVac, { from: 0.3 });
+tl.fromTo("#note", { autoAlpha: 1, x: -420 }, { x: 0, duration: 1.6, ease: "none", immediateRender: false }, tVac + 0.2);
+for (let k = 0; k < 8; k++) tl.to("#note", { y: k % 2 ? 0 : -14, rotation: k % 2 ? 3 : -3, duration: 0.1 }, tVac + 0.2 + k * 0.2);
+tl.fromTo("#bye", { autoAlpha: 0, scale: 1.4, rotation: -12 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("vacation"));
+sfx(w("vacation"), "swish", { gain: 0.2 });
+tl.to("#h2BrowL", { y: -10, duration: 0.15 }, w("vacation"));
+
+REEL.finish(END);
+</script>
+</body></html>

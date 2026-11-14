@@ -1,0 +1,378 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ch5 Across the world</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.mono{font-family:"JetBrains Mono";font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.stat{position:absolute;padding:22px 30px;border-radius:20px;background:rgba(10,15,30,.85);white-space:nowrap;border:2px solid #1E2846}
+.pk{position:absolute;width:70px;height:40px;border-radius:10px;background:rgba(62,224,255,.25);border:3px solid #3EE0FF}
+.place{position:absolute;font-family:"JetBrains Mono";font-weight:800;font-size:22px;letter-spacing:.1em;color:#fff;padding:6px 14px;border-radius:999px;background:rgba(10,15,30,.85);border:2px solid #3EE0FF;white-space:nowrap}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="../../../lib/vendor/d3.min.js"></script>
+<script src="../../../lib/world.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/art.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" style="background:linear-gradient(180deg,#1a3d6a 0%,#3f7fb0 55%,#3f7fb0 59%,#3a2a1e 59%,#1a120c 100%)"></div>
+    <div class="abs" style="left:0;top:380px" id="aSky"></div>
+    <div class="abs" style="left:0;top:637px;width:1920px;height:6px;background:#5a4030"></div>
+    <div class="abs" style="left:230px;top:120px" id="aTow"></div>
+    <div class="abs" id="ex" style="left:1440px;top:420px;width:330px;height:220px;border-radius:14px 14px 0 0;background:#d9dfee"><div class="abs" style="left:0;right:0;top:0;height:46px;background:#3a7bd5;border-radius:14px 14px 0 0"></div><div class="abs mono" style="left:20px;top:10px;font-size:18px;color:#fff">EXCHANGE</div><div class="abs" style="left:30px;top:80px;width:270px;height:110px;background:repeating-linear-gradient(90deg,#0A0F1E 0 34px,#2a3a6a 34px 46px)"></div></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="conduit" d="M330 640 L330 800 Q330 830 360 830 L1580 830 Q1610 830 1610 800 L1610 640" stroke="#0b0b10" stroke-width="40" fill="none" stroke-linejoin="round"/><path id="core" d="M330 640 L330 800 Q330 830 360 830 L1580 830 Q1610 830 1610 800 L1610 640" stroke="#3EE0FF" stroke-width="10" fill="none" stroke-linejoin="round"/></svg>
+    <canvas id="aPulse" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div id="aPk" class="abs" style="inset:0"></div>
+    <div class="lbl" id="aHead" style="right:110px;top:120px;font-size:130px;color:#fff;text-align:right">Off the air,<br><span style="color:#3EE0FF">into glass</span></div>
+    <div class="chip" id="aFib" style="left:760px;top:870px;color:#3EE0FF">FIBRE OPTIC CABLE</div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#1a1a22 0%,#050507 75%)"></div>
+    <div class="lbl" id="bHead" style="left:110px;top:110px;font-size:130px;color:#fff">Thinner than <span style="color:#FFB547">a hair</span></div>
+    <div class="abs" id="hair" style="left:-40px;top:330px;width:2000px;height:250px;border-radius:125px;background:linear-gradient(180deg,#3a2414 0%,#8a5a34 35%,#6a4224 70%,#2a180c 100%)"></div>
+    <div class="chip" id="bHairL" style="left:120px;top:600px;color:#FFB547">HUMAN HAIR · ABOUT 70 MICRONS</div>
+    <canvas id="bits" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="chip" id="bCoreL" style="left:120px;top:880px;color:#3EE0FF">GLASS CORE · ABOUT 9 MICRONS</div>
+    <div class="chip" id="bFlash" style="left:1300px;top:880px;color:#fff">LIGHT ON = 1 · LIGHT OFF = 0</div>
+  </section>
+
+  <section class="scene" id="sB2">
+    <div class="bg" style="background:linear-gradient(180deg,#071433 0%,#0c1f4a 100%)"></div>
+    <div class="lbl" id="b2Head" style="left:110px;top:110px;font-size:120px;color:#fff">Light <span style="color:#3EE0FF">bounces</span> inside</div>
+    <canvas id="tir" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><g id="bend" opacity="0"><path id="bendP" d="M120 900 C 600 900 700 560 1000 560 S 1500 760 1820 700" stroke="rgba(120,190,255,.35)" stroke-width="70" fill="none" stroke-linecap="round"/><path d="M120 900 C 600 900 700 560 1000 560 S 1500 760 1820 700" stroke="rgba(62,224,255,.55)" stroke-width="24" fill="none" stroke-linecap="round"/></g></svg>
+    <div id="bendDots" class="abs" style="inset:0"></div>
+    <div class="stat" id="kmS" style="right:110px;top:110px"><div class="mono" style="font-size:20px;color:#9fefff">ONE PIECE OF GLASS CAN RUN FOR</div><div class="big" style="font-size:90px;color:#fff;margin-top:6px"><span id="km">0</span> km</div></div>
+  </section>
+
+  <section class="scene" id="sC">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#2a1a6a 0%,#0d0828 75%)"></div>
+    <svg id="net" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="routers" class="abs" style="inset:0"></div>
+    <div id="cPk" class="abs" style="left:0;top:0;padding:10px 18px;border-radius:12px;background:#3EE0FF;font-family:'JetBrains Mono';font-weight:800;font-size:22px;color:#0A0F1E;white-space:nowrap">TO: NEW YORK</div>
+    <div class="lbl" id="cHead" style="left:110px;top:100px;font-size:120px;color:#fff">Routers</div>
+    <div class="serif" id="cSub" style="position:absolute;left:116px;top:220px;font-size:60px;color:#c9b8ff">read the address, pass it on</div>
+    <div class="stat" id="hopS" style="right:110px;top:110px"><div class="mono" style="font-size:20px;color:#c9b8ff">HOP</div><div class="big" style="font-size:110px;color:#fff;margin-top:4px" id="hop">0</div></div>
+  </section>
+
+  <section class="scene" id="sD">
+    <div id="dStrip" class="abs" style="left:0;top:0;width:1920px;height:2160px">
+      <div class="abs" style="left:0;top:0;width:1920px;height:1100px;background:linear-gradient(180deg,#02030a 0%,#0b1640 45%,#3f7fb0 100%)"></div>
+      <div class="abs" style="left:0;top:1100px;width:1920px;height:1060px;background:linear-gradient(180deg,#0b5a7a 0%,#02121f 100%)"></div>
+      <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="2160">
+        <path d="M0 1100 Q 240 1080 480 1100 T 960 1100 T 1440 1100 T 1920 1100" stroke="#9fdcff" stroke-width="6" fill="none"/>
+        <path id="upArrow" d="M960 1040 L960 260" stroke="#fff" stroke-width="14" stroke-dasharray="20 18" fill="none"/>
+        <path id="upHead" d="M920 300 L960 240 L1000 300" stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="noX" stroke="#FF5D73" stroke-width="30" stroke-linecap="round"><line id="nx1" x1="820" y1="300" x2="1100" y2="580"/><line id="nx2" x1="1100" y1="300" x2="820" y2="580"/></g>
+        <path id="dCable" d="M0 1980 Q 480 1940 960 1990 T 1920 1960" stroke="#05070d" stroke-width="30" fill="none"/>
+        <path id="dCore" d="M0 1980 Q 480 1940 960 1990 T 1920 1960" stroke="#3EE0FF" stroke-width="8" fill="none"/>
+      </svg>
+      <div class="lbl" style="left:110px;top:200px;font-size:140px;color:#fff">Not to space</div>
+      <div class="lbl" id="dSea" style="left:110px;top:1300px;font-size:170px;color:#fff">Under the sea</div>
+    </div>
+  </section>
+
+  <section class="scene" id="sE">
+    <div class="bg" style="background:#071028"></div>
+    <canvas id="map" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="stat" id="s95" style="left:90px;top:640px"><div class="big" style="font-size:120px;color:#3EE0FF">95%+</div><div class="mono" style="font-size:20px;color:#EEF2F7;margin-top:6px">OF DATA BETWEEN CONTINENTS<br>TRAVELS UNDER THE SEA</div></div>
+    <div class="stat" id="s1m" style="left:700px;top:820px"><div class="big" style="font-size:90px;color:#fff"><span id="kmTot">0</span>+ km</div><div class="mono" style="font-size:20px;color:#EEF2F7;margin-top:6px">OF CABLE, HUNDREDS OF CABLES</div></div>
+    <div class="stat" id="s30" style="right:90px;top:640px;display:flex;align-items:center;gap:24px"><svg width="150" height="150" viewBox="-75 -75 150 150"><circle r="44" fill="#1a3a8a"/>${''}<g id="wraps" fill="none" stroke="#3EE0FF" stroke-width="2"></g></svg><div><div class="big" style="font-size:110px;color:#FFB547">30×</div><div class="mono" style="font-size:20px;color:#EEF2F7">AROUND THE EARTH</div></div></div>
+    <div class="chip" id="eIll" style="left:90px;top:110px;color:#8A94B0">ILLUSTRATIVE CABLE ROUTES</div>
+  </section>
+
+  <section class="scene" id="sF">
+    <div class="bg" style="background:#071028"></div>
+    <canvas id="route" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div id="places" class="abs" style="inset:0"></div>
+    <div class="lbl" id="fHead" style="left:110px;top:100px;font-size:110px;color:#fff">India <span style="color:#3EE0FF">to</span> America</div>
+  </section>
+
+  <section class="scene" id="sG">
+    <div class="bg" style="background:linear-gradient(135deg,#0A0F1E 0%,#1b1550 100%)"></div>
+    <div class="lbl" id="gHead" style="left:110px;top:120px;font-size:190px;color:#fff">200,000<br><span style="font-size:100px;color:#3EE0FF">km per second</span></div>
+    <div class="serif" id="gSub" style="position:absolute;left:116px;top:470px;font-size:56px;color:#c9d2ff">light in glass, about two thirds of its top speed</div>
+    <canvas id="zip" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="stat" id="gT" style="right:110px;top:140px"><div class="mono" style="font-size:20px;color:#9fefff">INDIA TO AMERICA</div><div class="big" style="font-size:140px;color:#5BE49B;margin-top:4px"><span id="gSec">0.00</span><span style="font-size:60px;color:#fff"> s</span></div><div class="serif" style="font-size:40px;color:#fff">about a tenth of a second</div></div>
+  </section>
+
+  <section class="scene" id="sH">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 120%,#1a3a8a 0%,#02030a 60%)"></div>
+    <canvas id="sat" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="abs" id="satI" style="left:860px;top:110px"></div>
+    <div class="chip" id="hUp" style="left:1100px;top:150px;color:#fff">36,000 KM ABOVE US</div>
+    <div class="abs" id="bars" style="left:110px;top:330px;width:700px">
+      <div class="mono" style="font-size:22px;color:#5BE49B">UNDER THE SEA</div>
+      <div id="barC" style="height:60px;width:200px;background:#5BE49B;border-radius:10px;margin-top:10px;transform-origin:0 50%;display:flex;align-items:center;padding-left:18px;font-family:'JetBrains Mono';font-weight:800;font-size:26px;color:#0A0F1E">0.1 s</div>
+      <div class="mono" style="font-size:22px;color:#FF5D73;margin-top:30px">VIA SATELLITE</div>
+      <div id="barS" style="height:60px;width:560px;background:#FF5D73;border-radius:10px;margin-top:10px;transform-origin:0 50%;display:flex;align-items:center;padding-left:18px;font-family:'JetBrains Mono';font-weight:800;font-size:26px;color:#0A0F1E;white-space:nowrap">+0.25 s EACH WAY</div>
+    </div>
+    <div class="abs" id="win" style="left:0;right:0;top:640px;text-align:center"><span class="lbl" style="position:static;font-size:170px;color:#5BE49B;text-shadow:0 10px 40px rgba(0,0,0,.6)">Cables win</span></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, pop, rise, fade, hide, draw, SVG, chip, show, every } = EX;
+EX.chrome(5, 7, "Across the world");
+EX.subtitles();
+EX.chapterCard(0.05, 2.3);
+const END = W.last() + 1.8;
+const T = { A: 2.2, B: w("these are glass") - 0.25, B2: w("the light bounces") - 0.2, C: w("along the way") - 0.25, D: w("to cross an") - 0.25, E: w("more than ninety") - 0.25, F: w("a call from") - 0.25, G: w("inside the glass light") - 0.25, H: w("satellites") - 0.25 };
+
+// ================================================= A: from the tower into fibre
+show("#sA", T.A, T.B + 0.5, { y: 0 });
+$("#aSky").innerHTML = ART.skyline({ w: 1920, h: 260, seed: 61, color: "#2a5684", win: "#cfe8ff", lit: 0.1, minH: 80, maxH: 240 });
+$("#aTow").innerHTML = SVG.tower({ h: 520, accent: "#3EE0FF" });
+gsap.set(["#aHead", "#aFib"], { autoAlpha: 0 });
+rise("#aHead", w("they don't"));
+draw("#core", w("most towers") - 0.2, 1.0);
+pop("#aFib", w("fibre optic"));
+for (let k = 0; k < 5; k++) $("#aPk").insertAdjacentHTML("beforeend", `<div class="pk" style="left:${296}px;top:150px"></div>`);
+$$("#aPk .pk").forEach((p, k) => { gsap.set(p, { autoAlpha: 0 }); const t = w("from the tower") + k * 0.35; tl.fromTo(p, { autoAlpha: 1, y: 0 }, { y: 470, duration: 0.7, ease: "power2.in", immediateRender: false }, t); tl.to(p, { autoAlpha: 0, duration: 0.1 }, t + 0.7); sfx(t + 0.7, "bloop", { gain: 0.08 }); });
+(function () {
+  const c = $("#aPulse").getContext("2d"), t0 = w("most towers") + 0.6;
+  const seg = (u) => { const L1 = 160, L2 = 1220, L3 = 160, L = L1 + L2 + L3, d = u * L; if (d < L1) return [330, 640 + d]; if (d < L1 + L2) return [360 + (d - L1), 830]; return [1610, 830 - (d - L1 - L2)]; };
+  REEL.onFrame((t) => { c.clearRect(0, 0, 1920, 1080); if (t < t0 || t > T.B + 0.6) return; for (let k = 0; k < 6; k++) { const u = ((t - t0) * 0.6 + k / 6) % 1; for (let j = 0; j < 14; j++) { const [x, y] = seg(Math.max(0, u - j * 0.004)); c.beginPath(); c.arc(x, y, 9 - j * 0.5, 0, 7); c.fillStyle = `rgba(${j ? "62,224,255" : "255,255,255"},${1 - j / 14})`; c.fill(); } } });
+})();
+
+// ================================================= B: thinner than a hair; flashes of light
+show("#sB", T.B, T.B2 + 0.5, { scale: 1.2 });
+sfx(T.B, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set(["#bHead", "#bHairL", "#bCoreL", "#bFlash", "#hair"], { autoAlpha: 0 });
+rise("#bHead", w("thinner than"));
+tl.fromTo("#hair", { autoAlpha: 0, scaleX: 0.3 }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out", immediateRender: false }, w("human hair") - 0.4);
+pop("#bHairL", w("human hair"));
+(function () {
+  const c = $("#bits").getContext("2d"), tCore = w("glass threads"), tFl = w("flashes of light");
+  const bits = "1011001110100101110010110100111010".split("");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < tCore || t > T.B2 + 0.6) return;
+    const p = Math.min(1, (t - tCore) / 0.6);
+    c.fillStyle = "rgba(62,224,255,.25)"; c.fillRect(0, 780, 1920 * p, 22);
+    c.fillStyle = "rgba(62,224,255,.6)"; c.fillRect(0, 786, 1920 * p, 10);
+    if (t > tFl) {
+      c.font = "800 26px 'JetBrains Mono'"; c.textAlign = "center";
+      const off = ((t - tFl) * 520) % 120;
+      for (let i = -1; i < 18; i++) {
+        const x = i * 120 + off, b = bits[(i - Math.floor((t - tFl) * 520 / 120) + 400) % bits.length];
+        if (b === "1") { const g = c.createRadialGradient(x, 791, 0, x, 791, 60); g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(0.3, "rgba(62,224,255,.8)"); g.addColorStop(1, "rgba(62,224,255,0)"); c.fillStyle = g; c.fillRect(x - 60, 731, 120, 120); }
+        c.fillStyle = b === "1" ? "#fff" : "#4a5a80"; c.fillText(b, x, 740);
+      }
+    }
+  });
+})();
+pop("#bCoreL", w("glass threads") + 0.5);
+pop("#bFlash", w("flashes of light") + 0.3);
+
+// ================================================= B2: bouncing inside, around bends, thousands of km
+show("#sB2", T.B2, T.C + 0.5, { y: 0 });
+sfx(T.B2, "whoosh", { gain: 0.24, dur: 0.5 });
+gsap.set(["#b2Head", "#kmS"], { autoAlpha: 0 });
+rise("#b2Head", T.B2 + 0.1);
+const tBend = w("even around");
+(function () {
+  const c = $("#tir").getContext("2d");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.B2 || t > tBend + 0.4) return;
+    const fade = t > tBend - 0.2 ? Math.max(0, 1 - (t - tBend + 0.2) / 0.5) : 1;
+    c.globalAlpha = fade;
+    c.fillStyle = "rgba(120,190,255,.16)"; c.fillRect(0, 380, 1920, 340);
+    c.fillStyle = "rgba(62,224,255,.22)"; c.fillRect(0, 470, 1920, 160);
+    c.font = "700 20px 'JetBrains Mono'"; c.fillStyle = "#9fdcff"; c.fillText("CLADDING", 40, 410); c.fillText("CORE", 40, 500);
+    // zigzag ray: bounces between y=470 and y=630
+    const head = Math.min(1920, (t - T.B2) * 900);
+    c.beginPath();
+    for (let x = 0; x <= head; x += 4) { const ph = (x / 260) % 2, y = ph < 1 ? 470 + ph * 160 : 630 - (ph - 1) * 160; x ? c.lineTo(x, y) : c.moveTo(x, y); }
+    c.strokeStyle = "#fff"; c.lineWidth = 6; c.shadowColor = "#3EE0FF"; c.shadowBlur = 20; c.stroke(); c.shadowBlur = 0;
+    for (let k = 0; k < Math.floor(head / 260); k++) { const x = (k + 1) * 260, y = k % 2 ? 470 : 630; c.beginPath(); c.arc(x, y, 14, 0, 7); c.fillStyle = "rgba(255,255,255,.5)"; c.fill(); }
+    c.globalAlpha = 1;
+  });
+})();
+tl.to("#bend", { opacity: 1, duration: 0.5 }, tBend - 0.1);
+for (let k = 0; k < 8; k++) { $("#bendDots").insertAdjacentHTML("beforeend", `<div class="abs bd" style="left:0;top:0;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 0 24px #3EE0FF,0 0 8px #fff"></div>`); }
+$$("#bendDots .bd").forEach((d, k) => { gsap.set(d, { autoAlpha: 0 }); tl.fromTo(d, { autoAlpha: 1, motionPath: { path: "#bendP", align: "#bendP", alignOrigin: [0.5, 0.5], start: 0, end: 0 } }, { motionPath: { path: "#bendP", align: "#bendP", alignOrigin: [0.5, 0.5], start: 0, end: 1 }, duration: 1.6, ease: "none", repeat: 2, immediateRender: false }, tBend + k * 0.2); });
+sfx(tBend, "swish", { gain: 0.2 });
+pop("#kmS", w("thousands of kilometres"), { from: 0.8 });
+EX.countUp("#km", 0, 6000, w("thousands of kilometres"), 1.2);
+
+// ================================================= C: routers, hop by hop
+show("#sC", T.C, T.D + 0.5, { scale: 1.1 });
+sfx(T.C, "whoosh", { gain: 0.25, dur: 0.5 });
+const R = [[240, 620], [520, 420], [560, 820], [860, 600], [1100, 380], [1140, 840], [1420, 600], [1700, 420], [1700, 800]];
+const E2 = [[0, 1], [0, 2], [1, 3], [2, 3], [1, 4], [3, 4], [3, 5], [4, 6], [5, 6], [6, 7], [6, 8], [4, 7], [5, 8]];
+const ROUTE = [0, 1, 3, 4, 6, 7];
+$("#net").innerHTML = E2.map(([a, b]) => `<line class="ne ${ROUTE.indexOf(a) >= 0 && ROUTE.indexOf(b) === ROUTE.indexOf(a) + 1 ? "onr" : ""}" x1="${R[a][0]}" y1="${R[a][1]}" x2="${R[b][0]}" y2="${R[b][1]}" stroke="#4a3a9a" stroke-width="6"/>`).join("");
+$("#routers").innerHTML = R.map(([x, y], i) => `<div class="abs rt" style="left:${x - 60}px;top:${y - 40}px">${SVG.router(120, "#9B8CFF")}</div>`).join("");
+gsap.set(["#cHead", "#cSub", "#hopS", "#cPk"], { autoAlpha: 0 });
+tl.from(".rt", { scale: 0, autoAlpha: 0, duration: 0.3, stagger: 0.05, ease: "back.out(2)" }, T.C + 0.1);
+draw(".ne", T.C + 0.2, 0.6);
+rise("#cHead", w("routers"));
+rise("#cSub", w("read the address"));
+pop("#hopS", w("each packet"), { from: 0.8, sfx: false });
+const tHop0 = w("each packet"), hopDur = (we("hop by hop") - tHop0) / (ROUTE.length - 1);
+gsap.set("#cPk", { x: R[0][0] - 90, y: R[0][1] - 100 });
+tl.to("#cPk", { autoAlpha: 1, duration: 0.2 }, tHop0 - 0.4);
+const rts = $$(".rt");
+ROUTE.forEach((ri, k) => {
+  const t = tHop0 + k * hopDur;
+  if (k > 0) tl.to("#cPk", { x: R[ri][0] - 90, y: R[ri][1] - 100, duration: hopDur * 0.7, ease: "power2.inOut" }, t - hopDur * 0.7);
+  tl.fromTo(rts[ri], { filter: "drop-shadow(0 0 0px #3EE0FF)" }, { filter: "drop-shadow(0 0 26px #3EE0FF)", duration: 0.2, yoyo: true, repeat: 1, immediateRender: false }, t);
+  sfx(t, "click", { gain: 0.16 });
+});
+REEL.onFrame((t) => { if (t < T.C || t > T.D + 0.6) return; $("#hop").textContent = Math.max(0, Math.min(ROUTE.length, Math.floor((t - tHop0) / hopDur) + 1)); });
+$$("#net .onr").forEach((l, k) => tl.to(l, { stroke: "#3EE0FF", duration: 0.2 }, tHop0 + (k + 1) * hopDur - 0.1));
+
+// ================================================= D: not to space; dive under the sea
+show("#sD", T.D, T.E + 0.5, { y: 0 });
+sfx(T.D, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set(["#upArrow", "#upHead"], { autoAlpha: 1 });
+draw("#upArrow", T.D + 0.1, 0.7);
+fade("#upHead", T.D + 0.7);
+draw("#nx1", w("to space") - 0.05, 0.15, "power2.out"); draw("#nx2", w("to space") + 0.1, 0.15, "power2.out");
+sfx(w("to space") + 0.1, "stamp", { gain: 0.35 });
+const tDive = w("it dives");
+tl.to("#dStrip", { y: -1080, duration: 0.9, ease: "power3.inOut" }, tDive - 0.1);
+sfx(tDive, "pour", { gain: 0.18, dur: 1.0 });
+gsap.set("#dSea", { autoAlpha: 0 });
+rise("#dSea", w("under the sea"));
+draw("#dCore", w("under the sea") + 0.1, 0.8);
+
+// ================================================= E: the world's cables
+show("#sE", T.E, T.F + 0.5, { y: 0 });
+sfx(T.E, "whoosh", { gain: 0.25, dur: 0.5 });
+const PROJ = d3.geoNaturalEarth1().fitExtent([[60, 60], [1860, 1020]], { type: "Sphere" });
+const CAB = [[[72.8, 19.0], [58.4, 23.6]], [[72.8, 19.0], [39.7, -4.0]], [[80.3, 13.0], [103.8, 1.3]], [[103.8, 1.3], [114.2, 22.3]], [[114.2, 22.3], [139.7, 35.6]], [[139.7, 35.6], [-118.2, 34.0]], [[139.7, 35.6], [-122.3, 47.6]], [[151.2, -33.9], [-118.2, 34.0]], [[151.2, -33.9], [103.8, 1.3]], [[-74.0, 40.7], [-4.5, 50.8]], [[-74.0, 40.7], [-9.1, 38.7]], [[-76.0, 36.8], [-2.9, 43.3]], [[-80.2, 25.8], [-38.5, -3.7]], [[-38.5, -3.7], [-9.1, 38.7]], [[3.4, 6.5], [-9.1, 38.7]], [[18.4, -33.9], [3.4, 6.5]], [[5.4, 43.3], [29.9, 31.2]], [[-118.2, 34.0], [-157.9, 21.3]], [[-157.9, 21.3], [151.2, -33.9]], [[-80.2, 25.8], [-74.0, 40.7]], [[18.4, -33.9], [39.7, -4.0]], [[121.5, 25.0], [-122.3, 47.6]], [[-43.2, -22.9], [18.4, -33.9]], [[-4.5, 50.8], [10.7, 59.9]], [[103.8, 1.3], [80.3, 13.0]]];
+const ROUTEW = [[72.8, 19.0], [62, 15], [51, 12.5], [43.3, 12.6], [38, 21], [32.6, 29.9], [32.3, 31.3], [20, 34.2], [5, 37.6], [-5.7, 35.95], [-20, 38], [-40, 40], [-60, 40.5], [-74, 40.7]];
+(function () {
+  const c = $("#map").getContext("2d"), path = d3.geoPath(PROJ, c), tCab = w("there are hundreds");
+  const lines = CAB.map(([a, b]) => { const f = d3.geoInterpolate(a, b); return Array.from({ length: 61 }, (_, i) => PROJ(f(i / 60))); });
+  const main = [];
+  for (let i = 0; i < ROUTEW.length - 1; i++) { const f = d3.geoInterpolate(ROUTEW[i], ROUTEW[i + 1]); for (let j = 0; j < 10; j++) main.push(PROJ(f(j / 10))); }
+  main.push(PROJ(ROUTEW[ROUTEW.length - 1]));
+  lines.push(main);
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.E || t > T.F + 0.6) return;
+    c.beginPath(); path({ type: "Sphere" }); c.fillStyle = "#0a1838"; c.fill();
+    c.beginPath(); path(LAND); c.fillStyle = "#1f2c58"; c.fill(); c.strokeStyle = "#3d5294"; c.lineWidth = 1; c.stroke();
+    lines.forEach((pts, k) => {
+      const p = Math.max(0, Math.min(1, (t - (k === lines.length - 1 ? T.E + 0.2 : tCab + k * 0.06)) / 0.6));
+      if (!p) return;
+      c.beginPath();
+      const n = Math.floor(pts.length * p);
+      for (let i = 0; i < n; i++) { const q = pts[i]; if (i && Math.abs(q[0] - pts[i - 1][0]) > 300) c.moveTo(q[0], q[1]); else i ? c.lineTo(q[0], q[1]) : c.moveTo(q[0], q[1]); }
+      c.strokeStyle = k === lines.length - 1 ? "#FFB547" : "rgba(62,224,255,.8)"; c.lineWidth = k === lines.length - 1 ? 4 : 2.5; c.shadowColor = "#3EE0FF"; c.shadowBlur = 8; c.stroke(); c.shadowBlur = 0;
+      // light pulse running along each cable
+      if (p === 1) { const u = ((t * 0.35 + k * 0.13) % 1), q = pts[Math.floor(u * (pts.length - 1))]; c.beginPath(); c.arc(q[0], q[1], 5, 0, 7); c.fillStyle = "#fff"; c.fill(); }
+    });
+  });
+})();
+gsap.set(["#s95", "#s1m", "#s30", "#eIll"], { autoAlpha: 0 });
+pop("#s95", w("ninety five"), { from: 0.8, sfx: "ding", gain: 0.16 });
+fade("#eIll", w("there are hundreds"));
+pop("#s1m", w("a million"), { from: 0.8 });
+EX.countUp("#kmTot", 0, 1000000, w("a million") - 0.2, 1.2);
+$("#wraps").innerHTML = Array.from({ length: 10 }, (_, k) => `<ellipse rx="${50 + k * 1.6}" ry="${14 + k * 3.6}" transform="rotate(${k * 18})"/>`).join("");
+pop("#s30", w("thirty times"), { from: 0.8 });
+tl.fromTo("#wraps", { rotation: 0, svgOrigin: "0 0" }, { rotation: 180, svgOrigin: "0 0", duration: 3, ease: "none", immediateRender: false }, w("thirty times"));
+
+// ================================================= F: the route India -> America
+show("#sF", T.F, T.G + 0.5, { scale: 1.15 });
+sfx(T.F, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set("#fHead", { autoAlpha: 0 });
+rise("#fHead", w("a call from"));
+const PF = d3.geoMercator().fitExtent([[100, 260], [1820, 1000]], { type: "MultiPoint", coordinates: [[-80, 22], [80, 50], [80, 5], [-80, 50]] });
+const STOPS = [["INDIA", 0, w("india")], ["ARABIAN SEA", 1, w("arabian sea")], ["EGYPT", 5, w("egypt")], ["MEDITERRANEAN", 7, w("mediterranean")], ["ATLANTIC", 11, w("atlantic")], ["AMERICA", 13, w("atlantic") + 0.7]];
+$("#places").innerHTML = STOPS.map(([n, wi], i) => { const p = PF(ROUTEW[wi]); return `<div class="place pl" style="left:${p[0] + (i === 0 ? -150 : i === 3 ? -260 : -60)}px;top:${p[1] + (i === 3 ? -70 : i % 2 ? 26 : -64)}px;${i === 5 ? "border-color:#FF5D73" : ""}">${n}</div>`; }).join("");
+$$("#places .pl").forEach((el, i) => { gsap.set(el, { autoAlpha: 0 }); pop(el, STOPS[i][2], { gain: 0.12 }); });
+(function () {
+  const c = $("#route").getContext("2d"), path = d3.geoPath(PF, c);
+  const segs = [];
+  for (let i = 0; i < ROUTEW.length - 1; i++) { const f = d3.geoInterpolate(ROUTEW[i], ROUTEW[i + 1]); for (let j = 0; j < 12; j++) segs.push({ p: PF(f(j / 12)), wi: i + j / 12 }); }
+  segs.push({ p: PF(ROUTEW[ROUTEW.length - 1]), wi: ROUTEW.length - 1 });
+  // waypoint index reached as a function of time (keyed to narration)
+  const keys = [[w("a call from"), 0], [w("india"), 0.3], [w("arabian sea"), 1.2], [w("egypt"), 5.2], [w("mediterranean"), 7.4], [w("atlantic"), 11.2], [w("atlantic") + 0.7, 13]];
+  const wiAt = (t) => { if (t <= keys[0][0]) return 0; for (let k = 1; k < keys.length; k++) if (t < keys[k][0]) { const [t0, a] = keys[k - 1], [t1, b] = keys[k]; return a + (b - a) * ((t - t0) / (t1 - t0)); } return 13; };
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.F || t > T.G + 0.6) return;
+    c.beginPath(); path(LAND); c.fillStyle = "#1f2c58"; c.fill(); c.strokeStyle = "#3d5294"; c.lineWidth = 1.2; c.stroke();
+    const W2 = wiAt(t);
+    c.beginPath(); let last = null;
+    for (const s of segs) { if (s.wi > W2) break; last ? c.lineTo(s.p[0], s.p[1]) : c.moveTo(s.p[0], s.p[1]); last = s.p; }
+    c.strokeStyle = "#FFB547"; c.lineWidth = 7; c.shadowColor = "#FFB547"; c.shadowBlur = 18; c.stroke(); c.shadowBlur = 0;
+    if (last) { c.beginPath(); c.arc(last[0], last[1], 14, 0, 7); c.fillStyle = "#fff"; c.shadowColor = "#3EE0FF"; c.shadowBlur = 30; c.fill(); c.shadowBlur = 0; }
+    [[ROUTEW[0], "#3EE0FF"], [ROUTEW[13], "#FF5D73"]].forEach(([ll, col]) => { const p = PF(ll); c.beginPath(); c.arc(p[0], p[1], 12, 0, 7); c.fillStyle = col; c.fill(); });
+  });
+})();
+every(w("arabian sea"), w("atlantic") + 0.7, 0.8, (t) => sfx(t, "swish", { gain: 0.06 }));
+
+// ================================================= G: speed in glass, a tenth of a second
+show("#sG", T.G, T.H + 0.5, { y: 0 });
+sfx(T.G, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set(["#gHead", "#gSub", "#gT"], { autoAlpha: 0 });
+rise("#gHead", w("light moves"));
+rise("#gSub", w("per second", W.find("inside")) );
+pop("#gT", w("so even this"), { from: 0.8, sfx: false });
+EX.countUp("#gSec", 0, 0.1, w("takes only"), 1.0, (v) => v.toFixed(2), "power1.out");
+sfx(w("takes only") + 1.0, "ding", { gain: 0.2 });
+(function () {
+  const c = $("#zip").getContext("2d");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.G || t > T.H + 0.6) return;
+    c.fillStyle = "rgba(62,224,255,.15)"; c.fillRect(110, 760, 1700, 16);
+    c.font = "700 22px 'JetBrains Mono'"; c.fillStyle = "#9fdcff"; c.fillText("MUMBAI", 110, 740); c.textAlign = "right"; c.fillText("NEW YORK", 1810, 740); c.textAlign = "left";
+    c.fillStyle = "#cfd6ea"; c.fillText("ABOUT 20,000 KM OF CABLE", 760, 830);
+    const u = ((t - T.G) * 1.6) % 1, x = 110 + u * 1700;
+    for (let j = 0; j < 30; j++) { c.beginPath(); c.arc(x - j * 10, 768, 10 - j * 0.3, 0, 7); c.fillStyle = `rgba(${j ? "62,224,255" : "255,255,255"},${1 - j / 30})`; c.fill(); }
+  });
+})();
+
+// ================================================= H: satellites vs cables
+show("#sH", T.H, null, { y: 0 });
+sfx(T.H, "whoosh", { gain: 0.25, dur: 0.5 });
+$("#satI").innerHTML = SVG.satellite(220);
+gsap.set(["#hUp", "#bars", "#win", "#satI"], { autoAlpha: 0 });
+tl.fromTo("#satI", { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, w("satellites"));
+pop("#hUp", w("thirty six"));
+(function () {
+  const c = $("#sat").getContext("2d"), r = rng(77), S = Array.from({ length: 160 }, () => [r() * 1920, r() * 700, r() * 2]);
+  const tUp = w("going up");
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.H) return;
+    for (const [x, y, s] of S) { c.fillStyle = `rgba(255,255,255,${0.3 + 0.5 * Math.abs(Math.sin(t + x))})`; c.fillRect(x, y, s, s); }
+    c.beginPath(); c.arc(960, 2600, 1750, 0, 7); c.fillStyle = "#1a3a8a"; c.fill(); c.strokeStyle = "rgba(62,224,255,.6)"; c.lineWidth = 6; c.stroke();
+    const A = [520, 905], B = [1400, 905], S2 = [970, 240];
+    c.setLineDash([12, 12]); c.strokeStyle = "rgba(255,93,115,.6)"; c.lineWidth = 4; c.beginPath(); c.moveTo(...A); c.lineTo(...S2); c.lineTo(...B); c.stroke(); c.setLineDash([]);
+    [A, B].forEach((p) => { c.beginPath(); c.arc(p[0], p[1], 14, 0, 7); c.fillStyle = "#FFB547"; c.fill(); });
+    if (t > tUp) { const u = ((t - tUp) * 0.6) % 1, q = u < 0.5 ? [A[0] + (S2[0] - A[0]) * u * 2, A[1] + (S2[1] - A[1]) * u * 2] : [S2[0] + (B[0] - S2[0]) * (u - 0.5) * 2, S2[1] + (B[1] - S2[1]) * (u - 0.5) * 2]; c.beginPath(); c.arc(q[0], q[1], 16, 0, 7); c.fillStyle = "#FF5D73"; c.shadowColor = "#FF5D73"; c.shadowBlur = 24; c.fill(); c.shadowBlur = 0; }
+  });
+})();
+tl.to("#bars", { autoAlpha: 1, duration: 0.3 }, w("adds about"));
+tl.fromTo("#barC", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out", immediateRender: true }, w("adds about"));
+tl.fromTo("#barS", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out", immediateRender: true }, w("a quarter"));
+tl.fromTo("#win", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)", immediateRender: false }, w("cables win"));
+sfx(w("cables win"), "slam", { gain: 0.3 });
+sfx(w("cables win") + 0.1, "chime", { gain: 0.2 });
+
+REEL.finish(END);
+</script>
+</body></html>

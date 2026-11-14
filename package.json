@@ -1,0 +1,25 @@
+{
+  "name": "how-it-works-explainers",
+  "version": "1.0.0",
+  "description": "Code-made how-it-works explainer videos (HTML/GSAP rendered frame by frame)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.2.6",
+    "@fontsource-variable/fraunces": "^5.2.6",
+    "@fontsource-variable/jetbrains-mono": "^5.2.6",
+    "@fontsource/caveat": "^5.2.6",
+    "@fontsource/eb-garamond": "^5.2.6",
+    "d3": "^7.9.0",
+    "gsap": "^3.13.0",
+    "puppeteer-core": "^24.10.0",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}

@@ -1,0 +1,245 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>UPI Ch3 The 2 second journey</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.nl{position:absolute;font-family:"JetBrains Mono";font-weight:800;font-size:20px;letter-spacing:.1em;color:#1B2340;white-space:nowrap;padding:7px 16px;border-radius:999px;background:#fff;box-shadow:0 6px 16px rgba(27,35,64,.16)}
+.fl{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:2px dashed #d8cdb8;font-family:"JetBrains Mono";font-weight:700;font-size:22px;white-space:nowrap}
+.fl span:first-child{color:#8a7f6a}
+.bub{position:absolute;padding:14px 28px 18px;border-radius:26px;font-family:Garamond;font-style:italic;font-size:46px;white-space:nowrap;box-shadow:0 10px 24px rgba(27,35,64,.18)}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- the money map -->
+  <section class="scene" id="sA">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#E6F5FD 100%)"></div>
+    <div id="clouds" class="abs" style="inset:0"></div>
+    <div id="city" class="abs" style="left:0;top:110px"></div>
+    <div class="abs" style="left:0;top:330px;width:1920px;height:750px;background:linear-gradient(180deg,#D9F0DF 0%,#E7F6EA 100%)"></div>
+    <div class="abs" style="left:0;top:330px;width:1920px;height:750px;opacity:.5;background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 2px,transparent 2px 70px),repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0 2px,transparent 2px 70px)"></div>
+    <div id="trees" class="abs" style="inset:0"></div>
+    <svg id="roads" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="nApp" class="abs node" data-ob="nApp" style="left:30px;top:150px"></div>
+    <div id="nYB" class="abs node" data-ob="nYB" style="left:1500px;top:150px"></div>
+    <div id="nRef" class="abs node" style="left:770px;top:410px;width:380px;height:420px"><div id="pod" class="abs" data-ob="nRef" style="left:0;top:200px"></div><div id="refBox" class="abs" data-ob="nRef" style="left:90px;top:10px"></div></div>
+    <div id="nYou" class="abs node" data-ob="nYou" style="left:80px;top:610px;width:360px;height:320px"><div id="youBox" class="abs" style="left:0;top:20px"></div><div id="phBox" class="abs" style="left:200px;top:40px;width:130px;height:267px"></div></div>
+    <div id="nCB" class="abs node" data-ob="nCB" style="left:1180px;top:560px"></div>
+    <div id="nSt" class="abs node" data-ob="nSt" style="left:1575px;top:640px"></div>
+    <div id="spkRing" class="abs" style="left:1745px;top:780px;width:90px;height:84px;border-radius:20px;border:6px solid #22B573;opacity:0"></div>
+    <div class="nl" id="lApp" data-ob="lApp" style="left:150px;top:536px">APP'S BANK</div>
+    <div class="nl" id="lYB" data-ob="lYB" style="left:1615px;top:536px">YOUR BANK</div>
+    <div class="nl" id="lRef" data-ob="lRef" style="left:900px;top:840px">THE REFEREE</div>
+    <div class="nl" id="lYou" data-ob="lYou" style="left:448px;top:880px">YOU</div>
+    <div class="nl" id="lCB" data-ob="lCB" style="left:1265px;top:924px">CHAI WALA'S BANK</div>
+    <div id="badge" class="abs" data-ob="badge" style="left:760px;top:80px;width:400px;text-align:center"><div class="lbl x3d" style="position:static;font-size:104px;--xf:#fff">Step&nbsp;<span id="stepN" style="color:#F5A524">1</span></div><div id="dots" style="display:flex;gap:10px;justify-content:center;margin-top:14px"></div></div>
+    <div id="env" class="abs" style="left:0;top:0;opacity:0"></div>
+    <div id="coin" class="abs" style="left:0;top:0;opacity:0"></div>
+    <div class="pcard" id="msg" data-ob="msg" style="left:450px;top:250px;width:380px"><div class="tape"></div><div class="m" style="font-size:16px;color:#8a7f6a">THE LITTLE MESSAGE</div><div class="fl"><span>WHO PAYS</span><span>you</span></div><div class="fl"><span>WHO GETS</span><span>chai wala</span></div><div class="fl" style="border:none"><span>HOW MUCH</span><span>₹10</span></div></div>
+    <div class="pcard" id="book" data-ob="book" style="left:1080px;top:250px;width:410px"><div class="tape"></div><div class="m" style="font-size:16px;color:#8a7f6a">THE PHONE BOOK, FOR MONEY</div><div class="fl"><span>rahul@okicici</span><span>Bank A</span></div><div class="fl" id="bookHit"><span>chaiwala@okbank</span><span>Bank C</span></div><div class="fl" style="border:none"><span>priya@ybl</span><span>Bank B</span></div></div>
+    <div class="bub" id="bRef" data-ob="bRef" style="left:1090px;top:270px;background:#F5A524;color:#1B2340;border-radius:26px 26px 26px 6px">₹10, okay?</div>
+    <div class="bub" id="bYB" data-ob="bYB" style="left:1100px;top:400px;background:#3E7BFA;color:#fff;border-radius:26px 26px 6px 26px">Show me the PIN.</div>
+    <div class="pcard" id="bal" data-ob="bal" style="left:1080px;top:250px;width:400px"><div class="tape"></div><div class="m" style="font-size:16px;color:#8a7f6a">YOUR BALANCE</div><div class="big" style="font-size:72px;margin-top:8px">₹<span id="balN">1,240</span></div><div class="serif" style="font-size:30px;color:#c7364c;margin-top:6px">a tense moment</div></div>
+    <div id="sweat" class="abs" data-ob="nYB" style="left:1640px;top:250px;width:26px;height:36px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:#7cc7f5;opacity:0"></div>
+    <div class="chip" id="minus" data-ob="minus" style="left:1300px;top:150px;color:#F0566E;font-size:32px">−₹10</div>
+    <div class="chip" id="plus" data-ob="plus" style="left:1040px;top:880px;color:#22B573;font-size:32px">+₹10</div>
+    <div class="pcard" id="recv" data-ob="recv" style="left:1110px;top:360px;transform:rotate(3deg)"><div class="tape"></div><div class="m" style="font-size:16px;color:#5a6280">SPEAKER SAYS</div><div class="h" style="font-size:44px;margin-top:6px">₹10 received!</div></div>
+    <div id="ticks" class="abs" style="inset:0"></div>
+  </section>
+
+  <!-- two seconds -->
+  <section class="scene" id="sB">
+    <div class="bg" style="background:radial-gradient(ellipse at 30% 50%,#FFFFFF 0%,#FFE6D2 60%,#FFD3B4 100%)"></div>
+    <svg class="abs" id="raysB" style="left:-640px;top:-1060px;opacity:.12" width="3200" height="3200" viewBox="0 0 3200 3200"></svg>
+    <div id="confB" class="abs" style="inset:0"></div>
+    <div id="watch" class="abs" data-ob="watch" style="left:150px;top:130px;width:620px;height:720px"></div>
+    <div class="m" id="allOf" data-ob="txt" style="position:absolute;left:880px;top:250px;font-size:30px;letter-spacing:.24em;color:#1B2340">ALL OF THAT, IN ABOUT</div>
+    <div class="big x3d" id="twoS" data-ob="txt" style="position:absolute;left:870px;top:300px;font-size:186px;white-space:nowrap;--xf:#F0566E">2 seconds</div>
+    <div id="cupB" class="abs" data-ob="cup" style="left:960px;top:590px"></div>
+    <div class="serif" id="hot" data-ob="cup" style="position:absolute;left:1130px;top:700px;font-size:64px;color:#1B2340;white-space:nowrap">your chai is <span style="color:#F0566E">still hot.</span></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw, SVG } = EX;
+const { ART } = PAPER;
+EX.chrome(3, 7, "The 2-second journey");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+// chapter card with a hero: two banks joined by a road, a coin running along it
+const hero = `<svg class="abs" style="left:0;top:0;overflow:visible" width="780" height="760">${ISO.road("M200 330 C 360 380, 380 560, 560 600", { wd: 60 })}</svg>
+  <div class="abs" style="left:-40px;top:0">${ISO.bank({ w: 380, color: "#3E7BFA", id: "hb1", label: "YOUR BANK" })}</div>
+  <div class="abs" style="left:380px;top:330px">${ISO.bank({ w: 360, color: "#F5A524", id: "hb2", label: "CHAI WALA'S" })}</div>
+  <div class="abs" id="heroCoin" style="left:300px;top:380px">${ISO.coin({ size: 130, label: "₹10" })}</div>`;
+EX.chapterCard2(3, "The 2-second journey", 0.05, 2.3, { hero, heroAnim: (el, t) => tl.fromTo("#heroCoin", { x: -60, y: -40, rotation: -30 }, { x: 80, y: 60, rotation: 30, duration: 1.4, ease: "sine.inOut", immediateRender: false }, t) });
+const END = W.last() + 1.6;
+const T = { two: w("all of that") - 0.05 };
+show("#sA", 2.25, T.two + 0.01, { y: 0 });
+
+// ---------------------------------------------------------------- the world
+(function () { const r = rng(5); for (let i = 0; i < 5; i++) { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${r() * 1800}px;top:${30 + r() * 120}px`; el.innerHTML = ISO.cloud({ w: 180 + r() * 140 }); $("#clouds").appendChild(el); tl.fromTo(el, { x: 0 }, { x: 140, duration: 40, ease: "none", immediateRender: false }, 0); } })();
+$("#city").innerHTML = ISO.city({ h: 230, color: "#C3D6F0", seed: 14 });
+[[470, 560, 150], [660, 380, 130], [1220, 400, 120], [600, 740, 140], [1480, 520, 110], [40, 380, 120]].forEach(([x, y, h]) => $("#trees").insertAdjacentHTML("beforeend", `<div class="abs" style="left:${x}px;top:${y}px">${ISO.tree({ h })}</div>`));
+const C = { you: [345, 790], app: [188, 470], ref: [960, 690], yb: [1658, 470], cb: [1340, 860], spk: [1790, 820] };
+const RD = [["r0", "M345 790 C 360 640, 200 600, 188 470"], ["r1", "M188 470 C 420 520, 640 700, 960 690"], ["r2", "M960 690 C 1250 690, 1450 520, 1658 470"], ["r3", "M960 690 C 1100 740, 1200 860, 1340 860"], ["r4", "M1340 860 C 1500 900, 1650 840, 1790 820"]];
+$("#roads").innerHTML = RD.map(([id, d]) => ISO.road(d, { wd: 46, id })).join("");
+$("#nApp").innerHTML = ISO.bank({ w: 380, color: "#7B61FF", id: "ba", label: "APP'S BANK" });
+$("#nYB").innerHTML = ISO.bank({ w: 380, color: "#3E7BFA", id: "yb", label: "YOUR BANK" });
+$("#nCB").innerHTML = ISO.bank({ w: 360, color: "#F5A524", id: "cb", label: "CHAI WALA'S" });
+$("#pod").innerHTML = ISO.podium({ w: 380, label: "NPCI" });
+$("#refBox").innerHTML = ART.referee({ w: 200, id: "rf" });
+$("#nSt").innerHTML = ISO.stall({ w: 320, id: "st", speaker: true });
+$("#youBox").innerHTML = ART.you({ w: 190, id: "yo", shirt: "#3E7BFA" });
+const ph = EX.phoneBox("#phBox", { x: 0, y: 0, w: 130, accent: "#12A4C4", id: "ph" });
+ph.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="m" style="font-size:11px;color:#8A94B0">PAY</div><div class="big" style="font-size:38px;color:#fff;margin-top:6px">₹10</div><div id="payBtn" style="margin-top:16px;width:76px;height:28px;border-radius:999px;background:#5BE49B"></div></div>`;
+$("#env").innerHTML = ISO.env({ w: 92 });
+$("#coin").innerHTML = ISO.coin({ size: 86, label: "₹10" });
+$("#dots").innerHTML = [1, 2, 3, 4, 5, 6].map(() => `<i style="display:block;width:18px;height:18px;border-radius:50%;background:rgba(27,35,64,.18)"></i>`).join("");
+
+// build-in: roads draw, buildings drop from the sky one by one
+const nodes = ["#nApp", "#nYB", "#nRef", "#nYou", "#nCB", "#nSt"], labels = ["#lApp", "#lYB", "#lRef", "#lYou", "#lCB"];
+gsap.set([...nodes, ...labels, "#badge", "#msg", "#book", "#bRef", "#bYB", "#bal", "#minus", "#plus", "#recv"], { autoAlpha: 0 });
+draw($$("#roads path"), 2.4, 1.0);
+(window.__trans = window.__trans || []).push([2.3, 3.7]);
+nodes.forEach((n, i) => EX.drop(n, 2.35 + i * 0.12, { from: -1000 }));
+labels.forEach((l, i) => pop(l, 3.0 + i * 0.08, { from: 0.6, sfx: false }));
+
+// focus: dim everything except the actors of this step
+const all = [...nodes, ...labels];
+const focus = (t, keep) => { tl.to(all, { opacity: (i, el) => (keep.some((k) => el.matches(k)) ? 1 : 0.35), duration: 0.3 }, t); };
+const unfocus = (t) => tl.to(all, { opacity: 1, duration: 0.3 }, t);
+
+// steps
+const stepT = ["step one", "step two", "step three", "step four", "step five", "step six"].map((s) => w(s));
+stepT.forEach((t, i) => {
+  if (i === 0) tl.fromTo("#badge", { autoAlpha: 0, y: -60, rotationX: 80 }, { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.45, ease: "back.out(2)", immediateRender: false }, t);
+  tl.fromTo("#stepN", { scale: 1.8, rotation: -15 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.5)", immediateRender: false }, t);
+  tl.to($$("#dots i")[i], { backgroundColor: "#F5A524", scale: 1.3, duration: 0.2 }, t);
+  sfx(t, "chime", { gain: 0.14 });
+});
+REEL.onFrame((t) => { let n = 1; stepT.forEach((s, i) => { if (t >= s) n = i + 1; }); $("#stepN").textContent = n; });
+const glow = (id, t, c = "#12A4C4") => tl.fromTo(id, { filter: `drop-shadow(0 0 0px ${c})` }, { filter: `drop-shadow(0 0 30px ${c})`, duration: 0.25, yoyo: true, repeat: 1, immediateRender: false }, t);
+const travel = (el, road, t, dur = 0.7, rev = false) => {
+  tl.set(el, { opacity: 1 }, t);
+  tl.fromTo(el, { motionPath: { path: road, align: road, alignOrigin: [0.5, 0.5], start: rev ? 1 : 0, end: rev ? 1 : 0 } }, { motionPath: { path: road, align: road, alignOrigin: [0.5, 0.5], start: rev ? 1 : 0, end: rev ? 0 : 1 }, duration: dur, ease: "power1.inOut", immediateRender: false }, t);
+  sfx(t, "swish", { gain: 0.14 });
+};
+
+// press pay
+tl.to("#payBtn", { scale: 0.85, duration: 0.08, yoyo: true, repeat: 1 }, w("press pay"));
+sfx(w("press pay"), "click", { gain: 0.3 });
+tl.to("#phBox", { keyframes: { scale: [1, 1.15, 1] }, duration: 0.3 }, w("press pay"));
+// step 1: the message
+focus(stepT[0], ["#nYou", "#nApp", "#nRef", "#lYou", "#lApp", "#lRef"]);
+tl.fromTo("#msg", { autoAlpha: 0, rotation: -8, y: 50 }, { autoAlpha: 1, rotation: -2, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("writes a little"));
+sfx(w("writes a little"), "paper", { gain: 0.25 });
+travel("#env", "#r0", w("hands it"), 0.7); glow("#nApp", w("partner bank"), "#7B61FF");
+travel("#env", "#r1", w("passes it"), 0.8); glow("#nRef", w("to the referee"), "#F5A524");
+tl.to("#msg", { autoAlpha: 0, duration: 0.25 }, stepT[1] - 0.2);
+tl.set("#env", { opacity: 0 }, stepT[1]);
+// step 2: the phone book
+focus(stepT[1], ["#nRef", "#nCB", "#lRef", "#lCB"]);
+tl.fromTo("#book", { autoAlpha: 0, rotation: 8, y: -50 }, { autoAlpha: 1, rotation: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("looks at"));
+sfx(w("looks at"), "paper", { gain: 0.25 });
+tl.to("#bookHit", { backgroundColor: "rgba(245,165,36,.45)", duration: 0.2 }, w("which bank is"));
+tl.to("#rfBrowL", { y: -8, duration: 0.15, yoyo: true, repeat: 1 }, w("which bank is"));
+glow("#nCB", w("this guy"), "#F5A524");
+tl.to("#book", { autoAlpha: 0, duration: 0.25 }, stepT[2] - 0.2);
+// step 3: ask your bank
+focus(stepT[2], ["#nRef", "#nYB", "#lRef", "#lYB"]);
+travel("#env", "#r2", w("goes to your"), 0.8);
+pop("#bRef", w("this person wants"), { sfx: "bloop", gain: 0.15 });
+tl.set("#env", { opacity: 0 }, w("this person wants"));
+pop("#bYB", w("show me"), { sfx: "bloop", gain: 0.15 });
+tl.to("#ybFace", { y: -6, duration: 0.15, yoyo: true, repeat: 1 }, w("show me"));
+tl.to(["#bRef", "#bYB"], { autoAlpha: 0, duration: 0.2 }, stepT[3] - 0.2);
+// step 4: PIN ok, balance, take out ten
+focus(stepT[3], ["#nYB", "#lYB", "#nRef", "#lRef"]);
+tl.to("#ybFace", { scale: 1.1, transformOrigin: "50% 50%", duration: 0.15, yoyo: true, repeat: 1 }, w("checks the pin"));
+sfx(w("checks the pin"), "ding", { gain: 0.15 });
+tl.fromTo("#bal", { autoAlpha: 0, rotation: 6 }, { autoAlpha: 1, rotation: 2, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("checks your balance"));
+sfx(w("checks your balance"), "paper", { gain: 0.2 });
+tl.fromTo("#sweat", { opacity: 1, y: 0 }, { y: 40, opacity: 0, duration: 0.7, repeat: 1, immediateRender: false }, w("tense moment") - 0.3);
+sfx(w("tense moment"), "glitch", { gain: 0.08 });
+EX.countUp("#balN", 1240, 1230, w("takes out"), 0.4, (v) => Math.round(v).toLocaleString("en-US"));
+pop("#minus", w("takes out"), { sfx: "coin", gain: 0.2 });
+travel("#coin", "#r2", w("takes out") + 0.3, 0.8, true);
+tl.to(["#bal", "#minus"], { autoAlpha: 0, duration: 0.25 }, stepT[4] - 0.2);
+// step 5: add ten to the chai wala's bank
+focus(stepT[4], ["#nRef", "#nCB", "#lRef", "#lCB"]);
+travel("#coin", "#r3", w("tells the chai"), 0.8);
+tl.set("#coin", { opacity: 0 }, w("add ten"));
+pop("#plus", w("add ten"), { sfx: "coin", gain: 0.25 });
+glow("#nCB", w("add ten"), "#22B573");
+tl.to("#cbFace", { scale: 1.12, transformOrigin: "50% 50%", duration: 0.15, yoyo: true, repeat: 1 }, w("add ten"));
+// step 6: confirmations everywhere, speaker shouts
+unfocus(stepT[5]);
+const tConf = w("everyone sends");
+RD.forEach(([id], i) => {
+  const el = document.createElement("div");
+  el.className = "abs";
+  el.style.cssText = "left:0;top:0";
+  el.innerHTML = `<div style="width:50px;height:50px;border-radius:50%;background:#22B573;color:#fff;font-weight:900;font-size:30px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(27,35,64,.25)">✓</div>`;
+  $("#ticks").appendChild(el);
+  gsap.set(el, { autoAlpha: 0 });
+  tl.set(el, { autoAlpha: 1 }, tConf + i * 0.12);
+  tl.fromTo(el, { motionPath: { path: "#" + id, align: "#" + id, alignOrigin: [0.5, 0.5], start: 1, end: 1 } }, { motionPath: { path: "#" + id, align: "#" + id, alignOrigin: [0.5, 0.5], start: 1, end: 0 }, duration: 0.7, ease: "power2.inOut", immediateRender: false }, tConf + i * 0.12);
+  tl.to(el, { autoAlpha: 0, duration: 0.15 }, tConf + i * 0.12 + 0.7);
+  sfx(tConf + i * 0.12, "tick", { gain: 0.15 });
+});
+tl.to("#plus", { autoAlpha: 0, duration: 0.2 }, w("the little speaker"));
+tl.fromTo("#recv", { autoAlpha: 0, y: -50, rotation: -10 }, { autoAlpha: 1, y: 0, rotation: 3, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("ten rupees received"));
+tl.fromTo("#spkRing", { opacity: 1, scale: 0.8 }, { opacity: 0, scale: 1.5, duration: 0.45, repeat: 2, immediateRender: false }, w("ten rupees received"));
+sfx(w("ten rupees received"), "ding", { gain: 0.3 });
+
+// ---------------------------------------------------------------- dive into the referee -> 2 seconds
+EX.dive("#sA", "#sB", T.two, 960, 560);
+gsap.set("#sB", { autoAlpha: 0 });
+$("#raysB").innerHTML = Array.from({ length: 24 }, (_, i) => `<path d="M1600 1600 L${1600 + 1700 * Math.cos((i / 24) * 6.283)} ${1600 + 1700 * Math.sin((i / 24) * 6.283)} L${1600 + 1700 * Math.cos(((i + 0.5) / 24) * 6.283)} ${1600 + 1700 * Math.sin(((i + 0.5) / 24) * 6.283)} Z" fill="#F0566E"/>`).join("");
+tl.fromTo("#raysB", { rotation: 0 }, { rotation: 30, duration: END - T.two, ease: "none", immediateRender: false }, T.two);
+(function () { const r = rng(9); for (let i = 0; i < 8; i++) { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${[60, 820, 1700, 1500, 1820, 700, 1300, 90][i]}px;top:${[60, 90, 120, 520, 860, 900, 940, 900][i]}px`; el.innerHTML = ISO.coin({ size: 60 + r() * 40 }); $("#confB").appendChild(el); tl.fromTo(el, { autoAlpha: 0, scale: 0.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.two + 0.4 + i * 0.06); tl.to(el, { y: -26, rotation: 25, duration: 1.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, T.two + 0.9); } })();
+// a chunky 3D stopwatch
+const face = (ox, oy, f) => `<circle cx="${310 + ox}" cy="${400 + oy}" r="270" fill="${f}"/>`;
+$("#watch").innerHTML = `<svg viewBox="0 0 620 720" width="620" height="720" style="overflow:visible">
+  ${ISO.shadow(330, 690, 280, 30, 0.2)}
+  <rect x="270" y="70" width="80" height="60" rx="12" fill="#C7364C"/><rect x="250" y="40" width="120" height="40" rx="14" fill="#F0566E"/>
+  ${ISO.extrude(face, 40, "#F0566E", "#F0566E", 12)}
+  <circle cx="310" cy="400" r="232" fill="#fff"/>
+  ${Array.from({ length: 60 }, (_, i) => { const a = (i / 60) * 6.283, r1 = i % 5 ? 214 : 196; return `<line x1="${310 + Math.sin(a) * r1}" y1="${400 - Math.cos(a) * r1}" x2="${310 + Math.sin(a) * 224}" y2="${400 - Math.cos(a) * 224}" stroke="#1B2340" stroke-width="${i % 5 ? 3 : 7}"/>`; }).join("")}
+  <rect x="220" y="470" width="180" height="70" rx="14" fill="#1B2340"/><text id="wNum" x="310" y="522" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="44" fill="#5BE49B">0.00</text>
+  <g id="hand"><path d="M306 400 L310 190 L314 400 Z" fill="#F0566E"/><circle cx="310" cy="400" r="18" fill="#1B2340"/></g>
+</svg>`;
+gsap.set(["#watch", "#allOf", "#twoS", "#cupB", "#hot"], { autoAlpha: 0 });
+pop("#watch", T.two + 0.25, { from: 0.3, sfx: "pop" });
+const tW = w("about two") - 0.3;
+tl.fromTo("#hand", { rotation: 0 }, { rotation: 720, svgOrigin: "310 400", duration: 1.2, ease: "power1.inOut", immediateRender: false }, tW);
+REEL.onFrame((t) => { const v = Math.max(0, Math.min(2, ((t - tW) / 1.2) * 2)); $("#wNum").textContent = v.toFixed(2); });
+every(tW, tW + 1.2, 0.1, (t) => sfx(t, "tick", { gain: 0.08 }));
+sfx(tW + 1.2, "ding", { gain: 0.3 });
+rise("#allOf", w("all of that") + 0.1);
+tl.fromTo("#twoS", { autoAlpha: 0, scale: 1.8, rotationX: 70 }, { autoAlpha: 1, scale: 1, rotationX: 0, duration: 0.5, ease: "back.out(1.8)", immediateRender: false }, w("two seconds"));
+sfx(w("two seconds"), "slam", { gain: 0.22 });
+$("#cupB").innerHTML = ART.chai({ w: 140, id: "hc" });
+pop("#cupB", w("your chai"), { from: 0.4 });
+every(w("your chai"), END, 0.45, (t) => tl.fromTo("#hcSteam", { y: 0, opacity: 0.9 }, { y: -26, opacity: 0, duration: 0.45, ease: "none", immediateRender: false }, t));
+tl.fromTo("#hot", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.35, immediateRender: false }, w("cooled down") - 0.3);
+
+REEL.finish(END);
+</script>
+</body></html>

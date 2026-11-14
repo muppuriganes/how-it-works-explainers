@@ -1,0 +1,481 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ch1 One hello</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.contact{display:flex;align-items:center;gap:18px;padding:18px 22px;border-bottom:1px solid #1E2846;font-family:Archivo;font-weight:700;font-size:28px;color:#EEF2F7}
+.contact .av{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#0A0F1E}
+.bg{position:absolute;inset:0}
+.kw{position:absolute;left:150px;font-family:Archivo;font-weight:900;font-stretch:68%;font-size:250px;line-height:.86;letter-spacing:-0.01em;color:#EEF2F7}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.panel{position:absolute;top:0;width:1920px;height:1080px;overflow:hidden}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+#mm{position:absolute;left:470px;top:84px;width:980px;height:96px;border-radius:999px;background:rgba(10,15,30,.88);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#mm .d{position:absolute;top:24px;width:22px;height:22px;border-radius:50%;background:#1E2846;border:3px solid #3a4a78}
+#mm .t{position:absolute;top:56px;width:160px;margin-left:-69px;text-align:center;font-family:"JetBrains Mono";font-weight:700;font-size:14px;letter-spacing:.12em;color:#8A94B0}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:#0A0F1E;color:#EEF2F7;font-family:"JetBrains Mono";font-weight:700;font-size:18px;letter-spacing:.05em;white-space:nowrap}
+.pill b{color:#3EE0FF}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="../../../lib/vendor/d3.min.js"></script>
+<script src="../../../lib/world.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/art.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: open, tap, call -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(135deg,#0A0F1E 0%,#1B1550 100%)"></div>
+    <div id="bokeh" class="abs" style="inset:0"></div>
+    <div class="kw" id="kw1" style="top:250px">OPEN<span style="color:#3EE0FF">.</span></div>
+    <div class="kw" id="kw2" style="top:470px">TAP<span style="color:#FF5D73">.</span></div>
+    <div class="kw" id="kw3" style="top:690px">CALL<span style="color:#5BE49B">.</span></div>
+    <div id="s1in" class="abs" style="inset:0"></div>
+  </section>
+
+  <!-- S2: night in Mumbai, noon in New York -->
+  <section class="scene" id="s2">
+    <div id="night" class="panel" style="left:0;width:960px;background:linear-gradient(180deg,#060a26 0%,#1b2a6e 100%)">
+      <div id="stars2" class="abs" style="inset:0"></div>
+      <div class="abs" style="left:700px;top:110px" id="moon"></div>
+      <div class="abs" style="left:0;top:620px" id="skyN"></div>
+      <div class="abs" style="left:300px;top:390px" id="you"></div>
+      <div class="abs pill" style="left:60px;top:140px"><b>MUMBAI</b> 9:30 PM</div>
+    </div>
+    <div id="day" class="panel" style="left:960px;width:960px;background:linear-gradient(180deg,#5db6ff 0%,#cdeeff 100%)">
+      <div class="abs" style="left:120px;top:90px" id="sun"></div>
+      <div class="abs" style="left:560px;top:150px" id="cl1"></div>
+      <div class="abs" style="left:0;top:560px" id="skyD"></div>
+      <div class="abs" style="left:0;top:880px;width:960px;height:200px;background:linear-gradient(180deg,#c98a5a,#a86a40)"></div>
+      <div id="frBox" class="abs" style="inset:0"></div>
+      <div class="abs pill" style="right:60px;top:140px"><b style="color:#FF5D73">NEW YORK</b> 12:00 PM</div>
+    </div>
+    <div id="divider" class="abs" style="left:957px;top:0;width:6px;height:1080px;background:#EEF2F7;box-shadow:0 0 30px #3EE0FF"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path id="farPath" d="M560 470 Q960 140 1360 470" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-dasharray="4 18" stroke-linecap="round"/></svg>
+    <div id="farChip" class="chip" style="left:842px;top:236px;color:#0A0F1E;background:#EEF2F7;border-color:#EEF2F7">12,500 KM</div>
+    <div id="otherSide" class="abs" style="left:0;right:0;top:640px;text-align:center">
+      <div class="lbl" style="position:relative;font-size:170px;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.6)"><span>THE</span> <span>OTHER</span> <span>SIDE</span></div>
+      <div class="serif" style="font-size:84px;color:#fff;margin-top:4px;text-shadow:0 6px 24px rgba(0,0,0,.7)">of the planet</div>
+    </div>
+  </section>
+
+  <!-- S3: the globe in space -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 50%,#0d1640 0%,#03050d 70%)"></div>
+    <canvas id="stars" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <canvas id="globe" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div id="s3lab" class="abs" style="inset:0"></div>
+    <div id="timer" class="abs card" style="left:1300px;top:330px;width:520px;padding:30px 40px;white-space:nowrap;background:rgba(10,15,30,.75);backdrop-filter:blur(6px)">
+      <div class="m" style="font-size:20px;color:var(--dim)">THEIR VOICE REACHES YOU IN</div>
+      <div class="big" style="font-size:170px;color:var(--cyan);margin-top:10px"><span id="tval">0.00</span><span style="font-size:64px;color:var(--ink)"> sec</span></div>
+      <div class="serif" style="font-size:40px;color:#EEF2F7;margin-top:4px">about a quarter of a second</div>
+    </div>
+  </section>
+
+  <!-- S4a: in that tiny moment -->
+  <section class="scene" id="s4a">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#6b35d1 0%,#2a145c 75%)"></div>
+    <svg id="ring" class="abs" style="left:560px;top:140px" width="800" height="800" viewBox="-400 -400 800 800">
+      <circle id="ringC" r="360" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="6" transform="rotate(-90)"/>
+      <g stroke="rgba(255,255,255,.35)" stroke-width="4">${''}</g>
+      <line id="hand" x1="0" y1="0" x2="0" y2="-330" stroke="#FFB547" stroke-width="8" stroke-linecap="round"/>
+      <circle r="14" fill="#FFB547"/>
+    </svg>
+    <div id="tiny" class="abs serif" style="left:0;right:0;top:430px;text-align:center;font-size:150px;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.4)">In that tiny moment</div>
+  </section>
+
+  <!-- S4b: the journey through five worlds -->
+  <section class="scene" id="s4b">
+    <div id="strip" class="abs" style="left:0;top:0;width:9600px;height:1080px">
+      <div class="panel" id="pA" style="left:0;background:#FFB547"></div>
+      <div class="panel" id="pB" style="left:1920px;background:#EEF2F7"></div>
+      <div class="panel" id="pC" style="left:3840px;background:linear-gradient(180deg,#0b2a8a 0%,#2f8fe0 100%)"></div>
+      <div class="panel" id="pD" style="left:5760px;background:linear-gradient(180deg,#0b5a7a 0%,#02121f 100%)"></div>
+      <div class="panel" id="pE" style="left:7680px;background:#FF5D73"></div>
+    </div>
+    <div id="mm"></div>
+  </section>
+
+  <!-- S5: title -->
+  <section class="scene" id="s5">
+    <div id="s5bg" class="bg" style="background:#3EE0FF"></div>
+    <div id="s5deco" class="abs" style="inset:0"></div>
+    <div class="abs" style="left:0;right:0;top:170px;text-align:center;color:#0A0F1E">
+      <div class="m" id="t5a" style="font-size:28px;letter-spacing:.34em">HOW IT WORKS</div>
+      <div class="big" id="t5b" style="font-size:170px;margin-top:30px">How a phone call</div>
+      <div class="big" id="t5c" style="font-size:170px;margin-top:6px;color:#fff;-webkit-text-stroke:0;text-shadow:0 8px 0 #0A0F1E">connects</div>
+      <div class="serif" id="t5d" style="font-size:64px;margin-top:40px">from your mouth to their ear</div>
+    </div>
+    <div id="road" class="abs" style="left:0;right:0;top:820px;display:flex;justify-content:center;gap:12px"></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, pop, rise, fade, hide, draw, SVG, chip } = EX;
+EX.chrome(1, 7, "One hello");
+EX.subtitles();
+const END = W.last() + 1.8;
+const T = {
+  s2: w("a few seconds") - 0.05,
+  s3: w("and when your") - 0.25,
+  s4a: w("in that tiny") - 0.15,
+  s4b: w("moment") + 0.35,
+  s5: w("let's follow") - 0.2,
+};
+tl.to(["#tag", "#prog"], { autoAlpha: 1, duration: 0.5 }, 0.2);
+tl.to(["#tag", "#prog"], { autoAlpha: 0, duration: 0.3 }, T.s4a);
+const show = (id, a, b, from = {}) => {
+  tl.set(id, { autoAlpha: 0 }, 0);
+  tl.fromTo(id, Object.assign({ autoAlpha: 0 }, from), { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, a);
+  if (b != null) tl.set(id, { autoAlpha: 0 }, b);
+};
+
+// ================================================= S1: open, tap, call
+show("#s1", 0, T.s2 + 0.6);
+// floating app icons (bokeh)
+(function () {
+  const r = rng(4), cols = ["#3EE0FF", "#FF5D73", "#FFB547", "#5BE49B", "#9B8CFF"];
+  for (let i = 0; i < 16; i++) {
+    const s = 60 + r() * 90, el = document.createElement("div");
+    el.className = "abs";
+    el.style.cssText = `left:${r() * 1920}px;top:${200 + r() * 900}px;width:${s}px;height:${s}px;border-radius:${s * 0.26}px;background:${cols[i % 5]};opacity:${(0.06 + r() * 0.1).toFixed(2)};filter:blur(${(r() * 3).toFixed(1)}px)`;
+    $("#bokeh").appendChild(el);
+    tl.fromTo(el, { y: 0, rotation: r() * 20 - 10 }, { y: -260 - r() * 200, rotation: r() * 40 - 20, duration: 5, ease: "none", immediateRender: false }, 0);
+  }
+})();
+const HANDSET = (c, rot) => `<svg width="46" height="46" viewBox="0 0 24 24"><path transform="rotate(${rot} 12 12)" fill="${c}" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>`;
+const PX = 1150, PY = 140;
+const me = EX.phoneBox("#s1in", { x: PX, y: PY, w: 300, accent: "#3EE0FF", id: "me" });
+me.scr.innerHTML = `
+  <div class="abs" style="inset:0;background:#0E1530">
+    <div class="m" style="padding:30px 22px 14px;font-size:18px;color:#8A94B0">CONTACTS</div>
+    ${[["MOM", "#FFB547"], ["PRIYA", "#FF5D73"], ["RAHUL", "#5BE49B"], ["SAM", "#9B8CFF"], ["ANU", "#3EE0FF"]].map(([n, c]) => `<div class="contact" ${n === "PRIYA" ? 'id="cPriya"' : ""}><div class="av" style="background:${c}">${n[0]}</div>${n[0] + n.slice(1).toLowerCase()}</div>`).join("")}
+  </div>
+  <div id="detail" class="abs" style="inset:0;background:#0E1530;display:flex;flex-direction:column;align-items:center;opacity:0">
+    <div style="margin-top:90px;width:130px;height:130px;border-radius:50%;background:#FF5D73;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:60px;color:#0A0F1E">P</div>
+    <div class="h" style="font-size:44px;margin-top:26px">Priya</div>
+    <div class="m" style="font-size:18px;color:#8A94B0;margin-top:12px">MOBILE · USA</div>
+    <div style="position:absolute;bottom:60px;width:96px;height:96px;border-radius:50%;background:#5BE49B;display:flex;align-items:center;justify-content:center">${HANDSET("#0A0F1E", 0)}</div>
+  </div>
+  <div id="calling" class="abs" style="inset:0;background:linear-gradient(180deg,#14204a,#0E1530);display:flex;flex-direction:column;align-items:center;opacity:0">
+    <div id="callAv" style="margin-top:90px;width:130px;height:130px;border-radius:50%;background:#FF5D73;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:60px;color:#0A0F1E;box-shadow:0 0 0 0 rgba(255,93,115,.6)">P</div>
+    <div class="h" style="font-size:44px;margin-top:26px">Priya</div>
+    <div class="m" style="font-size:18px;color:#8A94B0;margin-top:12px">CALLING</div>
+    <div style="position:absolute;bottom:60px;width:96px;height:96px;border-radius:50%;background:#FF5D73;display:flex;align-items:center;justify-content:center">${HANDSET("#fff", 135)}</div>
+  </div>`;
+tl.fromTo("#me", { y: 200, rotation: 8, autoAlpha: 0 }, { y: 0, rotation: 0, autoAlpha: 1, duration: 0.8, ease: "back.out(1.4)", immediateRender: false }, 0.05);
+sfx(0.05, "whoosh", { gain: 0.2, dur: 0.5 });
+// kinetic words
+gsap.set(["#kw1", "#kw2", "#kw3"], { autoAlpha: 0, x: -120 });
+[["#kw1", w("open")], ["#kw2", w("tap")], ["#kw3", w("call", W.find("press"))]].forEach(([id, t], i, arr) => {
+  tl.to(id, { autoAlpha: 1, x: 0, duration: 0.35, ease: "expo.out" }, t);
+  sfx(t, "swish", { gain: 0.16 });
+  if (i > 0) tl.to(arr[i - 1][0], { opacity: 0.22, duration: 0.3 }, t);
+});
+// the hand taps a name, then call
+const hand = document.createElement("div");
+hand.className = "abs";
+hand.innerHTML = ART.hand({ w: 150 });
+$("#s1in").appendChild(hand);
+const NAME = [PX + 150, PY + 24.5 + 70 + 90 + 45], CALL = [PX + 150, PY + 24.5 + 566 - 60 - 48];
+gsap.set(hand, { left: NAME[0] - 75, top: NAME[1], y: 700, rotation: -12, transformOrigin: "50% 0%" });
+const tTap = w("name") + 0.05, tCall = w("call", W.find("press")) + 0.2;
+tl.to(hand, { y: 0, rotation: -6, duration: 0.45, ease: "power3.out" }, tTap - 0.45);
+tl.to(hand, { scale: 0.94, duration: 0.07, yoyo: true, repeat: 1 }, tTap);
+EX.tap("#s1in", NAME[0], NAME[1], tTap);
+tl.to("#cPriya", { backgroundColor: "rgba(255,93,115,.2)", duration: 0.12 }, tTap);
+tl.to("#detail", { opacity: 1, duration: 0.25 }, tTap + 0.3);
+tl.to(hand, { top: CALL[1], duration: 0.45, ease: "power2.inOut" }, tCall - 0.5);
+tl.to(hand, { scale: 0.94, duration: 0.07, yoyo: true, repeat: 1 }, tCall);
+EX.tap("#s1in", CALL[0], CALL[1], tCall);
+tl.to("#calling", { opacity: 1, duration: 0.3 }, tCall + 0.1);
+tl.to(hand, { y: 700, rotation: -20, duration: 0.5, ease: "power2.in" }, tCall + 0.25);
+tl.to("#callAv", { keyframes: { boxShadow: ["0 0 0 0px rgba(255,93,115,.6)", "0 0 0 40px rgba(255,93,115,0)"] }, duration: 0.8, repeat: 1 }, tCall + 0.3);
+tl.to("#s1in", { scale: 0.9, x: 120, duration: 0.5, ease: "power2.in" }, T.s2 - 0.15);
+
+// ================================================= S2: two cities, one call
+show("#s2", T.s2, T.s3 + 0.5);
+$("#moon").innerHTML = ART.moon(130);
+$("#skyN").innerHTML = ART.skyline({ w: 960, h: 460, seed: 11, color: "#0c1442", win: "#FFD27A", lit: 0.42, minH: 160, maxH: 400 });
+$("#you").innerHTML = ART.caller({ w: 300, shirt: "#2a5bd7", id: "you" });
+$("#sun").innerHTML = ART.sun(220);
+$("#cl1").innerHTML = ART.cloud({ w: 300 });
+$("#skyD").innerHTML = ART.skyline({ w: 960, h: 360, seed: 23, color: "#3b6aa8", win: "#cfe8ff", lit: 0.25, minH: 140, maxH: 340 });
+(function () { const r = rng(9); for (let i = 0; i < 60; i++) $("#stars2").insertAdjacentHTML("beforeend", `<div class="abs" style="left:${r() * 960}px;top:${r() * 560}px;width:${2 + r() * 3}px;height:${2 + r() * 3}px;border-radius:50%;background:#fff;opacity:${(0.3 + r() * 0.7).toFixed(2)}"></div>`); })();
+const fr = EX.phoneBox("#frBox", { x: 420, y: 330, w: 230, accent: "#FF5D73", id: "fr" });
+fr.scr.innerHTML = `<div class="abs" style="inset:0;background:linear-gradient(180deg,#3a1630,#0E1530);display:flex;flex-direction:column;align-items:center">
+  <div class="m" style="margin-top:56px;font-size:14px;color:#FF9BAA">INCOMING CALL</div>
+  <div style="margin-top:34px;width:96px;height:96px;border-radius:50%;background:#3EE0FF;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:46px;color:#0A0F1E">Y</div>
+  <div class="h" style="font-size:34px;margin-top:20px">You</div>
+  <div style="position:absolute;bottom:40px;width:74px;height:74px;border-radius:50%;background:#5BE49B;display:flex;align-items:center;justify-content:center">${HANDSET("#0A0F1E", 0)}</div></div>`;
+const frRings = document.createElement("div");
+frRings.className = "abs"; frRings.style.cssText = "left:425px;top:190px";
+frRings.innerHTML = SVG.arcs({ size: 220, color: "#FF5D73" });
+$("#frBox").appendChild(frRings);
+tl.fromTo("#night", { xPercent: -100 }, { xPercent: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, T.s2);
+tl.fromTo("#day", { xPercent: 100 }, { xPercent: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, T.s2 + 0.25);
+tl.fromTo("#divider", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "expo.out", immediateRender: false }, T.s2 + 0.5);
+sfx(T.s2, "whoosh", { gain: 0.26, dur: 0.5 });
+sfx(T.s2 + 0.25, "whoosh", { gain: 0.22, dur: 0.5 });
+tl.fromTo("#you", { y: 120 }, { y: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, T.s2 + 0.15);
+for (let k = 0; k < 8; k++) tl.to("#youMouth", { ry: k % 2 ? 6 : 12, duration: 0.12 }, T.s2 + 0.4 + k * 0.13);
+tl.fromTo("#sun .rays", { rotation: 0, transformOrigin: "0 0" }, { rotation: 40, duration: 4, ease: "none", immediateRender: false }, T.s2);
+tl.fromTo("#cl1", { x: 0 }, { x: -120, duration: 4, ease: "none", immediateRender: false }, T.s2);
+draw("#farPath", T.s2 + 0.8, 0.9);
+gsap.set("#farChip", { autoAlpha: 0 });
+pop("#farChip", T.s2 + 1.4);
+const tRing = w("rings");
+for (let k = 0; k < 10; k++) tl.to("#fr", { rotation: k % 2 ? -4 : 4, duration: 0.06 }, tRing + k * 0.06);
+tl.to("#fr", { rotation: 0, duration: 0.06 }, tRing + 0.6);
+[0, 0.6].forEach((o) => { sfx(tRing + o, "beep", { gain: 0.15, pitch: 0.75 }); sfx(tRing + o + 0.14, "beep", { gain: 0.15, pitch: 0.85 }); });
+EX.pulseArcs(frRings, tRing, T.s3, 0.65);
+gsap.set("#otherSide span, #otherSide .serif", { autoAlpha: 0, y: 40 });
+["other", "side"].forEach((wd, i) => tl.to($$("#otherSide span")[i + 1], { autoAlpha: 1, y: 0, duration: 0.25, ease: "expo.out" }, W(W.find(wd, W.find("rings")))));
+tl.to($$("#otherSide span")[0], { autoAlpha: 1, y: 0, duration: 0.25, ease: "expo.out" }, w("the other") );
+tl.to("#otherSide .serif", { autoAlpha: 1, y: 0, duration: 0.35, ease: "expo.out" }, w("planet"));
+sfx(w("other side"), "slam", { gain: 0.22 });
+// zoom out into space
+tl.to(["#night", "#day", "#divider", "#farPath", "#farChip", "#otherSide"], { scale: 0.4, autoAlpha: 0, duration: 0.55, ease: "power3.in", transformOrigin: "50% 50%" }, T.s3 - 0.3);
+
+// ================================================= S3: the globe in space
+show("#s3", T.s3 - 0.1, T.s4a + 0.4, { scale: 1.4 });
+sfx(T.s3 - 0.1, "whoosh", { gain: 0.3, dur: 0.8 });
+(function () {
+  const c = $("#stars").getContext("2d"), r = rng(31);
+  const S = Array.from({ length: 260 }, () => ({ x: r() * 1920, y: r() * 1080, s: 0.6 + r() * 2.2, ph: r() * 6, sp: 1 + r() * 3 }));
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.s3 - 0.2 || t > T.s4a + 0.5) return;
+    for (const p of S) { c.globalAlpha = 0.25 + 0.75 * Math.abs(Math.sin(p.ph + t * p.sp)); c.fillStyle = "#fff"; c.fillRect(p.x - (t - T.s3) * 12 * p.s, p.y, p.s, p.s); }
+    c.globalAlpha = 1;
+  });
+})();
+const cv = $("#globe"), ctx = cv.getContext("2d");
+const IN = [72.9, 19.1], US = [-74.0, 40.7];
+const proj = d3.geoOrthographic().scale(440).translate([760, 540]).clipAngle(90);
+const path = d3.geoPath(proj, ctx);
+const grat = d3.geoGraticule10();
+const interp = d3.geoInterpolate(IN, US);
+const tHello = w("says hello"), tVoice = w("their voice"), tQ = w("about a quarter");
+const arcP = { p: 0 }, pulse = { p: 0 }, sc = { s: 0.5 };
+tl.to(sc, { s: 1, duration: 1.3, ease: "power3.out" }, T.s3 - 0.1);
+tl.to(arcP, { p: 1, duration: 1.3, ease: "power2.inOut" }, T.s3 + 0.5);
+tl.to(pulse, { p: 1, duration: 1.1, ease: "power1.inOut" }, tVoice);
+REEL.onFrame((t) => {
+  ctx.clearRect(0, 0, 1920, 1080);
+  if (t < T.s3 - 0.2 || t > T.s4a + 0.5) return;
+  const lon = -12 + (t - T.s3) * 1.4;
+  proj.rotate([-lon, -36]).scale(440 * sc.s);
+  const [cx, cy] = proj.translate(), R = proj.scale();
+  const g = ctx.createRadialGradient(cx, cy, R * 0.92, cx, cy, R * 1.3);
+  g.addColorStop(0, "rgba(62,224,255,.35)"); g.addColorStop(1, "rgba(62,224,255,0)");
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.3, 0, 7); ctx.fill();
+  const og = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.35, R * 0.1, cx, cy, R);
+  og.addColorStop(0, "#1a3a8a"); og.addColorStop(1, "#08112e");
+  ctx.beginPath(); path({ type: "Sphere" }); ctx.fillStyle = og; ctx.fill();
+  ctx.beginPath(); path(grat); ctx.strokeStyle = "rgba(138,170,255,.10)"; ctx.lineWidth = 1; ctx.stroke();
+  ctx.beginPath(); path(LAND); ctx.fillStyle = "#2b4a8f"; ctx.fill(); ctx.strokeStyle = "#5d7fd0"; ctx.lineWidth = 1.2; ctx.stroke();
+  // terminator shade (night side to the east)
+  const sh = ctx.createLinearGradient(cx - R, 0, cx + R, 0);
+  sh.addColorStop(0, "rgba(0,0,0,0)"); sh.addColorStop(0.55, "rgba(0,0,0,0)"); sh.addColorStop(1, "rgba(0,0,20,.55)");
+  ctx.beginPath(); path({ type: "Sphere" }); ctx.fillStyle = sh; ctx.fill();
+  const lifted = (f) => { const p = proj(interp(f)); if (!p) return null; const L = Math.sin(Math.PI * f) * 0.2; return [cx + (p[0] - cx) * (1 + L), cy + (p[1] - cy) * (1 + L)]; };
+  const pts = [];
+  for (let i = 0; i <= 90 * arcP.p; i++) { const p = lifted(i / 90); if (p) pts.push(p); }
+  if (pts.length > 1) { ctx.beginPath(); pts.forEach((p, i) => (i ? ctx.lineTo(...p) : ctx.moveTo(...p))); ctx.strokeStyle = "#3EE0FF"; ctx.lineWidth = 5; ctx.shadowColor = "#3EE0FF"; ctx.shadowBlur = 18; ctx.stroke(); ctx.shadowBlur = 0; }
+  if (pulse.p > 0 && pulse.p < 1) {
+    for (let k = 0; k < 8; k++) { const f = Math.max(0, 1 - pulse.p - k * 0.012), p = lifted(f); if (!p) continue; ctx.beginPath(); ctx.arc(p[0], p[1], 14 - k * 1.4, 0, 7); ctx.fillStyle = `rgba(255,181,71,${1 - k / 8})`; ctx.fill(); }
+  }
+  [[IN, "#3EE0FF"], [US, "#FF5D73"]].forEach(([ll, c]) => {
+    const p = proj(ll);
+    if (!p || d3.geoDistance(ll, [lon, 36]) > Math.PI / 2) return;
+    ctx.beginPath(); ctx.arc(p[0], p[1], 12, 0, 7); ctx.fillStyle = c; ctx.fill();
+    const ph = (t * 1.4) % 1;
+    ctx.beginPath(); ctx.arc(p[0], p[1], 14 + ph * 40, 0, 7); ctx.strokeStyle = c; ctx.globalAlpha = 1 - ph; ctx.lineWidth = 3; ctx.stroke(); ctx.globalAlpha = 1;
+  });
+  const pi = proj(IN), pu = proj(US);
+  if (pi) gsap.set("#labIn", { x: pi[0] + 30, y: pi[1] - 20 });
+  if (pu) { gsap.set("#labUs", { x: pu[0] - 260, y: pu[1] + 20 }); gsap.set("#hello", { x: pu[0] - 150, y: pu[1] - 200 }); }
+});
+$("#s3lab").innerHTML = `
+  <div id="labIn" class="chip" style="left:0;top:0;color:#3EE0FF">YOU · MUMBAI</div>
+  <div id="labUs" class="chip" style="left:0;top:0;color:#FF5D73">PRIYA · NEW YORK</div>
+  <div id="hello" class="abs serif" style="left:0;top:0;font-size:72px;background:#FF5D73;color:#fff;padding:6px 34px 14px;border-radius:30px 30px 30px 6px">Hello!</div>`;
+gsap.set(["#labIn", "#labUs", "#hello", "#timer"], { autoAlpha: 0 });
+tl.to("#labIn", { autoAlpha: 1, duration: 0.3 }, T.s3 + 0.6);
+tl.to("#labUs", { autoAlpha: 1, duration: 0.3 }, T.s3 + 1.4);
+pop("#hello", tHello, { gain: 0.2 });
+tl.fromTo("#timer", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, tVoice);
+const tv = { v: 0 };
+tl.to(tv, { v: 0.25, duration: 0.9, ease: "power2.out", onUpdate: () => ($("#tval").textContent = tv.v.toFixed(2)) }, tQ);
+sfx(tQ + 0.9, "ding", { gain: 0.2 });
+
+// ================================================= S4a: in that tiny moment (slow motion beat)
+show("#s4a", T.s4a, T.s4b + 0.4, { scale: 0.9 });
+sfx(T.s4a, "riser", { gain: 0.14, dur: 1.4 });
+draw("#ringC", T.s4a, 1.6, "power1.inOut");
+tl.fromTo("#hand", { rotation: 0, svgOrigin: "0 0" }, { rotation: 300, svgOrigin: "0 0", duration: 1.8, ease: "power1.out", immediateRender: false }, T.s4a);
+tl.fromTo("#tiny", { autoAlpha: 0, scale: 1.15, letterSpacing: "0.08em" }, { autoAlpha: 1, scale: 1, letterSpacing: "0em", duration: 0.9, ease: "power2.out", immediateRender: false }, T.s4a + 0.05);
+(function () { const g = $("#ring g"); for (let k = 0; k < 60; k++) g.insertAdjacentHTML("beforeend", `<line x1="0" y1="-${k % 5 ? 330 : 310}" x2="0" y2="-345" transform="rotate(${k * 6})"/>`); })();
+
+// ================================================= S4b: five worlds, one hello
+show("#s4b", T.s4b, T.s5 + 0.6, { scale: 1.1 });
+sfx(T.s4b, "whoosh", { gain: 0.28, dur: 0.5 });
+// minimap
+const MM = ["VOICE", "NUMBERS", "WAVES", "OCEAN", "SOUND"], MMC = ["#FFB547", "#EEF2F7", "#3EE0FF", "#3EE0FF", "#FF5D73"];
+$("#mm").innerHTML = `<div class="abs" style="left:90px;right:90px;top:34px;height:4px;background:#1E2846"></div><div id="mmOn" class="abs" style="left:90px;width:800px;top:34px;height:4px;background:#3EE0FF;transform-origin:0 50%"></div>` +
+  MM.map((m, i) => `<div class="d" style="left:${90 + i * 200 - 11}px"></div><div class="t" style="left:${90 + i * 200}px">${m}</div>`).join("");
+gsap.set("#mmOn", { scaleX: 0 });
+const mmDots = $$("#mm .d"), mmT = $$("#mm .t");
+const stopT = [T.s4b, w("numbers") - 0.35, w("flies") - 0.2, w("races") - 0.2, w("and turns back") - 0.2];
+stopT.forEach((t, i) => {
+  if (i > 0) tl.to("#strip", { x: -1920 * i, duration: 0.6, ease: "power3.inOut" }, t);
+  if (i > 0) sfx(t, "whoosh", { gain: 0.25, dur: 0.6 });
+  tl.to(mmDots[i], { backgroundColor: MMC[i], borderColor: MMC[i], scale: 1.3, duration: 0.3 }, t + 0.3);
+  tl.to(mmT[i], { color: "#ffffff", duration: 0.3 }, t + 0.3);
+  if (i > 0) { tl.to(mmDots[i - 1], { scale: 1, duration: 0.3 }, t + 0.3); tl.to(mmT[i - 1], { color: "#8A94B0", duration: 0.3 }, t + 0.3); }
+  tl.to("#mmOn", { scaleX: i / 4, duration: 0.6, ease: "power3.inOut" }, t);
+});
+// ---- A: your voice (amber)
+$("#pA").innerHTML = `<div class="abs" style="left:110px;top:220px">${ART.profile({ h: 860 })}</div>
+  <svg id="aWaves" class="abs" style="left:640px;top:440px;overflow:visible" width="600" height="400" viewBox="0 -200 600 400">${[0, 1, 2, 3].map((k) => `<path class="aw" d="M${40 + k * 70} -${70 + k * 40} Q${90 + k * 90} 0 ${40 + k * 70} ${70 + k * 40}" stroke="#0A0F1E" stroke-width="10" fill="none" stroke-linecap="round"/>`).join("")}</svg>
+  <div id="aHello" class="abs serif" style="left:1060px;top:450px;font-size:170px;color:#0A0F1E">Hello</div>
+  <div class="lbl" style="left:1060px;top:700px;font-size:150px;color:#0A0F1E">Your voice</div>`;
+const aw = $$(".aw");
+for (let t = T.s4b; t < stopT[1] + 0.6; t += 0.55) aw.forEach((p, k) => { tl.fromTo(p, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.15, immediateRender: false }, t + k * 0.1); tl.to(p, { autoAlpha: 0, x: 30, duration: 0.3 }, t + k * 0.1 + 0.2); });
+tl.fromTo("#aHello", { autoAlpha: 0, x: -300, scale: 0.4 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.6, ease: "power3.out", immediateRender: false }, w("your voice"));
+tl.to("#profMouth", { opacity: 1, duration: 0.1 }, T.s4b);
+// ---- B: numbers (paper)
+$("#pB").innerHTML = `<div id="grid" class="abs m" style="left:110px;top:250px;width:900px;font-size:66px;line-height:1.12;color:#0A0F1E;letter-spacing:.18em;font-weight:700"></div>
+  <div id="bHello" class="abs serif" style="left:250px;top:420px;font-size:200px;color:#0A0F1E">Hello</div>
+  <div class="lbl" style="left:1080px;top:350px;font-size:200px;color:#0A0F1E">Numbers</div>
+  <div class="abs m" style="left:1090px;top:560px;font-size:28px;color:#5a6280">YOUR VOICE, WRITTEN AS DATA</div>`;
+const COLS = 12, ROWS = 6, cells = [];
+for (let r = 0; r < ROWS; r++) { const row = document.createElement("div"); for (let c = 0; c < COLS; c++) { const s = document.createElement("span"); s.style.display = "inline-block"; s.style.width = "72px"; row.appendChild(s); cells.push({ s, c, r }); } $("#grid").appendChild(row); }
+const tB = stopT[1];
+REEL.onFrame((t) => {
+  if (t < tB - 0.2 || t > stopT[2] + 0.8) return;
+  const fr = Math.floor(t * 12), rad = Math.max(0, (t - tB - 0.25) * 9);
+  for (const { s, c, r } of cells) {
+    s.textContent = ((c * 7919 + r * 104729 + fr * 31) % 97) % 2;
+    const d = Math.hypot(c - 5.5, (r - 2.5) * 1.6);
+    s.style.opacity = d < rad ? (d > rad - 1.5 ? 0.35 : 1) : 0;
+    s.style.color = (c + r + fr) % 11 === 0 ? "#3EE0FF" : "#0A0F1E";
+  }
+});
+tl.to("#bHello", { autoAlpha: 0, scale: 1.4, filter: "blur(12px)", duration: 0.5, ease: "power2.in" }, tB + 0.3);
+sfx(tB + 0.3, "glitch", { gain: 0.12 });
+// ---- C: invisible waves (sky)
+$("#pC").innerHTML = `<div class="abs" style="left:900px;top:240px" id="cCl1">${ART.cloud({ w: 340, color: "rgba(255,255,255,.22)" })}</div>
+  <div class="abs" style="left:300px;top:420px" id="cCl2">${ART.cloud({ w: 240, color: "rgba(255,255,255,.16)" })}</div>
+  <canvas id="cWave" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+  <div class="abs" style="left:0;top:900px;width:1920px;height:180px;background:#081a52;border-radius:50% 50% 0 0 / 30% 30% 0 0"></div>
+  <div id="cPhone" class="abs" style="left:330px;top:640px"></div>
+  <div class="abs" style="left:1440px;top:380px">${SVG.tower({ h: 560 })}</div>
+  <div class="lbl" style="left:120px;top:230px;font-size:170px;color:#fff">Invisible<br>waves</div>
+  <div class="abs m" style="left:126px;top:540px;font-size:26px;color:#cfe8ff">300,000 KM EVERY SECOND</div>`;
+const cp = EX.phoneBox("#cPhone", { x: 0, y: 0, w: 150, accent: "#3EE0FF" });
+(function () {
+  const c = $("#cWave").getContext("2d");
+  const P0 = [490, 720], P1 = [1595, 440];
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < stopT[2] - 0.2 || t > stopT[3] + 0.8) return;
+    const dx = P1[0] - P0[0], dy = P1[1] - P0[1], L = Math.hypot(dx, dy), nx = -dy / L, ny = dx / L;
+    for (let k = 0; k < 3; k++) {
+      c.beginPath();
+      for (let i = 0; i <= 200; i++) {
+        const u = i / 200, env = Math.sin(Math.PI * u), off = Math.sin(2 * Math.PI * (u * 7 - t * 1.6) + k * 0.9) * 46 * env * (1 - k * 0.25);
+        const x = P0[0] + dx * u + nx * off, y = P0[1] + dy * u + ny * off;
+        i ? c.lineTo(x, y) : c.moveTo(x, y);
+      }
+      c.strokeStyle = `rgba(62,224,255,${0.9 - k * 0.28})`; c.lineWidth = 6 - k * 1.5; c.shadowColor = "#3EE0FF"; c.shadowBlur = 16; c.stroke();
+    }
+    c.shadowBlur = 0;
+    c.font = "700 30px 'JetBrains Mono'"; c.fillStyle = "#fff";
+    for (let k = 0; k < 6; k++) { const u = ((t * 0.45 + k / 6) % 1), x = P0[0] + dx * u, y = P0[1] + dy * u - 70; c.globalAlpha = Math.sin(Math.PI * u); c.fillText(k % 2 ? "0110" : "1011", x - 36, y); }
+    c.globalAlpha = 1;
+  });
+})();
+tl.fromTo("#cCl1", { x: 0 }, { x: -200, duration: 4, ease: "none", immediateRender: false }, stopT[2]);
+tl.fromTo("#cCl2", { x: 0 }, { x: -140, duration: 4, ease: "none", immediateRender: false }, stopT[2]);
+// ---- D: under the ocean
+$("#pD").innerHTML = `<div class="abs" style="left:0;top:0;width:1920px;height:250px;background:linear-gradient(180deg,#1d3d8a,#3d7cc4)"></div>
+  <canvas id="dSea" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+  <div class="abs" id="f1" style="left:1500px;top:430px">${ART.fish({ w: 120, color: "#0f4560" })}</div>
+  <div class="abs" id="f2" style="left:1700px;top:560px">${ART.fish({ w: 80, color: "#0f4560" })}</div>
+  <div class="abs" id="f3" style="left:1300px;top:640px">${ART.fish({ w: 100, color: "#0b3a52" })}</div>
+  <div class="lbl" style="left:120px;top:320px;font-size:170px;color:#fff">Under the<br>ocean</div>
+  <div class="abs chip" style="left:126px;top:660px;color:#3EE0FF;opacity:1;visibility:visible">GLASS CABLES ON THE SEA FLOOR</div>`;
+["#f1", "#f2", "#f3"].forEach((f, i) => tl.fromTo(f, { x: 0 }, { x: -700 - i * 150, duration: 5, ease: "none", immediateRender: false }, stopT[3] - 0.5));
+(function () {
+  const c = $("#dSea").getContext("2d"), r = rng(8);
+  const B = Array.from({ length: 45 }, () => ({ x: r() * 1920, sp: 0.15 + r() * 0.35, off: r(), rr: 3 + r() * 8 }));
+  const cy = (x) => 905 + 20 * Math.sin(x / 260);
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < stopT[3] - 0.2 || t > stopT[4] + 0.8) return;
+    // surface
+    c.beginPath(); c.moveTo(0, 0); for (let x = 0; x <= 1920; x += 20) c.lineTo(x, 250 + 10 * Math.sin(x / 90 + t * 2.2)); c.lineTo(1920, 0); c.closePath(); c.fillStyle = "#3d7cc4"; c.fill();
+    // light rays
+    for (let k = 0; k < 6; k++) { const x = 200 + k * 330 + Math.sin(t + k) * 40; const g = c.createLinearGradient(0, 250, 0, 900); g.addColorStop(0, "rgba(160,220,255,.16)"); g.addColorStop(1, "rgba(160,220,255,0)"); c.fillStyle = g; c.beginPath(); c.moveTo(x, 250); c.lineTo(x + 90, 250); c.lineTo(x + 260, 900); c.lineTo(x + 120, 900); c.fill(); }
+    // sand
+    c.beginPath(); c.moveTo(0, 1080); for (let x = 0; x <= 1920; x += 30) c.lineTo(x, 935 + 18 * Math.sin(x / 140) + 8 * Math.sin(x / 37)); c.lineTo(1920, 1080); c.fillStyle = "#0a2233"; c.fill();
+    // cable
+    c.beginPath(); for (let x = 0; x <= 1920; x += 10) x ? c.lineTo(x, cy(x)) : c.moveTo(x, cy(x)); c.strokeStyle = "#05070d"; c.lineWidth = 26; c.stroke(); c.strokeStyle = "#164a63"; c.lineWidth = 8; c.stroke();
+    // light pulses racing through the glass
+    for (let k = 0; k < 5; k++) {
+      const hx = ((t * 1300 + k * 480) % 2400) - 240;
+      for (let j = 0; j < 22; j++) { const x = hx - j * 9; if (x < 0 || x > 1920) continue; c.beginPath(); c.arc(x, cy(x), 7 - j * 0.25, 0, 7); c.fillStyle = `rgba(${j < 2 ? "255,255,255" : "62,224,255"},${1 - j / 22})`; c.shadowColor = "#3EE0FF"; c.shadowBlur = 20; c.fill(); }
+    }
+    c.shadowBlur = 0;
+    for (const b of B) { const y = 900 - (((t * b.sp + b.off) % 1) * 640); c.beginPath(); c.arc(b.x + Math.sin(t * 2 + b.off * 9) * 8, y, b.rr, 0, 7); c.strokeStyle = "rgba(200,240,255,.45)"; c.lineWidth = 2; c.stroke(); }
+  });
+})();
+// ---- E: back into sound (coral)
+$("#pE").innerHTML = `<div class="abs" style="left:1230px;top:200px">${SVG.ear(560, "#0A0F1E")}</div>
+  <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080">${[0, 1, 2, 3].map((k) => `<path class="ew" d="M0 -${90 + k * 10} Q60 0 0 ${90 + k * 10}" transform="translate(${700 + k * 120},560)" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round"/>`).join("")}</svg>
+  <div id="eHello" class="abs serif" style="left:150px;top:300px;font-size:190px;color:#fff">Hello</div>
+  <div class="lbl" style="left:150px;top:620px;font-size:170px;color:#0A0F1E">Back into<br>sound</div>`;
+const ew = $$(".ew");
+for (let t = stopT[4]; t < T.s5 + 0.4; t += 0.5) ew.forEach((p, k) => { tl.fromTo(p, { autoAlpha: 0, x: 0 }, { autoAlpha: 1, x: 40, duration: 0.15, immediateRender: false }, t + k * 0.09); tl.to(p, { autoAlpha: 0, x: 120, duration: 0.3 }, t + k * 0.09 + 0.2); });
+tl.fromTo("#eHello", { autoAlpha: 0, scale: 0.5, x: -100 }, { autoAlpha: 1, scale: 1, x: 0, duration: 0.6, ease: "back.out(1.8)", immediateRender: false }, w("into sound"));
+sfx(w("into sound"), "chime", { gain: 0.18 });
+
+// ================================================= S5: title, circular reveal, chapter roadmap
+show("#s5", T.s5, null);
+tl.fromTo("#s5", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.8, ease: "power3.inOut", immediateRender: false }, T.s5);
+sfx(T.s5, "whoosh", { gain: 0.3, dur: 0.8 });
+$("#s5deco").innerHTML = `<svg class="abs" style="left:0;top:0" width="1920" height="1080">
+  <g opacity=".12" stroke="#0A0F1E" stroke-width="6" fill="none">
+    <circle id="dg1" cx="1650" cy="240" r="260"/><circle cx="1650" cy="240" r="180"/><path d="M1390 240 H1910 M1650 -20 V500"/>
+    <circle id="dg2" cx="260" cy="880" r="200"/><circle cx="260" cy="880" r="300"/>
+  </g>
+  <path id="t5arc" d="M560 760 Q960 600 1360 760" fill="none" stroke="#0A0F1E" stroke-width="5" stroke-dasharray="3 16" stroke-linecap="round" opacity=".7"/>
+  <circle id="t5dot" r="12" fill="#FF5D73"/></svg>`;
+rise("#t5a", T.s5 + 0.4); rise("#t5b", T.s5 + 0.55, { y: 60 }); rise("#t5c", T.s5 + 0.75, { y: 60 }); rise("#t5d", w("from your mouth"));
+sfx(T.s5 + 0.6, "chime", { gain: 0.2 });
+draw("#t5arc", T.s5 + 0.9, 1.0);
+gsap.set("#t5dot", { autoAlpha: 0 });
+tl.to("#t5dot", { autoAlpha: 1, duration: 0.2 }, w("from your mouth"));
+tl.fromTo("#t5dot", { motionPath: { path: "#t5arc", align: "#t5arc", alignOrigin: [0.5, 0.5], start: 0, end: 0 } }, { motionPath: { path: "#t5arc", align: "#t5arc", alignOrigin: [0.5, 0.5], start: 0, end: 1 }, duration: 2.4, ease: "power1.inOut", immediateRender: true }, w("from your mouth"));
+const CH = ["One hello", "Voice to numbers", "Into the air", "Finding your friend", "Across the world", "Back into a voice", "All together"];
+$("#road").innerHTML = CH.map((c, i) => `<div class="pill" style="${i === 0 ? "background:#FF5D73;color:#0A0F1E" : ""}"><b style="${i === 0 ? "color:#0A0F1E" : ""}">${String(i + 1).padStart(2, "0")}</b>${c}</div>`).join("");
+$$("#road .pill").forEach((p, i) => { gsap.set(p, { autoAlpha: 0, y: 30 }); tl.to(p, { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, w("step by step") + i * 0.11); });
+sfx(w("step by step"), "tick", { gain: 0.15 });
+tl.fromTo("#s5deco", { rotation: 0 }, { rotation: 0, duration: 0.01 }, T.s5);
+tl.fromTo("#dg1", { scale: 0.9, transformOrigin: "50% 50%" }, { scale: 1.1, duration: 6, ease: "none", immediateRender: false }, T.s5);
+EX.drift("#s5bg", T.s5, END, 1.0);
+
+REEL.finish(END);
+</script>
+</body></html>

@@ -1,0 +1,832 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>METER</title>
+<link rel="stylesheet" href="../../lib/fonts.css">
+<style>
+:root{--ink:#111110;--paper:#F2EEE3;--taxi:#FFC21A;--red:#E23B2E;--amber:#FF8A1F;--led:#1A1208;--graphite:#5C5A54;--claude:#D97757}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
+#shake{position:absolute;inset:0}
+.scene{position:absolute;inset:0;overflow:hidden;visibility:hidden;opacity:0}
+.push{position:absolute;inset:0;transform-origin:50% 50%}
+.abs{position:absolute}
+.cond{font-family:Archivo;font-stretch:62%;font-weight:900;text-transform:uppercase;letter-spacing:-0.012em;line-height:.88}
+.mono{font-family:"JetBrains Mono";text-transform:uppercase;font-weight:600;letter-spacing:.02em}
+.paper{background-color:var(--paper);background-image:var(--grain)}
+.vign{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%)}
+.zig{clip-path:var(--zig)}
+.dots{flex:1;border-bottom:3px dotted currentColor;margin:0 10px 8px;opacity:.55}
+.row{position:absolute;left:0;right:0;display:flex;align-items:flex-end;padding:0 26px}
+.sep{position:absolute;left:22px;right:22px;border-top:3px dashed rgba(17,17,16,.45)}
+.stamp{position:absolute;font-family:Archivo;font-stretch:62%;font-weight:900;text-transform:uppercase;border:9px solid currentColor;border-radius:10px;padding:4px 22px 0;line-height:1;filter:url(#stampfx);opacity:0;white-space:nowrap}
+.odo{display:inline-flex}
+.btn{display:flex;align-items:center;justify-content:center;border-radius:999px;font-family:"JetBrains Mono";font-weight:800}
+
+/* scene A: call */
+#sA{background:#0a0a09}
+.tile{position:absolute;width:420px;height:236px;border-radius:14px;overflow:hidden}
+.tile .av{position:absolute;left:50%;top:44%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:38px;color:var(--paper)}
+.tile .nm{position:absolute;left:14px;bottom:12px;font-size:17px;color:var(--paper);background:rgba(0,0,0,.45);padding:4px 10px;border-radius:6px}
+.hook{position:absolute;left:0;right:0;text-align:center;color:var(--paper);font-size:236px;top:668px;white-space:nowrap}
+.hook span{display:inline-block}
+</style>
+<script src="../../lib/vendor/gsap.min.js"></script>
+<script src="../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../lib/vendor/SplitText.min.js"></script>
+<script src="../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../lib/reel.js"></script>
+</head><body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="stampfx" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="9" result="speck"/>
+      <feColorMatrix in="speck" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.15" result="mask"/>
+      <feComposite in="d" in2="mask" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+<div id="shake"><div id="frame" class="abs" style="inset:0">
+
+<!-- A: the meeting you just left -->
+<section class="scene" id="sA"><div class="push" id="pA">
+  <div class="abs mono" id="aTop" style="left:96px;top:56px;right:96px;display:flex;align-items:center;gap:16px;color:#bdb8ab;font-size:24px">
+    <span style="width:16px;height:16px;border-radius:50%;background:var(--red)"></span>Q3 ALIGNMENT SYNC<span style="flex:1"></span><span id="aTimer">52:07</span>
+  </div>
+  <div id="aGrid" class="abs" style="left:0;top:0"></div>
+  <div class="abs" id="aCtrl" style="left:0;right:0;top:952px;display:flex;justify-content:center;gap:22px"></div>
+  <div class="abs mono" id="aEnded" style="left:50%;top:340px;transform:translateX(-50%);background:#24231f;color:var(--paper);font-size:34px;padding:22px 44px;border-radius:999px;opacity:0;white-space:nowrap">MEETING ENDED · 52:07</div>
+  <div class="hook cond" id="aHook1">THAT <span style="color:var(--taxi)">MEETING</span></div>
+  <div class="hook cond" id="aHook2"><span>YOU</span> <span>JUST</span> <span style="color:var(--taxi)">LEFT</span></div>
+  <div class="abs" id="aFlag" style="left:1600px;top:36px;width:120px;height:160px"></div>
+  <svg id="aCursor" class="abs" style="left:0;top:0;width:44px;height:58px" viewBox="0 0 22 29"><path d="M1 1 L1 22 L6.5 17 L10.5 27 L14 25.5 L10 16 L17.5 16 Z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  <div class="vign"></div>
+</div></section>
+
+<!-- B + C: the meter and the printer (one world, one camera) -->
+<section class="scene" id="sW" style="background:radial-gradient(ellipse at 50% 60%,#26241f 0%,#121210 70%)"><div id="wIn" class="abs" style="inset:0">
+  <div id="world" class="abs" style="left:0;top:0;width:1920px;height:1080px">
+    <div id="rcpt" class="abs paper zig" style="left:720px;width:480px;bottom:520px;height:0;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.35)">
+      <div id="rIn" class="abs" style="left:0;top:0;width:480px;color:var(--ink)"></div>
+    </div>
+    <div id="bubble" class="abs" style="left:1212px;top:380px;width:150px;height:130px;transform-origin:0% 100%;opacity:0">
+      <svg viewBox="0 0 150 130" width="150" height="130"><path d="M20 8 H130 Q142 8 142 20 V84 Q142 96 130 96 H44 L14 124 L24 96 H20 Q8 96 8 84 V20 Q8 8 20 8 Z" fill="#fff" stroke="#111110" stroke-width="5"/><text x="75" y="76" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="68" fill="#111110">?</text></svg>
+    </div>
+    <div id="burst" class="abs" style="left:1222px;top:330px;width:160px;height:160px;opacity:0"></div>
+    <div id="printer" class="abs" style="left:560px;top:540px;width:800px;height:500px;border-radius:30px;background:linear-gradient(180deg,#2e2c28 0%,#1c1b18 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.08),0 30px 60px rgba(0,0,0,.5)">
+      <div class="abs" style="left:150px;top:12px;width:500px;height:14px;border-radius:7px;background:#060605;box-shadow:inset 0 3px 4px #000"></div>
+      <div class="abs" style="left:0;right:0;top:44px;height:10px;background:var(--taxi)"></div>
+      <div id="panel" class="abs" style="left:80px;top:90px;width:640px;height:360px;border-radius:16px;background:var(--led);box-shadow:inset 0 0 0 3px #2a1d0e,inset 0 0 50px rgba(0,0,0,.8)">
+        <div class="abs mono" style="left:28px;top:22px;font-size:22px;color:#7a4a1c">FARE</div>
+        <div class="abs mono" style="right:28px;top:22px;font-size:22px;color:#7a4a1c">USD</div>
+        <div id="seg" class="abs" style="left:0;right:0;top:92px;display:flex;justify-content:center"></div>
+        <div class="abs mono" style="left:28px;bottom:20px;font-size:16px;color:#7a4a1c">METER · TARIFF 1 · PER MINUTE</div>
+        <div class="abs" style="right:26px;bottom:18px;width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="abs cond" id="wCap" style="left:110px;top:96px;font-size:120px;color:var(--paper)"><span>NOBODY</span> <span>SAW</span><br><span>THE</span> <span style="color:var(--taxi)">BILL</span></div>
+  <div class="vign"></div>
+</div></section>
+
+<!-- D: three more today -->
+<section class="scene" id="sD" style="background:#1b1a17"><div class="push" id="pD">
+  <div class="abs cond" id="dHead" style="left:120px;top:84px;font-size:150px;color:var(--paper)">TODAY</div>
+  <div class="abs mono" id="dSub" style="left:126px;top:230px;font-size:26px;color:#8d897d">WEDNESDAY · 4 MEETINGS</div>
+  <div class="abs" id="dTot" style="right:110px;top:90px;background:var(--led);border-radius:14px;padding:18px 30px 14px;color:var(--amber)">
+    <div class="mono" style="font-size:20px;color:#7a4a1c">TODAY</div>
+    <div id="dOdo" class="mono" style="font-size:104px;font-weight:700;line-height:1;text-shadow:0 0 18px rgba(255,138,31,.6)"></div>
+  </div>
+  <div class="abs" style="left:150px;right:150px;top:432px;height:6px;background:#3a3832;border-radius:3px"></div>
+  <div id="dRail" class="abs" style="left:0;top:0"></div>
+  <div class="vign"></div>
+</div></section>
+
+<!-- E: every week your calendar buys a car -->
+<section class="scene" id="sE" style="background:#121211"><div class="push" id="pE">
+  <div class="abs cond" id="eHead" style="left:120px;top:70px;font-size:120px;color:var(--paper)"><span>EVERY</span> <span style="color:var(--taxi)">WEEK</span></div>
+  <div class="abs" id="eTot" style="right:110px;top:66px;background:var(--led);border-radius:14px;padding:14px 28px 10px;color:var(--amber)">
+    <div class="mono" style="font-size:18px;color:#7a4a1c">THIS WEEK</div>
+    <div id="eOdo" class="mono" style="font-size:84px;font-weight:700;line-height:1;text-shadow:0 0 18px rgba(255,138,31,.6)"></div>
+  </div>
+  <div id="eGrid" class="abs" style="inset:0"></div>
+  <div id="eBlocks" class="abs" style="inset:0"></div>
+  <div id="eTag" class="abs" style="left:1202px;top:462px;width:250px;height:200px;transform-origin:20px 0;opacity:0"></div>
+  <canvas id="fire" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+  <div class="abs cond" id="eCap1" style="left:120px;top:880px;font-size:120px;color:var(--paper)"><span>BUYS</span> <span>A</span> <span style="color:var(--taxi)">CAR</span></div>
+  <div class="abs cond" id="eCap2" style="left:120px;top:880px;font-size:120px;color:var(--paper)"><span>AND</span> <span>SETS</span> <span>IT</span> <span>ON</span> <span style="color:var(--red)">FIRE</span></div>
+  <div class="vign"></div>
+</div></section>
+
+<!-- F: so we built Meter -->
+<section class="scene" id="sF" style="background:var(--taxi)"><div class="push" id="pF">
+  <div class="abs mono" id="fPre" style="left:0;right:0;top:300px;text-align:center;font-size:44px;color:var(--ink);font-weight:800"><span>SO</span> <span>WE</span> <span>BUILT</span></div>
+  <div class="abs" id="fMark" style="left:0;right:0;top:380px;display:flex;justify-content:center;align-items:flex-end;gap:30px">
+    <div class="cond" style="font-size:380px;color:var(--ink);letter-spacing:-0.02em">METER</div>
+    <div id="fFlag" style="width:150px;height:200px;margin-bottom:36px"></div>
+  </div>
+  <div class="abs mono" id="fTag" style="left:0;right:0;top:770px;text-align:center;font-size:30px;color:var(--ink);opacity:0">EVERY MEETING HAS A FARE</div>
+</div></section>
+
+<!-- G: a price on every invite -->
+<section class="scene paper" id="sG"><div class="push" id="pG">
+  <div id="inv3" class="abs inv" style="left:560px;top:190px"></div>
+  <div id="inv2" class="abs inv" style="left:515px;top:230px"></div>
+  <div id="inv" class="abs inv" style="left:470px;top:270px"></div>
+  <div class="abs mono" id="gCap" style="left:0;right:0;top:880px;text-align:center;font-size:40px;color:var(--ink);font-weight:800"><span>BEFORE</span> <span>ANYONE</span> <span>SAYS</span> <span style="background:var(--ink);color:var(--paper);padding:0 12px">YES</span></div>
+  <svg id="gCursor" class="abs" style="left:0;top:0;width:44px;height:58px;opacity:0" viewBox="0 0 22 29"><path d="M1 1 L1 22 L6.5 17 L10.5 27 L14 25.5 L10 16 L17.5 16 Z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div></section>
+
+<!-- H: a live meter in the corner, could this be an email -->
+<section class="scene" id="sH" style="background:#0c0c0b"><div class="push" id="pH">
+  <div id="envB" class="abs paper" style="left:640px;top:350px;width:640px;height:400px;border-radius:10px;box-shadow:0 30px 60px rgba(0,0,0,.5);opacity:0"></div>
+  <div id="callWin" class="abs" style="left:60px;top:40px;width:1800px;height:1000px;border-radius:26px;background:#161614;box-shadow:inset 0 0 0 2px #2a2925">
+    <div class="abs mono" style="left:44px;top:34px;font-size:24px;color:#bdb8ab;display:flex;gap:14px;align-items:center"><span style="width:14px;height:14px;border-radius:50%;background:var(--red)"></span>Q4 ROADMAP SYNC</div>
+    <div id="hTiles" class="abs" style="left:0;top:0"></div>
+    <div class="abs" id="hCtrl" style="left:0;right:0;top:900px;display:flex;justify-content:center;gap:22px"></div>
+    <div id="hMeter" class="abs" style="left:1390px;top:26px;width:380px;height:190px;border-radius:16px;background:var(--led);box-shadow:inset 0 0 0 2px #3a2610,0 10px 30px rgba(0,0,0,.6);transform-origin:100% 0%">
+      <div class="abs mono" style="left:22px;top:16px;font-size:20px;color:var(--red);display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;border-radius:50%;background:var(--red)"></span>LIVE</div>
+      <div class="abs mono" id="hClock" style="right:22px;top:12px;font-size:28px;color:var(--amber)">19:30</div>
+      <div id="hSeg" class="abs" style="left:0;right:0;top:66px;display:flex;justify-content:center"></div>
+    </div>
+    <div id="hRing" class="abs" style="left:1376px;top:12px;width:408px;height:218px;border-radius:24px;border:6px solid var(--taxi);opacity:0"></div>
+    <div id="card" class="abs paper" style="left:440px;top:230px;width:920px;height:520px;border-radius:22px;box-shadow:14px 14px 0 var(--taxi);color:var(--ink)">
+      <div class="abs mono" style="left:48px;top:40px;font-size:24px;color:var(--graphite)">METER · 20 MINUTES IN · ONE QUESTION</div>
+      <div class="abs cond" id="cQ" style="left:44px;top:110px;font-size:150px;line-height:.9"><span>COULD</span> <span>THIS</span> <span>BE</span><br><span>AN</span> <span style="background:var(--taxi);padding:0 14px">EMAIL</span></div>
+      <div id="bYes" class="abs btn" style="left:48px;top:392px;width:260px;height:92px;background:var(--ink);color:var(--taxi);font-size:38px">YES</div>
+      <div id="bNo" class="abs btn" style="left:330px;top:392px;width:200px;height:92px;border:4px solid var(--ink);color:var(--ink);font-size:38px">NO</div>
+    </div>
+  </div>
+  <svg id="hCursor" class="abs" style="left:0;top:0;width:44px;height:58px" viewBox="0 0 22 29"><path d="M1 1 L1 22 L6.5 17 L10.5 27 L14 25.5 L10 16 L17.5 16 Z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  <!-- envelope -->
+  <div id="env" class="abs" style="left:640px;top:350px;width:640px;height:400px;perspective:1600px;opacity:0">
+    <svg id="envFront" class="abs" style="left:0;top:0;opacity:0" width="640" height="400" viewBox="0 0 640 400">
+      <path d="M0 120 L320 280 L640 120 L640 400 L0 400 Z" fill="#E8E2D2" stroke="#cfc7b3" stroke-width="3"/>
+      <path d="M0 400 L270 230 M640 400 L370 230" stroke="#cfc7b3" stroke-width="3"/>
+    </svg>
+    <div id="envFlap" class="abs" style="left:0;top:0;width:640px;height:250px;transform-origin:50% 0%;opacity:0">
+      <svg width="640" height="250" viewBox="0 0 640 250"><path d="M0 0 L640 0 L320 240 Z" fill="#DDD6C4" stroke="#c4bba5" stroke-width="3"/></svg>
+    </div>
+  </div>
+  <div class="abs cond" id="hGone" style="left:0;right:0;top:400px;text-align:center;font-size:300px;color:var(--paper);opacity:0">GONE</div>
+  <div class="vign"></div>
+</div></section>
+
+<!-- I/J/K: time is money, now with a receipt, the twist, the coupon -->
+<section class="scene" id="sI" style="background:radial-gradient(ellipse at 50% 80%,#24221e 0%,#111110 70%)"><div class="push" id="pI">
+  <div class="abs cond" id="iTim" style="left:0;right:0;top:250px;text-align:center;font-size:270px;color:var(--paper)"><span>TIME</span> <span>IS</span> <span style="color:var(--taxi)">MONEY</span></div>
+  <div id="iPaper" class="abs paper zig" style="left:600px;width:720px;bottom:68px;height:0;overflow:hidden;box-shadow:0 0 50px rgba(0,0,0,.45)">
+    <div id="iIn" class="abs" style="left:0;top:0;width:720px;color:var(--ink)"></div>
+  </div>
+  <div class="abs" style="left:470px;top:1000px;width:980px;height:120px;border-radius:26px 26px 0 0;background:linear-gradient(180deg,#2e2c28,#1c1b18);box-shadow:inset 0 2px 0 rgba(255,255,255,.08)">
+    <div class="abs" style="left:110px;top:10px;width:760px;height:12px;border-radius:6px;background:#060605"></div>
+    <div class="abs" style="left:0;right:0;top:40px;height:8px;background:var(--taxi)"></div>
+  </div>
+  <div id="iDim" class="abs" style="inset:0;background:#111110;opacity:0"></div>
+  <div id="coupFly" class="abs paper" style="left:600px;top:0;width:720px;height:260px;opacity:0;box-shadow:0 30px 80px rgba(0,0,0,.6)"></div>
+</div></section>
+
+</div></div>
+
+<script>
+// ------------------------------------------------------------------ setup
+const { tl, W, sfx, rng } = REEL;
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+const w = (phrase, after) => W(W.seq(phrase, after));      // start time of a phrase
+const we = (word, after) => W.end(W.find(word, after));
+
+// paper grain + torn zigzag edge
+(function () {
+  const g = `<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25  0 0 0 0 0.22  0 0 0 0 0.17  0 0 0 0.16 0'/></filter><rect width='240' height='240' filter='url(#n)'/></svg>`;
+  document.documentElement.style.setProperty("--grain", `url("data:image/svg+xml,${encodeURIComponent(g)}")`);
+  const pts = [];
+  const step = 16;
+  for (let x = 0, k = 0; x <= 720; x += step / 2, k++) pts.push(`${x}px ${k % 2 ? 0 : 9}px`);
+  pts.push("100% 9px", "100% 100%", "0 100%");
+  document.documentElement.style.setProperty("--zig", `polygon(${pts.join(",")})`);
+})();
+
+// brand pieces --------------------------------------------------------
+function flagSVG({ plate = "#FFC21A", text = "#111110", stalk = "#111110", id = "" } = {}) {
+  return `<svg viewBox="0 0 120 160" width="100%" height="100%" style="overflow:visible">
+    <g ${id ? `id="${id}"` : ""} style="transform-origin:60px 150px">
+      <rect x="53" y="56" width="14" height="96" rx="4" fill="${stalk}"/>
+      <rect x="6" y="2" width="108" height="62" rx="9" fill="${plate}" stroke="${stalk}" stroke-width="6"/>
+      <text x="60" y="30" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="19" fill="${text}">FOR</text>
+      <text x="60" y="53" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="19" fill="${text}">HIRE</text>
+    </g>
+    <circle cx="60" cy="150" r="10" fill="${stalk}"/>
+  </svg>`;
+}
+function spark(size = 60, color = "#D97757") {
+  let rays = "";
+  for (let k = 0; k < 12; k++) {
+    const L = k % 2 ? 84 : 100;
+    rays += `<polygon points="-8.5,0 0,-${L} 8.5,0" transform="rotate(${k * 30})"/>`;
+  }
+  return `<svg class="spark" viewBox="-105 -105 210 210" width="${size}" height="${size}" style="display:inline-block;vertical-align:middle"><g fill="${color}">${rays}<circle r="12"/></g></svg>`;
+}
+const ICON = {
+  managers: `<svg viewBox="0 0 40 32" width="40" height="32"><g fill="#111110"><circle cx="12" cy="8" r="6"/><path d="M2 31 Q2 17 12 17 Q22 17 22 31Z"/><circle cx="28" cy="8" r="6"/><path d="M18 31 Q18 17 28 17 Q38 17 38 31Z"/></g><path d="M12 18 L10 24 L12 29 L14 24Z M28 18 L26 24 L28 29 L30 24Z" fill="#FFC21A"/></svg>`,
+  camoff: `<svg viewBox="0 0 40 32" width="40" height="32"><rect x="3" y="8" width="24" height="18" rx="3" fill="#111110"/><path d="M27 14 L37 9 L37 25 L27 20Z" fill="#111110"/><path class="slash" d="M4 3 L36 30" stroke="#E23B2E" stroke-width="4" stroke-linecap="round"/></svg>`,
+  muted: `<svg viewBox="0 0 40 32" width="40" height="32"><rect x="14" y="2" width="12" height="19" rx="6" fill="#111110"/><path d="M9 15 Q9 26 20 26 Q31 26 31 15" stroke="#111110" stroke-width="3" fill="none"/><path d="M20 26 V31" stroke="#111110" stroke-width="3"/><path class="slash" d="M6 3 L34 30" stroke="#E23B2E" stroke-width="4" stroke-linecap="round"/></svg>`,
+  bubble: `<svg viewBox="0 0 40 32" width="40" height="32"><path d="M6 2 H34 Q38 2 38 6 V20 Q38 24 34 24 H14 L6 31 L8 24 H6 Q2 24 2 20 V6 Q2 2 6 2Z" fill="#111110"/><text x="20" y="20" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="18" fill="#F2EEE3">?</text></svg>`,
+};
+
+// receipt builder: rows = [{h, html, cls, style}] ; paper anchored at its bottom (feeds upward)
+function receipt(paper, inner, rows, margin = 14) {
+  let y = 0;
+  const els = rows.map((r) => {
+    const el = document.createElement("div");
+    el.className = "abs " + (r.cls || "");
+    el.style.cssText = `left:0;right:0;top:${y}px;height:${r.h}px;` + (r.style || "");
+    el.innerHTML = r.html || "";
+    inner.appendChild(el);
+    const o = { el, top: y, bottom: y + r.h };
+    y += r.h;
+    return o;
+  });
+  inner.style.height = y + "px";
+  let fed = 0;
+  return {
+    rows: els,
+    height: (k) => els[k].bottom + margin,
+    // print rows up to k at time t: paper feeds in stepped increments
+    print(k, t, { dur = 0.16, sound = true, gain = 0.32 } = {}) {
+      const target = els[k].bottom + margin;
+      const steps = Math.max(2, Math.round((target - fed) / 14));
+      tl.to(paper, { height: target, duration: dur, ease: `steps(${steps})` }, t);
+      if (sound) sfx(t, "print", { gain });
+      fed = target;
+    },
+  };
+}
+const line = (label, rightHTML, icon = "", size = 21) =>
+  `<div class="row mono" style="bottom:10px;font-size:${size}px;white-space:nowrap">${icon ? `<span class="ico" style="margin-right:12px;display:inline-flex">${icon}</span>` : ""}<span>${label}</span><span class="dots"></span><span class="amt">${rightHTML}</span></div>`;
+
+// ================================================================== A. that meeting you just left
+const tA = 0, tW = 1.42;
+tl.set("#sA", { autoAlpha: 1 }, 0);
+gsap.set("#sA", { autoAlpha: 1 });
+(function buildCall() {
+  const names = ["DANA", "PRIYA", "MARCO", "GREG", "LENA", "OMAR", "SAM", "JO"];
+  const cols = ["#2d2b27", "#28302c", "#302a2e", "#2b2e34", "#33302a", "#2a2d29", "#2f2b29", "#2b2a30"];
+  const avs = ["#6b5a3e", "#3f6a5a", "#6a4058", "#3f5a7a", "#7a6a3a", "#4a6a3a", "#7a4a3a", "#4a4a7a"];
+  const g = $("#aGrid");
+  names.forEach((n, i) => {
+    const c = i % 4, r = Math.floor(i / 4);
+    const t = document.createElement("div");
+    t.className = "tile";
+    t.style.cssText += `left:${96 + c * 436}px;top:${130 + r * 252}px;background:radial-gradient(ellipse at 50% 40%,${cols[i]} 0%,#151513 100%)`;
+    t.innerHTML = `<div class="av" style="background:${avs[i]}">${n.slice(0, 2)}</div><div class="nm mono">${n}</div>`;
+    g.appendChild(t);
+  });
+  const c = $("#aCtrl");
+  ["#2c2b27", "#2c2b27", "#2c2b27"].forEach((bg) => {
+    const b = document.createElement("div");
+    b.style.cssText = `width:74px;height:74px;border-radius:50%;background:${bg}`;
+    c.appendChild(b);
+  });
+  const leave = document.createElement("div");
+  leave.id = "aLeave";
+  leave.className = "btn";
+  leave.style.cssText = "width:190px;height:74px;background:#E23B2E;color:#fff;font-size:26px";
+  leave.textContent = "LEAVE";
+  c.appendChild(leave);
+})();
+$("#aFlag").innerHTML = flagSVG({ id: "aFlagG", stalk: "#8d897d" });
+gsap.set("#aHook2 span", { autoAlpha: 0, yPercent: 30 });
+gsap.set("#aCursor", { x: 1300, y: 760 });
+tl.fromTo("#pA", { scale: 1.0 }, { scale: 1.03, duration: tW, ease: "none" }, 0);
+// cursor goes to LEAVE and clicks
+tl.to("#aCursor", { x: 1185, y: 985, duration: 0.38, ease: "power2.inOut" }, 0.02);
+tl.to("#aLeave", { scale: 0.9, duration: 0.06, yoyo: true, repeat: 1 }, w("you"));
+sfx(w("you"), "click", { gain: 0.45 });
+// tiles switch off like a TV
+$$(".tile").forEach((t, i) => {
+  const s = w("you") + 0.05 + i * 0.03;
+  tl.to(t, { scaleY: 0.02, duration: 0.12, ease: "power3.in" }, s);
+  tl.to(t, { scaleX: 0, autoAlpha: 0, duration: 0.1, ease: "power2.in" }, s + 0.12);
+});
+sfx(w("you") + 0.06, "swish", { gain: 0.35 });
+tl.to(["#aTop", "#aCtrl", "#aCursor"], { autoAlpha: 0, duration: 0.15 }, w("you") + 0.2);
+// big hook words
+tl.to("#aHook1", { autoAlpha: 0, yPercent: -25, duration: 0.1, ease: "power2.in" }, w("you") - 0.05);
+["you", "just", "left"].forEach((wd, i) => {
+  tl.to($$("#aHook2 span")[i], { autoAlpha: 1, yPercent: 0, duration: 0.18, ease: "expo.out" }, W(W.find(wd)));
+});
+// meeting ended pill + flag flips down: the meter starts
+tl.fromTo("#aEnded", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, w("left"));
+sfx(w("left"), "pop", { gain: 0.35 });
+tl.to("#aFlagG", { rotation: 90, duration: 0.26, ease: "back.out(1.6)" }, 1.02);
+sfx(1.08, "clunk", { gain: 0.55 });
+
+// ================================================================== B/C. twelve hundred and forty dollars; the bill
+const cam = REEL.camera($("#world"));
+const PANEL = { x: 640, y: 630, w: 640, h: 360 };
+cam.set(PANEL);
+tl.set("#sW", { autoAlpha: 1 }, tW);
+tl.set("#sA", { autoAlpha: 0 }, tW + 0.1);
+tl.fromTo("#wIn", { scale: 1.25, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.28, ease: "expo.out", immediateRender: false }, tW);
+sfx(tW - 0.04, "whoosh", { gain: 0.3, dur: 0.4 });
+const seg = REEL.sevenSeg($("#seg"), "0,000", { height: 150, on: "#FF8A1F", off: "rgba(255,138,31,0.07)" });
+const tTw = w("twelve"), tDol = we("dollars");
+seg.count(1240, tTw, tDol - tTw + 0.05, 26, 0.22);
+sfx(tDol + 0.08, "ding", { gain: 0.3 });
+cam.to(PANEL, tW, tTw + 2.0 - tW, "none", 1.035);
+// pull back to the printer, receipt feeds
+const tNob = w("nobody");
+cam.to({ x: 200, y: 20, w: 1520, h: 855 }, tNob - 0.05, 0.85, "expo.inOut");
+sfx(tNob - 0.05, "whoosh", { gain: 0.32, dur: 0.6 });
+tl.fromTo("#printer", { y: 70 }, { y: 0, duration: 0.8, ease: "power3.out", immediateRender: false }, tNob);
+// caption
+gsap.set("#wCap span", { autoAlpha: 0, y: 40 });
+["nobody", "saw", "the", "bill"].forEach((wd) => tl.to($$("#wCap span")[["nobody", "saw", "the", "bill"].indexOf(wd)], { autoAlpha: 1, y: 0, duration: 0.2, ease: "expo.out" }, W(W.find(wd, W.find("nobody") - 1))));
+tl.to("#wCap", { autoAlpha: 0, x: -60, duration: 0.25, ease: "power2.in" }, w("two managers") - 0.1);
+
+const R = receipt($("#rcpt"), $("#rIn"), [
+  { h: 92, html: `<div style="display:flex;justify-content:center;align-items:flex-end;gap:10px;padding-top:24px"><div class="cond" style="font-size:58px">METER</div><div style="width:34px;height:46px">${flagSVG({ id: "" }).replace('style="transform-origin:60px 150px"', 'style="transform-origin:60px 150px;transform:rotate(90deg)"')}</div></div>` },
+  { h: 34, html: `<div class="mono" style="text-align:center;font-size:20px;padding-top:6px">MEETING RECEIPT</div>` },
+  { h: 32, html: `<div class="mono" style="text-align:center;font-size:16px;color:#5C5A54;font-weight:500">Q3 ALIGNMENT SYNC · 52 MIN · 8 PPL</div>` },
+  { h: 26, html: `<div class="sep" style="top:12px"></div>` },
+  { h: 58, html: line("TWO MANAGERS", `<span id="am0"></span>`, ICON.managers) },
+  { h: 58, html: line("FOUR ENGINEERS CAM OFF", `<span id="am1"></span>`, ICON.camoff) },
+  { h: 58, html: line("ONE DESIGNER MUTED", `<span id="am2"></span>`, ICON.muted) },
+  { h: 58, html: line("GREGS QUICK QUESTION", `<span id="am3"></span>`, ICON.bubble) },
+  { h: 28, html: `<div class="sep" style="top:13px"></div>` },
+  { h: 70, html: `<div class="row mono" style="bottom:12px;font-size:36px;font-weight:800"><span>TOTAL</span><span class="dots"></span><span id="amT"></span></div>` },
+  { h: 40, html: `<div class="mono" style="text-align:center;font-size:15px;color:#5C5A54;padding-top:12px">THANK YOU FOR YOUR TIME</div>` },
+]);
+// stamp sits on the paper over the total
+const stamp1 = document.createElement("div");
+stamp1.className = "stamp";
+stamp1.style.cssText += `left:150px;top:${R.rows[8].top - 16}px;color:var(--red);font-size:64px;transform:rotate(-8deg)`;
+stamp1.textContent = "PAID BY YOU";
+$("#rIn").appendChild(stamp1);
+
+R.print(0, tNob + 0.42); R.print(1, tNob + 0.62, { gain: 0.2 }); R.print(2, tNob + 0.78, { gain: 0.2 }); R.print(3, tNob + 0.92, { gain: 0.15 });
+const amts = [["two managers", "three forty", 340], ["four engineers", "six hundred", 600], ["one designer", "one twenty", 120], ["and greg's", "one eighty", 180]];
+const odos = amts.map((a, i) => REEL.odometer($("#am" + i), "000"));
+let after = -1;
+amts.forEach(([name, amt, v], i) => {
+  const iName = W.seq(name, after);
+  const iAmt = W.seq(amt, iName);
+  after = iAmt;
+  const tn = W(iName) + (i === 3 ? 0.2 : 0);
+  R.print(4 + i, tn);
+  const ico = R.rows[4 + i].el.querySelector(".ico");
+  tl.from(ico, { scale: 0, duration: 0.3, ease: "back.out(3)" }, tn + 0.1);
+  sfx(tn + 0.12, "pop", { gain: 0.2 });
+  odos[i].roll(v, W(iAmt), 0.5, "power3.out", 0.18, 8);
+  tl.fromTo(R.rows[4 + i].el.querySelector(".amt"), { color: "#E23B2E" }, { color: "#111110", duration: 0.6, immediateRender: false }, W(iAmt) + 0.5);
+});
+// icon actions: camera gets slashed on "cameras off", mic on "mute"
+$$("#rIn .slash").forEach((p) => gsap.set(p, { drawSVG: "0%" }));
+tl.to($$("#rIn .slash")[0], { drawSVG: "100%", duration: 0.25, ease: "power2.out" }, w("cameras off") + 0.25);
+sfx(w("cameras off") + 0.25, "swish", { gain: 0.2 });
+tl.to($$("#rIn .slash")[1], { drawSVG: "100%", duration: 0.25, ease: "power2.out" }, w("on mute") + 0.1);
+sfx(w("on mute") + 0.1, "swish", { gain: 0.2 });
+// Greg's question balloons and pops
+const tQ = w("quick"), tQn = w("question"), tPop = w("one eighty") - 0.18;
+gsap.set("#bubble", { scale: 0.2 });
+tl.to("#bubble", { autoAlpha: 1, scale: 0.7, duration: 0.25, ease: "back.out(2.5)" }, tQ);
+sfx(tQ, "pop", { gain: 0.25 });
+tl.to("#bubble", { scale: 1.7, duration: tPop - tQn, ease: "power1.in" }, tQn);
+tl.to("#bubble", { autoAlpha: 0, scale: 2.0, duration: 0.05 }, tPop);
+sfx(tPop, "pop", { gain: 0.5, pitch: 0.8 });
+$("#burst").innerHTML = `<svg viewBox="-80 -80 160 160" width="160" height="160">${Array.from({ length: 10 }, (_, k) => `<line x1="0" y1="-38" x2="0" y2="-70" stroke="#FFC21A" stroke-width="8" stroke-linecap="round" transform="rotate(${k * 36})"/>`).join("")}</svg>`;
+tl.fromTo("#burst", { autoAlpha: 1, scale: 0.5 }, { autoAlpha: 0, scale: 1.4, duration: 0.35, ease: "power2.out", immediateRender: false }, tPop);
+// total + stamp
+const tTot = w("one eighty") + 0.42;
+R.print(8, tTot - 0.1, { gain: 0.15 }); R.print(10, tTot);
+const odoT = REEL.odometer($("#amT"), "0,000");
+odoT.roll(1240, tTot + 0.03, 0.22, "power2.out", 0.15, 6);
+sfx(tTot + 0.27, "ding", { gain: 0.35 });
+const tSt = tTot + 0.22;
+tl.fromTo(stamp1, { scale: 1.4, autoAlpha: 0 }, { scale: 1, autoAlpha: 0.92, duration: 0.12, ease: "power4.in", immediateRender: false }, tSt);
+sfx(tSt + 0.12, "stamp", { gain: 0.6 });
+REEL.shake($("#shake"), tSt + 0.12, 12);
+// camera follows the receipt upward while it prints
+cam.to({ x: 330, y: -30, w: 1260, h: 709 }, tNob + 1.0, (tTot - 0.2) - (tNob + 1.0), "sine.inOut");
+
+// ================================================================== D. you've got three more today
+const tD = w("three more") - 0.24;
+tl.set("#sD", { autoAlpha: 1 }, tD);
+tl.to("#wIn", { scale: 0.32, x: -560, y: 60, autoAlpha: 0, duration: 0.32, ease: "power3.in" }, tD - 0.08);
+sfx(tD - 0.08, "tear", { gain: 0.45 });
+tl.set("#sW", { autoAlpha: 0 }, tD + 0.3);
+const dOdo = REEL.odometer($("#dOdo"), "$0,000");
+dOdo.set(1240); dOdo.value = 1240;
+const mini = (i) => `<div class="abs" style="left:${130 - 6}px;top:-30px;width:24px;height:44px;border-radius:5px;background:#8d897d"></div>
+  <div class="abs paper zig" style="left:0;top:0;width:280px;height:470px;box-shadow:0 20px 40px rgba(0,0,0,.45)">
+    <div style="display:flex;justify-content:center;gap:6px;padding-top:26px;align-items:flex-end"><div class="cond" style="font-size:40px;color:#111110">METER</div></div>
+    ${[200, 170, 210, 150, 190].map((ww) => `<div style="margin:16px 26px 0;height:12px;width:${ww}px;background:rgba(17,17,16,.22);border-radius:3px"></div>`).join("")}
+    <div style="margin:22px 22px 0;border-top:3px dashed rgba(17,17,16,.4)"></div>
+    <div class="mono" style="display:flex;justify-content:space-between;margin:20px 24px 0;font-size:28px;font-weight:800;color:#111110"><span>TOTAL</span><span>1,240</span></div>
+    <div class="stamp" style="left:40px;top:330px;color:var(--red);font-size:36px;opacity:.9;transform:rotate(${i % 2 ? 7 : -8}deg);border-width:6px">PAID BY YOU</div>
+  </div>`;
+const times = ["9:00", "11:00", "14:00", "16:00"];
+const dEls = times.map((tm, i) => {
+  const el = document.createElement("div");
+  el.className = "abs";
+  el.style.cssText = `left:${230 + i * 390}px;top:416px;width:280px;height:500px;transform-origin:140px -20px`;
+  el.innerHTML = mini(i) + `<div class="abs mono" style="left:0;right:0;top:-74px;text-align:center;font-size:24px;color:#8d897d">${tm}</div>`;
+  $("#dRail").appendChild(el);
+  return el;
+});
+tl.fromTo("#pD", { scale: 1.06 }, { scale: 1.0, duration: 1.8, ease: "power2.out", immediateRender: false }, tD);
+tl.from("#dHead", { yPercent: 60, autoAlpha: 0, duration: 0.3, ease: "expo.out" }, tD + 0.1);
+const dIn = [tD + 0.02, w("three more"), w("more"), w("today")];
+dEls.forEach((el, i) => {
+  tl.fromTo(el, { y: -700, rotation: i % 2 ? 9 : -9 }, { y: 0, rotation: 0, duration: 0.7, ease: "elastic.out(1,0.45)", immediateRender: true }, dIn[i]);
+  sfx(dIn[i] + 0.1, "paper", { gain: 0.3, pan: -0.6 + i * 0.4 });
+});
+dOdo.roll(4960, w("today") + 0.05, 0.75, "power2.inOut", 0.2, 12);
+sfx(w("today") + 0.82, "ding", { gain: 0.3 });
+
+// ================================================================== E. every week your calendar buys a car, and sets it on fire
+const tE = w("every week");
+tl.set("#sE", { autoAlpha: 1 }, tE);
+tl.set("#sD", { autoAlpha: 0 }, tE + 0.02);
+sfx(tE - 0.02, "whoosh", { gain: 0.28, dur: 0.35 });
+const eOdo = REEL.odometer($("#eOdo"), "$00,000");
+// grid
+(function () {
+  const g = $("#eGrid");
+  ["MON", "TUE", "WED", "THU", "FRI"].forEach((d, i) => {
+    g.insertAdjacentHTML("beforeend", `<div class="abs mono eg" style="left:${200 + i * 310}px;top:238px;width:290px;text-align:center;font-size:22px;color:#8d897d">${d}</div>`);
+  });
+  for (let h = 0; h <= 9; h++) g.insertAdjacentHTML("beforeend", `<div class="abs eg" style="left:190px;width:1540px;top:${280 + h * 74}px;height:2px;background:#24231f"></div>`);
+})();
+// 15 meetings -> 15 car parts
+const COL = { y: "#FFC21A", p: "#F2EEE3", k: "#2a2925", a: "#FF8A1F", r: "#E23B2E", g: "#5C5A54" };
+const parts = [
+  // [day, hourStart, hours, colorKey, label, price]  -> car rect [x,y,w,h, radius]
+  [0, 0, 1, "y", "STANDUP", "310", [560, 600, 200, 160, 14]],
+  [1, 1, 1.5, "y", "SYNC", "620", [760, 600, 200, 160, 0]],
+  [2, 0.5, 1, "y", "ROADMAP", "540", [960, 600, 200, 160, 0]],
+  [3, 2, 1.5, "y", "ALL HANDS", "2,900", [1160, 600, 200, 160, 14]],
+  [4, 0, 1, "y", "PLANNING", "880", [700, 452, 262, 150, 22]],
+  [0, 3, 1, "y", "REVIEW", "460", [960, 452, 262, 150, 22]],
+  [1, 4, 1, "p", "1:1", "140", [730, 476, 210, 106, 10]],
+  [2, 3, 1, "p", "1:1", "140", [982, 476, 210, 106, 10]],
+  [3, 5, 1, "k", "RETRO", "720", [1128, 690, 150, 150, 75]],
+  [4, 3, 1, "k", "DEMO", "650", [642, 690, 150, 150, 75]],
+  [2, 6, 0.5, "a", "QUICK Q", "180", [1336, 622, 42, 42, 8]],
+  [0, 6, 0.5, "r", "BUDGET", "990", [542, 618, 30, 54, 6]],
+  [1, 7, 0.5, "g", "CHECK IN", "210", [1350, 728, 60, 32, 6]],
+  [3, 7.5, 0.5, "g", "HUDDLE", "160", [510, 728, 60, 32, 6]],
+  [4, 6, 1, "y", "OFFSITE", "1,400", [900, 412, 120, 42, 8]],
+];
+const blocks = parts.map((p, i) => {
+  const [d, h, len, ck, label, price] = p;
+  const el = document.createElement("div");
+  el.className = "abs";
+  const x = 210 + d * 310, y = 284 + h * 74, ww = 270, hh = len * 74 - 8;
+  el.style.cssText = `left:${x}px;top:${y}px;width:${ww}px;height:${hh}px;border-radius:10px;background:${COL[ck]};overflow:hidden`;
+  const dark = ck === "k" || ck === "g" || ck === "r";
+  el.innerHTML = `<div class="mono lbl" style="padding:8px 12px;font-size:17px;color:${dark ? "#F2EEE3" : "#111110"};display:flex;justify-content:space-between;white-space:nowrap"><span>${label}</span><span>$${price}</span></div>`;
+  $("#eBlocks").appendChild(el);
+  return el;
+});
+tl.fromTo("#pE", { scale: 1.0 }, { scale: 1.035, duration: 4.3, ease: "none", immediateRender: false }, tE);
+gsap.set("#eHead span", { autoAlpha: 0, yPercent: 40 });
+tl.to($$("#eHead span")[0], { autoAlpha: 1, yPercent: 0, duration: 0.2, ease: "expo.out" }, tE);
+tl.to($$("#eHead span")[1], { autoAlpha: 1, yPercent: 0, duration: 0.2, ease: "expo.out" }, w("week"));
+const rB = rng(21);
+blocks.forEach((b, i) => {
+  const t = tE + 0.05 + i * 0.055;
+  tl.from(b, { scale: 0, duration: 0.22, ease: "back.out(2.2)" }, t);
+  if (i % 3 === 0) sfx(t, "bloop", { gain: 0.16, pitch: 0.9 + rB() * 0.3 });
+});
+eOdo.roll(24800, w("week"), 0.85, "power2.inOut", 0.18, 12);
+// "your calendar": blocks lift
+tl.to(blocks, { y: -10, boxShadow: "0 18px 30px rgba(0,0,0,.6)", duration: 0.25, stagger: 0.012, ease: "power2.out" }, w("calendar"));
+// "buys a car": blocks fly into a car
+const tBuy = w("buys");
+tl.to(".lbl", { autoAlpha: 0, duration: 0.12 }, tBuy - 0.15);
+tl.to([".eg", "#eHead"], { autoAlpha: 0, duration: 0.25 }, tBuy - 0.1);
+blocks.forEach((b, i) => {
+  const [x, y, ww, hh, rad] = parts[i][6];
+  tl.to(b, { left: x, top: y, width: ww, height: hh, borderRadius: rad, y: 0, boxShadow: "0 0 0 rgba(0,0,0,0)", duration: 0.5, ease: "power3.inOut" }, tBuy - 0.1 + i * 0.014);
+});
+// wheels get hub caps
+blocks[8].insertAdjacentHTML("beforeend", `<div class="abs hub" style="left:45px;top:45px;width:60px;height:60px;border-radius:50%;background:#8d897d;opacity:0"></div>`);
+blocks[9].insertAdjacentHTML("beforeend", `<div class="abs hub" style="left:45px;top:45px;width:60px;height:60px;border-radius:50%;background:#8d897d;opacity:0"></div>`);
+tl.to(".hub", { autoAlpha: 1, duration: 0.15 }, tBuy + 0.42);
+sfx(tBuy - 0.1, "whoosh", { gain: 0.35, dur: 0.55 });
+sfx(tBuy + 0.45, "clunk", { gain: 0.4 });
+// ground shadow
+$("#eBlocks").insertAdjacentHTML("afterbegin", `<div id="eGround" class="abs" style="left:520px;top:836px;width:900px;height:22px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(6px);opacity:0"></div>`);
+tl.to("#eGround", { autoAlpha: 1, duration: 0.3 }, tBuy + 0.3);
+// price tag swings from the roof sign
+$("#eTag").innerHTML = `<svg class="abs" style="left:0;top:0" width="250" height="200" viewBox="0 0 250 200"><path d="M20 0 L20 60" stroke="#F2EEE3" stroke-width="3"/><path d="M0 60 H210 L246 96 L210 132 H0 Z" transform="translate(0,0)" fill="#F2EEE3"/><circle cx="214" cy="96" r="7" fill="#121211"/></svg><div class="abs cond" style="left:18px;top:66px;font-size:62px;color:#111110">$24,800</div>`;
+const tCar = w("car", W.find("buys"));
+tl.fromTo("#eTag", { autoAlpha: 0, rotation: -70, y: -40 }, { autoAlpha: 1, rotation: 0, y: 0, duration: 1.2, ease: "elastic.out(1,0.3)", immediateRender: false }, tCar);
+sfx(tCar + 0.05, "ding", { gain: 0.32 });
+gsap.set("#eCap1 span, #eCap2 span", { autoAlpha: 0, yPercent: 40 });
+["buys", "a", "car"].forEach((wd, i) => tl.to($$("#eCap1 span")[i], { autoAlpha: 1, yPercent: 0, duration: 0.18, ease: "expo.out" }, W(W.find(wd, W.find("calendar")))));
+const tFire = w("and sets");
+tl.to("#eCap1", { autoAlpha: 0, duration: 0.12 }, tFire - 0.08);
+["and", "sets", "it", "on", "fire"].forEach((wd, i) => tl.to($$("#eCap2 span")[i], { autoAlpha: 1, yPercent: 0, duration: 0.18, ease: "expo.out" }, W(W.find(wd, W.find("car") ))));
+// fire: car chars and crumbles to ash
+const tF0 = tFire + 0.1, tFpeak = w("fire") + 0.1, tCrumble = tFpeak + 0.35, tEndE = w("so we built");
+sfx(tF0, "fire", { gain: 0.5, dur: tEndE - tF0 });
+sfx(tFpeak, "impact", { gain: 0.25 });
+tl.to(blocks, { backgroundColor: "#3a3832", duration: 0.7, ease: "power1.in" }, tFpeak - 0.35);
+tl.to("#eTag", { autoAlpha: 0, rotation: 30, y: 60, duration: 0.5, ease: "power2.in" }, tFpeak);
+const rC = rng(5);
+blocks.forEach((b, i) => {
+  tl.to(b, { y: 200 + rC() * 120, x: (rC() - 0.5) * 160, rotation: (rC() - 0.5) * 70, autoAlpha: 0, backgroundColor: "#1d1c19", duration: 0.55, ease: "power2.in" }, tCrumble + rC() * 0.2);
+});
+tl.to("#eGround", { autoAlpha: 0, duration: 0.4 }, tCrumble + 0.2);
+tl.to("#eCap2", { autoAlpha: 0, duration: 0.15 }, tEndE - 0.15);
+// procedural flames on canvas (pure function of time)
+(function () {
+  const cv = $("#fire"), ctx = cv.getContext("2d");
+  const N = 420, r = rng(77);
+  const P = Array.from({ length: N }, (_, i) => {
+    const u = i / N;
+    const onCabin = r() < 0.35;
+    return {
+      born: tF0 + Math.pow(u, 0.7) * (tCrumble + 0.6 - tF0),
+      life: 0.45 + r() * 0.5,
+      x: onCabin ? 720 + r() * 480 : 570 + r() * 780,
+      y: onCabin ? 470 : 610,
+      v: 240 + r() * 260,
+      sz: 55 + r() * 75,
+      ph: r() * 6.28,
+      sw: 18 + r() * 30,
+    };
+  });
+  const smoke = Array.from({ length: 90 }, () => ({ born: tFpeak + r() * 0.9, life: 1.0 + r() * 0.6, x: 600 + r() * 720, y: 520, v: 120 + r() * 120, sz: 60 + r() * 70 }));
+  const ash = Array.from({ length: 160 }, () => ({ born: tCrumble + r() * 0.5, life: 0.9 + r() * 0.5, x: 560 + r() * 800, y: 500 + r() * 300, vx: (r() - 0.5) * 120, vy: -60 - r() * 160, sz: 2 + r() * 4 }));
+  const colAt = (f) => (f < 0.2 ? [255, 243, 176] : f < 0.45 ? [255, 194, 26] : f < 0.7 ? [255, 138, 31] : [226, 59, 46]);
+  REEL.onFrame((t) => {
+    ctx.clearRect(0, 0, 1920, 1080);
+    if (t < tF0 || t > tEndE + 0.1) return;
+    const intensity = Math.min(1, (t - tF0) / (tFpeak - tF0)) * (t > tCrumble + 0.3 ? Math.max(0, 1 - (t - tCrumble - 0.3) / 0.6) : 1);
+    ctx.globalCompositeOperation = "source-over";
+    for (const s of smoke) {
+      const a = t - s.born;
+      if (a < 0 || a > s.life) continue;
+      const f = a / s.life;
+      ctx.fillStyle = `rgba(40,38,34,${0.35 * Math.sin(Math.PI * f)})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y - s.v * a, s.sz * (0.6 + f), 0, 6.283); ctx.fill();
+    }
+    ctx.globalCompositeOperation = "lighter";
+    for (const p of P) {
+      const a = t - p.born;
+      if (a < 0 || a > p.life) continue;
+      const f = a / p.life;
+      const x = p.x + Math.sin(p.ph + a * 7) * p.sw * f;
+      const y = p.y - p.v * a;
+      const rad = p.sz * Math.pow(1 - f, 0.6) * (0.4 + 0.6 * intensity);
+      const [cr, cg, cb] = colAt(f);
+      // tongue-shaped flame: a tall ellipse with a hot core
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(0.75, 1.8);
+      const g = ctx.createRadialGradient(0, rad * 0.25, 0, 0, 0, rad);
+      g.addColorStop(0, `rgba(${cr},${cg},${cb},${0.95 * (1 - f) * intensity})`);
+      g.addColorStop(0.55, `rgba(${cr},${cg},${cb},${0.45 * (1 - f) * intensity})`);
+      g.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(0, 0, rad, 0, 6.283); ctx.fill();
+      ctx.restore();
+    }
+    ctx.globalCompositeOperation = "source-over";
+    for (const s of ash) {
+      const a = t - s.born;
+      if (a < 0 || a > s.life) continue;
+      const f = a / s.life;
+      ctx.fillStyle = f < 0.3 ? `rgba(255,138,31,${1 - f})` : `rgba(140,136,126,${1 - f})`;
+      ctx.fillRect(s.x + s.vx * a, s.y + s.vy * a + 40 * a * a, s.sz, s.sz);
+    }
+  });
+})();
+
+// ================================================================== F. so we built Meter
+const tF = w("so we built"), tMeter = W(W.find("meter"));
+tl.set("#sF", { autoAlpha: 1 }, tF);
+tl.set("#sE", { autoAlpha: 0 }, tF + 0.02);
+sfx(tF, "slam", { gain: 0.3 });
+$("#fFlag").innerHTML = flagSVG({ plate: "#111110", text: "#FFC21A", stalk: "#111110", id: "fFlagG" });
+gsap.set("#fPre span", { autoAlpha: 0, y: 20 });
+["so", "we", "built"].forEach((wd, i) => tl.to($$("#fPre span")[i], { autoAlpha: 1, y: 0, duration: 0.14, ease: "expo.out" }, W(W.find(wd, W.find("fire")))));
+gsap.set("#fMark", { autoAlpha: 0 });
+tl.fromTo("#fMark", { scale: 1.45, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.22, ease: "back.out(1.8)", immediateRender: false }, tMeter);
+sfx(tMeter + 0.04, "slam", { gain: 0.55 });
+REEL.shake($("#shake"), tMeter + 0.06, 16);
+tl.to("#fFlagG", { rotation: 90, duration: 0.3, ease: "back.out(1.6)" }, tMeter + 0.38);
+sfx(tMeter + 0.44, "clunk", { gain: 0.5 });
+tl.to("#fTag", { autoAlpha: 1, duration: 0.2 }, tMeter + 0.45);
+tl.fromTo("#pF", { scale: 1.0 }, { scale: 1.04, duration: 1.6, ease: "none", immediateRender: false }, tF);
+
+// ================================================================== G. a price on every invite
+const tG = w("a price");
+tl.set("#sG", { autoAlpha: 1 }, tG);
+tl.set("#sF", { autoAlpha: 0 }, tG + 0.3);
+tl.fromTo("#sG", { xPercent: 100 }, { xPercent: 0, duration: 0.35, ease: "expo.out", immediateRender: false }, tG - 0.05);
+sfx(tG - 0.05, "whoosh", { gain: 0.3, dur: 0.4 });
+function invite(title, when, price, big) {
+  return `<div class="abs" style="left:0;top:0;width:980px;height:540px;border-radius:22px;background:#FBF8F1;border:4px solid #111110;box-shadow:14px 14px 0 #111110">
+    <div class="abs mono" style="left:44px;top:38px;font-size:22px;color:#5C5A54">INVITE · ${when}</div>
+    <div class="abs cond" style="left:40px;top:90px;font-size:104px;color:#111110;white-space:nowrap">${title}</div>
+    <div class="abs" style="left:44px;top:236px;display:flex;gap:10px">${["DA", "PR", "MA", "GR", "LE", "OM", "SA", "JO", "KI"].map((n, i) => `<div style="width:66px;height:66px;border-radius:50%;background:${["#6b5a3e", "#3f6a5a", "#6a4058", "#3f5a7a", "#7a6a3a", "#4a6a3a", "#7a4a3a", "#4a4a7a", "#5a5a5a"][i]};color:#F2EEE3;font-family:Archivo;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center">${n}</div>`).join("")}</div>
+    <div class="abs mono" style="left:44px;top:322px;font-size:22px;color:#5C5A54">9 GUESTS · 60 MIN · VIDEO CALL</div>
+    ${big ? `<div class="gBtns abs" style="left:44px;top:404px;display:flex;gap:20px;align-items:center">
+      <div id="gDec" class="btn" style="width:230px;height:86px;border:4px solid #111110;color:#111110;font-size:28px;transform-origin:50% 50%">DECLINE</div>
+      <div id="gAcc" class="btn" style="width:230px;height:86px;background:#111110;color:#F2EEE3;font-size:28px;transform-origin:50% 50%">ACCEPT</div></div>` : ""}
+    <div class="gTag abs" style="left:850px;top:-6px;width:240px;height:220px;transform-origin:120px 0">
+      <svg class="abs" style="left:0;top:0" width="240" height="220" viewBox="0 0 240 220"><path d="M120 0 V70" stroke="#111110" stroke-width="4"/><path d="M20 70 H220 V170 L180 210 H20 Z" fill="#FFC21A" stroke="#111110" stroke-width="5"/><circle cx="120" cy="92" r="9" fill="#111110"/></svg>
+      <div class="abs cond" style="left:0;right:0;top:112px;text-align:center;font-size:${big ? 78 : 64}px;color:#111110">$${price}</div>
+    </div>
+  </div>`;
+}
+$("#inv").innerHTML = invite("Q4 ROADMAP SYNC", "THURSDAY 10:00 TO 11:00", "1,240", true);
+$("#inv2").innerHTML = invite("BRAINSTORM", "FRIDAY 14:00", "1,860", false);
+$("#inv3").innerHTML = invite("STATUS UPDATE", "MONDAY 9:00", "940", false);
+const tags = $$(".gTag");
+const tPrice = w("price");
+tl.fromTo(tags[2], { y: -420, rotation: 0 }, { y: 0, duration: 0.35, ease: "power3.in", immediateRender: true }, tPrice);
+tl.to(tags[2], { keyframes: { rotation: [16, -11, 7, -4, 2, 0] }, duration: 1.6, ease: "none" }, tPrice + 0.35);
+sfx(tPrice + 0.35, "clunk", { gain: 0.35 });
+gsap.set(["#inv2", "#inv3"], { autoAlpha: 0, x: 120, y: -40 });
+const tEvery = w("every invite");
+tl.to("#inv2", { autoAlpha: 1, x: 0, y: 0, duration: 0.3, ease: "expo.out" }, tEvery);
+tl.to("#inv3", { autoAlpha: 1, x: 0, y: 0, duration: 0.3, ease: "expo.out" }, tEvery + 0.12);
+tl.fromTo([tags[0], tags[1]], { y: -420 }, { y: 0, duration: 0.3, ease: "power3.in", stagger: 0.1, immediateRender: true }, tEvery + 0.2);
+sfx(tEvery + 0.5, "clunk", { gain: 0.25 }); sfx(tEvery + 0.6, "clunk", { gain: 0.22 });
+gsap.set("#gCap span", { autoAlpha: 0, y: 16 });
+["before", "anyone", "says", "yes"].forEach((wd, i) => tl.to($$("#gCap span")[i], { autoAlpha: 1, y: 0, duration: 0.15, ease: "expo.out" }, W(W.find(wd, W.find("invite")))));
+const tYes = w("says yes");
+tl.to("#gAcc", { scale: 0.62, autoAlpha: 0.45, duration: 0.35, ease: "back.in(1.5)" }, tYes);
+tl.to("#gDec", { scale: 1.32, backgroundColor: "#111110", color: "#FFC21A", duration: 0.35, ease: "back.out(2)" }, tYes + 0.05);
+sfx(tYes + 0.05, "pop", { gain: 0.3 });
+gsap.set("#gCursor", { x: 1500, y: 980 });
+tl.to("#gCursor", { autoAlpha: 1, x: 640, y: 760, duration: 0.6, ease: "power2.inOut" }, tYes + 0.1);
+tl.fromTo("#pG", { scale: 1.0 }, { scale: 1.035, duration: 3.4, ease: "none", immediateRender: false }, tG);
+
+// ================================================================== H. a live meter, in the corner; could this be an email
+const tH = w("a live meter");
+tl.set("#sH", { autoAlpha: 1 }, tH);
+tl.set("#sG", { autoAlpha: 0 }, tH + 0.02);
+sfx(tH - 0.02, "whoosh", { gain: 0.28, dur: 0.35 });
+(function () {
+  const names = ["DANA", "PRIYA", "MARCO", "GREG", "LENA", "OMAR"];
+  const avs = ["#6b5a3e", "#3f6a5a", "#6a4058", "#3f5a7a", "#7a6a3a", "#4a6a3a"];
+  names.forEach((n, i) => {
+    const c = i % 3, r = Math.floor(i / 3);
+    $("#hTiles").insertAdjacentHTML("beforeend", `<div class="tile" style="left:${90 + c * 548}px;top:${240 + r * 318}px;width:530px;height:300px;background:radial-gradient(ellipse at 50% 40%,#2c2b27 0%,#141412 100%)"><div class="av" style="background:${avs[i]}">${n.slice(0, 2)}</div><div class="nm mono">${n}</div></div>`);
+  });
+  ["#2c2b27", "#2c2b27", "#2c2b27"].forEach(() => $("#hCtrl").insertAdjacentHTML("beforeend", `<div style="width:70px;height:70px;border-radius:50%;background:#2c2b27"></div>`));
+  $("#hCtrl").insertAdjacentHTML("beforeend", `<div class="btn" style="width:180px;height:70px;background:#E23B2E;color:#fff;font-size:24px">LEAVE</div>`);
+})();
+const hSeg = REEL.sevenSeg($("#hSeg"), "0,000", { height: 92 });
+hSeg.set(380); hSeg.value = 380;
+gsap.set("#hMeter", { scale: 0.4, autoAlpha: 0 });
+tl.to("#hMeter", { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(2)" }, w("live"));
+sfx(w("live"), "pop", { gain: 0.3 });
+const tEmail0 = w("one tap");
+hSeg.count(1190, w("live") + 0.2, tEmail0 - (w("live") + 0.2), 90, 0);
+for (let t = w("live") + 0.3; t < w("one question"); t += 0.36) sfx(t, "tick", { gain: 0.14 });
+const mmss = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+REEL.counter($("#hClock"), { from: 1170, to: 1186, start: tH, dur: w("and at twenty") - tH, steps: 16, fmt: mmss, tick: null });
+REEL.counter($("#hClock"), { from: 1186, to: 1200, start: w("twenty minutes"), dur: we("minutes") - w("twenty minutes"), steps: 14, fmt: mmss, tick: "tick", gain: 0.2 });
+sfx(we("minutes") + 0.02, "ding", { gain: 0.38 });
+tl.to("#hClock", { color: "#FFC21A", scale: 1.25, duration: 0.12, yoyo: true, repeat: 1 }, we("minutes"));
+// push toward the corner on "right in the corner"
+const tCorner = w("right in the corner");
+tl.to("#pH", { scale: 1.32, transformOrigin: "88% 12%", duration: 0.7, ease: "power3.inOut" }, tCorner);
+tl.fromTo("#hRing", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("corner"));
+sfx(w("corner"), "swish", { gain: 0.28 });
+tl.to("#hRing", { autoAlpha: 0, duration: 0.2 }, w("one question") - 0.4);
+tl.to("#pH", { scale: 1.0, duration: 0.6, ease: "power3.inOut" }, w("and at twenty") - 0.05);
+// one question: the card drops
+gsap.set("#card", { y: -1100, rotation: -4 });
+gsap.set("#cQ span", { autoAlpha: 0, y: 30 });
+gsap.set(["#bYes", "#bNo"], { scale: 0, autoAlpha: 0 });
+const tOneQ = w("one question");
+tl.to("#card", { y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.4)" }, tOneQ - 0.1);
+sfx(tOneQ + 0.2, "clunk", { gain: 0.45 });
+["could", "this", "be", "an", "email"].forEach((wd, i) => tl.to($$("#cQ span")[i], { autoAlpha: 1, y: 0, duration: 0.16, ease: "expo.out" }, W(W.find(wd, W.find("question", W.find("minutes"))))));
+const tBtn = we("email") + 0.1;
+tl.to("#bYes", { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(2.5)" }, tBtn);
+tl.to("#bNo", { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(2.5)" }, tBtn + 0.08);
+sfx(tBtn, "pop", { gain: 0.25 });
+// one tap
+gsap.set("#hCursor", { x: 1500, y: 1000, autoAlpha: 0 });
+const tTap = w("tap");
+tl.to("#hCursor", { autoAlpha: 1, x: 640, y: 740, duration: 0.55, ease: "power2.inOut" }, tTap - 0.6);
+tl.to("#bYes", { scale: 0.9, duration: 0.07, yoyo: true, repeat: 1 }, tTap);
+tl.to("#hCursor", { scale: 0.85, duration: 0.07, yoyo: true, repeat: 1 }, tTap);
+sfx(tTap, "click", { gain: 0.5 });
+// fold into an envelope and fly away: gone
+const tFold = tTap + 0.18, tGone = w("gone");
+tl.to("#hCursor", { autoAlpha: 0, duration: 0.1 }, tFold);
+tl.fromTo(["#envB", "#env"], { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(1.6)", immediateRender: false }, tFold);
+tl.to("#callWin", { scale: 0.29, y: 40, duration: 0.32, ease: "power3.in" }, tFold + 0.05);
+tl.set("#envFront", { autoAlpha: 1 }, tFold + 0.36);
+tl.set("#envFlap", { autoAlpha: 1, rotationX: 178 }, tFold + 0.36);
+tl.to("#envFlap", { rotationX: 0, duration: 0.2, ease: "power2.in" }, tFold + 0.38);
+tl.set("#callWin", { autoAlpha: 0 }, tFold + 0.6);
+sfx(tFold + 0.3, "paper", { gain: 0.4 });
+tl.to(["#envB", "#env"], { x: 1500, y: -760, rotation: 28, scale: 0.35, duration: 0.42, ease: "power2.in" }, tGone - 0.12);
+sfx(tGone - 0.14, "whoosh", { gain: 0.42, dur: 0.5 });
+tl.fromTo("#hGone", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "expo.out", immediateRender: false }, tGone + 0.26);
+
+// ================================================================== I. time is money; now it comes with a receipt
+const tI = w("time is money");
+tl.set("#sI", { autoAlpha: 1 }, tI);
+tl.set("#sH", { autoAlpha: 0 }, tI + 0.02);
+gsap.set("#iTim span", { autoAlpha: 0, scale: 1.5 });
+["time", "is", "money"].forEach((wd, i) => {
+  const t = W(W.find(wd, W.find("gone")));
+  tl.to($$("#iTim span")[i], { autoAlpha: 1, scale: 1, duration: 0.16, ease: "back.out(1.6)" }, t);
+  sfx(t + 0.04, i === 2 ? "slam" : "stamp", { gain: i === 2 ? 0.45 : 0.25 });
+});
+REEL.shake($("#shake"), W(W.find("money")) + 0.06, 9);
+tl.fromTo("#pI", { scale: 1.0 }, { scale: 1.03, duration: 3.0, ease: "none", immediateRender: false }, tI);
+const FRAMES = Math.round((W.last() + 1.2) * 60);
+let LINES = 0;
+try {
+  for (const u of [location.pathname, "../../lib/reel.js"]) {
+    const x = new XMLHttpRequest(); x.open("GET", u, false); x.send();
+    LINES += x.responseText.split("\n").length;
+  }
+} catch (e) { LINES = 1100; }
+const RI = receipt($("#iPaper"), $("#iIn"), [
+  { h: 116, html: `<div class="cond" style="text-align:center;font-size:96px;padding-top:30px">NOW IT COMES</div>` },
+  { h: 96, html: `<div class="cond" style="text-align:center;font-size:96px;padding-top:10px">WITH A</div>` },
+  { h: 108, html: `<div class="cond" style="text-align:center;font-size:96px;padding-top:10px"><span style="background:var(--taxi);padding:0 16px">RECEIPT</span></div>` },
+  { h: 40, html: `<div class="sep" style="top:18px"></div>` },
+  { h: 70, html: `<div class="mono" style="text-align:center;font-size:38px;font-weight:800;padding-top:14px">THIS VIDEO</div>` },
+  { h: 58, html: line("AFTER EFFECTS", "0", "", 28) },
+  { h: 58, html: line("EDITORS", "0", "", 28) },
+  { h: 62, html: line("MADE BY", `<span style="display:inline-flex;align-items:center;gap:10px">${spark(34)}CLAUDE</span>`, "", 28) },
+  { h: 58, html: line("FRAMES", `<span id="iFr"></span>`, "", 28) },
+  { h: 58, html: line("LINES OF CODE", `<span id="iLn"></span>`, "", 28) },
+  { h: 36, html: `<div class="sep" style="top:16px"></div>` },
+  { h: 44, html: `<div class="abs" style="left:0;right:0;top:20px;border-top:4px dotted rgba(17,17,16,.6)"></div><div class="abs mono" style="right:22px;top:2px;font-size:14px;color:#5C5A54">TEAR HERE</div>` },
+  { h: 262, html: `<div id="coup" class="abs" style="inset:0"></div>` },
+], 18);
+const coupHTML = `<div class="abs mono" style="left:0;right:0;top:22px;text-align:center;font-size:20px;color:#5C5A54">COUPON · FREE PROMPT</div>
+  <div class="abs" style="left:0;right:0;top:58px;display:flex;justify-content:center;align-items:center;gap:22px">${spark(120)}<div class="cond" style="font-size:96px;line-height:.92;color:#111110">COMMENT<br><span class="cWord" style="color:#D97757">CLAUDE</span></div></div>`;
+$("#coup").innerHTML = coupHTML;
+$("#coupFly").innerHTML = coupHTML;
+RI.print(0, w("now it comes"), { gain: 0.35 });
+RI.print(1, w("with a"), { gain: 0.3 });
+RI.print(2, w("receipt"), { gain: 0.35 });
+sfx(we("receipt") + 0.05, "ding", { gain: 0.35 });
+tl.to("#iTim", { autoAlpha: 0, y: -80, duration: 0.3, ease: "power2.in" }, w("oh and"));
+// twist: the bill for this video
+const tOh = w("oh and");
+RI.print(3, tOh + 0.1, { gain: 0.15 });
+RI.print(4, w("this whole video") + 0.2);
+RI.print(5, w("video") + 0.1, { gain: 0.25 });
+RI.print(6, w("video") + 0.35, { gain: 0.25 });
+RI.print(7, w("claude made"));
+tl.from(RI.rows[7].el.querySelector(".spark"), { rotation: -180, scale: 0, duration: 0.5, ease: "back.out(2)" }, w("claude made") + 0.05);
+sfx(w("claude made") + 0.1, "chime", { gain: 0.3 });
+RI.print(8, w("every frame") - 0.1);
+REEL.odometer($("#iFr"), "0,000").roll(FRAMES, w("every frame"), 0.6, "power3.out", 0.16, 10);
+RI.print(9, w("in code") - 0.15);
+REEL.odometer($("#iLn"), "0,000").roll(LINES, w("in code"), 0.5, "power3.out", 0.16, 8);
+RI.print(10, w("code") + 0.1, { gain: 0.15 });
+const stamp2 = document.createElement("div");
+stamp2.className = "stamp";
+stamp2.style.cssText += `left:110px;top:${RI.rows[8].top - 4}px;color:var(--claude);font-size:66px;transform:rotate(-7deg)`;
+stamp2.innerHTML = "MADE WITH CODE";
+$("#iIn").appendChild(stamp2);
+const tSt2 = we("code") + 0.12;
+tl.fromTo(stamp2, { scale: 1.4, autoAlpha: 0 }, { scale: 1, autoAlpha: 0.92, duration: 0.12, ease: "power4.in", immediateRender: false }, tSt2);
+sfx(tSt2 + 0.12, "stamp", { gain: 0.6 });
+REEL.shake($("#shake"), tSt2 + 0.12, 12);
+// CTA: the coupon prints, tears along the perforation and flies at camera
+const tCom = w("comment claude");
+RI.print(11, tCom - 0.25, { gain: 0.15 });
+RI.print(12, tCom, { gain: 0.35 });
+tl.to($$(".cWord")[0], { keyframes: { scale: [1.15, 1] }, duration: 0.3, transformOrigin: "0% 50%", display: "inline-block" }, w("claude", W.find("comment")));
+const tTear = w("and i'll") - 0.05;
+const coupTop = 1012 - RI.height(12) + RI.rows[12].top; // screen y of coupon at tear time
+gsap.set("#coupFly", { top: coupTop });
+tl.set("#coupFly", { autoAlpha: 1 }, tTear);
+tl.set("#coup", { autoAlpha: 0 }, tTear);
+sfx(tTear, "tear", { gain: 0.55 });
+tl.to("#coupFly", { rotation: -5, y: -30, duration: 0.18, ease: "power2.out" }, tTear);
+tl.to("#iDim", { autoAlpha: 0.94, duration: 0.5 }, tTear + 0.1);
+tl.to("#coupFly", { top: 540 - 130, rotation: 0, y: 0, scale: 2.45, duration: 0.6, ease: "power3.inOut" }, tTear + 0.18);
+sfx(tTear + 0.15, "whoosh", { gain: 0.35, dur: 0.6 });
+sfx(tTear + 0.8, "impact", { gain: 0.3 });
+tl.to("#coupFly", { scale: 2.55, duration: 2.0, ease: "none" }, tTear + 0.8);
+tl.to("#coupFly .spark", { rotation: 30, duration: 2.0, ease: "none" }, tTear + 0.8);
+
+REEL.finish(W.last() + 1.2);
+</script>
+</body></html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>UPI Ch5 Why is it free</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.stampG{position:absolute;padding:6px 18px;border:8px solid #1f9d5a;border-radius:12px;color:#1f9d5a;font-family:Archivo;font-weight:900;font-stretch:72%;font-size:64px;text-transform:uppercase;white-space:nowrap}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script><script src="../../../lib/iso.js"></script><script src="../../../lib/explainer2.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" style="background:radial-gradient(ellipse at 70% 40%,#FFFFFF 0%,#FFF0C2 55%,#FFE09A 100%)"></div><svg class="abs" id="raysA" style="left:-1000px;top:-1200px;opacity:.10" width="3200" height="3200" viewBox="0 0 3200 3200"></svg><div class="abs" style="left:0;top:850px;width:1920px;height:230px;background:#F3D58F"></div>
+    <div class="serif" id="aPre" data-ob="apre" style="position:absolute;left:116px;top:110px;font-size:64px;color:#0A0F1E">the million rupee question</div>
+    <div class="lbl x3d" id="aHead" data-ob="ahead" style="left:110px;top:215px;font-size:170px;--xf:#fff">Who pays<span style="color:#F0566E">?</span></div>
+    <svg id="pos" class="abs" data-ob="pos" style="left:150px;top:400px;overflow:visible" width="300" height="400" viewBox="0 0 300 400"><g id="posBody"></g><rect x="70" y="95" width="160" height="90" rx="10" fill="#5BE49B"/><g id="keys"></g><rect id="card" x="0" y="0" width="200" height="120" rx="14" fill="#3E7BFA"/><rect x="0" y="30" width="200" height="22" fill="#1B2340" opacity=".5"/></svg>
+    <div class="pcard" id="fee" data-ob="fee" style="left:480px;top:470px;width:470px"><div class="tape"></div><div class="m" style="font-size:20px;color:#8a7f6a">CARD PAYMENT</div><div class="h" style="font-size:46px;margin-top:8px">shop pays a small fee</div><div class="serif" style="font-size:30px;color:#c7364c;margin-top:6px">on every single payment</div></div>
+    <div class="pcard" id="upi" data-ob="upi" style="left:1100px;top:420px;width:620px;text-align:center"><div class="tape"></div><div class="m" style="font-size:22px;color:#8a7f6a">REGULAR UPI PAYMENTS TO SHOPS</div><div class="big" style="font-size:200px;line-height:1;margin-top:10px;color:#1f9d5a">₹0</div><div class="m" style="font-size:22px;color:#8a7f6a;margin-top:4px">FEE</div></div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:linear-gradient(180deg,#E3DCFA 0%,#F1EDFD 100%)"></div><div id="cityB" class="abs" style="left:0;top:450px"></div><div class="abs" style="left:0;top:850px;width:1920px;height:230px;background:linear-gradient(180deg,#D3C8F6,#C9BCF2)"></div>
+    <div id="govBox" class="abs" data-ob="gov" style="left:60px;top:357px"></div><svg style="display:none" id="gov" class="abs" data-ob="gov" style="left:140px;top:270px" width="380" height="380" viewBox="0 0 380 380"><path d="M190 20 L200 60 H180 Z" fill="#FF5D73"/><rect x="188" y="20" width="4" height="60" fill="#fff"/><path d="M110 150 Q190 60 270 150 Z" fill="#F6F1E7"/><rect x="60" y="150" width="260" height="22" fill="#F6F1E7"/>${''}<rect x="40" y="340" width="300" height="26" fill="#F6F1E7"/><g id="pill"></g><text x="190" y="140" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="18" fill="#160c40">GOVT</text></svg>
+    <div class="pcard" id="decree" data-ob="decree" style="left:596px;top:230px;width:470px;height:250px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">OFFICIAL DECISION</div><div class="h" style="font-size:38px;margin-top:8px;white-space:nowrap">UPI to shops: no fee.</div><div class="stampG" id="zero" style="left:140px;top:130px;font-size:48px;transform:rotate(-8deg)">Zero fee</div></div>
+    <div id="bankA" class="abs" data-ob="banks" style="left:1080px;top:493px"></div>
+    <div id="bankB" class="abs" data-ob="banks" style="left:1470px;top:493px"></div>
+    <svg id="bulbs" class="abs" data-ob="bulbs" style="left:1170px;top:340px" width="520" height="130" viewBox="0 0 520 130"><g id="b1"><circle cx="100" cy="60" r="36" fill="#3a3a5a"/><rect x="86" y="92" width="28" height="22" rx="4" fill="#8A94B0"/></g><g id="b2"><circle cx="400" cy="60" r="36" fill="#3a3a5a"/><rect x="386" y="92" width="28" height="22" rx="4" fill="#8A94B0"/></g></svg>
+    <div class="chip" id="thrill" data-ob="thrill" style="left:1360px;top:880px;color:#E0324B">NOT THRILLED</div>
+    <div class="chip" id="support" data-ob="support" style="left:740px;top:560px;color:#1F9D5A">SUPPORT</div>
+    <div id="coins" class="abs" style="inset:0"></div>
+    <div id="cupBox" class="abs" data-ob="cup" style="left:650px;top:690px"></div>
+    <div class="abs" id="spons" data-ob="cup" style="left:770px;top:730px;padding:8px 18px;background:#FFB547;color:#0A0F1E;font-family:Archivo;font-weight:900;font-stretch:72%;font-size:44px;transform:rotate(-8deg);text-transform:uppercase">Sponsored</div>
+    <div class="serif" id="welcome" data-ob="welcome" style="position:absolute;left:470px;top:876px;font-size:58px;color:#1B2340;white-space:nowrap">you're welcome, chai wala</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw, SVG } = EX;
+const { ART } = PAPER;
+EX.chrome(5, 7, "Why is it free?");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+EX.chapterCard2(5, "Why is it free?", 0.05, 2.3, { hero: `<div class="abs" id="heroCoin" style="left:150px;top:80px">${ISO.coin({ size: 470, label: "₹0" })}</div><div class="abs" style="left:520px;top:470px;padding:14px 28px;background:#22B573;color:#fff;font-family:Archivo;font-weight:900;font-size:64px;transform:rotate(-8deg);border-radius:14px">FREE?!</div>`, heroAnim: (el, t) => tl.fromTo("#heroCoin", { rotationY: 180 }, { rotationY: 0, duration: 0.8, ease: "back.out(1.4)", immediateRender: false }, t) });
+const raysF = (sel, c) => { $(sel).innerHTML = Array.from({ length: 24 }, (_, i) => `<path d="M1600 1600 L${1600 + 1700 * Math.cos((i / 24) * 6.283)} ${1600 + 1700 * Math.sin((i / 24) * 6.283)} L${1600 + 1700 * Math.cos(((i + 0.5) / 24) * 6.283)} ${1600 + 1700 * Math.sin(((i + 0.5) / 24) * 6.283)} Z" fill="${c}"/>`).join(""); tl.fromTo(sel, { rotation: 0 }, { rotation: 25, duration: 30, ease: "none", immediateRender: false }, 0); };
+raysF("#raysA", "#F5A524");
+$("#posBody").innerHTML = ISO.box(40, 60, 0, 220, 330, 60, "#2B3354");
+$("#keys").innerHTML = [0, 1, 2].map((r) => [0, 1, 2].map((c) => `<rect x="${78 + c * 52}" y="${215 + r * 50}" width="40" height="36" rx="8" fill="#4B5785"/>`).join("")).join("");
+const END = W.last() + 1.6;
+const T = { A: 2.2, B: w("the government decided") - 0.1 };
+$("#pill").innerHTML = [80, 130, 180, 230, 280].map((x) => `<rect x="${x}" y="176" width="22" height="164" fill="#F6F1E7"/>`).join("");
+
+// ================================================= A: who pays?
+show("#sA", T.A, T.B + 0.01, { y: 0 });
+gsap.set(["#aPre", "#aHead", "#pos", "#fee", "#upi"], { autoAlpha: 0 });
+rise("#aPre", w("the million"));
+tl.fromTo("#aHead", { autoAlpha: 0, scale: 1.1, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("who pays"));
+sfx(w("who pays"), "slam", { gain: 0.22 });
+pop("#pos", w("when you swipe") - 0.2, { from: 0.7, sfx: false });
+tl.fromTo("#card", { x: 50, y: 160 }, { keyframes: { x: [50, 50], y: [160, 220, 160] }, duration: 0.6, immediateRender: false }, w("swipe"));
+sfx(w("swipe") + 0.2, "swish", { gain: 0.25 }); sfx(w("swipe") + 0.5, "beep", { gain: 0.2 });
+tl.fromTo("#fee", { autoAlpha: 0, rotation: 6, x: -40 }, { autoAlpha: 1, rotation: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("small fee"));
+sfx(w("small fee"), "coin", { gain: 0.2 });
+tl.fromTo("#upi", { autoAlpha: 0, y: 80, rotation: -5 }, { autoAlpha: 1, y: 0, rotation: -1, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, w("but for regular"));
+sfx(w("but for regular"), "paper", { gain: 0.25 });
+tl.fromTo("#upi .big", { scale: 1.6 }, { scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("zero"));
+sfx(w("zero"), "ding", { gain: 0.3 });
+
+// ================================================= B: government, grumpy banks, sponsored chai (page fold)
+EX.stripes(T.B);
+show("#sB", T.B, null, { y: 0 });
+$("#cityB").innerHTML = ISO.city({ h: 400, color: "#CFC4F2", seed: 3 });
+$("#govBox").innerHTML = ISO.bank({ w: 520, color: "#22B573", id: "gv", label: "GOVERNMENT" });
+$("#bankA").innerHTML = ISO.bank({ w: 380, color: "#3E7BFA", id: "ga", label: "BANK A" });
+$("#bankB").innerHTML = ISO.bank({ w: 380, color: "#F5A524", id: "gb", label: "BANK B" });
+$("#cupBox").innerHTML = ART.chai({ w: 110, id: "sc" });
+gsap.set(["#govBox", "#decree", "#zero", "#bankA", "#bankB", "#bulbs", "#thrill", "#support", "#cupBox", "#spons", "#welcome"], { autoAlpha: 0 });
+EX.drop("#govBox", T.B + 0.35, { from: -900 });
+tl.fromTo("#decree", { autoAlpha: 0, rotation: -6, y: -60 }, { autoAlpha: 1, rotation: -1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("decided"));
+tl.fromTo("#zero", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, w("decided") + 0.4);
+sfx(w("decided") + 0.54, "stamp", { gain: 0.5 });
+pop("#bankA", w("the banks"), { from: 0.5 }); pop("#bankB", w("the banks") + 0.12, { from: 0.5 });
+tl.to(["#gaMouth", "#gbMouth"], { attr: { d: "M201 118 Q213 106 225 118" }, duration: 0.2 }, w("not thrilled"));
+tl.to(["#gaFace", "#gbFace"], { y: 4, duration: 0.2 }, w("not thrilled"));
+pop("#thrill", w("not thrilled"), { sfx: "swish", gain: 0.15 });
+// support coins from govt to banks
+const tSup = w("gives them");
+for (let k = 0; k < 6; k++) { $("#coins").insertAdjacentHTML("beforeend", `<div class="abs cn" style="left:330px;top:520px">${ISO.coin({ size: 56 })}</div>`); }
+$$("#coins .cn").forEach((c, k) => { gsap.set(c, { autoAlpha: 0 }); const tx = k % 2 ? 1580 : 1240; tl.fromTo(c, { autoAlpha: 1, x: 0, y: 0 }, { x: tx - 330, y: 160, duration: 0.7, ease: "power2.inOut", immediateRender: false }, tSup + k * 0.1); tl.to(c, { autoAlpha: 0, duration: 0.1 }, tSup + k * 0.1 + 0.7); sfx(tSup + 0.6 + k * 0.1, "coin", { gain: 0.1 }); });
+pop("#support", tSup, { sfx: false });
+// lights on
+pop("#bulbs", w("keep the lights") - 0.3, { from: 0.6, sfx: false });
+tl.to(["#b1 circle", "#b2 circle"], { attr: { fill: "#FFD23F" }, filter: "drop-shadow(0 0 22px #FFC107)", duration: 0.15 }, w("lights on"));
+sfx(w("lights on"), "click", { gain: 0.25 });
+// sponsored chai
+tl.to(["#decree", "#support", "#thrill"], { autoAlpha: 0, duration: 0.25 }, w("which means") - 0.2);
+pop("#cupBox", w("chai payment") - 0.3, { from: 0.5 });
+every(w("chai payment"), END, 0.45, (t) => tl.fromTo("#scSteam", { y: 0, opacity: 0.9 }, { y: -22, opacity: 0, duration: 0.45, ease: "none", immediateRender: false }, t));
+tl.fromTo("#spons", { autoAlpha: 0, scale: 1.5, rotation: -20 }, { autoAlpha: 1, scale: 1, rotation: -8, duration: 0.25, ease: "back.out(2)", immediateRender: false }, w("sponsored"));
+sfx(w("sponsored"), "paper", { gain: 0.3 });
+rise("#welcome", w("you're welcome"));
+sfx(w("you're welcome"), "chime", { gain: 0.18 });
+
+REEL.finish(END);
+</script>
+</body></html>

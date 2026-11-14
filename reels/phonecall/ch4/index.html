@@ -1,0 +1,333 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ch4 Finding your friend</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.mono{font-family:"JetBrains Mono";font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.field{display:flex;justify-content:space-between;padding:16px 0;border-bottom:2px solid #e3e6ef;font-family:"JetBrains Mono";font-weight:700;font-size:28px}
+.area{position:absolute;border-radius:60px;border:4px solid rgba(255,255,255,.25)}
+.ck{display:flex;align-items:center;gap:20px;font-family:"JetBrains Mono";font-weight:700;font-size:28px;color:#EEF2F7;padding:12px 0}
+.ck i{width:42px;height:42px;border-radius:50%;background:#5BE49B;display:flex;align-items:center;justify-content:center;font-style:normal;color:#0A0F1E;font-size:26px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="../../../lib/vendor/d3.min.js"></script>
+<script src="../../../lib/world.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/art.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <section class="scene" id="sA">
+    <div class="bg" style="background:#FF5D73"></div>
+    <div id="crowd" class="abs" style="left:600px;top:360px;width:1260px;height:560px"></div>
+    <div id="pauseI" class="abs" style="left:150px;top:300px;display:flex;gap:40px"><div style="width:90px;height:300px;border-radius:20px;background:#0A0F1E"></div><div style="width:90px;height:300px;border-radius:20px;background:#0A0F1E"></div></div>
+    <div class="lbl" id="aWait" style="left:120px;top:660px;font-size:180px;color:#0A0F1E">But wait</div>
+    <div class="lbl" id="aFind" style="left:120px;top:150px;font-size:110px;color:#0A0F1E">First, find<br><span style="color:#fff">the person</span></div>
+    <svg id="lens" class="abs" style="left:0;top:0;overflow:visible" width="260" height="260" viewBox="0 0 260 260"><circle cx="100" cy="100" r="80" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="16"/><line x1="160" y1="160" x2="240" y2="240" stroke="#fff" stroke-width="26" stroke-linecap="round"/></svg>
+    <div class="chip" id="aPriya" style="left:0;top:0;color:#0A0F1E;background:#3EE0FF;border-color:#3EE0FF">PRIYA</div>
+  </section>
+
+  <section class="scene" id="sB">
+    <div class="bg" style="background:linear-gradient(135deg,#0A0F1E 0%,#16204d 100%)"></div>
+    <div id="bPhone" class="abs" style="inset:0"></div>
+    <div class="abs card" id="req" style="left:640px;top:200px;width:760px;padding:40px 46px;background:#fff;border:none;color:#0A0F1E">
+      <div class="mono" style="font-size:22px;color:#3a7bd5">CALL REQUEST</div>
+      <div class="field" style="margin-top:14px"><span style="color:#8a90a6">FROM</span><span>+91 98XXX XXXXX</span></div>
+      <div class="field"><span style="color:#8a90a6">TO</span><span style="color:#FF5D73">+1 212 555 0147</span></div>
+      <div class="field" style="border:none"><span style="color:#8a90a6">TYPE</span><span>VOICE CALL</span></div>
+    </div>
+    <div class="abs serif" id="say" style="left:640px;top:640px;width:1100px;font-size:76px;color:#fff;background:#3a7bd5;padding:16px 40px 26px;border-radius:40px 40px 40px 8px;min-height:120px"><span id="sayT"></span></div>
+  </section>
+
+  <section class="scene" id="sC">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#4a2aa8 0%,#160c40 75%)"></div>
+    <svg id="brain" class="abs" style="left:0;top:0" width="1920" height="1080"></svg>
+    <div class="lbl" id="cCore" style="left:0;right:0;top:120px;text-align:center;font-size:130px;color:#fff">Core network</div>
+    <div class="serif" id="cBrain" style="position:absolute;left:0;right:0;top:250px;text-align:center;font-size:70px;color:#c9b8ff">the brain of the whole system</div>
+    <div class="abs" id="env" style="left:-200px;top:470px"><svg width="170" height="120" viewBox="0 0 170 120"><rect x="4" y="4" width="162" height="112" rx="12" fill="#fff"/><path d="M6 8 L85 70 L164 8" stroke="#3a7bd5" stroke-width="7" fill="none"/></svg></div>
+    <div class="abs card" id="cust" style="left:140px;top:420px;width:520px;padding:30px 36px;background:#fff;border:none;color:#0A0F1E">
+      <div class="mono" style="font-size:20px;color:#8a90a6">CUSTOMER</div>
+      <div class="h" style="font-size:52px;margin-top:8px">You</div>
+      <div class="mono" style="font-size:22px;margin-top:10px;color:#5BE49B;display:flex;gap:10px;align-items:center"><span style="width:30px;height:30px;border-radius:50%;background:#5BE49B;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:20px">✓</span>REAL CUSTOMER</div>
+    </div>
+    <div class="abs" id="simW" style="left:1340px;top:380px;perspective:1000px"><div id="sim"></div></div>
+    <div class="abs" id="verified" style="left:1300px;top:700px;padding:12px 30px;border:7px solid #5BE49B;border-radius:12px;color:#5BE49B;font-family:Archivo;font-weight:900;font-stretch:68%;font-size:80px;transform:rotate(-8deg)">VERIFIED</div>
+    <div class="chip" id="cOn" style="left:1320px;top:880px;color:#FFB547">WHEN YOUR PHONE SWITCHED ON</div>
+  </section>
+
+  <section class="scene" id="sD">
+    <div class="bg" style="background:#EEF2F7"></div>
+    <div class="abs" id="num" style="left:0;right:0;top:150px;text-align:center;font-family:'JetBrains Mono';font-weight:800;font-size:130px;color:#0A0F1E;letter-spacing:.02em"><span id="ncc" style="border-bottom:12px solid transparent">+1</span> <span id="nrest" style="border-bottom:12px solid transparent">212 555 0147</span></div>
+    <div class="chip" id="dCC" style="left:330px;top:330px;color:#fff;background:#FF5D73;border-color:#FF5D73">COUNTRY CODE · USA</div>
+    <div class="chip" id="dOp" style="left:900px;top:330px;color:#0A0F1E;background:#3EE0FF;border-color:#3EE0FF">WHICH OPERATOR</div>
+    <canvas id="dMap" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="chip" id="opIn" style="left:0;top:0;color:#0A0F1E;background:#fff">YOUR OPERATOR</div>
+    <div class="chip" id="opUs" style="left:0;top:0;color:#fff;background:#FF5D73;border-color:#FF5D73">PRIYA'S OPERATOR</div>
+  </section>
+
+  <section class="scene" id="sE">
+    <div class="bg" style="background:#0c2a2e"></div>
+    <div id="areas" class="abs" style="inset:0"></div>
+    <canvas id="pings" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="lbl" id="eHead" style="left:110px;top:110px;font-size:110px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.6)">Where is <span style="color:#FF5D73">the phone?</span></div>
+  </section>
+
+  <section class="scene" id="sF">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 60%,#1b3a5a 0%,#081422 75%)"></div>
+    <canvas id="page" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div id="fTowers" class="abs" style="inset:0"></div>
+    <div id="fMsg" class="abs" style="left:110px;top:120px;padding:22px 38px;border-radius:24px;background:#fff;font-family:'JetBrains Mono';font-weight:800;font-size:40px;color:#0A0F1E;min-width:200px"><span id="fMsgT"></span></div>
+    <div id="frP" class="abs" style="inset:0"></div>
+    <div id="meP" class="abs" style="inset:0"></div>
+    <div class="lbl" id="fRing" style="left:0;top:0;font-size:120px;color:#FF5D73">Ring ring</div>
+  </section>
+
+  <section class="scene" id="sG">
+    <div class="bg" style="background:linear-gradient(135deg,#0d4a34 0%,#06231a 100%)"></div>
+    <div id="gP" class="abs" style="inset:0"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="path" d="M380 420 C 700 120 1220 120 1540 420" stroke="#5BE49B" stroke-width="12" fill="none" stroke-linecap="round"/></svg>
+    <canvas id="flow" class="abs" width="1920" height="1080" style="left:0;top:0"></canvas>
+    <div class="chip" id="gCon" style="left:850px;top:110px;color:#0A0F1E;background:#5BE49B;border-color:#5BE49B">PATH OPEN · CONNECTED</div>
+    <div class="abs" id="check" style="left:640px;top:470px;width:640px;padding:30px 40px;border-radius:24px;background:rgba(10,15,30,.85)"></div>
+    <div class="abs" id="secs" style="left:0;right:0;top:300px;text-align:center"><span class="lbl" style="position:static;font-size:120px;color:#fff">≈ 3 seconds</span></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, pop, rise, fade, hide, draw, SVG, chip, show, every } = EX;
+EX.chrome(4, 7, "Finding your friend");
+EX.subtitles();
+EX.chapterCard(0.05, 2.3);
+const END = W.last() + 1.8;
+const T = { A: 2.2, B: w("when you press") - 0.25, C: w("it goes to") - 0.25, D: w("next it reads") - 0.25, E: w("but how do") - 0.25, F: w("it sends a message") - 0.25, G: w("and when your friend") - 0.25 };
+const HANDSET = (c, rot) => `<svg width="40" height="40" viewBox="0 0 24 24"><path transform="rotate(${rot} 12 12)" fill="${c}" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>`;
+
+// ================================================= A: but wait. find the person
+show("#sA", T.A, T.B + 0.5, { scale: 1.08 });
+sfx(w("but wait"), "glitch", { gain: 0.2 });
+gsap.set(["#pauseI", "#aWait", "#aFind", "#lens", "#aPriya"], { autoAlpha: 0 });
+tl.fromTo("#pauseI", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, w("but wait"));
+tl.fromTo("#aWait", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, w("wait"));
+REEL.shake($("#shake"), w("wait") + 0.05, 10);
+tl.to(["#pauseI", "#aWait"], { autoAlpha: 0, x: -80, duration: 0.3 }, w("the network has"));
+rise("#aFind", w("find the person"));
+(function () {
+  const r = rng(7), cols = 15, rows = 6;
+  for (let i = 0; i < cols * rows; i++) {
+    const me = i === 52;
+    $("#crowd").insertAdjacentHTML("beforeend", `<div class="abs cp" style="left:${(i % cols) * 84 + (r() - 0.5) * 16}px;top:${Math.floor(i / cols) * 92 + (r() - 0.5) * 12}px">${ART.person ? "" : ""}<svg width="56" height="68" viewBox="0 0 100 120"><circle cx="50" cy="34" r="24" fill="${me ? "#3EE0FF" : "#0A0F1E"}"/><path d="M10 118 Q10 66 50 66 Q90 66 90 118 Z" fill="${me ? "#3EE0FF" : "#0A0F1E"}"/></svg></div>`);
+  }
+})();
+const cps = $$("#crowd .cp");
+gsap.set(cps, { autoAlpha: 0, y: 20 });
+tl.to(cps, { autoAlpha: 0.85, y: 0, duration: 0.2, stagger: { each: 0.006, from: "random" } }, w("before any"));
+const target = cps[52];
+const tx = 600 + parseFloat(target.style.left) - 72, ty = 360 + parseFloat(target.style.top) - 66;
+gsap.set("#lens", { x: 700, y: 650 });
+tl.to("#lens", { autoAlpha: 1, duration: 0.2 }, w("find the person") - 0.2);
+tl.to("#lens", { keyframes: [{ x: 1500, y: 300, duration: 0.6 }, { x: 900, y: 500, duration: 0.5 }, { x: tx, y: ty, duration: 0.5 }], ease: "sine.inOut" }, w("find the person"));
+tl.to(cps.filter((c, i) => i !== 52), { opacity: 0.25, duration: 0.3 }, w("calling", W.find("person")));
+gsap.set("#aPriya", { x: tx + 220, y: ty + 40 });
+pop("#aPriya", w("calling", W.find("person")), { sfx: "ding" });
+
+// ================================================= B: the request
+show("#sB", T.B, T.C + 0.5, { x: 200 });
+sfx(T.B, "whoosh", { gain: 0.25, dur: 0.5 });
+const me = EX.phoneBox("#bPhone", { x: 170, y: 220, w: 270, accent: "#3EE0FF" });
+me.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;flex-direction:column;align-items:center"><div style="margin-top:80px;width:110px;height:110px;border-radius:50%;background:#FF5D73;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:50px;color:#0A0F1E">P</div><div class="h" style="font-size:38px;margin-top:20px">Priya</div><div class="m" style="font-size:16px;color:#8A94B0;margin-top:10px">CALLING</div></div>`;
+EX.tap("#bPhone", 305, 610, w("press call"));
+gsap.set(["#req", "#say"], { autoAlpha: 0 });
+tl.fromTo("#req", { autoAlpha: 0, x: -300, scale: 0.4 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)", immediateRender: false }, w("sends a request"));
+sfx(w("sends a request"), "whoosh", { gain: 0.2, dur: 0.5 });
+$$("#req .field").forEach((f, i) => { gsap.set(f, { autoAlpha: 0 }); tl.to(f, { autoAlpha: 1, duration: 0.25 }, w("a small digital") + i * 0.3); sfx(w("a small digital") + i * 0.3, "tick", { gain: 0.12 }); });
+pop("#say", w("that says"), { from: 0.8 });
+EX.typeText("#sayT", "I want to talk to this number.", w("i want"), 1.0);
+tl.to(["#req", "#say"], { x: 1400, autoAlpha: 0, duration: 0.45, ease: "power3.in" }, T.C - 0.3);
+
+// ================================================= C: core network, SIM proves who you are
+show("#sC", T.C, T.D + 0.5, { scale: 1.1 });
+(function () {
+  const r = rng(19), N = 46, CX = 960, CY = 560;
+  const nodes = Array.from({ length: N }, (_, i) => { const a = r() * 6.28, d = Math.sqrt(r()) * 300; return [CX + Math.cos(a) * d * 1.35, CY + Math.sin(a) * d * 0.85]; });
+  let s = "";
+  nodes.forEach((a, i) => nodes.forEach((b, j) => { if (j > i && Math.hypot(a[0] - b[0], a[1] - b[1]) < 120) s += `<line class="be" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#9B8CFF" stroke-width="2.5" opacity=".5"/>`; }));
+  nodes.forEach(([x, y], i) => (s += `<circle class="bn" cx="${x}" cy="${y}" r="${6 + r() * 6}" fill="${i % 5 ? "#c9b8ff" : "#3EE0FF"}"/>`));
+  s += `<circle id="core" cx="${CX}" cy="${CY}" r="70" fill="rgba(155,140,255,.25)" stroke="#fff" stroke-width="4"/>`;
+  $("#brain").innerHTML = s;
+})();
+gsap.set(["#cCore", "#cBrain", "#cust", "#verified", "#cOn"], { autoAlpha: 0 });
+tl.from("#brain .bn", { scale: 0, transformOrigin: "50% 50%", duration: 0.3, stagger: 0.012 }, T.C);
+draw("#brain .be", T.C + 0.2, 0.8);
+every(T.C, T.D, 0.6, (t) => tl.fromTo("#core", { attr: { r: 70 }, opacity: 1 }, { attr: { r: 110 }, opacity: 0.3, duration: 0.55, immediateRender: false }, t));
+tl.fromTo("#env", { x: 0 }, { x: 1080, duration: 0.8, ease: "power2.inOut", immediateRender: false }, w("it goes to"));
+tl.to("#env", { scale: 0, autoAlpha: 0, duration: 0.2 }, w("it goes to") + 0.8);
+sfx(w("it goes to"), "whoosh", { gain: 0.2, dur: 0.6 });
+rise("#cCore", w("core network"));
+rise("#cBrain", w("the brain"));
+tl.to("#brain", { x: 0, scale: 0.75, transformOrigin: "50% 60%", duration: 0.6, ease: "power2.inOut" }, w("the network already") - 0.2);
+tl.to(["#cCore", "#cBrain"], { autoAlpha: 0, duration: 0.3 }, w("the network already") - 0.2);
+pop("#cust", w("real customer"), { from: 0.8 });
+$("#sim").innerHTML = SVG.sim(260, "#FFB547");
+gsap.set("#sim", { autoAlpha: 0 });
+tl.fromTo("#sim", { rotationY: 180, autoAlpha: 0 }, { rotationY: 0, autoAlpha: 1, duration: 0.7, ease: "back.out(1.4)", immediateRender: false }, w("sim card"));
+sfx(w("sim card"), "swish", { gain: 0.2 });
+tl.fromTo("#verified", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.15, ease: "power4.in", immediateRender: false }, w("proved"));
+sfx(w("proved") + 0.15, "stamp", { gain: 0.45 });
+pop("#cOn", w("switched on"));
+
+// ================================================= D: reading the number, routing across the world
+show("#sD", T.D, T.E + 0.5, { y: 0 });
+sfx(T.D, "whoosh", { gain: 0.25, dur: 0.5 });
+gsap.set(["#num", "#dCC", "#dOp", "#opIn", "#opUs"], { autoAlpha: 0 });
+tl.fromTo("#num", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("reads the number"));
+tl.to("#ncc", { borderBottomColor: "#FF5D73", color: "#FF5D73", duration: 0.25 }, w("country code"));
+pop("#dCC", w("which country"));
+tl.to("#nrest", { borderBottomColor: "#3EE0FF", duration: 0.25 }, w("and the rest"));
+pop("#dOp", w("which operator"));
+(function () {
+  const c = $("#dMap").getContext("2d");
+  const proj = d3.geoNaturalEarth1().fitExtent([[240, 460], [1680, 970]], { type: "Sphere" });
+  const path = d3.geoPath(proj, c);
+  const IN = [77.2, 28.6], US = [-74, 40.7], interp = d3.geoInterpolate(IN, US);
+  const pi = proj(IN), pu = proj(US);
+  gsap.set("#opIn", { x: pi[0] - 100, y: pi[1] + 30 });
+  gsap.set("#opUs", { x: pu[0] - 120, y: pu[1] + 30 });
+  const t0 = w("so your request"), mapIn = w("so your request") - 0.5;
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < mapIn || t > T.E + 0.6) return;
+    const a = Math.min(1, (t - mapIn) / 0.5);
+    c.globalAlpha = a;
+    c.beginPath(); path(LAND); c.fillStyle = "#c9cfdf"; c.fill();
+    const p = Math.max(0, Math.min(1, (t - t0) / 1.6));
+    c.beginPath();
+    for (let i = 0; i <= 100 * p; i++) { const q = proj(interp(i / 100)); i ? c.lineTo(q[0], q[1] - Math.sin(Math.PI * i / 100) * 50) : c.moveTo(q[0], q[1]); }
+    c.strokeStyle = "#3a7bd5"; c.lineWidth = 6; c.setLineDash([14, 10]); c.stroke(); c.setLineDash([]);
+    if (p > 0 && p < 1) { const q = proj(interp(p)); c.fillStyle = "#3a7bd5"; c.fillRect(q[0] - 26, q[1] - Math.sin(Math.PI * p) * 50 - 18, 52, 36); }
+    [[pi, "#0A0F1E"], [pu, "#FF5D73"]].forEach(([q, col]) => { c.beginPath(); c.arc(q[0], q[1], 14, 0, 7); c.fillStyle = col; c.fill(); });
+    c.globalAlpha = 1;
+  });
+  tl.to("#opIn", { autoAlpha: 1, duration: 0.3 }, mapIn + 0.3);
+  tl.to("#opUs", { autoAlpha: 1, duration: 0.3 }, t0 + 1.4);
+  sfx(t0, "whoosh", { gain: 0.2, dur: 1.4 });
+})();
+
+// ================================================= E: phones keep saying where they are
+show("#sE", T.E, T.F + 0.5, { scale: 1.1 });
+sfx(T.E, "whoosh", { gain: 0.25, dur: 0.5 });
+const AREAS = [[80, 290, 760, 360, "#1d6a5a"], [880, 260, 960, 380, "#1d4a6a"], [80, 690, 900, 330, "#4a3a6a"], [1020, 680, 820, 330, "#6a4a2a"]];
+$("#areas").innerHTML = AREAS.map(([x, y, w2, h, c], i) => `<div class="area" id="ar${i}" style="left:${x}px;top:${y}px;width:${w2}px;height:${h}px;background:${c}"><div class="mono" style="position:absolute;left:30px;top:22px;font-size:22px;color:rgba(255,255,255,.7)">AREA ${i + 1}</div></div>`).join("");
+gsap.set(["#eHead"], { autoAlpha: 0 });
+rise("#eHead", T.E + 0.1);
+tl.from(".area", { scale: 0.9, autoAlpha: 0, duration: 0.4, stagger: 0.1 }, T.E + 0.1);
+const tPing = w("every phone");
+(function () {
+  const c = $("#pings").getContext("2d"), r = rng(23);
+  const P = [];
+  AREAS.forEach(([x, y, w2, h], ai) => { for (let k = 0; k < 14; k++) P.push({ x: x + 60 + r() * (w2 - 120), y: y + 70 + r() * (h - 110), ph: r() * 2, ai }); });
+  const pri = { x: 1380, y: 830, ph: 0.3, ai: 3, me: true };
+  P.push(pri);
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < T.E || t > T.F + 0.6) return;
+    c.font = "700 16px 'JetBrains Mono'";
+    for (const p of P) {
+      c.fillStyle = p.me ? "#FF5D73" : "#EEF2F7"; c.fillRect(p.x - (p.me ? 10 : 6), p.y - (p.me ? 18 : 11), p.me ? 20 : 12, p.me ? 36 : 22);
+      if (t > tPing) {
+        const a = ((t - tPing) / 2 + p.ph) % 1;
+        c.beginPath(); c.arc(p.x, p.y, 10 + a * 50, 0, 7); c.strokeStyle = p.me ? `rgba(255,93,115,${1 - a})` : `rgba(62,224,255,${0.8 - a * 0.8})`; c.lineWidth = 3; c.stroke();
+        if (a < 0.35 && (p.me || p.ph > 1.6)) { c.fillStyle = p.me ? "#FF5D73" : "#3EE0FF"; c.fillText(p.me ? "PRIYA: AREA 4" : "I'M HERE", p.x + 16, p.y - 16); }
+      }
+    }
+  });
+})();
+every(tPing, T.F, 0.5, (t) => sfx(t, "beep", { gain: 0.04, pitch: 1.4 }));
+const tLook = w("knows where");
+tl.to(["#ar0", "#ar1", "#ar2"], { opacity: 0.3, duration: 0.4 }, tLook);
+tl.to("#ar3", { borderColor: "#FF5D73", boxShadow: "0 0 60px rgba(255,93,115,.6)", duration: 0.4 }, tLook);
+sfx(tLook, "ding", { gain: 0.2 });
+
+// ================================================= F: paging, ringing
+show("#sF", T.F, T.G + 0.5, { scale: 1.15 });
+sfx(T.F, "whoosh", { gain: 0.25, dur: 0.5 });
+const TW = [[200, 520], [620, 380], [1040, 520], [1460, 400]];
+$("#fTowers").innerHTML = TW.map(([x, y]) => `<div class="abs" style="left:${x}px;top:${y}px">${SVG.tower({ h: 300, accent: "#FFB547" })}</div>`).join("");
+(function () {
+  const c = $("#page").getContext("2d"), t0 = w("it sends a message") + 0.3;
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < t0 || t > T.G + 0.6) return;
+    TW.forEach(([x, y], k) => { for (let j = 0; j < 3; j++) { const a = ((t - t0) * 0.8 + j / 3) % 1; c.beginPath(); c.arc(x + 83, y + 25, 30 + a * 380, 0, 7); c.strokeStyle = `rgba(255,181,71,${(1 - a) * 0.55})`; c.lineWidth = 5; c.stroke(); } });
+  });
+})();
+gsap.set(["#fMsg", "#fRing"], { autoAlpha: 0 });
+pop("#fMsg", w("phone you have") - 0.2, { from: 0.8 });
+EX.typeText("#fMsgT", "PHONE 4417, YOU HAVE A CALL", w("phone you have"), 1.1);
+const fp = EX.phoneBox("#frP", { x: 1300, y: 560, w: 200, accent: "#FF5D73", id: "frPh" });
+fp.scr.innerHTML = `<div id="frOff" class="abs" style="inset:0;background:#05070f"></div><div id="frOn" class="abs" style="inset:0;background:linear-gradient(180deg,#3a1630,#0E1530);display:flex;flex-direction:column;align-items:center;opacity:0"><div class="m" style="margin-top:40px;font-size:13px;color:#FF9BAA">INCOMING CALL</div><div style="margin-top:28px;width:80px;height:80px;border-radius:50%;background:#3EE0FF;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:38px;color:#0A0F1E">Y</div><div class="h" style="font-size:28px;margin-top:14px">You</div></div>`;
+tl.to("#frOn", { opacity: 1, duration: 0.3 }, w("wakes up"));
+const tRing = w("starts ringing");
+for (let k = 0; k < 16; k++) tl.to("#frPh", { rotation: k % 2 ? -5 : 5, duration: 0.06 }, tRing + k * 0.06 + (k >= 8 ? 0.4 : 0));
+tl.to("#frPh", { rotation: 0, duration: 0.06 }, tRing + 1.4);
+[0, 0.9].forEach((o) => { sfx(tRing + o, "beep", { gain: 0.16, pitch: 0.75 }); sfx(tRing + o + 0.14, "beep", { gain: 0.16, pitch: 0.85 }); });
+gsap.set("#fRing", { x: 1100, y: 420 });
+pop("#fRing", tRing, { sfx: false });
+// your side: ringing tone
+const mp = EX.phoneBox("#meP", { x: 120, y: 520, w: 200, accent: "#3EE0FF", id: "mePh" });
+mp.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;flex-direction:column;align-items:center"><div class="m" style="margin-top:40px;font-size:13px;color:#8A94B0">YOUR SIDE</div><div style="margin-top:28px;width:80px;height:80px;border-radius:50%;background:#FF5D73;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:38px;color:#0A0F1E">P</div><div class="m" style="font-size:15px;margin-top:16px;color:#5BE49B">RINGING</div><div id="bars" style="display:flex;gap:6px;margin-top:22px;align-items:flex-end;height:40px">${[0, 1, 2, 3, 4].map(() => `<i style="display:block;width:10px;height:12px;background:#5BE49B;border-radius:3px"></i>`).join("")}</div></div>`;
+gsap.set("#mePh", { autoAlpha: 0, x: -300 });
+tl.to("#mePh", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, w("on your side"));
+const tTone = w("ringing tone") - 0.3;
+$$("#bars i").forEach((b, k) => every(tTone, T.G, 0.5, (t) => tl.fromTo(b, { height: 10 }, { height: 14 + ((k * 7) % 5) * 6, duration: 0.25, yoyo: true, repeat: 1, immediateRender: false }, t + k * 0.04)));
+sfx(tTone, "beep", { gain: 0.12, pitch: 0.42 }); sfx(tTone + 0.15, "beep", { gain: 0.12, pitch: 0.42 });
+
+// ================================================= G: picks up, path opens, a few seconds
+show("#sG", T.G, null, { y: 0 });
+sfx(T.G, "whoosh", { gain: 0.25, dur: 0.5 });
+const a1 = EX.phoneBox("#gP", { x: 290, y: 430, w: 180, accent: "#3EE0FF" });
+a1.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:40px;color:#3EE0FF">YOU</div>`;
+const a2 = EX.phoneBox("#gP", { x: 1450, y: 430, w: 180, accent: "#FF5D73" });
+a2.scr.innerHTML = `<div class="abs" style="inset:0;background:#0E1530;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Archivo;font-weight:800;font-size:40px;color:#FF5D73">PRIYA<div id="acc" style="margin-top:30px;width:76px;height:76px;border-radius:50%;background:#5BE49B;display:flex;align-items:center;justify-content:center">${HANDSET("#0A0F1E", 0)}</div></div>`;
+EX.tap("#gP", 1540, 430 + 369 / 2 + 70, w("picks up"));
+tl.to("#acc", { scale: 1.3, opacity: 0, duration: 0.3 }, w("picks up") + 0.1);
+draw("#path", w("a path opens"), 0.8);
+sfx(w("a path opens"), "riser", { gain: 0.14, dur: 0.8 });
+gsap.set(["#gCon", "#secs", "#check"], { autoAlpha: 0 });
+pop("#gCon", we("a path opens") + 0.1, { sfx: "chime", gain: 0.2 });
+(function () {
+  const c = $("#flow").getContext("2d"), t0 = we("a path opens");
+  const bez = (u) => { const p0 = [380, 420], p1 = [700, 120], p2 = [1220, 120], p3 = [1540, 420]; const m = 1 - u; return [m * m * m * p0[0] + 3 * m * m * u * p1[0] + 3 * m * u * u * p2[0] + u * u * u * p3[0], m * m * m * p0[1] + 3 * m * m * u * p1[1] + 3 * m * u * u * p2[1] + u * u * u * p3[1]]; };
+  REEL.onFrame((t) => {
+    c.clearRect(0, 0, 1920, 1080);
+    if (t < t0) return;
+    for (let k = 0; k < 10; k++) {
+      const u = ((t - t0) * 0.5 + k / 10) % 1;
+      const [x, y] = bez(u), [x2, y2] = bez(1 - u);
+      c.fillStyle = "#3EE0FF"; c.fillRect(x - 14, y - 26, 28, 18);
+      c.fillStyle = "#FF5D73"; c.fillRect(x2 - 14, y2 + 8, 28, 18);
+    }
+  });
+})();
+const steps = ["REQUEST SENT", "SIM VERIFIED", "NUMBER READ", "OPERATOR FOUND", "PHONE PAGED", "PATH OPEN"];
+$("#check").innerHTML = steps.map((s) => `<div class="ck"><i>✓</i>${s}</div>`).join("");
+const tAll = w("all of this");
+tl.to("#path", { opacity: 0.35, duration: 0.3 }, tAll);
+pop("#check", tAll, { from: 0.8, sfx: false });
+$$("#check .ck").forEach((el, i) => { gsap.set(el, { autoAlpha: 0, x: -20 }); tl.to(el, { autoAlpha: 1, x: 0, duration: 0.2 }, tAll + 0.15 + i * 0.18); sfx(tAll + 0.15 + i * 0.18, "tick", { gain: 0.15 }); });
+rise("#secs", w("a few seconds"));
+gsap.set("#secs", { y: 0 });
+
+REEL.finish(END);
+</script>
+</body></html>
