@@ -46,7 +46,7 @@
   <!-- S3: the pantograph explained -->
   <section class="scene" id="s3">
     <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 100%)"></div>
-    <svg id="wireSvg" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="cl3" class="abs" style="inset:0"></div><div id="spd3" class="abs" style="inset:0"></div><svg class="abs" style="left:0;top:0" width="1920" height="1080"><rect x="140" y="150" width="26" height="720" fill="#5C677E"/><rect x="140" y="236" width="380" height="16" fill="#5C677E"/><rect x="140" y="346" width="300" height="12" fill="#5C677E"/><path d="M166 250 L 300 346" stroke="#5C677E" stroke-width="8"/></svg><svg id="wireSvg" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg><div id="glow3" class="abs" style="left:790px;top:258px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,150,.95) 0%,rgba(255,201,61,.45) 35%,rgba(255,201,61,0) 70%)"></div>
     <svg id="panto" class="abs" data-ob="panto" style="left:560px;top:300px;overflow:visible" width="800" height="560" viewBox="0 0 800 560"></svg>
     <div class="lbl x3d" id="s3t" data-ob="s3t" style="left:100px;top:110px;font-size:96px;--xf:#fff">The <span style="color:#12A4C4">pantograph</span></div>
     <div class="chip" id="push" data-ob="push" style="left:1400px;top:520px;color:#1F9D5A;font-size:30px">↑ SPRING PRESSES UP</div>
@@ -103,7 +103,7 @@ const V = new W3.THREE.Vector3();
 REEL.onFrame((t) => {
   if (t < T.s2 - 0.1 || t > T.s3 + 0.5) return;
   const u = t - T.s2, x = 300 + u * 89, px = x - 62.5, k = Math.min(1, u / 5);
-  W3.frame({ x, cam: [px + 11 - 3 * k, W3.H + 1.2 + 0.6 * k, 8.5 - 2 * k], look: [px - 1, W3.H + 1.4, 0], fov: 40 });
+  W3.frame({ x, cam: [px + 11 - 3 * k, W3.H + 1.2 + 0.6 * k, 8.5 - 2 * k], look: [px - 1, W3.H + 1.4, 0], fov: 40, mood: "night" });
   V.set(px - 0.02, W3.H + 1.98, 0).project(W3.camera);
   const sx = (V.x * 0.5 + 0.5) * 1920, sy = (-V.y * 0.5 + 0.5) * 1080;
   $("#spark").style.transform = `translate(${sx - 40}px, ${sy - 40}px) scale(${0.6 + 0.6 * Math.abs(Math.sin(t * 37))}) rotate(${(t * 900) % 360}deg)`;
@@ -129,7 +129,11 @@ $("#panto").innerHTML = `
 $("#wireSvg").innerHTML = `<line x1="0" y1="358" x2="1920" y2="358" stroke="#1B2340" stroke-width="7"/><line x1="0" y1="250" x2="1920" y2="250" stroke="#3B4566" stroke-width="5"/><g id="droppers">${Array.from({ length: 22 }, (_, i) => `<line x1="${i * 120}" y1="250" x2="${i * 120}" y2="358" stroke="#3B4566" stroke-width="3"/>`).join("")}</g>
   <g id="sp3" transform="translate(790 352)"><g stroke="#FFC93D" stroke-width="6" stroke-linecap="round"><path d="M0 -10 L0 -34"/><path d="M18 -8 L34 -22"/><path d="M-18 -8 L-34 -22"/></g><circle r="10" fill="#fff" stroke="#FFC93D" stroke-width="5"/></g>`;
 REEL.onFrame((t) => { if (t < T.s3 - 0.5 || t > T.s4 + 0.5) return; $("#droppers").setAttribute("transform", `translate(${-((t * 2200) % 120)} 0)`); $("#sp3").style.opacity = Math.sin(t * 29) > 0 ? 1 : 0.3; });
-gsap.set(["#s3t", "#push", "#never", "#upArrow", "#sp3"], { autoAlpha: 0 });
+gsap.set(["#s3t", "#push", "#never", "#upArrow", "#sp3", "#glow3"], { autoAlpha: 0 });
+(function () { const r = rng(31); for (let i = 0; i < 4; i++) { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${300 + r() * 1400}px;top:${120 + r() * 100}px`; el.innerHTML = ISO.cloud({ w: 180 + r() * 120 }); $("#cl3").appendChild(el); } })();
+$("#spd3").innerHTML = Array.from({ length: 10 }, (_, i) => `<div class="abs s3l" style="left:0;top:${420 + (i * 47) % 260}px;width:${200 + (i % 3) * 80}px;height:4px;border-radius:2px;background:#fff;opacity:.75"></div>`).join("");
+REEL.onFrame((t) => { if (t < T.s3 - 0.5 || t > T.s4 + 0.5) return; $$("#spd3 .s3l").forEach((el, i) => { el.style.transform = `translateX(${2200 - ((t * (2600 + i * 200) + i * 400) % 2600)}px)`; }); $("#glow3").style.transform = `scale(${0.8 + 0.35 * Math.abs(Math.sin(t * 13))})`; });
+tl.to("#glow3", { autoAlpha: 1, duration: 0.2 }, w("against that"));
 rise("#s3t", T.s3 + 0.35);
 tl.fromTo("#arm", { scaleY: 0.25, transformOrigin: "300px 400px" }, { scaleY: 1, duration: 0.6, ease: "back.out(1.6)", immediateRender: false }, w("springy arm"));
 sfx(w("springy arm"), "bloop", { gain: 0.2 });

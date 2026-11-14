@@ -26,11 +26,11 @@
 
   <!-- S1: a football field every second -->
   <section class="scene" id="s1">
-    <div class="bg" style="background:#E7F6EA"></div>
-    <div id="field" class="abs" data-ob="field" style="left:260px;top:270px;width:1400px;height:600px;border-radius:18px;overflow:hidden;background:repeating-linear-gradient(90deg,#5DBB72 0 140px,#52B067 140px 280px);box-shadow:0 18px 40px rgba(27,35,64,.15)">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 45%,#D9F0DF 45%)"></div><div id="stands" class="abs" style="left:120px;top:250px;width:1680px;height:200px;border-radius:30px 30px 0 0;background:linear-gradient(180deg,#6B78A0,#4B5785)"></div><div id="lights" class="abs" style="inset:0"></div><div id="fieldW" class="abs" style="left:0;top:0;width:1920px;height:1080px;perspective:1500px;perspective-origin:50% 30%">
+    <div id="field" class="abs" data-ob="field" style="left:300px;top:330px;width:1320px;height:560px;border-radius:18px;overflow:hidden;background:repeating-linear-gradient(90deg,#5DBB72 0 140px,#52B067 140px 280px);box-shadow:0 40px 60px rgba(27,35,64,.25);transform:rotateX(32deg);transform-origin:50% 100%">
       <svg class="abs" style="left:0;top:0" width="1400" height="600"><g stroke="#fff" stroke-width="6" fill="none"><rect x="30" y="30" width="1340" height="540"/><line x1="700" y1="30" x2="700" y2="570"/><circle cx="700" cy="300" r="90"/><rect x="30" y="160" width="160" height="280"/><rect x="1210" y="160" width="160" height="280"/></g></svg>
-      <div id="topTrain" class="abs" style="left:0;top:262px;width:900px;height:76px"><svg width="900" height="76" viewBox="0 0 900 76"><path d="M0 38 Q 0 8 40 8 L 760 8 Q 860 8 900 38 Q 860 68 760 68 L 40 68 Q 0 68 0 38 Z" fill="#FBFCFE" stroke="#1B2340" stroke-width="3"/><rect x="40" y="33" width="780" height="10" fill="#2F6FE0"/>${""}</svg></div>
-    </div>
+      <div id="topTrain" class="abs" style="left:0;top:262px;width:900px;height:76px"><svg width="900" height="76" viewBox="0 0 900 76"><ellipse cx="460" cy="70" rx="440" ry="10" fill="#1B2340" opacity=".25"/><path d="M0 38 Q 0 8 40 8 L 760 8 Q 860 8 900 38 Q 860 68 760 68 L 40 68 Q 0 68 0 38 Z" fill="#FBFCFE" stroke="#1B2340" stroke-width="3"/><path d="M40 14 L 760 14 Q 840 14 880 34 L 40 34 Z" fill="#fff"/><rect x="40" y="33" width="780" height="10" fill="#2F6FE0"/>${""}</svg></div>
+    </div></div>
     <div class="lbl x3d" id="s1t" data-ob="s1t" style="left:100px;top:110px;font-size:110px;--xf:#fff">Who's <span style="color:#12A4C4">driving?</span></div>
     <div class="chip" id="sec" data-ob="sec" style="left:1290px;top:150px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:32px">⏱ 1 SECOND ≈ 89 M</div>
   </section>
@@ -82,6 +82,8 @@ const END = T.close + 0.9;
 // ================================================= S1: a football field every second
 show("#s1", 0, T.s2 + 0.3, { y: 0 });
 gsap.set(["#s1t", "#sec", "#field"], { autoAlpha: 0 });
+$("#stands").innerHTML = Array.from({ length: 5 }, (_, row) => `<div style="position:absolute;left:30px;right:30px;top:${22 + row * 34}px;height:24px;background:radial-gradient(circle,rgba(255,255,255,.9) 0 5px,transparent 6px) 0 0/22px 24px,radial-gradient(circle,${["#F5A524", "#F0566E", "#12A4C4", "#22B573", "#7B61FF"][row]} 0 7px,transparent 8px) 11px 6px/22px 24px"></div>`).join("");
+$("#lights").innerHTML = [200, 1720].map((x) => `<div class="abs" style="left:${x - 6}px;top:90px;width:12px;height:170px;background:#3B4566"></div><div class="abs" style="left:${x - 50}px;top:70px;width:100px;height:40px;border-radius:10px;background:#FFF6D6;box-shadow:0 0 50px 20px rgba(255,240,180,.6)"></div>`).join("");
 rise("#s1t", w("who's driving") - 0.1);
 pop("#field", w("at three") - 0.2, { from: 0.85, sfx: "pop", gain: 0.12 });
 const tF = w("every second") - 0.4;

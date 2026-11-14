@@ -200,8 +200,7 @@ const tG = w("cruise at");
 pop("#gauge", tG - 0.3, { from: 0.5, sfx: false });
 gsap.set("#gArc", { drawSVG: "0%" });
 tl.to("#gArc", { drawSVG: "91%", duration: 1.6, ease: "power2.out" }, tG);
-tl.fromTo("#gNeedle", { rotation: -90 }, { rotation: 74, svgOrigin: "165 200", duration: 1.6, ease: "power2.out", immediateRender: false }, tG);
-REEL.onFrame((t) => { const p = Math.max(0, Math.min(1, (t - tG) / 1.6)); $("#gNum").textContent = Math.round(320 * (1 - Math.pow(1 - p, 2))); });
+REEL.onFrame((t) => { const p = Math.max(0, Math.min(1, (t - tG) / 1.6)), e = 1 - Math.pow(1 - p, 2); $("#gNum").textContent = Math.round(320 * e); $("#gNeedle").setAttribute("transform", `rotate(${(-90 + 164 * e + (p >= 1 ? Math.sin(t * 9) * 1.2 : 0)).toFixed(2)} 165 200)`); });
 sfx(tG, "riser", { gain: 0.14, dur: 1.6 });
 
 // ================================================= S4: dive through a window into the coach

@@ -28,6 +28,7 @@
   <!-- S1: four kilometres to stop -->
   <section class="scene" id="s1">
     <div class="bg" style="background:linear-gradient(180deg,#FFE1C8 0%,#FFF4EA 100%)"></div>
+    <div id="cl6" class="abs" style="inset:0"></div><div id="city6" class="abs" style="left:0;top:300px;opacity:.55"></div><div class="abs" style="left:0;top:652px;width:1920px;height:428px;background:linear-gradient(180deg,#F3DFC6,#EAD3B5)"></div>
     <div class="lbl x3d" id="s1t" data-ob="s1t" style="left:100px;top:110px;font-size:100px;--xf:#fff">Terrible at <span style="color:#F0566E">stopping</span></div>
     <svg id="ruler" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
     <div id="train" class="abs" data-ob="train" data-bleed style="left:0;top:480px;width:900px;height:170px;overflow:hidden"></div>
@@ -43,7 +44,7 @@
     <svg id="wire2" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><line x1="0" y1="330" x2="1920" y2="330" stroke="#1B2340" stroke-width="6"/><line id="juice" x1="0" y1="330" x2="1920" y2="330" stroke="#FFC93D" stroke-width="10" stroke-dasharray="30 30" opacity="0"/><path id="up" d="M760 640 L 760 470 L 820 470 L 820 342" stroke="#FFC93D" stroke-width="12" fill="none" stroke-dasharray="26 18" opacity="0" stroke-linejoin="round"/></svg>
     <div id="tr2" class="abs" data-ob="tr2" style="left:110px;top:420px;width:1700px;height:250px"></div>
     <div class="lbl x3d" id="s2t" data-ob="s2t" style="left:100px;top:110px;font-size:96px;--xf:#fff">Brakes that <span style="color:#F5A524">make power</span></div>
-    <div class="chip" id="gen" data-ob="gen" style="left:540px;top:720px;color:#1B2340;font-size:28px">MOTORS → GENERATORS</div>
+    <div id="bat" class="abs" data-ob="bat" style="left:1600px;top:110px;width:220px;height:120px"><svg width="220" height="120" viewBox="0 0 220 120"><rect x="6" y="14" width="186" height="92" rx="16" fill="#fff" stroke="#1B2340" stroke-width="7"/><rect x="194" y="42" width="18" height="36" rx="6" fill="#1B2340"/><rect id="batFill" x="18" y="26" width="0" height="68" rx="8" fill="#22B573"/><path d="M104 32 L 86 64 L 104 64 L 92 92 L 124 56 L 106 56 L 118 32 Z" fill="#FFC93D" stroke="#1B2340" stroke-width="3"/></svg></div><svg id="sparks6" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg><div class="chip" id="gen" data-ob="gen" style="left:540px;top:720px;color:#1B2340;font-size:28px">MOTORS → GENERATORS</div>
     <div class="chip" id="back" data-ob="back" style="left:1000px;top:256px;color:#B9770E;font-size:28px">⚡ BACK INTO THE WIRE</div>
   </section>
 
@@ -75,6 +76,8 @@ $("#ruler").innerHTML = `<rect x="100" y="652" width="1720" height="14" fill="#9
   <g id="stn" transform="translate(1780 520)"><rect x="-6" y="0" width="12" height="132" fill="#5C677E"/><rect x="-120" y="-10" width="160" height="56" rx="10" fill="#1B2340"/><text x="-40" y="28" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="24" fill="#FFB547">STATION</text></g>
   <g id="flag" transform="translate(180 520)"><rect x="-4" y="0" width="8" height="132" fill="#5C677E"/><path d="M4 2 L 94 18 L 4 36 Z" fill="#F0566E"/><text x="12" y="-10" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#E0324B">BRAKE HERE</text></g>`;
 $("#train").innerHTML = `<div style="position:absolute;right:0;top:0;transform:scaleX(-1)">${ISO.bulletTrain({ w: 2200, cars: 4, id: "t1" })}</div>`;
+$("#city6").innerHTML = ISO.city({ w: 1920, h: 360, color: "#F2C9A8", seed: 19 });
+(function () { const r = rng(52); for (let i = 0; i < 4; i++) { const el = document.createElement("div"); el.className = "abs"; el.style.cssText = `left:${300 + r() * 1400}px;top:${150 + r() * 90}px`; el.innerHTML = ISO.cloud({ w: 170 + r() * 120 }); $("#cl6").appendChild(el); } })();
 $("#cpu").innerHTML = ISO.server({ w: 150, color: "#3E7BFA", id: "cp" });
 gsap.set(["#s1t", "#cant", "#fifty", "#cpu", "#plan", "#train", "#stn", "#flag", ...$$("#ruler .tk")], { autoAlpha: 0 });
 rise("#s1t", w("bullet trains") - 0.2);
@@ -98,10 +101,13 @@ pop("#plan", w("plans every"), { sfx: "tick", gain: 0.2 });
 EX.passBy(T.s2);
 show("#s2", T.s2, T.s3 + 0.02, { y: 0 });
 $("#tr2").innerHTML = `<div style="transform:scaleX(-1);width:1700px">${ISO.bulletTrain({ w: 1700, cars: 4, id: "t2" })}</div>` + [0, 1, 2, 3].map((i) => `<div class="abs gr" style="left:${170 + i * 410}px;top:120px"><svg width="64" height="64" viewBox="-32 -32 64 64"><g fill="#F5A524">${Array.from({ length: 8 }, (_, k) => `<rect x="-5" y="-30" width="10" height="14" rx="3" transform="rotate(${k * 45})"/>`).join("")}<circle r="19"/></g><circle r="8" fill="#fff"/></svg></div>`).join("");
-gsap.set(["#s2t", "#gen", "#back", ...$$("#tr2 .gr")], { autoAlpha: 0 });
+$("#sparks6").innerHTML = Array.from({ length: 16 }, () => `<circle class="ep" r="9" fill="#FFE27A" stroke="#FFC93D" stroke-width="3"/>`).join("");
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.3) return; const t0 = w("push electricity"), up = $("#up"), L = up.getTotalLength(); $$("#sparks6 .ep").forEach((c, i) => { const u = (t - t0) * 0.9 - i * 0.12; if (u < 0) { c.setAttribute("opacity", 0); return; } const k = u % 2.2; let x, y; if (k < 1) { const p = up.getPointAtLength(k * L); x = p.x; y = p.y; } else { x = 820 + (k - 1) * 900; y = 330; } c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("opacity", 1); }); const f = Math.max(0, Math.min(1, (t - t0) / 2.2)); $("#batFill").setAttribute("width", 150 * f); });
+gsap.set(["#bat", "#s2t", "#gen", "#back", ...$$("#tr2 .gr")], { autoAlpha: 0 });
 rise("#s2t", T.s2 + 0.3);
 $$("#tr2 .gr").forEach((g, i) => { pop(g, w("motors flip") + i * 0.1, { from: 0.3, sfx: "pop", gain: 0.1 }); tl.fromTo(g, { rotation: 0 }, { rotation: -540, duration: T.s3 - T.s2, ease: "none", immediateRender: false }, T.s2); });
 pop("#gen", w("generators"), { sfx: "chime", gain: 0.16 });
+pop("#bat", w("push electricity") - 0.2, { from: 0.5, sfx: "pop", gain: 0.14 });
 tl.to(["#up", "#juice"], { opacity: 1, duration: 0.2 }, w("push electricity"));
 REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.3) return; $("#up").setAttribute("stroke-dashoffset", (t * 140) % 44); $("#juice").setAttribute("stroke-dashoffset", -((t * 400) % 60)); });
 sfx(w("push electricity"), "glitch", { gain: 0.12 });

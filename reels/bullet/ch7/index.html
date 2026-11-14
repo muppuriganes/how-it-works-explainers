@@ -101,7 +101,7 @@ REEL.onFrame((t) => {
   if (t < T.s2 - 0.1 || t > T.close + 0.2) return;
   const u = Math.max(0, Math.min(dB, t - tArr)), x = -136 + 32 * u - (32 / (2 * dB)) * u * u;
   const k = sm((t - tArr) / 7);
-  W3.frame({ x, cam: [-20 - 6 * k, 2.7, 7.6], look: [-60 + 8 * k, 2.0, -0.6], fov: 44, env: "station" });
+  W3.frame({ x, cam: [-20 - 6 * k, 2.7, 7.6], look: [-60 + 8 * k, 2.0, -0.6], fov: 44, env: "station", mood: "sunset" });
 });
 $("#coinArt").innerHTML = `<rect x="20" y="150" width="340" height="16" rx="6" fill="#E3E7EE"/><rect x="20" y="166" width="340" height="8" fill="#B9C2D2"/><g transform="translate(190 150)"><rect x="-20" y="-120" width="40" height="120" rx="20" fill="#D98F12"/><rect x="-14" y="-120" width="28" height="120" rx="14" fill="#F5B83A"/><rect x="-8" y="-110" width="6" height="100" rx="3" fill="#FFE9A8"/></g>`;
 gsap.set(["#movie", "#coinCard", "#still", "#owe"], { autoAlpha: 0 });
