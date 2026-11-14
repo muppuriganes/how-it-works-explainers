@@ -1,0 +1,262 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>ATM Ch3 Bank network</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(27,35,64,.12) 2.5px,transparent 3px);background-size:44px 44px}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:10px 24px 14px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:34px;white-space:nowrap;background:#fff;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.08em;color:#fff;white-space:nowrap}
+.mono{font-family:"JetBrains Mono";font-weight:800}
+.ctr{position:absolute;padding:18px 28px;border-radius:24px;background:#fff;font-family:Archivo;text-align:center}
+.ctr .n{font-weight:900;font-size:76px;line-height:1;color:#1B2340}
+.ctr .k{font-family:"JetBrains Mono";font-weight:800;font-size:20px;letter-spacing:.14em;color:rgba(27,35,64,.55)}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/atm.js"></script>
+<script src="../../../lib/atmfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: the ATM writes its message -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 30%,#8FCBE6 0%,#3F8FBF 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t1" data-ob="t1" style="left:110px;top:100px;font-size:92px;--xf:#fff">The ATM <span style="color:#FFC93D">writes a note</span></div>
+    <div id="atm1" class="abs" data-ob="atm1" style="left:130px;top:240px"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="w1" d="M560 560 C 640 560, 640 520, 720 520" stroke="#fff" stroke-width="8" fill="none" stroke-dasharray="4 14" stroke-linecap="round"/></svg>
+    <div id="msg" class="abs fc" data-ob="msg" style="left:740px;top:260px;width:1080px;padding:28px 36px;border-radius:30px;background:#fff;font-family:'JetBrains Mono';font-weight:800;color:#1B2340">
+      <div style="display:flex;justify-content:space-between;font-size:22px;letter-spacing:.14em;opacity:.55"><span>MESSAGE · ATM #MH-0927</span><span>22:04:07</span></div>
+      <div style="border-top:4px dashed rgba(27,35,64,.2);margin:16px 0"></div>
+      <div class="ml" style="font-size:48px;padding:8px 0">CARD&nbsp;&nbsp;&nbsp;•••• 4821</div>
+      <div class="ml" style="font-size:48px;padding:8px 0">WANTS&nbsp;&nbsp;<span style="color:#F2553D">₹2,000</span></div>
+      <div class="ml" style="font-size:36px;padding:8px 0;color:#7B61FF">PIN&nbsp;&nbsp;&nbsp;&nbsp;7F3A 9C02 E61B 44D8 🔐</div>
+      <div class="ml" style="font-size:36px;padding:8px 0;color:#12A4C4">CHIP&nbsp;&nbsp;&nbsp;41BD F208 ✓</div></div>
+    <div id="pk1" class="abs" data-ob="pk1" data-bleed style="left:1060px;top:820px"></div>
+  </section>
+
+  <!-- S2: a different bank — who are you? calls the switch -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#9FDDB4 0%,#55B57E 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t2" data-ob="t2" style="left:110px;top:100px;font-size:88px;--xf:#fff">Different bank? <span style="color:#1B2340;-webkit-text-stroke:0">🤔</span></div>
+    <div id="bA" class="abs" data-ob="bA" style="left:80px;top:300px"></div>
+    <div class="bub fc" id="q1" data-ob="q1" style="left:560px;top:225px;transform:rotate(-4deg)">Who is this? 🧐</div>
+    <div id="cd2" class="abs" data-ob="cd2" style="left:560px;top:340px"></div>
+    <div id="mg" class="abs" data-ob="cd2" data-bleed style="left:0;top:0"></div>
+    <div id="ls" class="abs fc" data-ob="ls" style="left:1110px;top:210px;width:560px;height:590px;border-radius:18px;background:#FFFBEA;padding:22px 26px;font-family:'JetBrains Mono';font-weight:800;color:#1B2340;overflow:hidden">
+      <div style="font-size:20px;letter-spacing:.14em;opacity:.6">ATM'S BANK · CUSTOMER LIST</div><div style="border-top:4px dashed rgba(27,35,64,.25);margin:12px 0 6px"></div>
+      <div id="scan" class="abs" style="left:14px;right:14px;top:86px;height:66px;border-radius:12px;background:rgba(255,201,61,.45)"></div>
+      <div class="lr" style="position:relative;display:flex;justify-content:space-between;font-size:32px;height:66px;align-items:center"><span>XX1102  Ravi</span><span style="color:#22B573">✓</span></div><div class="lr" style="position:relative;display:flex;justify-content:space-between;font-size:32px;height:66px;align-items:center"><span>XX3317  Meena</span><span style="color:#22B573">✓</span></div><div class="lr" style="position:relative;display:flex;justify-content:space-between;font-size:32px;height:66px;align-items:center"><span>XX9044  Arjun</span><span style="color:#22B573">✓</span></div><div class="lr" style="position:relative;display:flex;justify-content:space-between;font-size:32px;height:66px;align-items:center"><span>XX5520  Priya</span><span style="color:#22B573">✓</span></div><div class="lr" style="position:relative;display:flex;justify-content:space-between;font-size:32px;height:66px;align-items:center"><span>XX7781  Kabir</span><span style="color:#22B573">✓</span></div>
+      <div id="nf" style="position:relative;display:flex;justify-content:space-between;font-size:32px;height:70px;align-items:center;background:#FFD9DC;border-radius:12px;padding:0 12px;margin:6px -12px 0;color:#C93A50"><span>XX4821  ???</span><span>NOT FOUND ✗</span></div></div>
+    <div id="tel" class="abs" data-ob="tel" style="left:120px;top:770px"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="cord" d="M360 860 C 520 960, 600 820, 760 900 S 1020 980, 1180 890 S 1460 840, 1690 880" stroke="#1B2340" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="1 0"/></svg>
+    <div id="hb2" class="abs" data-ob="hb2" style="left:1690px;top:800px"></div>
+  </section>
+
+  <!-- S3: the National Financial Switch -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 50%,#3E5A9E 0%,#1E2C5C 100%)"></div>
+    <svg id="net" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div class="lbl x3d" id="t3" data-ob="t3" style="left:160px;width:1600px;text-align:center;top:96px;font-size:84px;--xf:#fff">National Financial <span style="color:#FFC93D">Switch</span></div>
+    <div class="pill fc" id="npci" data-ob="npci" style="left:840px;top:200px;background:#F2553D">RUN BY NPCI</div>
+    <div id="hub" class="abs" data-ob="hub" style="left:785px;top:330px"></div>
+    <div class="ctr fc" id="cB" data-ob="cB" style="left:110px;top:820px;width:430px"><div class="k">BANKS CONNECTED</div><div class="n" id="nB">0</div></div>
+    <div class="ctr fc" id="cA" data-ob="cA" style="left:1380px;top:820px;width:430px"><div class="k">ATMs &amp; RECYCLERS</div><div class="n" id="nA">0</div></div>
+  </section>
+
+  <!-- S4: read card number -> route to the right bank -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#C4B8F2 0%,#8F80D6 100%)"></div><div class="dots"></div>
+    <svg id="rt" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div class="lbl x3d" id="t4" data-ob="t4" style="left:110px;top:100px;font-size:84px;--xf:#fff">Which bank <span style="color:#FFC93D">is yours?</span></div>
+    <div id="atm4" class="abs" data-ob="atm4" style="left:110px;top:330px"></div>
+    <div id="hub4" class="abs" data-ob="route" style="left:690px;top:330px"></div>
+    <div id="banks" class="abs" style="inset:0"></div>
+    <div id="pk4" class="abs" data-ob="route" data-bleed style="left:0;top:0"></div>
+    <div id="mag" class="abs fc" data-ob="mag" style="left:470px;top:720px;width:720px;padding:16px 26px;border-radius:24px;background:#fff;font-family:'JetBrains Mono';font-weight:800;color:#1B2340"><div style="font-size:20px;letter-spacing:.14em;opacity:.55">🔍 FIRST DIGITS OF THE CARD</div><div style="font-size:44px;margin-top:6px">6521 xx… → <span style="color:#7B61FF">YOUR BANK</span></div></div>
+    <div id="sw4" class="abs" data-ob="sw4" style="left:1100px;top:120px"></div>
+  </section>
+
+  <!-- S5: interchange — the ₹19 favour -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#FFE09A 0%,#F0B443 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t5" data-ob="t5" style="left:160px;width:1600px;text-align:center;top:96px;font-size:96px;--xf:#fff">Interchange</div>
+    <div id="yb" class="abs" data-ob="yb" style="left:110px;top:300px"></div>
+    <div id="ab" class="abs" data-ob="ab" style="left:1380px;top:300px"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="arc" d="M560 470 Q 960 160 1380 470" stroke="#fff" stroke-width="8" fill="none" stroke-dasharray="4 16" stroke-linecap="round"/></svg>
+    <div id="coins" class="abs" data-ob="coins" data-bleed style="left:0;top:0"></div>
+    <div class="ctr fc" id="fee" data-ob="fee" style="left:610px;top:560px;width:700px;background:#1B2340"><div class="k" style="color:#FFC93D">YOUR BANK → ATM'S BANK</div><div class="n" style="color:#fff;font-size:120px">₹19</div><div class="k" style="color:#C9D0DC">PER WITHDRAWAL · SINCE MAY 2025</div></div>
+    <div class="bub fc" id="fav" data-ob="fav" style="left:780px;top:280px">🤝 for the favour</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+const A = ATMART;
+EX.stepStart(3, "Bank network");
+const T = { s2: w("but what") - 0.15, s3: w("in india") - 0.15, s4: w("the switch reads") - 0.15, s5: w("and for this") - 0.15, close: we("per withdrawal") + 1.4 };
+const END = T.close + 1.4;
+const clamp = (u) => Math.max(0, Math.min(1, u));
+
+// ================================================= S1: the ATM writes a note
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+EX.ambient("#s1", "rx", { from: 0, to: T.s2, seed: 21 });
+$("#atm1").innerHTML = A.machine({ w: 400, id: "m1", scr: A.scrText("Sending…", "to the bank network") });
+$("#pk1").innerHTML = A.packet({ w: 520, text: "₹2,000 · CARD ••4821" });
+const mls = $$("#msg .ml");
+gsap.set(["#t1", "#msg", "#pk1", ...mls], { autoAlpha: 0 });
+gsap.set("#w1", { drawSVG: "0%" });
+tl.fromTo("#t1", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 1.0);
+tl.to("#w1", { drawSVG: "100%", duration: 0.4 }, w("sends a") - 0.1);
+tl.fromTo("#msg", { autoAlpha: 0, scale: 0.6, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("a message") - 0.1);
+sfx(w("a message") - 0.1, "bloop", { gain: 0.2 });
+[w("card ending"), w("wants"), w("wants") + 0.6, w("wants") + 0.9].forEach((t, i) => { tl.fromTo(mls[i], { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, t); sfx(t, "print", { gain: 0.14 }); });
+// fold into a packet and shoot off to the right
+const tFold = w("rupees") + 0.5;
+tl.to("#msg", { scale: 0.3, autoAlpha: 0, x: 400, y: 380, duration: 0.35, ease: "power2.in" }, tFold);
+tl.set("#pk1", { autoAlpha: 1 }, tFold + 0.25);
+tl.fromTo("#pk1", { x: -60, scale: 0.6 }, { x: 1100, scale: 1, duration: 0.55, ease: "power3.in", immediateRender: false }, tFold + 0.25);
+sfx(tFold + 0.25, "whoosh", { gain: 0.3 });
+
+// ================================================= S2: different bank (rider... no — rolling coin wipe)
+EX.coinWipe("#s1", "#s2", T.s2, { dur: 0.9 });
+gsap.set("#s2", { autoAlpha: 0 }); tl.set("#s2", { autoAlpha: 1 }, T.s2); tl.set("#s2", { autoAlpha: 0 }, T.s3 + 0.5);
+EX.ambient("#s2", "rupee", { from: T.s2, to: T.s3, seed: 22 });
+$("#bA").innerHTML = ISO.bank({ w: 440, color: "#12A4C4", label: "ATM'S BANK", id: "ba" });
+$("#cd2").innerHTML = `<div style="transform:rotate(-6deg)">${A.card({ w: 440, id: "c2" })}</div>`;
+$("#mg").innerHTML = `<svg width="260" height="260" viewBox="0 0 260 260" style="overflow:visible"><circle cx="100" cy="100" r="80" fill="rgba(189,233,245,.35)" stroke="#1B2340" stroke-width="14"/><circle cx="100" cy="100" r="80" fill="none" stroke="#fff" stroke-width="4" opacity=".7"/><path d="M160 160 L 240 240" stroke="#1B2340" stroke-width="26" stroke-linecap="round"/><path d="M60 60 Q 80 40 110 44" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/></svg>`;
+$("#tel").innerHTML = `<svg width="260" height="180" viewBox="0 0 260 180" style="overflow:visible"><g id="telB">${ISO.box(20, 70, 0, 200, 90, 30, "#F2553D")}<circle cx="120" cy="112" r="34" fill="#fff" stroke="#1B2340" stroke-width="4"/>${Array.from({ length: 8 }, (_, i) => { const a = (i / 8) * Math.PI * 2; return `<circle cx="${120 + Math.cos(a) * 22}" cy="${112 + Math.sin(a) * 22}" r="5" fill="#1B2340"/>`; }).join("")}</g><g id="telH"><path d="M30 60 Q 30 20 70 22 L 170 22 Q 210 20 210 60 L 186 66 Q 180 44 160 44 L 80 44 Q 60 44 54 66 Z" fill="#1B2340"/></g></svg>`;
+$("#hb2").innerHTML = `<div style="position:relative">${A.hub({ w: 170, label: "NFS" })}<svg class="abs" style="left:-40px;top:-30px;overflow:visible" width="250" height="240"><g id="ring" stroke="#FFC93D" stroke-width="7" fill="none" stroke-linecap="round"><path d="M200 40 q 22 22 0 44"/><path d="M220 20 q 36 42 0 84"/><path d="M40 40 q -22 22 0 44"/><path d="M20 20 q -36 42 0 84"/></g></svg></div>`;
+const lrs = $$("#ls .lr");
+gsap.set(["#t2", "#q1", "#tel", "#mg", "#ls", "#nf", "#scan", "#hb2", ...lrs], { autoAlpha: 0 });
+gsap.set("#cord", { drawSVG: "0%" });
+tl.fromTo("#t2", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s2 + 0.4);
+tl.fromTo("#cd2", { rotationY: -180, x: 300 }, { rotationY: 0, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, w("different bank") - 0.4);
+sfx(w("different bank") - 0.4, "swish", { gain: 0.22 });
+pop("#q1", w("different bank") + 0.1, { sfx: "bloop", gain: 0.16 });
+// magnifier sweeps over the card number
+const tMg = w("different bank") + 0.3;
+tl.set("#mg", { autoAlpha: 1 }, tMg);
+tl.fromTo("#mg", { x: 700, y: 760 }, { x: 760, y: 420, duration: 0.5, ease: "power2.out", immediateRender: false }, tMg);
+tl.to("#mg", { x: 820, y: 450, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, tMg + 0.5);
+// the customer list scrolls in and gets searched row by row
+tl.fromTo("#ls", { autoAlpha: 0, clipPath: "inset(0 0 100% 0)" }, { autoAlpha: 1, clipPath: "inset(0 0 0% 0)", duration: 0.5, ease: "power2.out", immediateRender: false }, tMg + 0.1);
+sfx(tMg + 0.1, "paper", { gain: 0.24 });
+lrs.forEach((r, i) => tl.to(r, { autoAlpha: 1, duration: 0.1 }, tMg + 0.3 + i * 0.08));
+tl.set("#scan", { autoAlpha: 1 }, tMg + 0.7);
+const tS0 = tMg + 0.7, tS1 = w("doesn't know");
+REEL.onFrame((t) => { if (t < tS0 || t > T.s3 + 0.5) return; const k = Math.min(4, Math.floor((t - tS0) / ((tS1 - tS0) / 5))); $("#scan").style.transform = `translateY(${(Math.max(0, k) * 66).toFixed(0)}px)`; $("#scan").style.opacity = t > tS1 ? 0 : 1; });
+every(tS0, tS1, (tS1 - tS0) / 5, (t) => sfx(t, "tick", { gain: 0.1 }));
+tl.fromTo("#nf", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, tS1);
+sfx(tS1, "glitch", { gain: 0.2 });
+tl.to("#nf", { x: 8, duration: 0.05, yoyo: true, repeat: 7 }, tS1 + 0.3);
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; $("#cd2").style.translate = `0 ${(Math.sin(t * 2) * 8).toFixed(1)}px`; $("#bA").style.rotate = `${(Math.sin(t * 3) * (t > tS1 ? 2.5 : 0.6)).toFixed(2)}deg`; });
+// it picks up the phone and the cord rings through to the switch
+pop("#tel", w("calls a") - 0.4, { sfx: "pop", gain: 0.15 });
+tl.to("#cord", { drawSVG: "100%", duration: 0.6, ease: "power2.inOut" }, w("calls a") - 0.1);
+pop("#hb2", w("switch") - 0.2, { sfx: "chime", gain: 0.18 });
+every(w("calls a"), T.s3, 0.3, (t) => sfx(t, "ding", { gain: 0.06, pitch: 1.8 }));
+REEL.onFrame((t) => { if (t < w("calls a") || t > T.s3 + 0.5) return; $("#telH").setAttribute("transform", `translate(0 ${(-Math.abs(Math.sin(t * 22)) * 8).toFixed(1)})`); $("#ring").setAttribute("opacity", Math.floor(t * 6) % 2 ? 1 : 0.2); });
+
+// ================================================= S3: the NFS network (dive into the phone)
+EX.dive("#s2", "#s3", T.s3, 1775, 890);
+tl.set("#s2", { autoAlpha: 0 }, T.s3 + 0.05);
+$("#hub").innerHTML = A.hub({ w: 350, label: "NPCI · NFS" });
+const R3 = rng(31), NODES = Array.from({ length: 56 }, (_, i) => { const a = (i / 56) * Math.PI * 2 + R3() * 0.08, rr = 0.78 + R3() * 0.22; return { x: 960 + Math.cos(a) * 820 * rr, y: 520 + Math.sin(a) * 330 * rr, bank: i % 2 === 0 }; }).filter((n) => !(n.y < 290 && n.x > 620 && n.x < 1300) && !(n.y > 790 && (n.x < 560 || n.x > 1360)));
+$("#net").innerHTML = NODES.map((n, i) => `<line class="nl" x1="960" y1="500" x2="${n.x.toFixed(0)}" y2="${n.y.toFixed(0)}" stroke="rgba(140,200,255,.35)" stroke-width="3"/>`).join("") + NODES.map((n) => `<circle class="pl" r="6" fill="#FFE27A"/>`).join("") +
+  NODES.map((n, i) => n.bank ? `<g class="nn" transform="translate(${n.x.toFixed(0)} ${n.y.toFixed(0)})"><path d="M-22 -4 L 0 -20 L 22 -4 Z" fill="#7B61FF" stroke="#fff" stroke-width="3"/><rect x="-18" y="-4" width="36" height="22" fill="#fff"/><rect x="-10" y="0" width="5" height="14" fill="#7B61FF"/><rect x="5" y="0" width="5" height="14" fill="#7B61FF"/></g>` : `<g class="nn" transform="translate(${n.x.toFixed(0)} ${n.y.toFixed(0)})"><rect x="-14" y="-20" width="28" height="40" rx="5" fill="#12A4C4" stroke="#fff" stroke-width="3"/><rect x="-8" y="-13" width="16" height="11" rx="2" fill="#BDE9F5"/></g>`).join("");
+const nls = $$("#net .nl"), nns = $$("#net .nn"), pls = $$("#net .pl");
+gsap.set(["#t3", "#npci", "#hub", "#cB", "#cA", ...nns], { autoAlpha: 0 });
+nls.forEach((l) => gsap.set(l, { drawSVG: "0%" }));
+tl.fromTo("#t3", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("national financial") - 0.1);
+sfx(w("national financial") - 0.1, "impact", { gain: 0.24 });
+pop("#hub", T.s3 + 0.4, { from: 0.3, sfx: "slam", gain: 0.2 });
+pop("#npci", w("by npci") - 0.1, { sfx: "chime", gain: 0.18 });
+const tN0 = T.s3 + 0.7;
+nls.forEach((l, i) => tl.to(l, { drawSVG: "100%", duration: 0.3 }, tN0 + i * 0.06));
+nns.forEach((n, i) => { tl.fromTo(n, { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.25, ease: "back.out(3)", immediateRender: false }, tN0 + 0.2 + i * 0.06); if (i % 6 === 0) sfx(tN0 + 0.2 + i * 0.06, "pop", { gain: 0.07 }); });
+REEL.onFrame((t) => {
+  if (t < T.s3 || t > T.s4 + 0.6) return;
+  pls.forEach((p, i) => { const n = NODES[i], u = (((t - tN0) * 0.6 + i * 0.13) % 1 + 1) % 1, out = i % 2 === 0; const k = out ? u : 1 - u; p.setAttribute("cx", (960 + (n.x - 960) * k).toFixed(1)); p.setAttribute("cy", (500 + (n.y - 500) * k).toFixed(1)); p.setAttribute("opacity", t > tN0 + 0.5 ? 0.9 : 0); });
+  $$("#hub .hl").forEach((h, i) => h.setAttribute("opacity", (0.4 + 0.6 * Math.abs(Math.sin(t * 4 + i))).toFixed(2)));
+  const b = clamp((t - w("thirteen hundred") + 0.3) / 1.0), a = clamp((t - w("lakh atms") + 0.3) / 1.0);
+  $("#nB").textContent = b >= 1 ? "1,300+" : Math.round(1349 * b).toLocaleString("en-IN");
+  $("#nA").textContent = a >= 1 ? "~2.5 LAKH" : Math.round(258000 * a).toLocaleString("en-IN");
+});
+pop("#cB", w("thirteen hundred") - 0.4, { sfx: "pop", gain: 0.16 });
+pop("#cA", w("lakh atms") - 0.6, { sfx: "pop", gain: 0.16 });
+sfx(w("thirteen hundred") - 0.3, "riser", { gain: 0.1, dur: 1.0 }); sfx(w("lakh atms") - 0.3, "riser", { gain: 0.1, dur: 1.0 });
+
+// ================================================= S4: routing (stripes)
+EX.stripes(T.s4, { colors: ["#7B61FF", "#12A4C4", "#FFC93D", "#22B573", "#F2553D"] });
+tl.set("#s3", { autoAlpha: 0 }, T.s4 + 0.05);
+show("#s4", T.s4, T.s5 + 0.5, { y: 0 });
+EX.ambient("#s4", "net", { from: T.s4, to: T.s5, seed: 24, c: "rgba(255,255,255,.3)" });
+$("#atm4").innerHTML = A.machine({ w: 260, id: "m4", scr: A.scrText("Waiting…", "") });
+$("#hub4").innerHTML = A.hub({ w: 300, label: "NFS" });
+const BK = [["BANK A", "#12A4C4"], ["BANK B", "#F2553D"], ["YOUR BANK", "#7B61FF"], ["BANK D", "#22B573"]];
+$("#banks").innerHTML = BK.map(([l, c], i) => `<div class="abs bk" data-ob="route" style="left:1560px;top:${150 + i * 205}px">${ISO.bank({ w: 190, color: c, label: l, id: "bk" + i, flag: false })}</div>`).join("");
+$("#rt").innerHTML = `<path id="rA" d="M370 520 L 690 520" stroke="#fff" stroke-width="10" fill="none" stroke-dasharray="4 16" stroke-linecap="round"/>` + BK.map((_, i) => `<path class="rb" d="M990 500 C 1250 500, 1300 ${245 + i * 205}, 1560 ${245 + i * 205}" stroke="rgba(255,255,255,.55)" stroke-width="10" fill="none" stroke-linecap="round"/>`).join("");
+$("#pk4").innerHTML = A.packet({ w: 300, text: "₹2,000 ••4821" });
+$("#sw4").innerHTML = A.timer({ w: 300, id: "s4t", text: "0.00s" });
+const rbs = $$("#rt .rb");
+gsap.set(["#t4", "#mag", "#sw4", "#pk4", ...$$("#banks .bk")], { autoAlpha: 0 });
+tl.fromTo("#t4", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s4 + 0.35);
+$$("#banks .bk").forEach((b, i) => pop(b, T.s4 + 0.4 + i * 0.1, { sfx: "pop", gain: 0.1 }));
+tl.set("#pk4", { autoAlpha: 1 }, T.s4 + 0.3);
+tl.fromTo("#pk4", { x: 150, y: 470, scale: 0.5 }, { x: 640, y: 450, scale: 0.75, duration: 0.6, ease: "power2.inOut", immediateRender: false }, T.s4 + 0.3);
+sfx(T.s4 + 0.3, "whoosh", { gain: 0.22 });
+pop("#mag", w("card number") - 0.3, { sfx: "bloop", gain: 0.18 });
+// scan the bank routes, lock onto yours
+const tScan = w("finds out"), tLock = w("belong to");
+REEL.onFrame((t) => {
+  if (t < T.s4 || t > T.s5 + 0.6) return;
+  const sc = t > tScan && t < tLock ? Math.floor((t - tScan) * 8) % 4 : -1, locked = t >= tLock;
+  rbs.forEach((p, i) => { const on = locked ? i === 2 : i === sc; p.setAttribute("stroke", on ? (locked ? "#22D07A" : "#FFE27A") : "rgba(255,255,255,.35)"); p.setAttribute("stroke-width", on ? 14 : 8); });
+  const sw = clamp((t - T.s4 - 0.3) / (w("under a") - T.s4)); $("#s4tN").textContent = `${(0.4 * sw).toFixed(2)}s`;
+});
+every(tScan, tLock, 0.125, (t) => sfx(t, "tick", { gain: 0.08 }));
+sfx(tLock, "chime", { gain: 0.22 });
+tl.to("#pk4", { x: 1330, y: 370 + 2 * 205 - 330, scale: 0.6, duration: 0.6, ease: "power2.inOut" }, w("forwards") - 0.1);
+sfx(w("forwards") - 0.1, "whoosh", { gain: 0.24 });
+tl.to("#banks .bk:nth-child(3)", { scale: 1.15, duration: 0.15, yoyo: true, repeat: 1 }, w("forwards") + 0.5);
+pop("#sw4", w("under a") - 0.4, { sfx: "tick", gain: 0.2 });
+
+// ================================================= S5: interchange (dive into your bank)
+EX.dive("#s4", "#s5", T.s5, 1650, 655);
+EX.ambient("#s5", "rupee", { from: T.s5, to: END, seed: 25 });
+$("#yb").innerHTML = ISO.bank({ w: 440, color: "#7B61FF", label: "YOUR BANK", id: "y5" });
+$("#ab").innerHTML = ISO.bank({ w: 440, color: "#12A4C4", label: "ATM'S BANK", id: "a5" });
+$("#coins").innerHTML = [0, 1, 2].map(() => `<div class="abs cn" style="left:0;top:0">${ISO.coin({ size: 130 })}</div>`).join("");
+const cns = $$("#coins .cn");
+gsap.set(["#t5", "#fee", "#fav"], { autoAlpha: 0 });
+gsap.set("#arc", { drawSVG: "0%" });
+pop("#fav", w("little favour") - 0.2, { sfx: "bloop", gain: 0.18 });
+const arc = $("#arc"), AL = arc.getTotalLength(), tPay = w("pays the");
+tl.to("#arc", { drawSVG: "100%", duration: 0.5 }, tPay - 0.3);
+REEL.onFrame((t) => { if (t < T.s5) return; cns.forEach((c, i) => { const u = clamp((t - tPay - i * 0.25) / 0.9), p = arc.getPointAtLength(AL * u); c.style.opacity = u > 0 && u < 1 ? 1 : 0; c.style.transform = `translate(${(p.x - 65).toFixed(1)}px,${(p.y - 65).toFixed(1)}px) rotate(${(u * 720).toFixed(0)}deg)`; }); });
+[0, 1, 2].forEach((i) => sfx(tPay + i * 0.25 + 0.85, "coin", { gain: 0.22 }));
+tl.fromTo("#t5", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)", immediateRender: false }, w("interchange") - 0.15);
+sfx(w("interchange") - 0.15, "impact", { gain: 0.24 });
+tl.fromTo("#fee", { autoAlpha: 0, y: 80, scale: 0.8 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("nineteen") - 0.2);
+sfx(w("nineteen") - 0.2, "slam", { gain: 0.22 });
+REEL.onFrame((t) => { if (t < T.s5) return; $("#yb").style.translate = `0 ${(Math.sin(t * 2.4) * 8).toFixed(1)}px`; $("#ab").style.translate = `0 ${(Math.sin(t * 2.4 + 1.5) * 8).toFixed(1)}px`; });
+
+// ================================================= close
+EX.receiptClose(T.close, { step: 3, title: "Bank network", big: "Routed ✓", next: "Your bank says yes" });
+REEL.finish(END);
+</script>
+</body></html>

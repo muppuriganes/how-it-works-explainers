@@ -1,0 +1,252 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>ATM Ch2 PIN check</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(27,35,64,.12) 2.5px,transparent 3px);background-size:44px 44px}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:10px 24px 14px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:36px;white-space:nowrap;background:#fff;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.08em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 24px;border:8px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:60px;background:rgba(255,255,255,.92);white-space:nowrap}
+.dg{position:absolute;width:110px;height:120px;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:900;font-size:72px;color:#1B2340}
+.mono{font-family:"JetBrains Mono";font-weight:800}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/atm.js"></script>
+<script src="../../../lib/atmfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: type the PIN, cover it like an exam paper -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:radial-gradient(ellipse at 55% 30%,#8FCBE6 0%,#3F8FBF 100%)"></div><div class="dots"></div>
+    <div id="host1" class="abs" data-ob="host1" style="left:90px;top:330px"></div>
+    <div class="abs fc mono" id="pinS" data-ob="pinS" style="left:700px;top:110px;width:600px;padding:14px 26px;border-radius:24px;background:#BDE9F5;color:#1B2340;font-size:30px;display:flex;justify-content:space-between;align-items:center"><span>ENTER PIN</span><span id="dots" style="font-size:56px;letter-spacing:.2em">····</span></div>
+    <div id="pad1" class="abs" data-ob="pad1" style="left:640px;top:250px"></div>
+    <div id="hand1" class="abs" data-ob="pad1" data-bleed style="left:900px;top:420px"></div>
+    <div id="exam" class="abs fc" data-ob="exam" style="left:1440px;top:300px;width:400px;padding:24px 28px 30px;border-radius:12px;background:#FFFBEA;transform:rotate(4deg);font-family:Archivo">
+      <div class="mono" style="font-size:20px;letter-spacing:.12em;opacity:.6">MATHS EXAM · ROLL 42</div>
+      <div style="font-weight:800;font-size:26px;margin-top:14px;color:#1B2340">Q1. 2 + 2 = <span style="font-family:Garamond;font-style:italic;font-size:34px;color:#3E7BFA">4</span></div>
+      <div style="font-weight:800;font-size:26px;margin-top:10px;color:#1B2340">Q2. ̶p̶e̶e̶k̶ <span style="font-family:Garamond;font-style:italic;font-size:30px;color:#3E7BFA">no peeking</span></div>
+      <div class="abs" style="right:-20px;bottom:-26px;padding:4px 16px;border:5px solid #F0566E;border-radius:10px;color:#F0566E;font-weight:900;font-size:30px;transform:rotate(-10deg);background:#fff">🙈 COVER IT</div></div>
+    <div class="stamp" id="good" data-ob="good" style="left:1470px;top:740px;border-color:#22B573;color:#22B573;transform:rotate(-8deg)">GOOD 👍</div>
+  </section>
+
+  <!-- S2: the twist — the PIN never travels as numbers; x-ray of the keypad -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 40%,#3E5A9E 0%,#1E2C5C 100%)"></div>
+    <div class="abs" style="inset:0;background-image:linear-gradient(rgba(140,200,255,.08) 2px,transparent 2px),linear-gradient(90deg,rgba(140,200,255,.08) 2px,transparent 2px);background-size:60px 60px"></div>
+    <div class="lbl x3d" id="t2" data-ob="t2" style="left:110px;top:100px;font-size:88px;--xf:#fff">Here's <span style="color:#FFC93D">the twist.</span></div>
+    <div id="xray" class="abs" data-ob="xray" style="left:110px;top:270px;width:640px;height:600px"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="wire" d="M760 600 L 1500 600" stroke="#8FA0D6" stroke-width="10" stroke-dasharray="14 12" fill="none"/></svg>
+    <div id="bank2" class="abs" data-ob="bank2" style="left:1500px;top:400px"></div>
+    <div id="digs" class="abs" data-ob="digs" style="left:0;top:0"></div>
+    <div class="stamp" id="nope" data-ob="nope" style="left:800px;top:190px;font-size:52px;transform:rotate(-8deg)">✗ NEVER AS 4 NUMBERS</div>
+    <div class="pill fc" id="sc" data-ob="sc" style="left:150px;top:900px;background:#FFC93D;color:#1B2340">🔐 ITS OWN SECURITY CHIP</div>
+  </section>
+
+  <!-- S3: press enter — scrambled into gibberish -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#C4B8F2 0%,#8F80D6 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t3" data-ob="t3" style="left:110px;top:100px;font-size:92px;--xf:#fff">Scrambled. <span style="color:#FFC93D">🔐</span></div>
+    <div id="ent" class="abs" data-ob="ent" style="left:120px;top:440px"></div>
+    <div id="digs3" class="abs" data-ob="digs3" style="left:0;top:0"></div>
+    <div id="mix" class="abs fc" data-ob="mix" style="left:700px;top:330px;width:380px;height:360px;border-radius:40px;background:#2B3354;overflow:hidden"></div>
+    <div id="blk" class="abs fc" data-ob="blk" style="left:1200px;top:360px;width:600px;height:300px;border-radius:30px;background:#0E1530;padding:30px 36px">
+      <div class="mono" style="font-size:22px;letter-spacing:.16em;color:#8FA0D6">ENCRYPTED PIN BLOCK</div>
+      <div id="hex" class="mono" style="font-size:70px;color:#22D07A;line-height:1.15;margin-top:16px;letter-spacing:.06em">···· ····<br>···· ····</div></div>
+    <div class="pill fc" id="gib" data-ob="gib" style="left:1290px;top:720px;background:#F2553D">LOOKS LIKE GIBBERISH 🤪</div>
+  </section>
+
+  <!-- S4: tamper -> keys wiped -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#FFC2CF 0%,#E86A86 100%)"></div><div class="dots"></div>
+    <div id="alarm" class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,0,40,0) 40%,rgba(255,0,40,.45) 100%)"></div>
+    <div class="lbl x3d" id="t4" data-ob="t4" style="left:110px;top:100px;font-size:88px;--xf:#fff">Try to <span style="color:#FFC93D">peek?</span></div>
+    <div id="pad4" class="abs" data-ob="pad4" style="left:180px;top:270px"></div>
+    <div id="drv" class="abs" data-ob="pad4" data-bleed style="left:700px;top:560px"></div>
+    <div id="keys" class="abs fc" data-ob="keys" style="left:1180px;top:270px;width:620px;padding:26px 32px;border-radius:30px;background:#fff;font-family:Archivo">
+      <div class="mono" style="font-size:22px;letter-spacing:.14em;opacity:.55">SECRET KEYS INSIDE THE CHIP</div>
+      <div style="display:flex;gap:26px;margin-top:16px;font-size:90px"><span class="ky">🔑</span><span class="ky">🔑</span><span class="ky">🔑</span></div>
+      <div id="wiped" class="abs" style="inset:0;border-radius:27px;background:#1B2340;display:flex;align-items:center;justify-content:center;color:#FFC93D;font-weight:900;font-size:64px">🧹 KEYS WIPED</div></div>
+    <div class="pill fc" id="tmp" data-ob="tmp" style="left:1250px;top:640px;background:#F0566E">⚠ TAMPER DETECTED</div>
+  </section>
+
+  <!-- S5: only your bank can unlock it -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 25%,#FFE09A 0%,#F0B443 100%)"></div><div class="dots"></div>
+    <div id="pk" class="abs" data-ob="visit" data-bleed style="left:720px;top:110px"></div>
+    <div id="c1" class="abs" data-ob="visit" style="left:150px;top:350px"></div>
+    <div id="c2" class="abs" data-ob="visit" style="left:830px;top:330px"></div>
+    <div id="c3" class="abs" data-ob="visit" style="left:1420px;top:380px"></div>
+    <div class="pill fc" id="v1" data-ob="v1" style="left:190px;top:820px;background:#22B573">🔓 4821 · UNLOCKED</div>
+    <div class="stamp" id="v2" data-ob="v2" style="left:780px;top:840px;font-size:46px;transform:rotate(-6deg)">✗ NOT THE ATM</div>
+    <div class="stamp" id="v3" data-ob="v3" style="left:1450px;top:800px;font-size:46px;transform:rotate(5deg)">✗ NOPE</div>
+    <div class="bub fc" id="zz" data-ob="visit" style="left:1500px;top:250px;color:#7B61FF">ZZZzzz…</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+const A = ATMART;
+EX.stepStart(2, "PIN check");
+const T = { s2: w("but here's") - 0.15, s3: w("the moment") - 0.15, s4: w("if someone") - 0.15, s5: w("only your") - 0.15, close: we("he's asleep") + 1.4 };
+const END = T.close + 1.4;
+const clamp = (u) => Math.max(0, Math.min(1, u));
+
+// ================================================= S1: type, cover, exam paper
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+$("#host1").innerHTML = ART.host({ w: 380, id: "h1", shirt: "#12A4C4", girl: true });
+$("#pad1").innerHTML = A.pinpad({ w: 680, id: "p1", hand: false });
+$("#hand1").innerHTML = A.hand({ w: 420 });
+gsap.set(["#hand1", "#exam", "#good"], { autoAlpha: 0 });
+PAPER.lipSync($("#h1Mouth"), { from: 0.9, to: T.s2, open: 16 });
+PAPER.blink($("#h1Eyes"), [2.0, 5.2]);
+// key presses 4-8-2-1 (after the receipt tears away), dots fill
+const tK = 1.05, KEYS = ["4", "8", "2", "1"];
+KEYS.forEach((k, i) => { const t = tK + i * 0.22; tl.to(`#p1K${k}`, { y: 10, duration: 0.07, yoyo: true, repeat: 1 }, t); sfx(t, "click", { gain: 0.3 }); });
+REEL.onFrame((t) => { const n = Math.max(0, Math.min(4, Math.floor((t - tK) / 0.22) + 1)); $("#dots").textContent = "●".repeat(t < tK ? 0 : n) + "·".repeat(4 - (t < tK ? 0 : n)); });
+// the other hand swoops in and covers the keys
+tl.set("#hand1", { autoAlpha: 1 }, w("cover the") - 0.2);
+tl.fromTo("#hand1", { x: 700, y: 400, rotation: 30 }, { x: 0, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.3)", immediateRender: false }, w("cover the") - 0.2);
+sfx(w("cover the") - 0.2, "swish", { gain: 0.25 });
+REEL.onFrame((t) => { if (t < w("cover the") + 0.3 || t > T.s2 + 0.5) return; $("#hand1").style.translate = `${(Math.sin(t * 5) * 4).toFixed(1)}px ${(Math.cos(t * 4) * 3).toFixed(1)}px`; });
+tl.fromTo("#exam", { autoAlpha: 0, x: 200, rotation: 20 }, { autoAlpha: 1, x: 0, rotation: 4, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("exam paper") - 0.2);
+sfx(w("exam paper") - 0.2, "paper", { gain: 0.25 });
+tl.fromTo("#good", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, w("good") - 0.05);
+sfx(w("good") + 0.11, "stamp", { gain: 0.42 });
+
+// ================================================= S2: x-ray, the digits try to walk out (iris)
+EX.iris("#s2", T.s2, 960, 560, { color: "#1E2C5C" });
+show("#s2", T.s2, T.s3 + 0.5, { y: 0 });
+$("#xray").innerHTML = `<div class="abs" style="left:0;top:0;opacity:.35">${A.pinpad({ w: 600, id: "x2", hand: false })}</div><div id="xchip" class="abs" style="left:190px;top:180px">${A.chip({ w: 260, id: "xc" })}</div>`;
+$("#bank2").innerHTML = ISO.bank({ w: 300, color: "#7B61FF", label: "YOUR BANK", id: "b2" });
+$("#digs").innerHTML = KEYS.map((k, i) => `<div class="dg fc d2" style="left:${640 + i * 4}px;top:500px">${k}</div>`).join("");
+const d2 = $$("#digs .d2");
+gsap.set(["#t2", "#nope", "#sc", "#xchip", "#bank2", ...d2], { autoAlpha: 0 });
+gsap.set("#wire", { drawSVG: "0%" });
+tl.fromTo("#t2", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("the twist") - 0.1);
+sfx(w("the twist") - 0.1, "impact", { gain: 0.24 });
+tl.to("#wire", { drawSVG: "100%", duration: 0.6 }, w("your pin never") - 0.3);
+pop("#bank2", w("your pin never") - 0.3, { sfx: "pop", gain: 0.15 });
+// the four digits march along the wire... and get stopped
+const tW = w("never travels") - 0.4;
+d2.forEach((d, i) => { tl.fromTo(d, { autoAlpha: 0, x: 0, y: 0 }, { autoAlpha: 1, x: 200 + i * 130, y: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, tW + i * 0.1); });
+REEL.onFrame((t) => { if (t < tW || t > w("four numbers") + 0.4) return; d2.forEach((d, i) => (d.style.translate = `0 ${(Math.abs(Math.sin(t * 9 + i)) * -14).toFixed(1)}px`)); });
+tl.fromTo("#nope", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, w("four numbers") - 0.1);
+sfx(w("four numbers") + 0.06, "stamp", { gain: 0.45 });
+d2.forEach((d, i) => tl.to(d, { y: 600, rotation: (i % 2 ? 1 : -1) * 80, autoAlpha: 0, duration: 0.6, ease: "power2.in" }, w("four numbers") + 0.3 + i * 0.07));
+tl.to("#nope", { autoAlpha: 0, duration: 0.2 }, w("the keypad") - 0.1);
+// x-ray reveals the chip inside the keypad
+tl.fromTo("#xchip", { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, w("its own"));
+pop("#sc", w("security chip") - 0.2, { sfx: "chime", gain: 0.2 });
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; const d = $("#xcDie"); if (d) d.setAttribute("opacity", (0.6 + 0.4 * Math.sin(t * 10)).toFixed(2)); $("#xchip").style.filter = `drop-shadow(0 0 ${(18 + 10 * Math.sin(t * 6)).toFixed(0)}px rgba(255,201,61,.8))`; });
+
+// ================================================= S3: enter -> scrambler -> gibberish (stripes)
+EX.stripes(T.s3, { colors: ["#7B61FF", "#22D07A", "#FFC93D", "#12A4C4", "#F2553D"] });
+show("#s3", T.s3, T.s4 + 0.5, { y: 0 });
+$("#ent").innerHTML = `<svg width="300" height="200" viewBox="0 0 300 200" style="overflow:visible">${ISO.shadow(140, 192, 130, 10, 0.2)}<g id="entK">${ISO.box(20, 40, 0, 240, 130, 30, "#22B573")}<text x="140" y="122" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="54" fill="#fff">ENTER</text></g></svg>`;
+$("#mix").innerHTML = `<svg width="380" height="360" viewBox="0 0 380 360"><g id="g1" transform="translate(130 150)"><circle r="70" fill="#5C677E"/>${Array.from({ length: 10 }, (_, i) => `<rect x="-12" y="-90" width="24" height="30" rx="4" fill="#5C677E" transform="rotate(${i * 36})"/>`).join("")}<circle r="26" fill="#1B2340"/></g><g id="g2" transform="translate(260 230)"><circle r="54" fill="#8A93AB"/>${Array.from({ length: 8 }, (_, i) => `<rect x="-10" y="-72" width="20" height="26" rx="4" fill="#8A93AB" transform="rotate(${i * 45})"/>`).join("")}<circle r="20" fill="#1B2340"/></g><text x="190" y="340" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#FFC93D">SCRAMBLER</text></svg>`;
+$("#digs3").innerHTML = KEYS.map((k, i) => `<div class="dg fc d3" style="left:${180 + i * 130}px;top:220px;width:96px;height:104px;font-size:60px">${k}</div>`).join("");
+const d3 = $$("#digs3 .d3");
+gsap.set(["#t3", "#gib", ...d3], { autoAlpha: 0 });
+tl.fromTo("#t3", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s3 + 0.35);
+d3.forEach((d, i) => pop(d, T.s3 + 0.4 + i * 0.1, { sfx: "pop", gain: 0.1 }));
+const tE = w("press enter");
+tl.to("#entK", { y: 14, duration: 0.08, yoyo: true, repeat: 1 }, tE + 0.1);
+sfx(tE + 0.1, "click", { gain: 0.4 });
+// digits get sucked into the scrambler
+d3.forEach((d, i) => { tl.to(d, { x: 700 - (180 + i * 130) + 140, y: 280, scale: 0.2, rotation: 360, autoAlpha: 0, duration: 0.45, ease: "power2.in" }, w("scrambles") - 0.3 + i * 0.12); });
+sfx(w("scrambles") - 0.2, "whoosh", { gain: 0.25 });
+const tS0 = w("scrambles") + 0.2, tS1 = w("gibberish") + 0.3, HEX = "7F3A9C02E61B44D8";
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.3 || t > T.s4 + 0.6) return;
+  const spin = t > tS0 - 0.6 ? (t - tS0 + 0.6) * 400 : 0;
+  $("#g1").setAttribute("transform", `translate(130 150) rotate(${spin.toFixed(1)})`); $("#g2").setAttribute("transform", `translate(260 230) rotate(${(-spin * 1.3).toFixed(1)})`);
+  if (t < tS0) { $("#hex").innerHTML = "···· ····<br>···· ····"; return; }
+  const k = clamp((t - tS0) / (tS1 - tS0)), r = REEL.rng(Math.floor(t * 20));
+  const s = HEX.split("").map((c, i) => (i / HEX.length < k ? c : "0123456789ABCDEF"[Math.floor(r() * 16)])).join("");
+  $("#hex").innerHTML = `${s.slice(0, 4)} ${s.slice(4, 8)}<br>${s.slice(8, 12)} ${s.slice(12)}`;
+});
+every(tS0, tS1, 0.1, (t) => sfx(t, "tick", { gain: 0.06 }));
+pop("#gib", w("gibberish") - 0.1, { sfx: "bloop", gain: 0.18 });
+
+// ================================================= S4: tamper -> keys wiped (shutter)
+EX.shutterWipe(T.s4);
+show("#s4", T.s4, T.s5 + 0.5, { y: 0 });
+$("#pad4").innerHTML = A.pinpad({ w: 600, id: "p4", hand: false });
+$("#drv").innerHTML = `<svg width="420" height="120" viewBox="0 0 420 120"><rect x="200" y="36" width="210" height="48" rx="22" fill="#F5A524" stroke="#1B2340" stroke-width="4"/><rect x="230" y="36" width="12" height="48" fill="#1B2340" opacity=".3"/><rect x="40" y="52" width="170" height="16" fill="#9AA3B4" stroke="#1B2340" stroke-width="3"/><path d="M40 52 L 0 60 L 40 68 Z" fill="#9AA3B4" stroke="#1B2340" stroke-width="3"/></svg>`;
+gsap.set(["#t4", "#keys", "#tmp", "#wiped", "#drv"], { autoAlpha: 0 });
+tl.fromTo("#t4", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s4 + 0.3);
+pop("#keys", T.s4 + 0.5, { sfx: "pop", gain: 0.14 });
+tl.set("#drv", { autoAlpha: 1 }, w("open the") - 0.4);
+tl.fromTo("#drv", { x: 600, rotation: 10 }, { x: 0, rotation: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, w("open the") - 0.4);
+for (let k = 0; k < 5; k++) tl.to("#drv", { rotation: k % 2 ? -8 : 8, duration: 0.1 }, w("open the") + 0.1 + k * 0.1);
+sfx(w("open the"), "glitch", { gain: 0.18 });
+const tWipe = w("wipes");
+REEL.onFrame((t) => { if (t < T.s4 || t > T.s5 + 0.5) return; const on = t > tWipe - 0.4; $("#alarm").style.opacity = on ? (0.5 + 0.5 * Math.abs(Math.sin(t * 8))).toFixed(2) : 0; });
+pop("#tmp", tWipe - 0.4, { sfx: "beep", gain: 0.2 });
+every(tWipe - 0.4, T.s5, 0.25, (t) => sfx(t, "beep", { gain: 0.08, pitch: 1.8 }));
+$$("#keys .ky").forEach((k, i) => tl.to(k, { scale: 0, rotation: 120, opacity: 0, duration: 0.3, ease: "back.in(2)" }, tWipe + i * 0.12));
+tl.set("#wiped", { autoAlpha: 1 }, tWipe + 0.45);
+tl.fromTo("#wiped", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.35, ease: "power2.out", immediateRender: false }, tWipe + 0.45);
+sfx(tWipe + 0.45, "swish", { gain: 0.25 });
+REEL.shake($("#shake"), tWipe, 6);
+
+// ================================================= S5: only your bank can unlock it (dive)
+EX.dive("#s4", "#s5", T.s5, 1490, 330);
+$("#pk").innerHTML = A.packet({ w: 480, text: "7F3A 9C02 E61B…" });
+$("#c1").innerHTML = ISO.bank({ w: 400, color: "#7B61FF", label: "YOUR BANK", id: "b5" });
+$("#c2").innerHTML = A.machine({ w: 300, id: "m5", scr: A.scrText("???", "") });
+$("#c3").innerHTML = A.guard({ w: 300, id: "g5" });
+gsap.set(["#v1", "#v2", "#v3", "#zz"], { autoAlpha: 0 });
+REEL.onFrame((t) => { if (t < T.s5) return; $("#g5Head").setAttribute("transform", `rotate(${(8 + 6 * Math.sin(t * 2.2)).toFixed(1)} 108 82)`); $$("#g5Z text").forEach((z, i) => { const u = ((t * 0.5 + i / 2) % 1); z.setAttribute("transform", `translate(${(u * 20).toFixed(1)} ${(-u * 40).toFixed(1)})`); z.setAttribute("opacity", Math.sin(u * Math.PI).toFixed(2)); }); });
+// the packet visits each candidate
+const tB = w("your bank can"), tA = w("not the atm"), tG = w("not the guard"), tD = w("definitely");
+tl.to("#pk", { x: -460, y: 200, scale: 0.8, duration: 0.45, ease: "power2.inOut" }, tB - 0.2);
+pop("#v1", w("unscramble") + 0.1, { sfx: "chime", gain: 0.22 });
+sfx(w("unscramble"), "click", { gain: 0.3 });
+tl.to("#pk", { x: 120, y: 160, scale: 0.8, duration: 0.4, ease: "power2.inOut" }, tA - 0.4);
+tl.fromTo("#v2", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, tA + 0.1);
+sfx(tA + 0.26, "stamp", { gain: 0.4 });
+tl.to("#pk", { x: 680, y: 160, scale: 0.8, duration: 0.4, ease: "power2.inOut" }, tG - 0.4);
+tl.fromTo("#v3", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, tG + 0.1);
+sfx(tG + 0.26, "stamp", { gain: 0.4 });
+tl.to("#v3", { scale: 1.25, duration: 0.15, yoyo: true, repeat: 1 }, tD + 0.2);
+sfx(tD + 0.2, "stamp", { gain: 0.3 });
+pop("#zz", w("he's asleep"), { sfx: "bloop", gain: 0.14 });
+sfx(w("he's asleep") + 0.3, "bloop", { gain: 0.08, pitch: 0.45 });
+
+// ================================================= fill the frame (ambient motion + concept panels)
+EX.ambient("#s1", "hex", { from: 0, to: T.s2, seed: 11, c: "rgba(255,255,255,.16)" });
+$("#s1").insertAdjacentHTML("beforeend", `<div class="lbl x3d" id="t1" data-ob="t1" style="left:110px;top:100px;font-size:96px;--xf:#fff">PIN <span style="color:#FFC93D">time.</span></div>`);
+gsap.set("#t1", { autoAlpha: 0 }); tl.fromTo("#t1", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 0.9);
+EX.ambient("#s2", "circuit", { from: T.s2, to: T.s3, seed: 12, c: "rgba(140,200,255,.22)" });
+EX.infoCard("#s2", { x: 860, y: 690, w: 900, title: "WHAT ACTUALLY TRAVELS", items: [["❌", "4 · 8 · 2 · 1 — plain numbers"], ["✅", "7F3A 9C02 E61B 44D8 — scrambled block"]], t0: w("security chip") + 0.3, gap: 0.4, ob: "travel" });
+EX.ambient("#s3", "hex", { from: T.s3, to: T.s4, seed: 13, c: "rgba(255,255,255,.2)" });
+EX.infoCard("#s3", { x: 110, y: 720, w: 560, title: "WHY SCRAMBLE?", items: [["🕵️", "Useless if stolen"], ["🔑", "Key lives only at your bank"]], t0: w("gibberish") + 0.2, gap: 0.35, ob: "why" });
+EX.ambient("#s4", "circuit", { from: T.s4, to: T.s5, seed: 14, c: "rgba(255,255,255,.25)" });
+EX.logPanel("#s4", { x: 1180, y: 730, w: 620, h: 230, title: "PIN PAD · SECURITY LOG", ob: "slog", lines: [[T.s4 + 0.6, "SELF-TEST OK"], [w("open the") - 0.1, "CASE OPENED ⚠", "#F0566E"], [tWipe, "KEYS ZEROISED", "#FFC93D"], [tWipe + 0.5, "DEVICE LOCKED 🔒", "#F0566E"]] });
+EX.ambient("#s5", "rupee", { from: T.s5, to: END, seed: 15 });
+$("#s5").insertAdjacentHTML("beforeend", `<div class="lbl x3d" id="t5" data-ob="t5" style="left:110px;top:110px;font-size:80px;--xf:#fff">Who can <span style="color:#F2553D">open it?</span></div>`);
+gsap.set("#t5", { autoAlpha: 0 }); tl.fromTo("#t5", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s5 + 0.3);
+
+// ================================================= close
+EX.receiptClose(T.close, { step: 2, title: "PIN check", big: "PIN locked 🔐", next: "Bank network" });
+REEL.finish(END);
+</script>
+</body></html>

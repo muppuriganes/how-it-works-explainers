@@ -1,0 +1,194 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>ATM Ch4 Your bank says yes</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(27,35,64,.12) 2.5px,transparent 3px);background-size:44px 44px}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:10px 24px 14px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:34px;white-space:nowrap;background:#fff;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.08em;color:#fff;white-space:nowrap}
+.mono{font-family:"JetBrains Mono";font-weight:800}
+.pn{position:absolute;border-radius:30px;background:#0E1530;padding:26px 34px;font-family:"JetBrains Mono";font-weight:800}
+.pn .k{font-size:22px;letter-spacing:.16em;color:#8FA0D6}
+.qc{position:absolute;width:540px;height:440px;border-radius:34px;background:#fff;padding:30px;font-family:Archivo;color:#1B2340}
+.qc .q{font-weight:900;font-size:44px;line-height:1.05}
+.qc .ok{position:absolute;right:26px;top:26px;width:86px;height:86px;border-radius:50%;background:#22B573;color:#fff;display:flex;align-items:center;justify-content:center;font-size:54px;font-weight:900;border:4px solid #1B2340}
+.bar{position:relative;height:56px;border-radius:16px;background:#E6E8F0;overflow:hidden;border:3px solid #1B2340}
+.stamp{position:absolute;padding:8px 40px;border:14px solid #22B573;border-radius:26px;color:#22B573;font-family:Archivo;font-weight:900;font-size:180px;letter-spacing:.03em;background:rgba(255,255,255,.95);white-space:nowrap}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/atm.js"></script>
+<script src="../../../lib/atmfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: inside your bank — unscramble + verify -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 20%,#4B5A9E 0%,#1E2650 100%)"></div>
+    <div id="racks" class="abs" style="left:0;top:630px;width:1920px;height:330px"></div>
+    <div class="lbl x3d" id="t1" data-ob="t1" style="left:110px;top:100px;font-size:92px;--xf:#fff">Inside <span style="color:#FFC93D">your bank</span></div>
+    <div class="pn fc" id="p1" data-ob="p1" style="left:110px;top:250px;width:820px;height:330px"><div class="k">PIN BLOCK → UNSCRAMBLED</div><div id="pinX" style="font-size:96px;color:#22D07A;margin-top:30px;letter-spacing:.08em">7F3A 9C02</div><div id="pinOk" class="pill" style="left:34px;top:250px;background:#22B573;font-size:24px">✓ PIN MATCHES</div></div>
+    <div class="pn fc" id="p2" data-ob="p2" style="left:990px;top:250px;width:820px;height:330px"><div class="k">CHIP'S SECRET CODE</div><div style="display:flex;gap:30px;align-items:center;margin-top:30px"><span style="font-size:80px;color:#FFC93D">41BD F208</span><span id="eq" style="font-size:60px;color:#fff">=</span><span id="exp" style="font-size:40px;color:#8FA0D6;line-height:1.1">EXPECTED<br>41BD F208</span></div><div id="chOk" class="pill" style="left:34px;top:250px;background:#22B573;font-size:24px">✓ GENUINE CARD</div></div>
+  </section>
+
+  <!-- S2: three quick questions -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 25%,#9FDDB4 0%,#55B57E 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t2" data-ob="t2" style="left:160px;width:1600px;text-align:center;top:90px;font-size:88px;--xf:#fff">3 quick <span style="color:#FFC93D">questions</span></div>
+    <div class="qc fc" id="q1" data-ob="qs" style="left:110px;top:240px"><div class="q">Enough<br>balance?</div><div class="ok">✓</div>
+      <div class="mono" style="margin-top:46px;font-size:22px;opacity:.6">IN ACCOUNT</div><div class="bar"><div id="b1" style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#22B573"></div><span class="mono" style="position:absolute;left:16px;top:10px;font-size:28px;color:#fff">₹12,450</span></div>
+      <div class="mono" style="margin-top:24px;font-size:22px;opacity:.6">YOU WANT</div><div class="bar"><div id="b2" style="position:absolute;left:0;top:0;bottom:0;width:16%;background:#F2553D"></div><span class="mono" style="position:absolute;left:110px;top:10px;font-size:28px">₹2,000</span></div></div>
+    <div class="qc fc" id="q2" data-ob="qs" style="left:690px;top:240px"><div class="q">Under the<br>daily limit?</div><div class="ok">✓</div>
+      <div class="mono" style="margin-top:46px;font-size:22px;opacity:.6">TODAY (LIMIT e.g. ₹25,000)</div><div class="bar" style="height:70px"><div id="b3" style="position:absolute;left:0;top:0;bottom:0;width:8%;background:#FFC93D"></div><span class="mono" style="position:absolute;left:16px;top:16px;font-size:28px">₹2,000 of ₹25,000</span></div>
+      <svg width="360" height="112" viewBox="0 0 480 150" style="margin-top:14px;margin-left:60px"><path d="M40 140 A200 200 0 0 1 440 140" stroke="#E6E8F0" stroke-width="30" fill="none" stroke-linecap="round"/><path d="M40 140 A200 200 0 0 1 90 40" stroke="#22B573" stroke-width="30" fill="none" stroke-linecap="round"/><g id="ndl"><path d="M236 140 L 240 30 L 244 140 Z" fill="#1B2340"/></g><circle cx="240" cy="140" r="14" fill="#1B2340"/></svg></div>
+    <div class="qc fc" id="q3" data-ob="qs" style="left:1270px;top:240px"><div class="q">Card not<br>blocked?</div><div class="ok">✓</div>
+      <div id="cq3" style="margin-top:30px;display:flex;justify-content:center"></div><div class="pill" style="left:150px;top:372px;background:#22B573;font-size:24px">STATUS: ACTIVE</div></div>
+    <div class="stamp" id="ap" data-ob="qs" style="left:420px;top:390px;transform:rotate(-8deg)">APPROVED</div>
+    <div id="conf" class="abs" style="inset:0"></div>
+  </section>
+
+  <!-- S3: hold the money; the reply races back -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 25%,#C4B8F2 0%,#8F80D6 100%)"></div><div class="dots"></div>
+    <div class="abs fc" id="led" data-ob="led" style="left:110px;top:120px;width:1700px;height:300px;border-radius:30px;background:#fff;padding:26px 34px;font-family:Archivo;color:#1B2340">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="mono" style="font-size:22px;letter-spacing:.14em;opacity:.55">YOUR ACCOUNT · XX4821</span><span style="font-weight:900;font-size:54px">₹12,450</span></div>
+      <div class="bar" style="height:110px;margin-top:22px;border-radius:24px"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#22B573"></div><div id="hold" style="position:absolute;right:0;top:0;bottom:0;width:16%;background:repeating-linear-gradient(45deg,#F2553D 0 18px,#FF8A6B 18px 36px);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:34px">🔒 ₹2,000</div><span class="mono" style="position:absolute;left:24px;top:34px;font-size:36px;color:#fff">FREE ₹10,450</span></div>
+      <div id="holdL" class="mono" style="margin-top:14px;font-size:26px;color:#F2553D;text-align:right">ON HOLD FOR THIS WITHDRAWAL ↑</div></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="trk" d="M1640 760 L 290 760" stroke="#fff" stroke-width="12" fill="none" stroke-dasharray="6 22" stroke-linecap="round"/></svg>
+    <div id="sl" class="abs" style="inset:0"></div>
+    <div id="atm3" class="abs" data-ob="route" style="left:110px;top:560px"></div>
+    <div id="hub3" class="abs" data-ob="route" style="left:850px;top:600px"></div>
+    <div id="bk3" class="abs" data-ob="route" style="left:1580px;top:560px"></div>
+    <div id="rp" class="abs" data-ob="route" data-bleed style="left:0;top:0"></div>
+  </section>
+
+  <!-- S4: buzz — debited... but the cash is still inside -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#FFC8A8 0%,#EE8C66 100%)"></div><div class="dots"></div>
+    <div id="host4" class="abs" data-ob="host4" style="left:100px;top:330px"></div>
+    <div id="ph4" class="abs" data-ob="ph4" style="left:600px;top:190px"></div>
+    <div id="atm4" class="abs" data-ob="atm4" style="left:1160px;top:250px"></div>
+    <div id="xr" class="abs fc" data-ob="atm4" style="left:1196px;top:600px;width:290px;height:150px;border-radius:14px;background:#0E1530;overflow:hidden"></div>
+    <div class="bub fc" id="still" data-ob="still" style="left:1540px;top:200px">still in here 😬</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+const A = ATMART;
+EX.stepStart(4, "Bank says yes");
+const T = { s2: w("then three") - 0.15, s3: w("holds") - 0.1, s4: w("your phone") - 0.15, close: we("machine yet") + 1.4 };
+const END = T.close + 1.4;
+const clamp = (u) => Math.max(0, Math.min(1, u));
+
+// ================================================= S1: server room — unscramble + verify
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+EX.ambient("#s1", "hex", { from: 0, to: T.s2, seed: 41, c: "rgba(140,200,255,.18)" });
+$("#racks").innerHTML = Array.from({ length: 8 }, (_, i) => `<div class="abs" style="left:${70 + i * 228}px;top:${(i % 2) * 20}px">${ISO.server({ w: 190, id: "sv" + i, color: ["#4B5785", "#7B61FF", "#12A4C4"][i % 3] })}</div>`).join("");
+REEL.onFrame((t) => { if (t > T.s2 + 0.6) return; for (let i = 0; i < 8; i++) { const f = $(`#sv${i}Face`); if (f) f.setAttribute("transform", `translate(${(Math.sin(t * 5 + i) * 4).toFixed(1)} 0)`); } });
+gsap.set(["#pinOk", "#chOk", "#eq", "#exp"], { autoAlpha: 0 });
+tl.fromTo(["#p1", "#p2"], { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "back.out(1.6)", immediateRender: false }, 0.7);
+const tU0 = w("unscrambles"), tU1 = w("the pin") + 0.3, P = "4  8  2  1", H = "7F3A 9C02";
+REEL.onFrame((t) => { if (t > T.s2 + 0.6) return; const k = clamp((t - tU0) / (tU1 - tU0)), r = REEL.rng(Math.floor(t * 20)); $("#pinX").textContent = k <= 0 ? H : k >= 1 ? P : H.split("").map(() => "0123456789ABCDEF"[Math.floor(r() * 16)]).join(""); });
+every(tU0, tU1, 0.1, (t) => sfx(t, "tick", { gain: 0.06 }));
+pop("#pinOk", tU1, { sfx: "ding", gain: 0.22 });
+tl.to("#pinX", { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, tU1);
+pop("#exp", w("checks the") - 0.1, { sfx: "pop", gain: 0.14 });
+pop("#eq", w("secret code") - 0.1, { sfx: false });
+pop("#chOk", w("code") + 0.15, { sfx: "chime", gain: 0.22 });
+
+// ================================================= S2: three questions (shutter)
+EX.shutterWipe(T.s2);
+show("#s2", T.s2, T.s3 + 0.5, { y: 0 });
+EX.ambient("#s2", "rupee", { from: T.s2, to: T.s3, seed: 42 });
+$("#cq3").innerHTML = `<div style="position:relative">${A.card({ w: 300, id: "c3" })}<svg class="abs" style="left:230px;top:-30px" width="104" height="120" viewBox="0 0 130 150"><path d="M65 6 L 120 26 L 120 74 Q 120 120 65 144 Q 10 120 10 74 L 10 26 Z" fill="#22B573" stroke="#1B2340" stroke-width="5"/><path d="M38 76 L 58 96 L 94 56" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+gsap.set(["#t2", "#ap", ...$$("#s2 .ok")], { autoAlpha: 0 });
+tl.fromTo("#t2", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("three quick") - 0.1);
+const QT = [w("enough balance"), w("under the"), w("card not")], OT = [we("enough balance"), we("daily limit"), we("not blocked")];
+["#q1", "#q2", "#q3"].forEach((q, i) => { tl.fromTo(q, { autoAlpha: 0, scale: 0.6, rotation: [-4, 3, -3][i] }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, QT[i] - 0.35); sfx(QT[i] - 0.35, "slam", { gain: 0.16 }); });
+const oks = $$("#s2 .ok");
+oks.forEach((o, i) => { tl.fromTo(o, { autoAlpha: 0, scale: 2.4, rotation: -30 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2.6)", immediateRender: false }, OT[i] + 0.05); sfx(OT[i] + 0.05, "ding", { gain: 0.2, pitch: 1 + i * 0.12 }); });
+tl.fromTo("#b2", { width: "0%" }, { width: "16%", duration: 0.5, ease: "power2.out", immediateRender: false }, QT[0]);
+tl.fromTo("#b3", { width: "0%" }, { width: "8%", duration: 0.5, ease: "power2.out", immediateRender: false }, QT[1]);
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; const u = clamp((t - QT[1]) / 0.6); $("#ndl").setAttribute("transform", `rotate(${(-90 + 25 * u + Math.sin(t * 6) * (u >= 1 ? 1.5 : 0)).toFixed(1)} 240 140)`); });
+oks.forEach((o, i) => tl.to(o, { scale: 1.3, duration: 0.12, yoyo: true, repeat: 1 }, w("three yeses") + i * 0.1));
+tl.fromTo("#ap", { autoAlpha: 0, scale: 2.4 }, { autoAlpha: 1, scale: 1, duration: 0.18, ease: "power4.in", immediateRender: false }, w("approved") - 0.1);
+sfx(w("approved") + 0.08, "stamp", { gain: 0.5 }); sfx(w("approved") + 0.1, "chime", { gain: 0.24 });
+REEL.shake($("#shake"), w("approved") + 0.08, 5);
+EX.logPanel("#s2", { x: 110, y: 712, w: 1700, h: 250, title: "YOUR BANK · DECISION LOG", ob: "dlog", lines: [[QT[0] + 0.2, "BALANCE ₹12,450 ≥ ₹2,000 ✓"], [QT[1] + 0.2, "TODAY ₹2,000 ≤ DAILY LIMIT ✓"], [QT[2] + 0.2, "CARD STATUS: ACTIVE ✓"], [w("approved") - 0.1, "DECISION: APPROVE · HOLD ₹2,000", "#FFC93D"]] });
+EX.noteBurst("#conf", w("approved") + 0.1, 960, 560, { n: 16, seed: 9, spread: 900, up: 700, dur: 1.4, w: 130 });
+
+// ================================================= S3: hold + reply races back (iris)
+EX.iris("#s3", T.s3, 960, 560, { color: "#8F80D6" });
+show("#s3", T.s3, T.s4 + 0.5, { y: 0 });
+$("#atm3").innerHTML = A.machine({ w: 200, id: "m3", scr: A.scrText("Waiting…", "") });
+$("#hub3").innerHTML = A.hub({ w: 220, label: "NFS" });
+$("#bk3").innerHTML = ISO.bank({ w: 260, color: "#7B61FF", label: "YOUR BANK", id: "b3k", flag: false });
+$("#rp").innerHTML = A.packet({ w: 440, text: "✓ APPROVED · GIVE ₹2,000", lock: false, c: "#22B573" });
+$("#sl").innerHTML = Array.from({ length: 10 }, (_, i) => `<div class="abs sp" style="left:0;top:${700 + (i * 23) % 120}px;width:${120 + (i % 3) * 60}px;height:6px;border-radius:3px;background:#fff;opacity:0"></div>`).join("");
+gsap.set(["#hold", "#holdL", "#rp"], { autoAlpha: 0 });
+tl.fromTo("#led", { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s3 + 0.05);
+tl.fromTo("#hold", { autoAlpha: 0, scaleX: 0, transformOrigin: "100% 50%" }, { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("holds") + 0.3);
+sfx(w("holds") + 0.55, "clunk", { gain: 0.24 });
+rise("#holdL", w("holds") + 0.6, { y: 14 });
+const tR0 = w("races back") - 0.3, tR1 = w("the atm") + 0.3, trk = $("#trk"), TL = trk.getTotalLength();
+tl.set("#rp", { autoAlpha: 1 }, tR0);
+REEL.onFrame((t) => {
+  if (t < T.s3 || t > T.s4 + 0.6) return;
+  const u = clamp((t - tR0) / (tR1 - tR0)), e = u * u * (3 - 2 * u), p = trk.getPointAtLength(TL * e);
+  $("#rp").style.transform = `translate(${(p.x - 220).toFixed(1)}px,${(p.y - 75).toFixed(1)}px)`;
+  $$("#sl .sp").forEach((s, i) => { s.style.opacity = u > 0 && u < 1 ? 0.8 : 0; s.style.transform = `translateX(${(p.x + 200 + ((t * 900 + i * 90) % 300)).toFixed(1)}px)`; });
+  $$("#hub3 .hl").forEach((h, i) => h.setAttribute("opacity", Math.abs(e - 0.5) < 0.15 ? 1 : 0.4));
+});
+sfx(tR0, "whoosh", { gain: 0.3, dur: tR1 - tR0 });
+tl.to("#hub3", { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1 }, w("the switch") - 0.1);
+sfx(w("the switch"), "pop", { gain: 0.16 });
+tl.set("#m3Scr", { opacity: 1 }, 0);
+$("#m3Scr").insertAdjacentHTML("beforeend", `<g id="m3G" opacity="0"><rect x="60" y="172" width="300" height="198" rx="8" fill="#22B573"/>${A.scrText("Approved ✓", "", "#fff")}</g>`);
+tl.set("#m3G", { opacity: 1 }, tR1 - 0.1);
+tl.to("#atm3", { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1 }, tR1 - 0.1);
+sfx(tR1 - 0.1, "ding", { gain: 0.22 });
+
+// ================================================= S4: buzz — debited, but still in the machine (stripes)
+EX.stripes(T.s4, { colors: ["#F2553D", "#FFC93D", "#22B573", "#7B61FF", "#12A4C4"] });
+show("#s4", T.s4, null, { y: 0 });
+EX.ambient("#s4", "rupee", { from: T.s4, to: END, seed: 44 });
+$("#host4").innerHTML = ART.host({ w: 380, id: "h4", shirt: "#12A4C4", girl: true });
+const P4 = EX.phoneBox("#ph4", { w: 330, accent: "#12A4C4" });
+P4.scr.innerHTML = `<div class="abs" style="inset:0;background:#EEF1F7;font-family:Archivo"><div class="mono" style="padding:18px 22px 0;font-size:16px;color:#1B2340">22:04 · ▮▮▮</div><div id="sms" style="margin:30px 14px 0;padding:16px;border-radius:18px;background:#fff;border:3px solid #1B2340"><div class="mono" style="font-size:14px;opacity:.55">YOUR BANK · NOW</div><div style="font-weight:900;font-size:22px;color:#1B2340;margin-top:6px;line-height:1.2">₹2,000 debited from A/c XX4821 at ATM</div><div class="mono" style="font-size:15px;color:#F2553D;margin-top:8px">Avl bal ₹10,450</div></div><div style="margin:18px 14px 0;font-weight:900;font-size:18px;color:#1B2340">Recent</div>${[["🏧 ATM withdrawal", "−₹2,000", "#F2553D"], ["☕ Chai stall", "−₹10", "#1B2340"], ["💼 Salary", "+₹40,000", "#22B573"], ["📱 Recharge", "−₹299", "#1B2340"]].map(([a, b, c]) => `<div style="display:flex;justify-content:space-between;margin:10px 14px 0;padding:10px 12px;border-radius:12px;background:#fff;font-weight:800;font-size:15px;color:#1B2340"><span>${a}</span><span style="color:${c}">${b}</span></div>`).join("")}</div>`;
+$("#atm4").innerHTML = A.machine({ w: 360, id: "m4", scr: A.scrText("Counting…", "please wait") });
+$("#xr").innerHTML = `<div class="abs" style="left:10px;top:8px;font-family:'JetBrains Mono';font-weight:800;font-size:14px;color:#8FA0D6;letter-spacing:.12em">X-RAY</div>` + [500, 200, 500, 100].map((n, i) => `<div class="abs" style="left:${30 + i * 18}px;top:${36 + i * 8}px">${A.note({ w: 180, n })}</div>`).join("");
+gsap.set(["#sms", "#still", "#xr"], { autoAlpha: 0 });
+tl.fromTo("#host4", { autoAlpha: 1, x: -500 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s4 + 0.25);
+PAPER.lipSync($("#h4Mouth"), { from: T.s4 + 0.25, open: 16 });
+PAPER.blink($("#h4Eyes"), [T.s4 + 1.5, w("machine yet") - 0.3]);
+const tBz = w("buzzes") - 0.1;
+REEL.onFrame((t) => { if (t < T.s4) return; const on = t > tBz && t < tBz + 1.1; $("#ph4").style.transform = on ? `translate(${(Math.sin(t * 70) * 7).toFixed(1)}px,0) rotate(${(Math.sin(t * 55) * 2.5).toFixed(1)}deg)` : "none"; });
+every(tBz, tBz + 1.1, 0.18, (t) => sfx(t, "beep", { gain: 0.08, pitch: 0.5 }));
+tl.fromTo("#sms", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(2)", immediateRender: false }, w("debited") - 0.4);
+sfx(w("debited") - 0.4, "bloop", { gain: 0.24 });
+tl.to(["#h4BrowL", "#h4BrowR"], { y: -12, duration: 0.15 }, w("debited"));
+tl.fromTo("#xr", { autoAlpha: 0, clipPath: "inset(0 0 100% 0)" }, { autoAlpha: 1, clipPath: "inset(0 0 0% 0)", duration: 0.4, ease: "power2.out", immediateRender: false }, w("hasn't left") - 0.3);
+sfx(w("hasn't left") - 0.3, "swish", { gain: 0.2 });
+pop("#still", w("machine yet") - 0.2, { sfx: "pop", gain: 0.18 });
+EX.infoCard("#s4", { x: 1300, y: 805, w: 560, items: [["🏦", "Account: −₹2,000 ✓"], ["🏧", "Cash: still inside…"]], t0: w("the money has") - 0.1, gap: 0.9, ob: "acc" });
+
+// ================================================= close
+EX.receiptClose(T.close, { step: 4, title: "Bank says yes", big: "Approved ✓", next: "Cash out" });
+REEL.finish(END);
+</script>
+</body></html>

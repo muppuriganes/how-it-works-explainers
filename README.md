@@ -10,6 +10,7 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 
 | Video | Length | File | Chapters |
 | --- | --- | --- | --- |
+| **How an ATM gives you cash in 10 seconds** | 3:03 | [`reels/atm/final.mp4`](reels/atm/final.mp4) | Step 1 Card & chip · Step 2 PIN check · Step 3 Bank network · Step 4 Bank says yes · Step 5 Cash out |
 | **How a food delivery order reaches you in 30 minutes** | 3:15 | [`reels/food/final.mp4`](reels/food/final.mp4) | Stop 1 Order placed · Stop 2 Restaurant accepts · Stop 3 Rider assigned · Stop 4 On the way · Stop 5 Delivered |
 | **How India's bullet train works** | 3:36 | [`reels/bullet/final.mp4`](reels/bullet/final.mp4) | C1 All aboard · C2 The nose · C3 The power · C4 The track · C5 Who drives? · C6 Stopping · C7 Arrival |
 | **How UPI works — where your ₹10 actually goes** | 3:41 | [`reels/upi/final.mp4`](reels/upi/final.mp4) | The ₹10 chai · Meet the gang · The 2-second journey · The PIN · Why is it free? · Money debited, payment failed · The big picture |
@@ -17,6 +18,14 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 | **METER** (short product reel) | 0:45 | [`reels/meter/final.mp4`](reels/meter/final.mp4) · [9:16](reels/meter/final_9x16.mp4) | single scene |
 
 Script for the UPI explainer: [`reels/upi/SCRIPT.md`](reels/upi/SCRIPT.md). Every chapter keeps its narration in `audio/script.txt`.
+
+### The ATM explainer — one continuous receipt
+- **Assets first:** every visual was drawn up front as a reusable art kit ([`lib/atm.js`](lib/atm.js)) and approved on three asset sheets ([`reels/atm/assets_sheet1.jpg`](reels/atm/assets_sheet1.jpg)–[`3`](reels/atm/assets_sheet3.jpg)) before any animation was built.
+- 5 chapters for the 5 real steps. Every chapter change is **one transaction slip**: the ending slip and the next chapter's opening slip are identical, "NEXT" flips to "NOW", then the slip tears off ([`lib/atmfx.js`](lib/atmfx.js)).
+- Full-frame scenes: concept-based ambient motion (floating ₹, circuit traces, hex rain, network grids, drifting receipts) plus live panels (transaction logs, info cards, counters) so no part of the screen sits empty.
+- Highlights: a 10-second meeting around a table, the chip's new code every transaction vs a copied key that bounces off the lock, NPCI's National Financial Switch network with live counters, a customer-list search ending in "NOT FOUND", a pick → belt → double-note sensor → reject bin line, the 2-second "please collect your cash" heart-stop, the RBI T+5-day / ₹100-a-day refund rule, and a wallet/dustbin finale.
+- Facts: NPCI's NFS links ~1,349 banks and ~2.58 lakh ATMs (Feb 2025); ₹19 interchange per cash withdrawal since May 2025; chip cards make a new cryptogram per transaction while the magnetic stripe is static; RBI: failed-withdrawal debits reversed within T+5 days or ₹100/day compensation. The secret codes, daily limit and balances shown are example values.
+- Voice: Kokoro `af_heart`, girl host. Narration: [`reels/atm/SCRIPT.md`](reels/atm/SCRIPT.md).
 
 ### The food delivery explainer — an order tracker
 - The chapter count follows the concept: an order really goes through **5 tracker stages**, so the video has 5 stops. A mini order tracker (TAP → DOOR) in the corner moves one stop per chapter.
@@ -54,6 +63,8 @@ lib/        engine + art
   train3d.js     real 3D bullet train world (three.js): lofted kingfisher-nose train, viaduct, catenary, tunnel, station
   journey.js     train-journey kit: route-map chrome, coach doors, passing-train wipe, kingfisher art
   food.js        order-tracker kit: tracker chrome, notification wipe, rider wipe, shrink-into-phone, map/rider/handi art
+  atm.js         ATM art kit: machine, cabin + guard, card, chip, PIN pad, cutaway safe, cassettes, notes, printer, hub, packets, ECG
+  atmfx.js       ATM theme: receipt-slip chapter changes, shutter wipe, note bursts, ambient fillers, log terminals, info cards
   paper.js       cast art (referee, you, chai, QR...), lip sync, blink
   fonts/ vendor/ self-hosted fonts and GSAP
 tools/
@@ -64,6 +75,7 @@ tools/
   mix.py         voice + sfx + ducked music for one chapter, -14 LUFS
   assemble.py    joins chapters with one continuous music bed -> final.mp4
   sheets.py      contact sheets of stills for review
+  flashes.py     finds one-frame flashes (a frame unlike both neighbours) in a rendered video
   vertical.js    9:16 version for Instagram
 reels/<video>/chN/
   index.html     the chapter animation

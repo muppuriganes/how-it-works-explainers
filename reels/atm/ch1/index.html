@@ -1,0 +1,328 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>ATM Ch1 Card and chip</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(27,35,64,.12) 2.5px,transparent 3px);background-size:44px 44px}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:10px 24px 14px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:36px;white-space:nowrap;background:#fff;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.08em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:72px;letter-spacing:.03em;background:rgba(255,255,255,.92);white-space:nowrap}
+.flip{position:absolute;transform-style:preserve-3d}
+.face{position:absolute;left:0;top:0;backface-visibility:hidden}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/atm.js"></script>
+<script src="../../../lib/atmfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: the cabin, camera pushes in -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#5363B8 0%,#8F86C8 60%,#B9A6D6 100%)"></div>
+    <div class="abs" style="left:0;top:880px;width:1920px;height:200px;background:#6E6A9E"></div>
+    <div id="cw1" class="abs" style="inset:0;transform-origin:62% 58%">
+      <div id="cab" class="abs" style="left:260px;top:110px"></div>
+      <svg id="air" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    </div>
+    <div class="pill fc" id="g1" data-ob="g1" style="left:140px;top:140px;background:#7B61FF">😴 GUARD: ASLEEP</div>
+    <div class="pill fc" id="g2" data-ob="g2" style="left:1380px;top:140px;background:#12A4C4">🥶 AC: FULL BLAST</div>
+  </section>
+
+  <!-- S2: card in, money out of a wall -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 55% 30%,#8FCBE6 0%,#3F8FBF 100%)"></div><div class="dots"></div>
+    <div class="abs" style="left:0;top:900px;width:1920px;height:180px;background:rgba(27,35,64,.18)"></div>
+    <div id="host2" class="abs" data-ob="host2" style="left:110px;top:330px"></div>
+    <div id="atm2" class="abs" data-ob="atm2" style="left:730px;top:190px"></div>
+    <div id="card2" class="abs" data-ob="atm2" data-bleed style="left:0;top:0"></div>
+    <div id="burst2" class="abs" style="inset:0"></div>
+    <div id="tm2" class="abs" data-ob="tm2" style="left:1380px;top:200px"></div>
+    <div class="pill fc" id="ff" data-ob="tm2" style="left:1440px;top:390px;background:#1B2340;color:#FFC93D">⏩ 10 SECONDS LATER</div>
+  </section>
+
+  <!-- S3: the 10-second meeting — a real meeting room -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#FFE7B0 0%,#FFD889 60%,#E9A94F 60%,#D99A44 100%)"></div><div class="dots"></div>
+    <div class="abs" style="left:0;top:640px;width:1920px;height:14px;background:#C9874B"></div>
+    <div class="lbl x3d" id="t3" data-ob="t3" style="left:360px;width:1200px;text-align:center;top:96px;font-size:92px;--xf:#fff">A 10-second <span style="color:#F2553D">meeting</span></div>
+    <div id="tv" class="abs fc" data-ob="tv" style="left:70px;top:205px;width:430px;height:245px;border-radius:22px;background:#0E1530;padding:20px 26px;font-family:'JetBrains Mono';font-weight:800">
+      <div style="font-size:18px;letter-spacing:.16em;color:#8FA0D6">MEETING ROOM · LIVE</div>
+      <div class="tvl" style="font-size:34px;color:#22D07A;margin-top:14px">① Who's this?</div><div class="tvl" style="font-size:34px;color:#22D07A">② PIN ok?</div><div class="tvl" style="font-size:34px;color:#FFC93D">③ ₹2,000?</div>
+      <div class="abs" style="left:150px;bottom:-34px;width:130px;height:34px;background:#3E4A6A;clip-path:polygon(30% 0,70% 0,100% 100%,0 100%)"></div></div>
+    <div id="m3" class="abs" data-ob="meet" style="left:640px;top:250px"></div>
+    <div id="m4" class="abs" data-ob="meet" style="left:980px;top:250px"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><ellipse cx="960" cy="700" rx="660" ry="150" fill="#8A5A3B"/><path d="M300 700 L 300 742 A660 150 0 0 0 1620 742 L 1620 700 A660 150 0 0 1 300 700 Z" fill="#6B4229"/><ellipse cx="960" cy="690" rx="660" ry="150" fill="#C9874B"/><ellipse cx="960" cy="690" rx="580" ry="118" fill="#D6955A"/><path d="M420 840 L 400 1000 M1500 840 L 1520 1000" stroke="#6B4229" stroke-width="26"/></svg>
+    <div id="m1" class="abs" data-ob="meet" style="left:320px;top:485px"></div>
+    <div id="m2" class="abs" data-ob="meet" style="left:560px;top:620px"></div>
+    <div id="m5" class="abs" data-ob="meet" style="left:1440px;top:380px"></div>
+    <div id="cash" class="abs" data-ob="meet" style="left:840px;top:600px"></div>
+    <div id="n1" class="abs" data-ob="meet" style="left:330px;top:650px"></div>
+    <div id="n2" class="abs" data-ob="meet" style="left:600px;top:790px"></div>
+    <div id="n3" class="abs" data-ob="meet" style="left:1150px;top:770px"></div>
+    <div id="n4" class="abs" data-ob="meet" style="left:1430px;top:650px"></div>
+    <div class="bub fc" id="huh" data-ob="huh" style="left:1640px;top:300px;font-size:40px;color:#F2553D">?!</div>
+  </section>
+
+  <!-- S4: the 2-second pause (heart joke teaser) -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#FFC2CF 0%,#EE7A96 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t4" data-ob="t4" style="left:110px;top:100px;font-size:92px;--xf:#fff">The 2-second <span style="color:#FFC93D">pause</span></div>
+    <div id="mon" class="abs" data-ob="mon" style="left:110px;top:250px"></div>
+    <div class="pill fc" id="pc" data-ob="pc" style="left:150px;top:780px;background:#1B2340;color:#FFC93D">"PLEASE COLLECT YOUR CASH…"</div>
+    <div id="hearts" class="abs fc" data-ob="hearts" style="left:930px;top:250px;width:880px;height:600px;border-radius:30px;background:#fff"></div>
+    <div class="bub fc" id="all" data-ob="all" style="left:1180px;top:880px;color:#F2553D">ALL of India 😱</div>
+  </section>
+
+  <!-- S5: the card — chip, stripe, crooks -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#C4B8F2 0%,#9E8FE0 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t5" data-ob="t5" style="left:110px;top:100px;font-size:84px;--xf:#fff">Start with <span style="color:#FFC93D">the card.</span></div>
+    <div id="flipW" class="abs" data-ob="card5" style="left:560px;top:270px;width:800px;height:528px;perspective:2200px">
+      <div id="flip" class="flip" style="left:0;top:0;width:800px;height:528px"><div id="cF" class="face"></div><div id="cB" class="face" style="transform:rotateY(180deg)"></div></div>
+    </div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><circle id="ring" cx="703" cy="484" r="80" fill="none" stroke="#FFC93D" stroke-width="10" stroke-dasharray="12 10"/><path id="lnk" d="M620 460 L 470 420" stroke="#FFC93D" stroke-width="8" stroke-linecap="round"/></svg>
+    <div id="zoom" class="abs fc" data-ob="zoom" style="left:90px;top:250px;width:400px;height:330px;border-radius:30px;background:#fff;display:flex;align-items:center;justify-content:center"></div>
+    <div class="bub fc" id="sh1" data-ob="sh1" style="left:1390px;top:300px;font-size:30px">4821 · 08/29 · YOU!</div>
+    <div class="bub fc" id="sh2" data-ob="sh2" style="left:1420px;top:420px;font-size:30px">4821 · 08/29 · YOU!!</div>
+    <div class="bub fc" id="sh3" data-ob="sh3" style="left:1390px;top:540px;font-size:30px">4821 · 08/29 · YOU!!!</div>
+    <div id="skim" class="abs" data-ob="skim" style="left:110px;top:600px"></div>
+    <div id="clones" class="abs" data-ob="clones" style="left:120px;top:250px;width:420px;height:330px"></div>
+  </section>
+
+  <!-- S6: a brand-new secret code every time -->
+  <section class="scene" id="s6">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#9FDDB4 0%,#55B57E 100%)"></div><div class="dots"></div>
+    <div id="chip6" class="abs" data-ob="chip6" style="left:110px;top:260px"></div>
+    <div id="codeP" class="abs fc" data-ob="codeP" style="left:760px;top:240px;width:1040px;height:300px;border-radius:30px;background:#0E1530;font-family:'JetBrains Mono';font-weight:800">
+      <div class="abs" style="left:40px;top:30px;font-size:24px;letter-spacing:.16em;color:#8FA0D6">THIS TRANSACTION'S SECRET CODE</div>
+      <div id="code" class="abs" style="left:40px;top:90px;font-size:120px;color:#22D07A;letter-spacing:.06em">7F3A 9C02</div>
+      <div id="txn" class="abs" style="left:40px;top:236px;font-size:24px;color:#FFC93D">TXN #1</div>
+      <div id="okP" class="abs" style="inset:0;border-radius:27px;background:#22B573;display:flex;align-items:center;justify-content:center;gap:24px;color:#fff;font-family:Archivo;font-weight:900;font-size:110px">CARD READ ✓</div>
+    </div>
+    <div id="key6" class="abs" data-ob="copy6" style="left:760px;top:700px"></div>
+    <div id="lock6" class="abs" data-ob="copy6" style="left:1250px;top:610px"></div>
+    <div class="pill fc" id="exp" data-ob="exp" style="left:780px;top:870px;background:#F0566E">✗ OLD CODE · USELESS</div>
+    <div id="host6" class="abs" data-ob="host6" style="left:1470px;top:560px"></div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+const A = ATMART;
+EX.slipChrome(1, "Card & chip");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+tl.to(["#tag", "#prog"], { autoAlpha: 1, duration: 0.4 }, 0.2);
+const T = { s2: w("you put in") - 0.15, s3: w("but in those") - 0.15, s4: w("oh and at") - 0.15, s5: w("let's start") - 0.15, s6: w("the chip makes") - 0.15, close: w("next the") + 1.4 };
+const END = T.close + 1.4;
+const clamp = (u) => Math.max(0, Math.min(1, u));
+const HOST = (id, wd = 380) => ART.host({ w: wd, id, shirt: "#12A4C4", girl: true });
+
+// ================================================= S1: the cabin — camera push, snoring guard, AC blast
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+$("#cab").innerHTML = A.cabin({ w: 1400, id: "cb" });
+tl.fromTo("#cw1", { scale: 1 }, { scale: 1.22, duration: T.s2 + 0.5, ease: "sine.inOut", immediateRender: false }, 0);
+// AC airflow streams under the AC (cabin AC ≈ x 1225..1550, y 353..447)
+$("#air").innerHTML = Array.from({ length: 5 }, (_, i) => `<path class="aw" d="M${1385 + i * 40} 470 q 18 40 0 80 t 0 80 t 0 80" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="26 22" opacity=".8"/>`).join("");
+const tAC = w("full blast");
+REEL.onFrame((t) => {
+  if (t > T.s2 + 0.6) return;
+  const k = 0.35 + 0.65 * clamp((t - tAC + 0.4) / 0.6);
+  $$("#air .aw").forEach((p, i) => { p.style.strokeDashoffset = (-(t * (90 + 260 * k) + i * 13)).toFixed(1); p.setAttribute("opacity", (0.25 + 0.65 * k).toFixed(2)); p.setAttribute("transform", `translate(${(Math.sin(t * 6 + i) * 6 * k).toFixed(1)} 0)`); });
+  $("#cbHead").setAttribute("transform", `rotate(${(8 + 6 * Math.sin(t * 2.2)).toFixed(1)} 208 352)`);
+  $$("#cbZ text").forEach((z, i) => { const u = ((t * 0.5 + i / 3) % 1); z.setAttribute("transform", `translate(${(u * 30).toFixed(1)} ${(-u * 60).toFixed(1)})`); z.setAttribute("opacity", (Math.sin(u * Math.PI)).toFixed(2)); });
+});
+every(0.6, T.s2, 1.6, (t) => sfx(t, "bloop", { gain: 0.08, pitch: 0.45 }));   // snore
+gsap.set(["#g1", "#g2"], { autoAlpha: 0 });
+pop("#g1", w("guard is") - 0.05, { sfx: "pop", gain: 0.15 });
+pop("#g2", w("the ac") - 0.05, { sfx: "whoosh", gain: 0.18 });
+tl.to("#g2", { x: 6, duration: 0.05, yoyo: true, repeat: 9 }, tAC);
+
+// ================================================= S2: card in, money out (camera flies through the glass: dive)
+EX.dive("#s1", "#s2", T.s2, 1150, 560);
+$("#host2").innerHTML = HOST("h2");
+$("#atm2").innerHTML = A.machine({ w: 460, id: "m2", scr: `<g id="m2T">${A.scrText("Welcome", "insert card")}</g>` });
+$("#card2").innerHTML = A.card({ w: 300, id: "c2" });
+$("#tm2").innerHTML = A.timer({ w: 300, id: "t2", text: "00:00" });
+gsap.set(["#host2", "#card2", "#tm2", "#ff"], { autoAlpha: 0 });
+tl.fromTo("#host2", { autoAlpha: 1, x: -500 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s2 + 0.2);
+PAPER.lipSync($("#h2Mouth"), { from: T.s2, to: T.s3, open: 18 });
+PAPER.blink($("#h2Eyes"), [T.s2 + 1.4]);
+// the card flies from her hand into the slot (slot ≈ 992..1088, y 640) and gets swallowed
+const tC = w("your card") - 0.4;
+tl.set("#card2", { autoAlpha: 1 }, tC);
+tl.fromTo("#card2", { x: 380, y: 560, rotation: -20, scale: 0.6 }, { x: 890, y: 420, rotation: -90, scale: 0.5, duration: 0.55, ease: "power2.inOut", immediateRender: false }, tC);
+tl.to("#card2", { y: 470, scaleX: 0.5, scaleY: 0.02, duration: 0.25, ease: "power2.in" }, tC + 0.55);
+tl.set("#card2", { autoAlpha: 0 }, tC + 0.8);
+sfx(tC, "whoosh", { gain: 0.22 }); sfx(tC + 0.6, "click", { gain: 0.35 });
+REEL.onFrame((t) => { if (t < T.s2 - 0.5 || t > T.s3 + 0.5) return; $("#m2Slot").setAttribute("fill", t > tC + 0.5 && t < tC + 1.6 && Math.floor(t * 10) % 2 ? "#FFC93D" : "#22D07A"); });
+tl.set("#m2T", { opacity: 0 }, tC + 0.8);
+$("#m2Scr").insertAdjacentHTML("beforeend", `<g id="m2W" opacity="0">${A.scrText("Please wait…", "talking to your bank")}</g><g id="m2C" opacity="0">${A.scrText("Here's your cash!", "", "#22B573")}</g>`);
+tl.set("#m2W", { opacity: 1 }, tC + 0.8); tl.set("#m2W", { opacity: 0 }, w("money comes") - 0.2); tl.set("#m2C", { opacity: 1 }, w("money comes") - 0.2);
+// the timer fast-forwards 0 → 10 seconds
+pop("#tm2", w("ten seconds") - 0.1, { sfx: "tick", gain: 0.2 });
+pop("#ff", w("seconds later") - 0.1, { sfx: "whoosh", gain: 0.15 });
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; const u = clamp((t - w("ten seconds")) / 1.2); $("#t2N").textContent = `00:${String(Math.round(10 * u)).padStart(2, "0")}`; });
+// shutter opens, a fountain of notes
+const tM = w("money comes") - 0.1;
+tl.set("#m2Shut", { opacity: 0 }, tM - 0.05);
+EX.noteBurst("#burst2", tM, 960, 810, { n: 14, seed: 4, spread: 700, up: 520, dur: 1.5, w: 150 });
+REEL.shake($("#shake"), tM, 6);
+tl.to(["#h2BrowL", "#h2BrowR"], { y: -14, duration: 0.15 }, tM);
+
+// ================================================= S3: the meeting (shutter wipe)
+EX.shutterWipe(T.s3);
+tl.set("#s2", { autoAlpha: 0 }, T.s3 + 0.05);
+show("#s3", T.s3, T.s4 + 0.5, { y: 0 });
+const tent = (label, c, wd, fg = "#fff") => `<svg width="${wd}" height="92" viewBox="0 0 ${wd} 92" style="overflow:visible"><ellipse cx="${wd / 2}" cy="86" rx="${wd / 2 - 6}" ry="7" fill="#1B2340" opacity=".2"/><path d="M8 84 L 26 12 L ${wd - 26} 12 L ${wd - 8} 84 Z" fill="${c}" stroke="#1B2340" stroke-width="4" stroke-linejoin="round"/><path d="M26 12 L ${wd - 26} 12 L ${wd - 32} 4 L 32 4 Z" fill="#fff" opacity=".5"/><text x="${wd / 2}" y="58" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="24" fill="${fg}">${label}</text></svg>`;
+$("#m1").innerHTML = `<div style="transform:rotate(-10deg)">${A.card({ w: 260, id: "c3" })}</div>`;
+$("#m2").innerHTML = A.chip({ w: 210, id: "ch3" });
+$("#m3").innerHTML = ISO.bank({ w: 300, color: "#12A4C4", label: "ATM'S BANK", id: "bA" });
+$("#m4").innerHTML = ISO.bank({ w: 300, color: "#7B61FF", label: "YOUR BANK", id: "bB" });
+$("#m5").innerHTML = A.hub({ w: 230 });
+$("#cash").innerHTML = `<div style="position:relative;width:250px;height:150px">${[0, 1, 2].map((i) => `<div class="abs" style="left:${i * 8}px;top:${40 - i * 14}px">${A.note({ w: 220, n: [100, 200, 500][i] })}</div>`).join("")}<div class="abs" style="left:170px;top:50px">${ISO.coin({ size: 80 })}</div></div>`;
+$("#n1").innerHTML = tent("YOUR CARD", "#7B61FF", 230);
+$("#n2").innerHTML = tent("TINY COMPUTER", "#FFC93D", 280, "#1B2340");
+$("#n3").innerHTML = tent("TWO BANKS", "#12A4C4", 230);
+$("#n4").innerHTML = tent("NETWORK??", "#1B2340", 230, "#FFC93D");
+const mm = ["#m1", "#m2", "#m3", "#m4", "#m5"];
+gsap.set([...mm, "#t3", "#n1", "#n2", "#n3", "#n4", "#huh", "#cash", "#tv", ...$$("#tv .tvl")], { autoAlpha: 0 });
+tl.fromTo("#t3", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s3 + 0.3);
+pop("#tv", T.s3 + 0.4, { from: 0.7, sfx: "beep", gain: 0.1 });
+[["#m1", "#n1", w("card a tiny")], ["#m2", "#n2", w("tiny computer")], ["#m3", "#n3", w("two banks")], ["#m4", null, w("two banks") + 0.2], ["#m5", "#n4", w("a network")]].forEach(([m, n, t]) => {
+  tl.fromTo(m, { autoAlpha: 0, y: -240, scaleY: 1.2 }, { autoAlpha: 1, y: 0, scaleY: 1, duration: 0.55, ease: "bounce.out", immediateRender: false }, t - 0.15);
+  sfx(t + 0.2, "clunk", { gain: 0.16 });
+  if (n) tl.fromTo(n, { autoAlpha: 0, rotationX: 90, transformOrigin: "50% 100%" }, { autoAlpha: 1, rotationX: 0, duration: 0.35, ease: "back.out(2)", immediateRender: false }, t + 0.2);
+});
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.6) return; mm.forEach((m, i) => { const el = $(m); if (el) el.style.translate = `0 ${(Math.sin(t * 3 + i * 1.3) * 5).toFixed(1)}px`; }); });
+pop("#huh", w("never heard") + 0.1, { sfx: "bloop", gain: 0.18 });
+tl.to("#huh", { rotation: 12, duration: 0.1, yoyo: true, repeat: 5 }, w("never heard") + 0.4);
+tl.fromTo("#cash", { autoAlpha: 0, y: -300 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out", immediateRender: false }, w("quick meeting") - 0.2);
+sfx(w("quick meeting") + 0.1, "coin", { gain: 0.24 });
+$$("#tv .tvl").forEach((l, i) => { tl.fromTo(l, { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, [w("card a tiny"), w("two banks"), w("quick meeting")][i]); sfx([w("card a tiny"), w("two banks"), w("quick meeting")][i], "tick", { gain: 0.12 }); });
+
+// ================================================= S4: the 2-second pause (iris)
+EX.iris("#s4", T.s4, 960, 680, { color: "#EE7A96" });
+show("#s4", T.s4, T.s5 + 0.5, { y: 0 });
+$("#mon").innerHTML = A.ecg({ w: 760, id: "ek" });
+$("#hearts").innerHTML = Array.from({ length: 28 }, (_, i) => `<svg class="abs hrt" style="left:${50 + (i % 7) * 116}px;top:${50 + Math.floor(i / 7) * 128}px" width="90" height="82" viewBox="0 0 40 36"><path d="M20 34 C 4 22, 0 14, 4 8 C 8 2, 16 2, 20 9 C 24 2, 32 2, 36 8 C 40 14, 36 22, 20 34 Z" fill="#F0566E" stroke="#1B2340" stroke-width="1.5"/></svg>`).join("");
+gsap.set(["#t4", "#pc", "#all"], { autoAlpha: 0 });
+tl.fromTo("#t4", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s4 + 0.4);
+const tF0 = w("two second") - 0.05, tF1 = tF0 + 2.0, tStop = w("stops every"), tBack = w("in india") + 0.7;
+pop("#pc", tF0 - 0.6, { sfx: "beep", gain: 0.14 });
+REEL.onFrame((t) => {
+  if (t < T.s4 - 0.5 || t > T.s5 + 0.6) return;
+  // ECG scrolls left; inside the pause window the incoming signal is flat
+  let pts = "";
+  for (let x = 0; x <= 340; x += 4) { const tt = t - (340 - x) / 170; const k = ((tt * 1.9) % 1 + 1) % 1; const flat = tt > tF0 && tt < tF1; const y = flat ? 70 : k > 0.48 && k < 0.53 ? 20 : k >= 0.53 && k < 0.58 ? 110 : k >= 0.58 && k < 0.63 ? 60 : 70; pts += `${30 + x},${50 + y} `; }
+  const nowFlat = t > tF0 && t < tF1;
+  $("#ekLine").setAttribute("points", pts); $("#ekLine").setAttribute("stroke", nowFlat ? "#F0566E" : "#22D07A");
+  $("#ekBpm").textContent = nowFlat ? "♥ 0" : "♥ 118"; $("#ekBpm").setAttribute("fill", nowFlat ? "#F0566E" : "#22D07A");
+  const frozen = t > tStop && t < tBack;
+  $$("#hearts .hrt").forEach((h, i) => { const b = frozen ? 1 : 1 + 0.12 * Math.max(0, Math.sin(t * 12 + i * 0.7)); h.style.transform = `scale(${b.toFixed(3)})`; h.querySelector("path").setAttribute("fill", frozen ? "#B9BFCC" : "#F0566E"); });
+});
+every(T.s4 + 0.3, tF0, 0.53, (t) => sfx(t, "beep", { gain: 0.07, pitch: 1.6 }));
+sfx(tF0, "beep", { gain: 0.16, pitch: 1.0, dur: 2.0 });
+every(tF1, T.s5, 0.53, (t) => sfx(t, "beep", { gain: 0.07, pitch: 1.6 }));
+pop("#all", w("in india") - 0.1, { sfx: "glitch", gain: 0.16 });
+REEL.shake($("#shake"), tStop + 0.1, 5);
+
+// ================================================= S5: the card (stripes)
+EX.stripes(T.s5, { colors: ["#7B61FF", "#12A4C4", "#FFC93D", "#F2553D", "#22B573"] });
+show("#s5", T.s5, T.s6 + 0.5, { y: 0 });
+$("#cF").innerHTML = A.card({ w: 800, id: "c5" });
+$("#cB").innerHTML = A.card({ w: 800, back: true, id: "c5b" });
+$("#zoom").innerHTML = A.chip({ w: 340, id: "ch5" });
+$("#skim").innerHTML = `<svg width="300" height="190" viewBox="0 0 300 190"><rect x="10" y="20" width="280" height="150" rx="18" fill="#3E4A6A" stroke="#1B2340" stroke-width="5"/><rect x="40" y="60" width="220" height="20" rx="10" fill="#0B0F20"/><circle cx="250" cy="44" r="10" fill="#F0566E"/><text x="150" y="140" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="28" fill="#FFC93D">SKIMMER</text></svg>`;
+$("#clones").innerHTML = [0, 1, 2].map((i) => `<div class="abs cl" style="left:${i * 40}px;top:${i * 40}px">${A.card({ w: 300, back: true, id: "cl" + i, c1: "#5C677E", c2: "#8A93AB" })}<div class="abs" style="left:70px;top:70px;padding:2px 14px;border:5px solid #F0566E;border-radius:10px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:30px;transform:rotate(-10deg);background:rgba(255,255,255,.85)">COPY</div></div>`).join("");
+gsap.set(["#t5", "#zoom", "#ring", "#lnk", "#sh1", "#sh2", "#sh3", "#skim", "#clones", ...$$("#clones .cl")], { autoAlpha: 0 });
+tl.fromTo("#t5", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("let's start"));
+tl.fromTo("#flip", { rotationY: -540, scale: 0.3, y: 300 }, { rotationY: 0, scale: 1, y: 0, duration: 1.0, ease: "power3.out", immediateRender: false }, T.s5 + 0.1);
+sfx(T.s5 + 0.1, "whoosh", { gain: 0.25 });
+REEL.onFrame((t) => { if (t < T.s5 || t > T.s6 + 0.5) return; $("#flipW").style.transform = `translateY(${(Math.sin(t * 1.6) * 8).toFixed(1)}px) rotate(${(Math.sin(t * 1.1) * 1.2).toFixed(2)}deg)`; });
+const tG = w("gold square");
+tl.set(["#ring", "#lnk"], { autoAlpha: 1 }, tG - 0.1);
+tl.fromTo("#ring", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.6)", immediateRender: false }, tG - 0.1);
+REEL.onFrame((t) => { if (t < tG || t > T.s6) return; $("#ring").style.strokeDashoffset = (-t * 60).toFixed(1); });
+tl.fromTo("#lnk", { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.3, immediateRender: false }, w("it's a tiny") - 0.1);
+pop("#zoom", w("it's a tiny") + 0.1, { from: 0.2, sfx: "pop", gain: 0.18 });
+REEL.onFrame((t) => { if (t < T.s5 || t > T.s6) return; const d = $("#ch5Die"); if (d) d.setAttribute("opacity", (0.7 + 0.3 * Math.sin(t * 10)).toFixed(2)); });
+const tFlip = w("magnetic stripe") - 0.3;
+tl.to(["#zoom", "#ring", "#lnk"], { autoAlpha: 0, duration: 0.2 }, tFlip - 0.2);
+tl.to("#flip", { rotationY: 180, duration: 0.6, ease: "power2.inOut" }, tFlip);
+sfx(tFlip, "swish", { gain: 0.25 });
+["#sh1", "#sh2", "#sh3"].forEach((b, i) => { tl.fromTo(b, { autoAlpha: 0, x: -60, scale: 0.6 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.25, ease: "back.out(2.6)", immediateRender: false }, w("shouts") + i * 0.45); sfx(w("shouts") + i * 0.45, "pop", { gain: 0.16, pitch: 1 + i * 0.15 }); });
+tl.to(["#sh1", "#sh2", "#sh3"], { autoAlpha: 0, duration: 0.2 }, w("so crooks") - 0.1);
+pop("#skim", w("crooks") - 0.1, { sfx: "glitch", gain: 0.16 });
+tl.set("#clones", { autoAlpha: 1 }, w("could copy") - 0.1);
+$$("#clones .cl").forEach((c, i) => { tl.fromTo(c, { autoAlpha: 0, x: 120, y: 420, rotation: 20 }, { autoAlpha: 1, x: 0, y: 0, rotation: -6 + i * 4, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, w("could copy") - 0.1 + i * 0.12); sfx(w("could copy") - 0.1 + i * 0.12, "print", { gain: 0.16 }); });
+
+// ================================================= S6: a new code every time (dive into the chip)
+EX.dive("#s5", "#s6", T.s6, 703, 484);
+$("#chip6").innerHTML = A.chip({ w: 560, id: "ch6" });
+$("#host6").innerHTML = HOST("h6", 280);
+$("#key6").innerHTML = `<svg width="480" height="130" viewBox="0 0 480 130" style="overflow:visible"><text x="20" y="18" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="#1B2340" opacity=".6">CROOK'S COPY</text><circle cx="70" cy="78" r="46" fill="#C9D0DC" stroke="#1B2340" stroke-width="5"/><circle cx="70" cy="78" r="18" fill="#9E8FE0"/><rect x="110" y="58" width="340" height="40" rx="8" fill="#C9D0DC" stroke="#1B2340" stroke-width="5"/><path d="M380 98 L 380 120 L 400 120 L 400 98 M420 98 L 420 114 L 440 114 L 440 98" fill="#C9D0DC" stroke="#1B2340" stroke-width="5"/><text x="250" y="88" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="28" fill="#1B2340">7F3A 9C02</text></svg>`;
+$("#lock6").innerHTML = `<svg width="160" height="210" viewBox="0 0 160 210" style="overflow:visible"><path d="M36 92 L 36 60 Q 36 14 80 14 Q 124 14 124 60 L 124 92" stroke="#5C677E" stroke-width="18" fill="none"/><rect id="lkB" x="14" y="88" width="132" height="112" rx="18" fill="#FFC93D" stroke="#1B2340" stroke-width="5"/><circle cx="80" cy="134" r="14" fill="#1B2340"/><rect x="74" y="140" width="12" height="32" rx="4" fill="#1B2340"/><circle id="lkL" cx="128" cy="104" r="8" fill="#22D07A"/><text x="80" y="232" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="18" fill="#1B2340">WANTS TXN #6</text></svg>`;
+gsap.set(["#key6", "#lock6", "#exp", "#okP", "#host6"], { autoAlpha: 0 });
+const CODES = ["7F3A 9C02", "B21C 04E7", "09E4 AA51", "5D7F 1B3C", "E3A0 66C9", "41BD F208"];
+const tNew = w("brand new") - 0.2;
+REEL.onFrame((t) => { if (t < T.s6 - 0.3) return; const k = Math.max(0, Math.floor((t - tNew) / 0.55)); const i = Math.min(CODES.length - 1, k); $("#code").textContent = t < tNew ? CODES[0] : CODES[i]; $("#txn").textContent = `TXN #${t < tNew ? 1 : i + 1}`; const d = $("#ch6Die"); if (d) d.setAttribute("opacity", (0.7 + 0.3 * Math.sin(t * 14)).toFixed(2)); });
+for (let k = 1; k < CODES.length; k++) { tl.fromTo("#code", { scale: 1.12, transformOrigin: "0% 50%" }, { scale: 1, duration: 0.2, immediateRender: false }, tNew + k * 0.55); sfx(tNew + k * 0.55, "tick", { gain: 0.16 }); }
+tl.fromTo("#host6", { autoAlpha: 1, y: 520 }, { y: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s6 + 0.8);
+PAPER.lipSync($("#h6Mouth"), { from: T.s6 + 0.5, open: 16 });
+PAPER.blink($("#h6Eyes"), [T.s6 + 1.6]);
+pop("#lock6", w("copy it and") - 0.4, { sfx: "clunk", gain: 0.16 });
+tl.fromTo("#key6", { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("copy it and") - 0.1);
+const tTry = w("already") - 0.1;
+tl.to("#key6", { x: 50, duration: 0.3, ease: "power2.in" }, tTry);
+sfx(tTry + 0.3, "click", { gain: 0.3 });
+tl.to("#key6", { x: -20, rotation: -6, duration: 0.35, ease: "back.out(3)" }, tTry + 0.32);
+for (let k = 0; k < 6; k++) tl.to("#lock6", { x: k % 2 ? -8 : 8, duration: 0.05 }, tTry + 0.32 + k * 0.05);
+tl.set("#lock6", { x: 0 }, tTry + 0.65);
+tl.set("#lkB", { attr: { fill: "#F0566E" } }, tTry + 0.32); tl.set("#lkL", { attr: { fill: "#FF2D55" } }, tTry + 0.32);
+sfx(tTry + 0.32, "glitch", { gain: 0.24 });
+sfx(w("copy it and") - 0.1, "paper", { gain: 0.22 });
+tl.fromTo("#exp", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, w("useless") - 0.05);
+sfx(w("useless"), "bloop", { gain: 0.2, pitch: 0.6 });
+REEL.shake($("#shake"), w("useless") + 0.11, 6);
+tl.set("#okP", { autoAlpha: 1 }, w("card read") - 0.05);
+tl.fromTo("#okP", { scale: 0.85 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, w("card read") - 0.05);
+sfx(w("card read"), "chime", { gain: 0.24 });
+tl.to("#h6Arm", { keyframes: { rotation: [-18, 8, 0] }, svgOrigin: "300 450", duration: 0.6 }, w("card read"));
+
+// ================================================= fill the frame (ambient motion + concept panels)
+EX.ambient("#s2", "rupee", { from: T.s2, to: T.s3, seed: 2 });
+$("#s2").insertAdjacentHTML("beforeend", `<div class="lbl x3d" id="t2" data-ob="t2" style="left:110px;top:100px;font-size:96px;--xf:#fff">In → out: <span style="color:#FFC93D">10 s</span></div>`);
+gsap.set("#t2", { autoAlpha: 0 }); tl.fromTo("#t2", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s2 + 0.3);
+EX.logPanel("#s2", { x: 1330, y: 500, w: 520, h: 360, lines: [[tC + 0.3, "CARD INSERTED"], [tC + 0.7, "CHIP: NEW CODE ✓"], [tC + 1.1, "ASKING YOUR BANK…", "#FFC93D"], [tM - 0.5, "APPROVED ✓"], [tM - 0.1, "DISPENSING ₹2,000", "#FFC93D"]] });
+EX.ambient("#s3", "net", { from: T.s3, to: T.s4, seed: 3, c: "rgba(255,255,255,.35)" });
+$("#s3").insertAdjacentHTML("beforeend", `<div id="wclk" class="abs" data-ob="wclk" style="left:1700px;top:110px"><svg width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="80" fill="#fff" stroke="#1B2340" stroke-width="8"/>${Array.from({ length: 12 }, (_, i) => { const a = (i / 12) * Math.PI * 2; return `<line x1="${90 + Math.sin(a) * 64}" y1="${90 - Math.cos(a) * 64}" x2="${90 + Math.sin(a) * 54}" y2="${90 - Math.cos(a) * 54}" stroke="#1B2340" stroke-width="5"/>`; }).join("")}<line id="wcS" x1="90" y1="90" x2="90" y2="26" stroke="#F2553D" stroke-width="6" stroke-linecap="round"/><circle cx="90" cy="90" r="8" fill="#1B2340"/></svg></div>`);
+gsap.set(["#wclk"], { autoAlpha: 0 });
+pop("#wclk", T.s3 + 0.7, { sfx: "tick", gain: 0.16 });
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.6) return; $("#wcS").setAttribute("transform", `rotate(${((t - T.s3) * 36).toFixed(1)} 90 90)`); });
+EX.ambient("#s4", "rupee", { from: T.s4, to: T.s5, seed: 4 });
+EX.ambient("#s5", "circuit", { from: T.s5, to: T.s6, seed: 5 });
+EX.infoCard("#s5", { x: 1390, y: 690, w: 460, title: "CARD 101", items: [["🔲", "Chip = tiny computer"], ["🧲", "Stripe = same data"], ["📶", "Tap = contactless"]], t0: T.s5 + 0.9, ob: "c101" });
+EX.ambient("#s6", "hex", { from: T.s6, to: END, seed: 6, c: "rgba(255,255,255,.22)" });
+EX.logPanel("#s6", { x: 110, y: 690, w: 560, h: 270, title: "CHIP · CODE HISTORY", ob: "hist", lines: CODES.map((c, i) => [i === 0 ? T.s6 + 0.3 : tNew + i * 0.55, `TXN #${i + 1}  ${c}`, i === CODES.length - 1 ? "#FFC93D" : "#22D07A"]) });
+
+// ================================================= close: the receipt prints
+EX.receiptClose(T.close, { step: 1, title: "Card & chip", big: "Card read ✓", next: "PIN check" });
+REEL.finish(END);
+</script>
+</body></html>
