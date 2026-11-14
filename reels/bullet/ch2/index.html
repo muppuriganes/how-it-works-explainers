@@ -1,0 +1,202 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bullet Ch2 The nose</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.ck{display:flex;align-items:center;gap:16px;font-family:Archivo;font-weight:800;font-size:44px;color:#1B2340;padding:8px 0}
+.ck b{display:inline-flex;width:46px;height:46px;border-radius:50%;background:#22B573;color:#fff;align-items:center;justify-content:center;font-size:28px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/journey.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: real 3D orbit around the nose -->
+  <section class="scene" id="s1">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="lbl x3d" id="q" data-ob="q" style="left:100px;top:130px;font-size:130px;--xf:#fff">Why the<br><span style="color:#F5A524">long nose?</span></div>
+    <div class="chip" id="len" data-ob="len" style="left:110px;top:400px;color:#1B2340;font-size:26px">JAPAN'S E5 NOSE ≈ 15 M LONG</div>
+  </section>
+
+  <!-- S2: air becomes a wall -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#BFE3F7 0%,#E8F5FD 100%)"></div>
+    <svg id="air" class="abs" style="left:0;top:0" width="1920" height="1080"></svg>
+    <svg id="stream" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div class="lbl x3d" id="s2t" data-ob="s2t" style="left:100px;top:110px;font-size:96px;--xf:#fff">Air at <span style="color:#12A4C4">300 km/h</span></div>
+    <div id="wall" class="abs" data-ob="duel" style="left:1180px;top:300px;width:200px;height:520px"></div>
+    <div class="lbl x3d" id="eqw" data-ob="eqw" style="left:1420px;top:330px;font-size:90px;--xf:#F0566E">= a wall</div>
+    <div id="blunt" class="abs" data-ob="duel" data-bleed style="left:420px;top:520px"></div>
+    <div id="sleek" class="abs" data-ob="duel" data-bleed style="left:-240px;top:520px;width:1500px;height:200px;overflow:hidden"></div>
+    <div id="slam" class="abs" data-ob="duel" style="left:1080px;top:180px"></div>
+    <div class="chip" id="slice" data-ob="slice" style="left:1320px;top:560px;color:#1F9D5A;font-size:32px">SLICES THROUGH ✓</div>
+  </section>
+
+  <!-- S3: tunnel boom -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 100%)"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M0 860 L1920 860 L1920 1080 L0 1080 Z" fill="#CFE9D3"/><path d="M420 860 C 520 420, 760 300, 980 300 C 1220 300, 1420 420, 1520 860 Z" fill="#7FC495"/><path d="M500 860 C 600 500, 790 400, 980 400 C 1180 400, 1360 500, 1450 860 Z" fill="#8FCFA4"/>
+      <rect x="470" y="700" width="1010" height="150" fill="#3A4A6A"/><rect x="470" y="700" width="1010" height="16" fill="#2A3350"/><path d="M450 860 L450 690 Q 450 680 470 680 L 490 680 L 490 860 Z" fill="#C9D0DC"/><path d="M1460 860 L1460 680 L 1500 680 L 1500 860 Z" fill="#C9D0DC"/>
+      <rect x="0" y="846" width="1920" height="10" fill="#9AA3B4"/></svg>
+    <svg id="rings" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="tt" class="abs" data-ob="tt" data-bleed style="left:0;top:704px;width:1480px;height:150px;overflow:hidden"></div>
+    <div id="houses" class="abs" data-ob="houses" style="left:1560px;top:650px;width:340px;height:210px"></div>
+    <div class="lbl x3d" id="s3t" data-ob="s3t" style="left:100px;top:110px;font-size:96px;--xf:#fff">Tunnels are <span style="color:#F0566E">worse</span></div>
+    <div class="chip" id="pw" data-ob="pw" style="left:760px;top:600px;color:#3E7BFA;font-size:26px">PRESSURE WAVE →</div>
+    <div id="boom" class="abs" data-ob="boom" style="left:1500px;top:260px"></div>
+  </section>
+
+  <!-- S4: the kingfisher -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 58%,#8CC8EC 58%,#5FAEDF 100%)"></div>
+    <svg class="abs" style="left:0;top:620px" width="1920" height="60"><g stroke="#fff" stroke-width="5" fill="none" opacity=".6"><path d="M120 30 q30 -14 60 0 t60 0"/><path d="M820 20 q30 -14 60 0 t60 0"/><path d="M1500 34 q30 -14 60 0 t60 0"/></g></svg>
+    <div class="lbl x3d" id="s4t" data-ob="s4t" style="left:100px;top:110px;font-size:96px;--xf:#fff">Japan copied <span style="color:#1F8FD6">a bird</span></div>
+    <div id="bird" class="abs" data-ob="nose" data-bleed style="left:0;top:0;width:340px;height:227px"></div>
+    <svg id="splash" class="abs" style="left:860px;top:600px;overflow:visible" width="200" height="60"><ellipse id="sp1" cx="100" cy="30" rx="30" ry="8" fill="none" stroke="#fff" stroke-width="5"/><ellipse id="sp2" cx="100" cy="30" rx="30" ry="8" fill="none" stroke="#fff" stroke-width="4"/></svg>
+    <div class="chip" id="barely" data-ob="barely" style="left:1080px;top:520px;color:#1F8FD6;font-size:28px">BARELY A SPLASH</div>
+    <div id="noseBox" class="abs" data-ob="nose" style="left:560px;top:430px;width:860px;height:200px;overflow:hidden"></div>
+    <div class="chip" id="beakNose" data-ob="beaknose" style="left:720px;top:650px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:30px">BEAK ≈ NOSE</div>
+    <div class="pcard" id="ckl" data-ob="ckl" style="left:100px;top:700px;width:560px"><div class="tape"></div><div class="ck" id="k1"><b>✓</b>Less boom</div><div class="ck" id="k2"><b>✓</b>Less noise</div><div class="ck" id="k3"><b>✓</b>Less electricity</div></div>
+    <div id="host" class="abs" data-ob="host" data-bleed style="left:1470px;top:430px"></div>
+    <div class="serif" id="free" data-ob="free" style="position:absolute;left:1000px;top:260px;font-size:62px;color:#1B2340;white-space:nowrap">nature did the R&amp;D. for free.</div>
+  </section>
+
+</div></div>
+<script type="module">
+import { trainWorld } from "../../../lib/train3d.js";
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, show, every, pop, rise, draw } = EX;
+const { ART } = PAPER;
+EX.coachStart(2, 7, "The nose");
+const T = { s2: w("air stops") - 0.15, s3: w("tunnels are") - 0.2, s4: w("japan fixed") - 0.15, close: W.last() + 0.9 };
+const END = T.close + 0.9;
+const sm = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u));
+// a blunt old-style train (side view, flat face to the right)
+const BLUNT = `<svg width="760" height="190" viewBox="0 0 760 190" style="overflow:visible"><ellipse cx="380" cy="184" rx="380" ry="10" fill="#1B2340" opacity=".15"/><rect x="0" y="20" width="740" height="140" rx="10" fill="url(#bg1)"/><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD9A8"/><stop offset="1" stop-color="#E39A52"/></linearGradient></defs><rect x="700" y="20" width="40" height="140" fill="#C27A3A"/>${Array.from({ length: 12 }, (_, i) => `<rect x="${30 + i * 54}" y="50" width="36" height="34" rx="6" fill="#1E2A48"/>`).join("")}<rect x="0" y="112" width="740" height="12" fill="#8A3A2A"/><circle cx="120" cy="168" r="14" fill="#2A3350"/><circle cx="180" cy="168" r="14" fill="#2A3350"/><circle cx="560" cy="168" r="14" fill="#2A3350"/><circle cx="620" cy="168" r="14" fill="#2A3350"/></svg>`;
+
+// ================================================= S1: 3D orbit around the nose
+show("#s1", 0, T.s2 + 0.3, { y: 0 });
+const W3 = trainWorld($("#c3"), { cars: 4 });
+REEL.onFrame((t) => {
+  if (t > T.s2 + 0.4) return;
+  const u = t, x = u * 89, a = 0.25 + 1.15 * sm(u / (T.s2 + 0.3));
+  W3.frame({ x, cam: [x + 15 * Math.cos(a) - 4, 2.4 + 1.4 * Math.sin(a), 15 * Math.sin(a) + 2], look: [x - 7, 1.7, 0], fov: 38 });
+});
+gsap.set(["#q", "#len"], { autoAlpha: 0 });
+tl.fromTo("#q", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "expo.out", immediateRender: false }, w("why is"));
+sfx(w("why is"), "swish", { gain: 0.2 });
+pop("#len", w("so long"), { sfx: "tick", gain: 0.2 });
+
+// ================================================= S2: air becomes a wall (a train blasts past)
+EX.passBy(T.s2);
+show("#s2", T.s2, T.s3 + 0.02, { y: 0 });
+// flowing air dots, then they pile up into a wall
+const r = rng(3), dots = Array.from({ length: 70 }, (_, i) => ({ y: 300 + r() * 520, ph: r() * 1920, s: 5 + r() * 7 }));
+$("#air").innerHTML = dots.map((d, i) => `<circle class="ad" r="${d.s}" fill="#7FB8E0" opacity=".75"/>`).join("");
+const tWall = w("a wall");
+REEL.onFrame((t) => {
+  if (t < T.s2 - 0.5 || t > T.s3 + 0.5) return;
+  const g = sm((t - (tWall - 0.5)) / 0.6), fade = 1 - sm((t - w("a long")) / 0.4);
+  $$("#air .ad").forEach((c, i) => {
+    const d = dots[i], fx = 1920 - ((t * 900 + d.ph) % 2100);
+    const wx = 1200 + (i % 4) * 46, wy = 320 + Math.floor(i / 4) * 28;
+    c.setAttribute("cx", fx + (wx - fx) * g); c.setAttribute("cy", d.y + (wy - d.y) * g); c.setAttribute("opacity", (0.75 * (1 - g) + 0.0 * g) * fade);
+  });
+});
+$("#wall").innerHTML = `<svg width="200" height="520" viewBox="0 0 200 520" style="overflow:visible">${ISO.box(0, 0, 0, 160, 520, 60, "#9CC9EA")}${Array.from({ length: 13 }, (_, row) => Array.from({ length: 3 }, (_, c) => `<rect x="${(row % 2 ? -26 : 0) + c * 56 + 4}" y="${row * 40 + 4}" width="50" height="34" rx="6" fill="#BFE3F7" stroke="#7FB8E0" stroke-width="3"/>`).join("")).join("")}</svg>`;
+$("#blunt").innerHTML = BLUNT;
+$("#sleek").innerHTML = `<div style="transform:scaleX(-1);transform-origin:50% 50%;width:1500px">${ISO.bulletTrain({ w: 2900, cars: 4, id: "s2t" })}</div>`;
+$("#slam").innerHTML = ART.burst({ size: 260, text: "SLAM!", color: "#F5A524", fs: 50 });
+gsap.set(["#s2t", "#wall", "#eqw", "#blunt", "#sleek", "#slam", "#slice"], { autoAlpha: 0 });
+rise("#s2t", T.s2 + 0.3);
+tl.fromTo("#wall", { autoAlpha: 0, scaleY: 0.2, transformOrigin: "50% 100%" }, { autoAlpha: 1, scaleY: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, tWall - 0.1);
+sfx(tWall, "clunk", { gain: 0.3 });
+tl.fromTo("#eqw", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, tWall + 0.1);
+const tSlam = w("slam into");
+tl.fromTo("#blunt", { autoAlpha: 1, x: -1300 }, { x: 0, duration: tSlam - w("a flat") + 0.05, ease: "power2.in", immediateRender: false }, w("a flat"));
+tl.to("#blunt", { keyframes: { scaleX: [1, 0.92, 1], x: [0, -40, -60] }, transformOrigin: "100% 50%", duration: 0.4 }, tSlam + 0.05);
+pop("#slam", tSlam + 0.05, { from: 0.3, sfx: "impact", gain: 0.4 });
+REEL.shake($("#shake"), tSlam + 0.05, 16);
+tl.to("#wall", { keyframes: { x: [0, 14, -8, 0] }, duration: 0.3 }, tSlam + 0.05);
+const tSlice = w("a long");
+tl.to(["#blunt", "#slam", "#eqw"], { autoAlpha: 0, duration: 0.25 }, tSlice - 0.2);
+tl.to("#wall", { autoAlpha: 0, scaleX: 0.2, duration: 0.35, ease: "power2.in" }, w("slices"));
+tl.fromTo("#sleek", { autoAlpha: 1, x: -1600 }, { x: 0, duration: 1.0, ease: "power3.out", immediateRender: false }, tSlice);
+sfx(tSlice, "whoosh", { gain: 0.3, dur: 0.8 });
+// streamlines flowing smoothly over the nose
+$("#stream").innerHTML = [0, 1, 2, 3, 4].map((k) => `<path class="stl" d="M1920 ${700 - k * 30} C 1520 ${700 - k * 30}, 1330 ${696 - k * 30}, 1236 ${686 - k * 32} S 1010 ${574 - k * 30}, 0 ${572 - k * 30}" stroke="#12A4C4" stroke-width="5" fill="none" stroke-dasharray="40 30" opacity=".8"/>`).join("");
+gsap.set("#stream", { autoAlpha: 0 });
+tl.to("#stream", { autoAlpha: 1, duration: 0.3 }, w("slices"));
+REEL.onFrame((t) => { if (t < w("slices") - 0.1 || t > T.s3 + 0.3) return; $$("#stream .stl").forEach((p, i) => p.setAttribute("stroke-dashoffset", -((t * 900 + i * 37) % 70))); });
+pop("#slice", w("slices") + 0.3, { sfx: "chime", gain: 0.16 });
+
+// ================================================= S3: tunnel boom (goes dark like a tunnel)
+EX.iris("#s3", T.s3, 960, 780, { color: "#1B2340" });
+show("#s3", T.s3, T.s4 + 0.02, { y: 0 });
+$("#tt").innerHTML = `<div id="ttIn" class="abs" style="left:0;top:-30px">${BLUNT}</div>`;
+$("#houses").innerHTML = [0, 1, 2].map((i) => `<div class="abs hs" style="left:${i * 112}px;top:${i % 2 ? 40 : 0}px"><svg width="110" height="170" viewBox="0 0 110 170" style="overflow:visible">${ISO.box(6, 60, 0, 80, 100, 30, ["#F5A524", "#F0566E", "#7B61FF"][i])}<polygon points="0,62 46,14 92,62" fill="#2A3350"/><rect x="22" y="84" width="22" height="22" rx="3" fill="#BFE3F7"/><rect x="54" y="84" width="22" height="22" rx="3" fill="#BFE3F7"/><rect x="36" y="124" width="20" height="36" rx="3" fill="#2A3350"/></svg></div>`).join("");
+$("#boom").innerHTML = ART.burst({ size: 300, text: "BOOM!", color: "#F0566E", fs: 56 });
+$("#rings").innerHTML = [0, 1, 2].map((k) => `<path class="rg" d="M0 712 Q 40 775 0 838" stroke="#3E7BFA" stroke-width="7" fill="none" opacity="0"/>`).join("");
+gsap.set(["#s3t", "#pw", "#boom", "#ttIn"], { autoAlpha: 0 });
+rise("#s3t", T.s3 + 0.4);
+const tRam = w("rams into"), tEnd = w("goes boom");
+tl.fromTo("#ttIn", { autoAlpha: 1, x: -800 }, { x: 1100, duration: tEnd - tRam + 0.6, ease: "none", immediateRender: false }, tRam - 0.4);
+sfx(tRam, "whoosh", { gain: 0.25, dur: 1.2 });
+REEL.onFrame((t) => {
+  if (t < T.s3 || t > T.s4 + 0.3) return;
+  const u = (t - tRam) / (tEnd - tRam);
+  $$("#rings .rg").forEach((p, i) => { const x = 520 + (Math.max(0, Math.min(1, u)) * 980) + 60 + i * 26; p.setAttribute("transform", `translate(${x} 0)`); p.setAttribute("opacity", u > 0 && u < 1.05 ? 0.85 - i * 0.2 : 0); });
+});
+pop("#pw", w("squeezing"), { sfx: false });
+tl.to("#pw", { x: 380, duration: tEnd - w("squeezing"), ease: "none" }, w("squeezing"));
+pop("#boom", tEnd, { from: 0.2, sfx: "impact", gain: 0.45 });
+REEL.shake($("#shake"), tEnd + 0.02, 20);
+$$("#houses .hs").forEach((h, i) => tl.to(h, { keyframes: { rotation: [0, -6, 5, -3, 0] }, transformOrigin: "50% 100%", duration: 0.5 }, tEnd + 0.05 + i * 0.05));
+
+// ================================================= S4: the kingfisher (a train streaks past the other way)
+EX.passBy(T.s4, { dir: -1 });
+show("#s4", T.s4, null, { y: 0 });
+$("#bird").innerHTML = EX.kingfisher(340);
+$("#noseBox").innerHTML = `<div style="position:absolute;left:0;top:0">${ISO.bulletTrain({ w: 1700, cars: 3, id: "kn" })}</div>`;
+$("#host").innerHTML = ART.host({ w: 330, id: "h", cap: true, shirt: "#1B2340" });
+gsap.set(["#bird", "#s4t", "#barely", "#noseBox", "#beakNose", "#ckl", "#k1", "#k2", "#k3", "#host", "#free", "#sp1", "#sp2"], { autoAlpha: 0 });
+rise("#s4t", w("copying a bird") - 0.3);
+// the dive: from top-left down into the water, beak first
+const tDive = w("dives into");
+tl.fromTo("#bird", { autoAlpha: 1, x: 1420, y: 240, rotation: -30, scaleX: -1 }, { x: 800, y: 470, rotation: -78, duration: tDive - w("the kingfisher") + 0.6, ease: "power2.in", immediateRender: false }, w("the kingfisher"));
+tl.to("#bird", { y: 720, autoAlpha: 0, duration: 0.25, ease: "power1.in" }, tDive + 0.6);
+sfx(tDive + 0.6, "bloop", { gain: 0.2 });
+[["#sp1", 0], ["#sp2", 0.15]].forEach(([id, d]) => tl.fromTo(id, { autoAlpha: 1, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 0, scale: 1.6, duration: 0.7, immediateRender: false }, tDive + 0.65 + d));
+pop("#barely", w("barely a"), { sfx: "tick", gain: 0.15 });
+// the bird comes back up, levels out, and lines up with the train nose
+const tBeak = w("engineers gave");
+tl.to("#barely", { autoAlpha: 0, duration: 0.2 }, tBeak - 0.4);
+tl.fromTo("#bird", { autoAlpha: 0, x: 600, y: 230, rotation: 0, scaleX: -1 }, { autoAlpha: 1, x: 640, y: 210, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, tBeak - 0.3);
+tl.fromTo("#noseBox", { autoAlpha: 0, x: 600 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, tBeak);
+sfx(tBeak, "whoosh", { gain: 0.25, dur: 0.6 });
+pop("#beakNose", w("a beak"), { sfx: "chime", gain: 0.2 });
+tl.fromTo("#ckl", { autoAlpha: 0, x: -60, rotation: -4 }, { autoAlpha: 1, x: 0, rotation: -1, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("less boom") - 0.2);
+[["#k1", w("less boom")], ["#k2", w("less noise")], ["#k3", w("less electricity")]].forEach(([id, t]) => { tl.fromTo(id, { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, t); sfx(t, "ding", { gain: 0.16 }); });
+tl.fromTo("#host", { autoAlpha: 1, x: 520 }, { x: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, w("nature did") - 0.4);
+PAPER.lipSync($("#hMouth"), { from: w("nature did") - 0.4, open: 18 });
+rise("#free", w("for free") - 0.2);
+tl.to("#hArm", { keyframes: { rotation: [-16, 10, 0] }, svgOrigin: "300 450", duration: 0.6 }, w("for free"));
+
+EX.doors(T.close, { mode: "close", sign: "NEXT · COACH C3 · THE POWER" });
+REEL.finish(END);
+</script>
+</body></html>

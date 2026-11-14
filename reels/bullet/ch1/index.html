@@ -1,0 +1,248 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bullet Ch1 All aboard</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.pin{position:absolute;display:flex;flex-direction:column;align-items:center}
+.pill{padding:8px 18px;border-radius:999px;background:#fff;box-shadow:0 6px 16px rgba(27,35,64,.16);font-family:"JetBrains Mono";font-weight:800;font-size:22px;letter-spacing:.1em;color:#1B2340;white-space:nowrap}
+.bub{position:absolute;padding:12px 24px 16px;border-radius:24px;font-family:Archivo;font-weight:900;font-size:40px;white-space:nowrap;box-shadow:0 10px 24px rgba(27,35,64,.18)}
+.cl{position:absolute;top:-80px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px}
+.cl .n{padding:6px 14px;border-radius:12px;background:#1B2340;color:#FFB547;font-family:"JetBrains Mono";font-weight:800;font-size:22px;letter-spacing:.08em}
+.cl .s{padding:6px 14px;border-radius:999px;background:#fff;color:#1B2340;font-family:Archivo;font-weight:800;font-size:20px;white-space:nowrap;box-shadow:0 6px 14px rgba(27,35,64,.16)}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/journey.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: the map — by car -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(160deg,#F4EFE2 0%,#E7F2E4 100%)"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M0 0 L430 0 C 380 200, 470 360, 360 520 C 280 640, 380 820, 300 1080 L0 1080 Z" fill="#BFE3F7"/><g stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"><path d="M60 180 q30 -14 60 0 t60 0"/><path d="M120 420 q30 -14 60 0 t60 0"/><path d="M50 700 q30 -14 60 0 t60 0"/><path d="M140 900 q30 -14 60 0 t60 0"/></g><text x="70" y="560" font-family="Garamond" font-style="italic" font-size="46" fill="#6FA8CC">Arabian Sea</text></svg>
+    <svg id="roadSvg" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="booths" class="abs" style="inset:0"></div>
+    <div id="car" class="abs" data-ob="road" style="left:0;top:0"></div>
+    <div class="pin" id="pinM" data-ob="road" style="left:470px;top:760px"></div>
+    <div class="pin" id="pinA" data-ob="pina" style="left:1500px;top:190px"></div>
+    <div class="lbl x3d" id="t1a" data-ob="t1" style="left:480px;top:96px;font-size:84px;--xf:#fff">Mumbai <span style="color:#12A4C4">→</span> Ahmedabad</div>
+    <div class="lbl x3d" id="t1b" data-ob="t1b" style="left:480px;top:196px;font-size:150px;--xf:#F5A524">508 km</div>
+    <div class="chip" id="clock" data-ob="clock" style="left:820px;top:880px;color:#C7364C;font-size:30px">BY CAR · <span id="hrs">0</span> HRS</div>
+    <div class="bub" id="ac1" data-ob="ac1" style="left:1220px;top:770px;background:#3E7BFA;color:#fff;border-radius:24px 24px 6px 24px">AC ON!</div>
+    <div class="bub" id="ac2" data-ob="ac2" style="left:1470px;top:650px;background:#F0566E;color:#fff;border-radius:24px 24px 24px 6px">AC OFF!</div>
+  </section>
+
+  <!-- S2: real 3D — the bullet train -->
+  <section class="scene" id="s2">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div id="speedL" class="abs" style="inset:0"></div>
+    <div class="chip" id="open27" data-ob="open27" style="left:110px;top:120px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:28px">OPENING FROM 2027</div>
+    <div class="lbl x3d" id="twoH" data-ob="twoh" style="left:100px;top:190px;font-size:200px;--xf:#fff">~2 hrs</div>
+    <div class="pcard" id="cric" data-ob="cric" style="left:1230px;top:620px;width:600px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">FOR SCALE</div><div class="h" style="font-size:36px;margin-top:8px;line-height:1.15;white-space:nowrap">One ODI innings ≈ 3.5 hrs</div><div class="serif" style="font-size:30px;color:#1F9D5A;margin-top:6px">the train wins. easily.</div></div>
+  </section>
+
+  <!-- S3: seven coaches, seven secrets -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#9ED3F2 0%,#DDF0FB 62%,#EAF6FD 100%)"></div>
+    <div id="hills" class="abs" style="left:0;top:360px;width:5760px;height:300px"></div>
+    <div id="city" class="abs" style="left:0;top:380px"></div>
+    <div class="abs" style="left:0;top:660px;width:1920px;height:420px;background:linear-gradient(180deg,#CFE9D3,#BFE0C6)"></div>
+    <div id="piers" class="abs" style="left:0;top:770px;width:5760px;height:320px"></div>
+    <div class="abs" style="left:0;top:735px;width:1920px;height:52px;background:linear-gradient(180deg,#E9EDF3,#C9D0DC);box-shadow:0 12px 0 rgba(27,35,64,.10)"></div>
+    <div class="abs" style="left:0;top:726px;width:1920px;height:10px;background:#9AA3B4"></div>
+    <div id="masts" class="abs" style="left:0;top:430px;width:5760px;height:310px"></div>
+    <div class="abs" style="left:0;top:452px;width:1920px;height:4px;background:#3B4566"></div>
+    <div id="trainBox" class="abs" data-ob="train" data-bleed style="left:0;top:540px"></div>
+    <div id="lines" class="abs" style="inset:0"></div>
+    <div class="lbl x3d" id="t3a" data-ob="t3" style="left:110px;top:104px;font-size:96px;--xf:#fff">7 coaches. <span style="color:#F5A524">7 secrets.</span></div>
+    <div id="gauge" class="abs" data-ob="gauge" style="left:1500px;top:110px;width:330px;height:240px"></div>
+  </section>
+
+  <!-- S4: inside the coach — the coin test, tickets, doors -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:linear-gradient(180deg,#F6F3EC 0%,#ECE6DA 100%)"></div>
+    <div class="abs" style="left:0;top:0;width:1920px;height:26px;background:#fff;box-shadow:0 6px 20px rgba(255,240,200,.9)"></div>
+    <div id="win" class="abs" style="left:200px;top:140px;width:1100px;height:430px;border-radius:70px;overflow:hidden;border:18px solid #C9D0DC;box-shadow:inset 0 0 0 4px #fff,0 18px 40px rgba(27,35,64,.15)">
+      <div class="abs" style="inset:0;background:linear-gradient(180deg,#9ED3F2,#E6F4FC)"></div>
+      <div id="wHills" class="abs" style="left:0;top:170px;width:4400px;height:260px"></div>
+      <div id="wTrees" class="abs" style="left:0;top:230px;width:4400px;height:240px"></div>
+      <div id="wPoles" class="abs" style="left:0;top:0;width:4400px;height:430px"></div>
+    </div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M330 1080 L330 700 Q330 600 430 600 L1070 600 Q1170 600 1170 700 L1170 1080 Z" fill="#3E5BA8"/><path d="M360 1080 L360 710 Q360 630 440 630 L1060 630 Q1140 630 1140 710 L1140 1080 Z" fill="#4A68B8"/><polygon points="420,690 1080,690 1130,740 370,740" fill="#E3E7EE"/><rect x="370" y="740" width="760" height="22" fill="#B9C2D2"/><rect x="560" y="606" width="380" height="16" rx="8" fill="#2F4A94"/></svg>
+    <div id="coin" class="abs" data-ob="coin" style="left:715px;top:582px;width:70px;height:140px"></div>
+    <div id="cupT" class="abs" data-ob="cup" style="left:900px;top:592px"></div>
+    <div class="chip" id="coinTag" data-ob="cointag" style="left:1380px;top:150px;color:#B9770E;font-size:28px">THE ₹10 COIN TEST</div>
+    <div class="pcard" id="ticket" data-ob="ticket" style="left:1300px;top:120px;width:540px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">TICKET · E-HSR</div><div class="h" style="font-size:36px;margin-top:6px;white-space:nowrap">Mumbai → Ahmedabad</div><div class="m" style="font-size:20px;color:#4a5070;margin-top:8px">COACH C1 · SEAT 10A</div><div style="height:46px"></div><div id="chk" class="abs" style="right:28px;bottom:30px;padding:4px 12px;border:5px solid #1F9D5A;border-radius:10px;color:#1F9D5A;font-family:Archivo;font-weight:900;font-size:30px;transform:rotate(-10deg)">CHECKED ✓</div></div>
+    <div id="host" class="abs" data-ob="host" data-bleed style="left:1440px;top:400px"></div>
+  </section>
+
+</div></div>
+<script type="module">
+import { trainWorld } from "../../../lib/train3d.js";
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+EX.journey(1, 7, "All aboard");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+tl.to(["#tag", "#prog"], { autoAlpha: 1, duration: 0.4 }, 0.2);
+const T = { s2: w("by india's") - 0.1, s3: w("so today") - 0.15, s4: w("and to prove") - 0.15, close: w("the doors") + 0.75 };
+const END = T.close + 1.2;
+
+// ================================================= S1: the map — Mumbai to Ahmedabad by car
+show("#s1", 0, T.s2 + 0.3, { y: 0 });
+const pinSvg = (c) => `<svg width="64" height="84" viewBox="0 0 64 84"><path d="M32 82 C 32 82, 4 48, 4 30 A28 28 0 0 1 60 30 C 60 48, 32 82, 32 82 Z" fill="${c}" stroke="#1B2340" stroke-width="4"/><circle cx="32" cy="30" r="11" fill="#fff"/></svg>`;
+$("#pinM").innerHTML = `${pinSvg("#F0566E")}<div class="pill">MUMBAI</div>`;
+$("#pinA").innerHTML = `${pinSvg("#12A4C4")}<div class="pill">AHMEDABAD</div>`;
+const RD = "M510 850 C 700 930, 860 760, 1000 740 S 1240 600, 1330 520 S 1470 330, 1540 280";
+$("#roadSvg").innerHTML = ISO.road(RD, { wd: 34, id: "road" });
+$("#car").innerHTML = `<svg width="150" height="90" viewBox="0 0 170 100" style="overflow:visible">${ISO.shadow(85, 92, 80, 8, 0.2)}<path d="M10 70 L14 46 Q20 38 34 36 L52 20 Q58 14 70 14 L112 14 Q124 14 132 24 L146 38 Q160 40 162 54 L162 70 Z" fill="#F0566E"/><path d="M58 22 L84 20 L84 38 L46 38 Z" fill="#BFE3F7"/><path d="M92 20 L110 20 Q118 20 124 28 L132 38 L92 38 Z" fill="#BFE3F7"/><circle cx="44" cy="72" r="14" fill="#1B2340"/><circle cx="130" cy="72" r="14" fill="#1B2340"/><circle cx="44" cy="72" r="5" fill="#C9D0DC"/><circle cx="130" cy="72" r="5" fill="#C9D0DC"/></svg>`;
+const road = $("#road"), RL = road.getTotalLength();
+const booth = `<svg width="90" height="100" viewBox="0 0 90 100" style="overflow:visible">${ISO.box(14, 30, 0, 50, 60, 24, "#F5A524")}<rect x="22" y="40" width="34" height="20" rx="4" fill="#BFE3F7"/>${ISO.box(4, 18, -4, 70, 14, 32, "#1B2340")}<rect x="64" y="70" width="60" height="8" rx="4" fill="#F0566E"/></svg>`;
+[0.2, 0.33, 0.46].forEach((f, i) => { const p = road.getPointAtLength(RL * f); $("#booths").insertAdjacentHTML("beforeend", `<div class="abs bth" data-ob="road" style="left:${p.x - 40}px;top:${p.y - 112}px">${booth}</div>`); });
+gsap.set(["#t1a", "#t1b", "#pinM", "#pinA", "#car", "#clock", "#ac1", "#ac2", ...$$(".bth")], { autoAlpha: 0 });
+draw(road, 0.15, 1.0); draw($$("#roadSvg path")[0], 0.15, 1.0); draw($$("#roadSvg path")[1], 0.15, 1.0);
+EX.drop("#pinM", 0.25, { from: -500 }); EX.drop("#pinA", 0.45, { from: -500 });
+(window.__trans = window.__trans || []).push([0.2, 1.1]);
+tl.fromTo("#t1a", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("ahmedabad") - 0.2);
+tl.fromTo("#t1b", { autoAlpha: 0, scale: 1.6, rotation: -6 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("five hundred"));
+sfx(w("five hundred"), "slam", { gain: 0.2 });
+// the car crawls along the road
+const tCar = w("by car");
+tl.set("#car", { autoAlpha: 1 }, tCar);
+tl.fromTo("#car", { motionPath: { path: road, align: road, alignOrigin: [0.5, 0.75], autoRotate: false, start: 0, end: 0 } }, { motionPath: { path: road, align: road, alignOrigin: [0.5, 0.75], autoRotate: false, start: 0, end: 0.52 }, duration: T.s2 - tCar, ease: "none", immediateRender: false }, tCar);
+for (let k = 0; k < 12; k++) tl.to("#car", { y: "+=" + (k % 2 ? -3 : 3), duration: 0.1 }, tCar + 0.2 + k * 0.3);
+pop("#clock", w("about eight"), { sfx: "tick", gain: 0.2 });
+REEL.onFrame((t) => { const v = Math.max(0, Math.min(8, Math.floor(((t - w("about eight")) / 0.4) * 8 + 1))); $("#hrs").textContent = t < w("about eight") ? 0 : v; });
+$$(".bth").forEach((b, i) => pop(b, w("three toll") + i * 0.18, { from: 0.4, sfx: "pop", gain: 0.12 }));
+pop("#ac1", w("one fight"), { sfx: "bloop", gain: 0.18 });
+pop("#ac2", w("about the") + 0.05, { sfx: "bloop", gain: 0.18 });
+REEL.shake($("#shake"), w("ac") + 0.1, 6);
+
+// ================================================= S2: a train blasts through -> real 3D shot
+EX.passBy(T.s2, { dur: 0.8 });
+show("#s2", T.s2, T.s3 + 0.4, { y: 0 });
+const W3 = trainWorld($("#c3"), { cars: 7 });
+const sm = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u));
+REEL.onFrame((t) => {
+  if (t < T.s2 - 0.1 || t > T.s3 + 0.5) return;
+  const u = t - T.s2;
+  const x = -95 + u * 89;                                  // 320 km/h
+  const k = sm((u - 1.6) / 2.6);
+  const cam = [Math.max(36, x - 26) + 30 * k, 1.6 + 7 * k, 9.5 + 40 * k];
+  const look = [x - 22 - 30 * k, 2.4, -0.5];
+  W3.frame({ x, cam, look, fov: 38 - 8 * k });
+});
+// speed streaks over the 3D shot
+$("#speedL").innerHTML = Array.from({ length: 12 }, (_, i) => `<div class="abs sl" style="left:0;top:${120 + ((i * 83) % 820)}px;width:${200 + (i % 4) * 90}px;height:4px;border-radius:2px;background:#fff;opacity:.55"></div>`).join("");
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; $$("#speedL .sl").forEach((el, i) => { el.style.transform = `translateX(${2200 - ((t * (2600 + i * 230) + i * 517) % 2600)}px)`; }); });
+gsap.set(["#open27", "#twoH", "#cric"], { autoAlpha: 0 });
+pop("#open27", w("opening from"), { sfx: "chime", gain: 0.15 });
+tl.fromTo("#twoH", { autoAlpha: 0, scale: 1.8, rotationX: 70 }, { autoAlpha: 1, scale: 1, rotationX: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, w("about two"));
+sfx(w("about two"), "impact", { gain: 0.3 });
+tl.fromTo("#cric", { autoAlpha: 0, rotation: 6, y: 60 }, { autoAlpha: 1, rotation: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("cricket innings") - 0.2);
+sfx(w("cricket innings") - 0.2, "paper", { gain: 0.25 });
+
+// ================================================= S3: seven coaches, seven secrets (whip pan in)
+tl.fromTo("#s2", { x: 0, filter: "blur(0px)" }, { x: -1920, filter: "blur(24px)", duration: 0.35, ease: "power3.in", immediateRender: false }, T.s3 - 0.2);
+show("#s3", T.s3 + 0.1, T.s4 + 0.5, { x: 400 });
+sfx(T.s3 - 0.2, "whoosh", { gain: 0.3, dur: 0.5 });
+(window.__trans = window.__trans || []).push([T.s3 - 0.25, T.s3 + 0.55]);
+$("#trainBox").innerHTML = ISO.bulletTrain({ w: 3700, cars: 7, id: "pt" });
+$("#city").innerHTML = ISO.city({ w: 1920, h: 290, color: "#C3D6F0", seed: 6 });
+$("#hills").innerHTML = Array.from({ length: 12 }, (_, i) => `<div class="abs" style="left:${i * 480}px;top:${50 + (i % 3) * 30}px;width:620px;height:300px;border-radius:50%;background:#B6DFC3"></div>`).join("");
+$("#piers").innerHTML = Array.from({ length: 24 }, (_, i) => `<div class="abs" style="left:${i * 240}px;top:0;width:70px;height:320px;background:linear-gradient(90deg,#D6DBE4,#EEF1F6 40%,#C2C9D5)"></div>`).join("");
+$("#masts").innerHTML = Array.from({ length: 16 }, (_, i) => `<div class="abs" style="left:${i * 360}px;top:0;width:16px;height:300px;background:#5C677E"></div><div class="abs" style="left:${i * 360 - 60}px;top:14px;width:120px;height:10px;background:#5C677E"></div>`).join("");
+$("#lines").innerHTML = Array.from({ length: 14 }, (_, i) => `<div class="abs sl3" style="left:0;top:${520 + ((i * 53) % 210)}px;width:${160 + (i % 4) * 60}px;height:4px;border-radius:2px;background:#fff;opacity:.7"></div>`).join("");
+// coach labels above each car (they ride with the train)
+const SECRETS = [["C1", "All aboard"], ["C2", "The nose"], ["C3", "The power"], ["C4", "The track"], ["C5", "Who drives?"], ["C6", "Stopping"], ["C7", "Arrival"]];
+const carW = 3700 / 7;
+$("#trainBox").insertAdjacentHTML("beforeend", SECRETS.map(([n, s], i) => `<div class="cl" style="left:${i * carW + carW / 2}px"><div class="n">${n}</div><div class="s">${s}</div></div>`).join(""));
+const cls = $$("#trainBox .cl");
+cls.forEach((c) => { gsap.set(c.children, { autoAlpha: 0 }); });
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.3 || t > T.s4 + 0.6) return;
+  const u = t - T.s3;
+  $("#hills").style.transform = `translateX(${-(u * 60) % 480}px)`;
+  $("#city").style.transform = `translateX(${-(u * 90) % 400}px)`;
+  $("#piers").style.transform = `translateX(${-(u * 1900) % 240}px)`;
+  $("#masts").style.transform = `translateX(${-(u * 2600) % 360}px)`;
+  $$("#lines .sl3").forEach((el, i) => { el.style.transform = `translateX(${2200 - ((u * (3000 + i * 200) + i * 400) % 2600)}px)`; });
+});
+// pan along the train (scene camera), nose first
+tl.fromTo("#trainBox", { x: 120 }, { x: -(3700 - 1920 + 160), duration: T.s4 - T.s3 - 0.4, ease: "sine.inOut", immediateRender: false }, T.s3 + 0.2);
+gsap.set(["#t3a", "#gauge"], { autoAlpha: 0 });
+tl.fromTo("#t3a", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("seven coaches"));
+cls.forEach((c, i) => { const t = w("seven coaches") + 0.1 + i * 0.12; tl.fromTo(c.children[0], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "back.out(2)", immediateRender: false }, t); sfx(t, "tick", { gain: 0.12 }); });
+cls.forEach((c, i) => { const t = w("seven secrets") + 0.1 + i * 0.12; tl.fromTo(c.children[1], { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, t); sfx(t, "pop", { gain: 0.1 }); });
+// a speedometer sweeping to 320
+$("#gauge").innerHTML = `<svg viewBox="0 0 330 240" width="330" height="240" style="overflow:visible">${ISO.shadow(165, 236, 150, 12, 0.18)}
+  <path d="M25 200 A140 140 0 0 1 305 200" stroke="#1B2340" stroke-width="34" fill="none" stroke-linecap="round"/>
+  <path id="gArc" d="M25 200 A140 140 0 0 1 305 200" stroke="#F5A524" stroke-width="20" fill="none" stroke-linecap="round"/>
+  ${Array.from({ length: 8 }, (_, i) => { const a = Math.PI - (i / 7) * Math.PI; return `<line x1="${165 + Math.cos(a) * 112}" y1="${200 - Math.sin(a) * 112}" x2="${165 + Math.cos(a) * 96}" y2="${200 - Math.sin(a) * 96}" stroke="#1B2340" stroke-width="5"/>`; }).join("")}
+  <g id="gNeedle"><path d="M161 200 L165 92 L169 200 Z" fill="#F0566E"/><circle cx="165" cy="200" r="14" fill="#1B2340"/></g>
+  <rect x="95" y="138" width="140" height="44" rx="10" fill="#fff" stroke="#1B2340" stroke-width="3"/><text id="gNum" x="165" y="170" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="28" fill="#1B2340">0</text>
+  <text x="165" y="232" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="#1B2340">KM/H</text></svg>`;
+const tG = w("cruise at");
+pop("#gauge", tG - 0.3, { from: 0.5, sfx: false });
+gsap.set("#gArc", { drawSVG: "0%" });
+tl.to("#gArc", { drawSVG: "91%", duration: 1.6, ease: "power2.out" }, tG);
+tl.fromTo("#gNeedle", { rotation: -90 }, { rotation: 74, svgOrigin: "165 200", duration: 1.6, ease: "power2.out", immediateRender: false }, tG);
+REEL.onFrame((t) => { const p = Math.max(0, Math.min(1, (t - tG) / 1.6)); $("#gNum").textContent = Math.round(320 * (1 - Math.pow(1 - p, 2))); });
+sfx(tG, "riser", { gain: 0.14, dur: 1.6 });
+
+// ================================================= S4: dive through a window into the coach
+EX.dive("#s3", "#s4", T.s4, 960, 600);
+gsap.set("#s4", { autoAlpha: 0 });
+$("#wHills").innerHTML = Array.from({ length: 10 }, (_, i) => `<div class="abs" style="left:${i * 440}px;top:${(i % 3) * 25}px;width:560px;height:260px;border-radius:50%;background:#B6DFC3"></div>`).join("");
+$("#wTrees").innerHTML = Array.from({ length: 30 }, (_, i) => `<div class="abs" style="left:${i * 150 + (i % 3) * 30}px;top:${(i % 2) * 40}px">${ISO.tree({ h: 140 + (i % 3) * 40 })}</div>`).join("");
+$("#wPoles").innerHTML = Array.from({ length: 14 }, (_, i) => `<div class="abs" style="left:${i * 320}px;top:0;width:18px;height:430px;background:#5C677E"></div>`).join("") + `<div class="abs" style="left:0;top:40px;width:4400px;height:4px;background:#3B4566"></div>`;
+REEL.onFrame((t) => {
+  if (t < T.s4 - 0.5) return;
+  const u = t - T.s4;
+  $("#wHills").style.transform = `translateX(${-(u * 80) % 440}px)`;
+  $("#wTrees").style.transform = `translateX(${-(u * 900) % 900}px)`;
+  $("#wPoles").style.transform = `translateX(${-(u * 2800) % 320}px)`;
+});
+// the coin, edge-on, standing on the tray table
+$("#coin").innerHTML = `<svg viewBox="0 0 70 140" width="70" height="140" style="overflow:visible"><ellipse cx="35" cy="138" rx="30" ry="5" fill="#1B2340" opacity=".2"/><rect x="14" y="4" width="42" height="132" rx="21" fill="#D98F12"/><rect x="20" y="4" width="30" height="132" rx="15" fill="#F5B83A"/><rect x="26" y="14" width="6" height="110" rx="3" fill="#FFE9A8" opacity=".8"/></svg>`;
+$("#cupT").innerHTML = ART.chai({ w: 90, id: "ct" });
+$("#host").innerHTML = ART.host({ w: 340, id: "h", cap: true, shirt: "#1B2340" });
+gsap.set(["#coin", "#cupT", "#coinTag", "#ticket", "#chk", "#host"], { autoAlpha: 0 });
+const tCoin = w("i've balanced");
+tl.fromTo("#coin", { autoAlpha: 1, y: -260, rotation: 20 }, { y: 0, rotation: 0, duration: 0.5, ease: "bounce.out", immediateRender: false }, tCoin);
+sfx(tCoin + 0.35, "coin", { gain: 0.3 });
+for (let k = 0; k < 20; k++) tl.to("#coin", { rotation: k % 2 ? -1.2 : 1.2, transformOrigin: "50% 100%", duration: 0.18, ease: "sine.inOut" }, tCoin + 0.6 + k * 0.18);
+pop("#coinTag", w("to prove"), { sfx: "chime", gain: 0.15 });
+pop("#cupT", w("owe you"), { from: 0.4 });
+every(w("owe you"), END, 0.45, (t) => tl.fromTo("#ctSteam", { y: 0, opacity: 0.9 }, { y: -22, opacity: 0, duration: 0.45, ease: "none", immediateRender: false }, t));
+tl.fromTo("#host", { autoAlpha: 1, x: 520 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, w("to prove") - 0.3);
+PAPER.lipSync($("#hMouth"), { from: w("to prove") - 0.3, open: 18 });
+PAPER.blink($("#hEyes"), [w("smooth") + 0.2, w("falls") + 0.3, w("tickets") + 0.4]);
+tl.to("#hBrowL", { y: -10, duration: 0.15, yoyo: true, repeat: 1 }, w("falls"));
+// tickets please
+tl.to("#coinTag", { autoAlpha: 0, duration: 0.2 }, w("i'm your") - 0.25);
+tl.fromTo("#ticket", { autoAlpha: 0, rotation: -8, y: -60 }, { autoAlpha: 1, rotation: -2, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("i'm your"));
+sfx(w("i'm your"), "paper", { gain: 0.25 });
+tl.to("#hArm", { keyframes: { rotation: [-16, 10, 0] }, svgOrigin: "300 450", duration: 0.6 }, w("check tickets"));
+tl.fromTo("#chk", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, w("tickets"));
+sfx(w("tickets") + 0.14, "stamp", { gain: 0.45 });
+// doors closing -> next coach
+EX.doors(T.close, { mode: "close", sign: "NEXT · COACH C2 · THE NOSE" });
+
+REEL.finish(END);
+</script>
+</body></html>

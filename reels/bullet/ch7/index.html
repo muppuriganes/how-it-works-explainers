@@ -1,0 +1,135 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bullet Ch7 Arrival</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.rc{position:absolute;width:520px;height:300px;padding:0}
+.rc .art{position:absolute;left:0;right:0;top:26px;height:180px;display:flex;align-items:center;justify-content:center}
+.rc .cap{position:absolute;left:0;right:0;top:214px;text-align:center;font-family:Archivo;font-weight:900;font-stretch:76%;font-size:40px;text-transform:uppercase;color:#1B2340;white-space:nowrap}
+.rc .cn{position:absolute;left:22px;top:18px;padding:4px 10px;border-radius:8px;background:#1B2340;color:#FFB547;font-family:"JetBrains Mono";font-weight:800;font-size:18px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#fff;color:#1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:18px;white-space:nowrap;box-shadow:0 6px 14px rgba(27,35,64,.14)}
+.pill b{color:#22B573}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/journey.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: the recap -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#E3DCFA 0%,#F4F1FD 100%)"></div>
+    <div class="lbl x3d" id="s1t" data-ob="s1t" style="left:100px;top:100px;font-size:96px;--xf:#fff">6 secrets, <span style="color:#7B61FF">one ride</span></div>
+    <div class="rc pcard" id="r1" data-ob="r1" style="left:110px;top:230px"><div class="cn">C2</div><div class="art" id="a1"></div><div class="cap">A beak for a nose</div></div>
+    <div class="rc pcard" id="r2" data-ob="r2" style="left:700px;top:230px"><div class="cn">C3</div><div class="art" id="a2"></div><div class="cap">Power from a wire</div></div>
+    <div class="rc pcard" id="r3" data-ob="r3" style="left:1290px;top:230px"><div class="cn">C3</div><div class="art" id="a3"></div><div class="cap">Motors everywhere</div></div>
+    <div class="rc pcard" id="r4" data-ob="r4" style="left:110px;top:590px"><div class="cn">C4</div><div class="art" id="a4"></div><div class="cap">A bridge in the sky</div></div>
+    <div class="rc pcard" id="r5" data-ob="r5" style="left:700px;top:590px"><div class="cn">C5</div><div class="art" id="a5"></div><div class="cap">Signals in the cab</div></div>
+    <div class="rc pcard" id="r6" data-ob="r6" style="left:1290px;top:590px"><div class="cn">C6</div><div class="art" id="a6"></div><div class="cap">Quake listeners</div></div>
+  </section>
+
+  <!-- S2: real 3D — arriving at Ahmedabad -->
+  <section class="scene" id="s2">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="chip" id="movie" data-ob="movie" style="left:110px;top:120px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:30px">MUMBAI → AHMEDABAD · FASTER THAN ONE LONG MOVIE</div>
+    <div class="pcard" id="coinCard" data-ob="coin" style="left:1380px;top:200px;width:430px;text-align:center"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">THE ₹10 COIN TEST</div><svg id="coinArt" width="380" height="190" viewBox="0 0 380 190"></svg><div class="h" id="still" style="font-size:40px;color:#1F9D5A">Still standing ✓</div><div class="serif" id="owe" style="font-size:30px;color:#4a5070;margin-top:4px">no chai owed.</div></div>
+  </section>
+
+  <!-- S3: the end card -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 35%,#FFFFFF 0%,#DDEBFB 60%,#C9DCF7 100%)"></div>
+    <div id="cityE" class="abs" style="left:0;top:560px;opacity:.75"></div>
+    <div class="abs" style="left:0;top:880px;width:1920px;height:200px;background:#E9EDF3"></div>
+    <div class="abs" style="left:0;top:880px;width:1920px;height:26px;background:repeating-linear-gradient(90deg,#F5C33B 0 60px,#1B2340 60px 80px)"></div>
+    <div class="abs" style="left:0;right:0;top:150px;text-align:center">
+      <div class="m" id="e1" data-ob="e1" style="display:inline-block;font-size:26px;letter-spacing:.34em;color:#12A4C4">HOW IT WORKS</div><br>
+      <div class="big x3d" id="e2" data-ob="e2" style="display:inline-block;font-size:120px;margin-top:18px;--xf:#fff">The <span style="color:#3E7BFA">bullet train</span></div><br>
+      <div class="serif" id="e3" data-ob="e3" style="display:inline-block;font-size:76px;margin-top:22px;color:#E0324B">Thanks for riding</div><br>
+      <div id="eRoad" data-ob="eroad" style="display:inline-flex;gap:10px;margin-top:30px"></div>
+    </div>
+    <div id="host" class="abs" data-ob="host" style="left:110px;top:566px"></div>
+    <div class="chip" id="gap" data-ob="gap" style="left:1460px;top:800px;color:#1B2340;background:#F5C33B;border-color:#F5C33B;font-size:30px">MIND THE GAP</div>
+  </section>
+
+</div></div>
+<script type="module">
+import { trainWorld } from "../../../lib/train3d.js";
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, show, every, pop, rise, draw } = EX;
+const { ART } = PAPER;
+EX.coachStart(7, 7, "Arrival");
+const T = { s2: w("all of that") - 0.15, close: w("we have") + 0.6 };
+T.open = T.close + 0.9;
+const END = W.last() + 4.0;
+const sm = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u));
+
+// ================================================= S1: the recap grid
+show("#s1", 0, T.s2 + 0.3, { y: 0 });
+$("#a1").innerHTML = `<div style="position:relative;width:420px;height:170px"><div class="abs" style="left:150px;top:0;transform:scaleX(-1)">${EX.kingfisher(170)}</div><div class="abs" style="left:0;top:96px;width:420px;height:80px;overflow:hidden"><div style="position:absolute;left:0">${ISO.bulletTrain({ w: 840, cars: 3, id: "ra" })}</div></div></div>`;
+$("#a2").innerHTML = `<svg width="300" height="170" viewBox="0 0 300 170"><line x1="0" y1="20" x2="300" y2="20" stroke="#1B2340" stroke-width="5"/><path d="M110 150 L190 90 L120 26" stroke="#5C677E" stroke-width="10" fill="none" stroke-linejoin="round"/><rect x="80" y="18" width="80" height="10" rx="4" fill="#1B2340"/><rect x="70" y="146" width="160" height="16" rx="6" fill="#2A3350"/><g transform="translate(150 16)"><circle r="8" fill="#fff" stroke="#FFC93D" stroke-width="4"/></g></svg>`;
+$("#a3").innerHTML = `<svg width="340" height="150" viewBox="0 0 340 150">${[0, 1, 2, 3].map((i) => `<g transform="translate(${45 + i * 84} 75)"><g fill="#F5A524">${Array.from({ length: 8 }, (_, k) => `<rect x="-6" y="-34" width="12" height="16" rx="3" transform="rotate(${k * 45})"/>`).join("")}<circle r="22"/></g><circle r="9" fill="#fff"/></g>`).join("")}</svg>`;
+$("#a4").innerHTML = `<svg width="420" height="170" viewBox="0 0 420 170"><rect x="0" y="40" width="420" height="22" fill="#C9D0DC"/><rect x="0" y="32" width="420" height="10" fill="#9AA3B4"/>${[30, 150, 270, 390].map((x) => `<rect x="${x - 14}" y="62" width="28" height="108" fill="#D6DBE4"/>`).join("")}<path d="M0 170 L420 170" stroke="#5DBB72" stroke-width="10"/></svg>`;
+$("#a5").innerHTML = `<div style="width:300px;height:150px;border-radius:16px;background:#0B1122;border:5px solid #3B4566;position:relative"><div class="abs" style="left:20px;top:16px;font-family:'JetBrains Mono';font-weight:800;font-size:64px;color:#5BE49B">320</div><div class="abs" style="left:20px;top:110px;right:20px;height:16px;display:flex;gap:4px">${Array.from({ length: 8 }, (_, i) => `<div style="flex:1;border-radius:4px;background:${i === 5 ? "#FFB547" : "#5BE49B"}"></div>`).join("")}</div></div>`;
+$("#a6").innerHTML = `<svg width="380" height="160" viewBox="0 0 380 160"><path d="M0 80 L60 80 L80 30 L100 130 L120 50 L140 110 L160 70 L180 90 L200 80 L380 80" stroke="#E0324B" stroke-width="7" fill="none" stroke-linejoin="round"/>${[230, 290, 350].map((x) => `<rect x="${x - 14}" y="66" width="28" height="28" rx="7" fill="#F5A524" stroke="#fff" stroke-width="4"/>`).join("")}</svg>`;
+gsap.set(["#s1t", "#r1", "#r2", "#r3", "#r4", "#r5", "#r6"], { autoAlpha: 0 });
+rise("#s1t", w("last coach"));
+[["#r1", w("a beak")], ["#r2", w("power from")], ["#r3", w("motors spread")], ["#r4", w("concrete track")], ["#r5", w("signals inside")], ["#r6", w("and seismometers")]].forEach(([id, t], i) => {
+  tl.fromTo(id, { autoAlpha: 0, y: 80, rotation: i % 2 ? 6 : -6, scale: 0.85 }, { autoAlpha: 1, y: 0, rotation: i % 2 ? 1 : -1, scale: 1, duration: 0.45, ease: "back.out(1.7)", immediateRender: false }, t);
+  sfx(t, "paper", { gain: 0.2 });
+});
+for (let k = 0; k < 12; k++) tl.to("#a3 g g", { rotation: "+=45", transformOrigin: "50% 50%", duration: 0.25 }, w("motors spread") + k * 0.3);
+
+// ================================================= S2: real 3D arrival (a train streaks past)
+EX.passBy(T.s2);
+show("#s2", T.s2, T.close + 0.1, { y: 0 });
+const W3 = trainWorld($("#c3"), { cars: 6 });
+const tArr = T.s2, dB = 6.0;   // braking from ~32 m/s to a stop over 6 s
+REEL.onFrame((t) => {
+  if (t < T.s2 - 0.1 || t > T.close + 0.2) return;
+  const u = Math.max(0, Math.min(dB, t - tArr)), x = -136 + 32 * u - (32 / (2 * dB)) * u * u;
+  const k = sm((t - tArr) / 7);
+  W3.frame({ x, cam: [-20 - 6 * k, 2.7, 7.6], look: [-60 + 8 * k, 2.0, -0.6], fov: 44, env: "station" });
+});
+$("#coinArt").innerHTML = `<rect x="20" y="150" width="340" height="16" rx="6" fill="#E3E7EE"/><rect x="20" y="166" width="340" height="8" fill="#B9C2D2"/><g transform="translate(190 150)"><rect x="-20" y="-120" width="40" height="120" rx="20" fill="#D98F12"/><rect x="-14" y="-120" width="28" height="120" rx="14" fill="#F5B83A"/><rect x="-8" y="-110" width="6" height="100" rx="3" fill="#FFE9A8"/></g>`;
+gsap.set(["#movie", "#coinCard", "#still", "#owe"], { autoAlpha: 0 });
+pop("#movie", w("faster than") - 0.2, { sfx: "chime", gain: 0.18 });
+tl.fromTo("#coinCard", { autoAlpha: 0, y: -60, rotation: 6 }, { autoAlpha: 1, y: 0, rotation: 2, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("the ten rupee") - 0.1);
+sfx(w("the ten rupee"), "paper", { gain: 0.25 });
+tl.fromTo("#still", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, w("still standing"));
+sfx(w("still standing"), "ding", { gain: 0.3 });
+rise("#owe", w("i don't"));
+
+// ================================================= arrival: doors close, then open onto the end card
+EX.doors(T.close, { mode: "close", sign: "ARRIVED · AHMEDABAD", until: T.open + 0.05 });
+EX.doors(T.open, { mode: "open", sign: "ARRIVED · AHMEDABAD", from: T.open - 0.02 });
+show("#s3", T.open - 0.05, null, { y: 0 });
+$("#cityE").innerHTML = ISO.city({ w: 1920, h: 330, color: "#BCD2F2", seed: 5 });
+const CH = ["All aboard", "The nose", "The power", "The track", "Who drives?", "Stopping", "Arrival"];
+$("#eRoad").innerHTML = CH.map((c, i) => `<div class="pill"><b>✓</b>C${i + 1} · ${c}</div>`).join("");
+$("#host").innerHTML = ART.host({ w: 300, id: "h", cap: true, shirt: "#1B2340" });
+gsap.set(["#e1", "#e2", "#e3", "#host", "#gap", ...$$("#eRoad .pill")], { autoAlpha: 0 });
+const tE = T.open + 0.3;
+rise("#e1", tE); tl.fromTo("#e2", { autoAlpha: 0, scale: 1.5, rotationX: 60 }, { autoAlpha: 1, scale: 1, rotationX: 0, duration: 0.5, ease: "back.out(1.8)", immediateRender: false }, tE + 0.15);
+rise("#e3", tE + 0.5); sfx(tE + 0.2, "chime", { gain: 0.22 });
+$$("#eRoad .pill").forEach((p, i) => { tl.fromTo(p, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "back.out(2)", immediateRender: false }, tE + 0.9 + i * 0.1); });
+tl.fromTo("#host", { autoAlpha: 1, x: -420 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, tE + 0.2);
+PAPER.lipSync($("#hMouth"), { from: T.open, open: 18 });
+tl.to("#hArm", { keyframes: { rotation: [-18, 10, -18, 10, 0] }, svgOrigin: "300 450", duration: 1.2 }, w("mind the") - 0.3);
+pop("#gap", w("mind the"), { sfx: "beep", gain: 0.2 });
+
+REEL.finish(END);
+</script>
+</body></html>

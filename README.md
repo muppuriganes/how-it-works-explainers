@@ -10,11 +10,19 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 
 | Video | Length | File | Chapters |
 | --- | --- | --- | --- |
+| **How India's bullet train works** | 3:36 | [`reels/bullet/final.mp4`](reels/bullet/final.mp4) | C1 All aboard · C2 The nose · C3 The power · C4 The track · C5 Who drives? · C6 Stopping · C7 Arrival |
 | **How UPI works — where your ₹10 actually goes** | 3:41 | [`reels/upi/final.mp4`](reels/upi/final.mp4) | The ₹10 chai · Meet the gang · The 2-second journey · The PIN · Why is it free? · Money debited, payment failed · The big picture |
 | **How a phone call connects** | 6:00 | [`reels/phonecall/final.mp4`](reels/phonecall/final.mp4) | One hello · Your voice becomes numbers · Into the air · Finding your friend · Across the world · Back into a voice · All together |
 | **METER** (short product reel) | 0:45 | [`reels/meter/final.mp4`](reels/meter/final.mp4) · [9:16](reels/meter/final_9x16.mp4) | single scene |
 
 Script for the UPI explainer: [`reels/upi/SCRIPT.md`](reels/upi/SCRIPT.md). Every chapter keeps its narration in `audio/script.txt`.
+
+### The bullet train explainer — a train journey
+- Every chapter is a **coach**: chapters end with sliding train doors and an LED "NEXT · COACH" sign, and the next one opens the same doors. A route map (Mumbai → Ahmedabad) in the corner moves one stop per coach.
+- **Real 3D** (three.js, [`lib/train3d.js`](lib/train3d.js)) for 4–5 "wow" shots: the train blasting past on a twin-track viaduct, a nose orbit, the pantograph on the wire, the undersea tunnel under Thane Creek, and the arrival at Ahmedabad station. Everything that explains something stays in the cleaner picture style.
+- Inside a coach, scenes change with a passing-train wipe, a dive through a window, an iris, or a 3D cube turn ([`lib/journey.js`](lib/journey.js)).
+- Running gag: a ₹10 coin standing on the tray table — still standing at the end.
+- Facts checked against NHSRCL / PIB / news sources (508 km, 12 stations, 320 km/h, J-slab, 2×25 kV, 28 seismometers, ~7 km undersea tunnel, opening from 2027).
 
 ### Look of the UPI explainer (v2)
 - Soft, low-contrast backgrounds with dark ink text; subtitles in a white pill.
@@ -31,7 +39,9 @@ lib/        engine + art
   explainer.js   chapter chrome, word-synced subtitles, scene helpers, paper tear/fold
   explainer2.js  v2: light theme, illustrated chapter cards, stripes/iris/coin/cube/dive transitions
   iso.js         "3D picture" illustration kit (oblique-projection shaded solids)
-  cast.js        the simple host character
+  cast.js        the simple host character (optional conductor cap)
+  train3d.js     real 3D bullet train world (three.js): lofted kingfisher-nose train, viaduct, catenary, tunnel, station
+  journey.js     train-journey kit: route-map chrome, coach doors, passing-train wipe, kingfisher art
   paper.js       cast art (referee, you, chai, QR...), lip sync, blink
   fonts/ vendor/ self-hosted fonts and GSAP
 tools/

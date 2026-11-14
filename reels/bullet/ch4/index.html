@@ -1,0 +1,169 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bullet Ch4 The track</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.no{position:absolute;padding:8px 18px;border:6px solid #E0324B;border-radius:12px;color:#E0324B;background:rgba(255,255,255,.92);font-family:Archivo;font-weight:900;font-stretch:72%;font-size:36px;text-transform:uppercase;white-space:nowrap}
+.panel{position:absolute;top:250px;width:800px;height:620px;border-radius:30px;background:rgba(255,255,255,.55);box-shadow:0 18px 40px rgba(27,35,64,.10)}
+.ptl{position:absolute;left:0;right:0;top:30px;text-align:center;font-family:Archivo;font-weight:900;font-stretch:72%;font-size:54px;text-transform:uppercase;color:#1B2340}
+.lay{position:absolute;font-family:"JetBrains Mono";font-weight:800;font-size:22px;letter-spacing:.06em;color:#1B2340;white-space:nowrap;padding:6px 14px;border-radius:999px;background:#fff;box-shadow:0 6px 14px rgba(27,35,64,.14)}
+.utsWord{position:absolute;font-family:Archivo;font-weight:900;font-stretch:72%;font-size:150px;color:#fff;text-transform:uppercase;text-shadow:6px 6px 0 #1B2340}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/journey.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: stones vs concrete -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#FFF0C2 0%,#FFF8E6 100%)"></div>
+    <div class="panel" id="pL" data-ob="pl" style="left:120px"><div class="ptl">Normal train</div><svg id="stones" class="abs" style="left:0;top:0" width="800" height="620"></svg></div>
+    <div class="panel" id="pR" data-ob="pr" style="left:1000px"><div class="ptl">Bullet train</div><svg id="conc" class="abs" style="left:0;top:0" width="800" height="620"></svg></div>
+    <div class="chip" id="cS" data-ob="pl" style="left:390px;top:800px;color:#B9770E;font-size:30px">STONES (BALLAST)</div>
+    <div class="chip" id="cC" data-ob="pr" style="left:1280px;top:800px;color:#3E7BFA;font-size:30px">CONCRETE</div>
+  </section>
+
+  <!-- S2: J-slab, exploded -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#DDEBFB 0%,#F0F5FD 100%)"></div>
+    <div class="lbl x3d" id="s2t" data-ob="s2t" style="left:100px;top:110px;font-size:96px;--xf:#fff">J-slab <span style="color:#3E7BFA">track</span></div>
+    <div id="slab" class="abs" data-ob="slab" style="left:260px;top:226px;width:1000px;height:640px"></div>
+    <div class="lay" id="L4" data-ob="l4" style="left:1270px;top:330px">RAILS + FASTENERS</div>
+    <div class="lay" id="L3" data-ob="l3" style="left:1270px;top:460px">PRECAST CONCRETE SLAB</div>
+    <div class="lay" id="L2" data-ob="l2" style="left:1270px;top:590px">CEMENT-ASPHALT MORTAR</div>
+    <div class="lay" id="L1" data-ob="l1" style="left:1270px;top:720px">CONCRETE TRACK BED</div>
+    <div class="pcard" id="first" data-ob="first" style="left:1290px;top:100px;width:540px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">FROM JAPAN'S SHINKANSEN</div><div class="h" style="font-size:34px;margin-top:6px">First time in India</div></div>
+    <div class="chip" id="noBump" data-ob="nobump" style="left:110px;top:884px;color:#1F9D5A;font-size:32px">NO STONES TO SHIFT → NO BUMPS ✓</div>
+  </section>
+
+  <!-- S3: a bridge in the sky -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 100%)"></div>
+    <div id="city3" class="abs" style="left:0;top:330px"></div>
+    <div class="abs" style="left:0;top:700px;width:1920px;height:380px;background:linear-gradient(180deg,#CFE9D3,#BFE0C6)"></div>
+    <div id="piers3" class="abs" style="left:0;top:470px;width:1920px;height:240px"></div>
+    <div class="abs" style="left:0;top:432px;width:1920px;height:44px;background:linear-gradient(180deg,#E9EDF3,#C9D0DC);box-shadow:0 10px 0 rgba(27,35,64,.10)"></div>
+    <div id="tr3" class="abs" data-ob="tr3" data-bleed style="left:0;top:300px"></div>
+    <svg id="ruler" class="abs" data-ob="ruler" style="left:1700px;top:506px;overflow:visible" width="120" height="200"><path d="M60 0 L60 196 M40 0 L80 0 M40 196 L80 196" stroke="#1B2340" stroke-width="5"/><text x="74" y="108" font-family="JetBrains Mono" font-weight="800" font-size="24" fill="#1B2340">10–15 m</text></svg>
+    <div class="lbl x3d" id="s3t" data-ob="s3t" style="left:100px;top:110px;font-size:96px;--xf:#fff"><span style="color:#F5A524">90%+</span> on a bridge</div>
+    <div id="lx" class="abs" data-ob="g1" style="left:160px;top:640px"></div>
+    <div id="cow" class="abs" data-ob="g2" style="left:780px;top:690px"></div>
+    <div id="uncle" class="abs" data-ob="g3" style="left:1300px;top:640px"></div>
+    <div class="no" id="x1" data-ob="g1" style="left:150px;top:850px;transform:rotate(-5deg)">No level crossings</div>
+    <div class="no" id="x2" data-ob="g2" style="left:760px;top:850px;transform:rotate(4deg)">No cows</div>
+    <div class="no" id="x3" data-ob="g3" style="left:1250px;top:850px;transform:rotate(-3deg)">No scooter uncle</div>
+  </section>
+
+  <!-- S4: real 3D — under the sea -->
+  <section class="scene" id="s4">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="pcard" id="sea" data-ob="sea" style="left:110px;top:120px;width:640px"><div class="tape"></div><div class="m" style="font-size:18px;color:#8a7f6a">NEAR MUMBAI · THANE CREEK</div><svg id="seaArt" width="572" height="230" viewBox="0 0 572 230" style="margin-top:8px"></svg><div class="h" style="font-size:36px;margin-top:4px">~7 km tunnel under the sea</div></div>
+    <div class="utsWord" id="u1" data-ob="uts" style="left:880px;top:180px">Under.</div>
+    <div class="utsWord" id="u2" data-ob="uts" style="left:1000px;top:360px">The.</div>
+    <div class="utsWord" id="u3" data-ob="uts" style="left:1110px;top:540px;color:#7FD3FF">Sea.</div>
+  </section>
+
+</div></div>
+<script type="module">
+import { trainWorld } from "../../../lib/train3d.js";
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, show, every, pop, rise, draw } = EX;
+const { ART } = PAPER;
+EX.coachStart(4, 7, "The track");
+const T = { s2: w("the rails sit") - 0.2, s3: w("and more than") - 0.2, s4: w("oh and near") - 0.15, close: W.last() + 1.8 };
+const END = T.close + 0.9;
+const sm = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u));
+
+// ================================================= S1: stones vs concrete
+show("#s1", 0, T.s2 + 0.3, { y: 0 });
+const r = rng(4);
+const RAILS = (y) => `<rect x="120" y="${y - 40}" width="560" height="22" rx="4" fill="#9AA3B4"/><rect x="120" y="${y - 22}" width="560" height="10" fill="#7A859C"/>`;
+$("#stones").innerHTML = `<g id="sleepers">${[0, 1, 2, 3, 4].map((i) => `<rect x="${150 + i * 110}" y="440" width="70" height="26" rx="4" fill="#8A5A3B"/>`).join("")}</g>${RAILS(440)}<g id="pile">${Array.from({ length: 90 }, (_, i) => { const x = 110 + r() * 580, y = 470 + r() * 90; return `<circle class="st" cx="${x}" cy="${y}" r="${10 + r() * 10}" fill="${["#B8BEC9", "#9AA3B4", "#C9CED8", "#8A93A6"][i % 4]}"/>`; }).join("")}</g>`;
+$("#conc").innerHTML = `<g id="cs">${ISO.box(110, 470, 0, 560, 90, 60, "#C3CAD6")}${ISO.box(150, 440, 0, 480, 30, 50, "#DDE2EA")}</g>${RAILS(440)}`;
+gsap.set(["#cS", "#cC", "#pL", "#pR", ...$$("#pile .st"), "#cs"], { autoAlpha: 0 });
+pop("#pL", w("normal trains") - 0.2, { from: 0.8, sfx: "pop", gain: 0.12 });
+$$("#pile .st").forEach((s, i) => tl.fromTo(s, { autoAlpha: 1, y: -400 }, { y: 0, duration: 0.35, ease: "bounce.out", immediateRender: false }, w("bed of") + (i % 30) * 0.02));
+sfx(w("bed of") + 0.2, "clunk", { gain: 0.25 }); sfx(w("stones"), "clunk", { gain: 0.2 });
+pop("#cS", w("stones") + 0.2, { sfx: false });
+pop("#pR", w("bullet trains") - 0.2, { from: 0.8, sfx: "pop", gain: 0.12 });
+tl.fromTo("#cs", { autoAlpha: 1, y: -300 }, { y: 0, duration: 0.45, ease: "bounce.out", immediateRender: false }, w("concrete") - 0.2);
+sfx(w("concrete"), "slam", { gain: 0.25 });
+pop("#cC", w("concrete") + 0.2, { sfx: false });
+
+// ================================================= S2: J-slab, exploded (dive into the concrete)
+EX.dive("#s1", "#s2", T.s2, 1400, 560);
+gsap.set("#s2", { autoAlpha: 0 });
+const L = [
+  ISO.box(60, 520, 0, 760, 70, 230, "#B6BDC9"),
+  ISO.box(80, 470, 10, 720, 22, 210, "#F5C33B"),
+  ISO.box(100, 400, 20, 680, 60, 190, "#DDE2EA"),
+  `${ISO.box(150, 362, 60, 580, 16, 14, "#7A859C")}${ISO.box(150, 362, 150, 580, 16, 14, "#7A859C")}${[0, 1, 2, 3, 4, 5].map((i) => ISO.box(170 + i * 100, 384, 52, 30, 12, 120, "#2A3350")).join("")}`,
+];
+$("#slab").innerHTML = `<svg width="1000" height="640" viewBox="0 0 1000 640" style="overflow:visible">${ISO.shadow(470, 610, 420, 26, 0.18)}${L.map((g, i) => `<g class="ly" id="ly${i}">${g}</g>`).join("")}</svg>`;
+gsap.set(["#s2t", "#first", "#noBump", "#L1", "#L2", "#L3", "#L4", ...$$(".ly")], { autoAlpha: 0 });
+rise("#s2t", T.s2 + 0.3);
+const lt = [w("solid concrete"), w("slabs"), w("a japanese"), w("called j")];
+$$(".ly").forEach((g, i) => { tl.fromTo(g, { autoAlpha: 1, y: -260 - i * 40 }, { y: -(3 - i) * 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, lt[i]); sfx(lt[i] + 0.3, "clunk", { gain: 0.2 }); });
+["#L1", "#L2", "#L3", "#L4"].forEach((id, i) => tl.fromTo(id, { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.3, immediateRender: false }, lt[i] + 0.25));
+tl.fromTo("#first", { autoAlpha: 0, rotation: 6, y: -40 }, { autoAlpha: 1, rotation: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("used in india"));
+sfx(w("used in india"), "chime", { gain: 0.2 });
+pop("#noBump", w("no stones"), { sfx: "ding", gain: 0.18 });
+
+// ================================================= S3: the bridge in the sky (a train streaks past)
+EX.passBy(T.s3);
+tl.set("#s2", { autoAlpha: 0 }, T.s3 + 0.2);
+show("#s3", T.s3, T.s4 + 0.4, { y: 0 });
+$("#city3").innerHTML = ISO.city({ w: 1920, h: 370, color: "#C3D6F0", seed: 12 });
+$("#piers3").innerHTML = Array.from({ length: 9 }, (_, i) => `<div class="abs" style="left:${80 + i * 240}px;top:0;width:70px;height:240px;background:linear-gradient(90deg,#D6DBE4,#EEF1F6 40%,#C2C9D5)"></div>`).join("");
+$("#tr3").innerHTML = `<div style="transform:scaleX(-1);width:2600px">${ISO.bulletTrain({ w: 2600, cars: 5, id: "t3" })}</div>`;
+$("#lx").innerHTML = `<svg width="260" height="200" viewBox="0 0 260 200" style="overflow:visible"><rect x="20" y="40" width="22" height="160" fill="#5C677E"/><rect x="40" y="60" width="210" height="22" rx="6" fill="#fff" stroke="#E0324B" stroke-width="4"/>${[0, 1, 2, 3, 4].map((i) => `<rect x="${52 + i * 42}" y="60" width="20" height="22" fill="#E0324B"/>`).join("")}<g transform="translate(31 30)"><rect x="-26" y="-6" width="52" height="12" rx="3" fill="#F5A524" transform="rotate(35)"/><rect x="-26" y="-6" width="52" height="12" rx="3" fill="#F5A524" transform="rotate(-35)"/></g></svg>`;
+$("#cow").innerHTML = `<svg width="260" height="160" viewBox="0 0 260 160" style="overflow:visible"><ellipse cx="130" cy="150" rx="110" ry="8" fill="#1B2340" opacity=".15"/><rect x="40" y="40" width="160" height="70" rx="30" fill="#fff" stroke="#1B2340" stroke-width="4"/><circle cx="90" cy="64" r="16" fill="#1B2340"/><circle cx="150" cy="90" r="12" fill="#1B2340"/>${[60, 90, 160, 185].map((x) => `<rect x="${x}" y="100" width="14" height="46" rx="5" fill="#fff" stroke="#1B2340" stroke-width="4"/>`).join("")}<ellipse cx="220" cy="60" rx="34" ry="28" fill="#fff" stroke="#1B2340" stroke-width="4"/><ellipse cx="240" cy="72" rx="16" ry="12" fill="#F4A6A6"/><circle cx="214" cy="52" r="5" fill="#1B2340"/><path d="M204 34 l-8 -16 M232 34 l8 -16" stroke="#C98A1A" stroke-width="6" stroke-linecap="round"/><path d="M40 60 q-26 10 -22 40" stroke="#1B2340" stroke-width="5" fill="none"/></svg>`;
+$("#uncle").innerHTML = `<svg width="300" height="210" viewBox="0 0 300 210" style="overflow:visible"><ellipse cx="150" cy="200" rx="120" ry="8" fill="#1B2340" opacity=".15"/><path d="M60 150 Q 70 110 120 110 L 200 110 Q 240 110 246 150 Z" fill="#F0566E"/><rect x="220" y="70" width="12" height="60" fill="#5C677E"/><rect x="206" y="64" width="44" height="10" rx="4" fill="#1B2340"/><circle cx="84" cy="168" r="26" fill="#1B2340"/><circle cx="226" cy="168" r="26" fill="#1B2340"/><circle cx="84" cy="168" r="10" fill="#9AA3B4"/><circle cx="226" cy="168" r="10" fill="#9AA3B4"/>
+  <rect x="128" y="60" width="54" height="60" rx="16" fill="#3E7BFA"/><circle cx="155" cy="36" r="26" fill="#F2C29B"/><path d="M128 32 Q155 0 182 32 Z" fill="#F5A524"/><path d="M142 46 q13 8 26 0" stroke="#2B2118" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="148" cy="34" r="3.5" fill="#2B2118"/><circle cx="164" cy="34" r="3.5" fill="#2B2118"/><path d="M180 80 L 218 74" stroke="#F2C29B" stroke-width="12" stroke-linecap="round"/></svg>`;
+gsap.set(["#s3t", "#ruler", "#lx", "#cow", "#uncle", "#x1", "#x2", "#x3", "#tr3"], { autoAlpha: 0 });
+rise("#s3t", w("ninety percent"));
+tl.fromTo("#tr3", { autoAlpha: 1, x: -2800 }, { x: 1950, duration: 3.4, ease: "none", immediateRender: false }, w("runs on") - 0.5);
+sfx(w("runs on") - 0.3, "whoosh", { gain: 0.25, dur: 2.5 });
+pop("#ruler", w("ten to"), { sfx: "tick", gain: 0.2 });
+[["#lx", "#x1", w("level crossings")], ["#cow", "#x2", w("no cows")], ["#uncle", "#x3", w("no uncle")]].forEach(([a, b, t]) => {
+  pop(a, t - 0.3, { from: 0.4, sfx: "pop", gain: 0.12 });
+  tl.fromTo(b, { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, t + 0.25);
+  sfx(t + 0.39, "stamp", { gain: 0.4 });
+});
+tl.fromTo("#uncle", { x: -40 }, { x: 40, duration: 2.2, ease: "none", immediateRender: false }, w("no uncle") - 0.3);
+
+// ================================================= S4: real 3D — the undersea tunnel (goes dark like a tunnel mouth)
+EX.iris("#s4", T.s4, 960, 540, { color: "#1d2a3f" });
+show("#s4", T.s4, null, { y: 0 });
+const W3 = trainWorld($("#c3"), { cars: 6 });
+REEL.onFrame((t) => {
+  if (t < T.s4 - 0.1) return;
+  const u = t - T.s4, x = -60 + u * 89, k = sm(u / 6);
+  W3.frame({ x, cam: [x + 26 - 8 * k, 2.2 + 0.8 * k, 3.4 - 1.2 * k], look: [x - 20, 2.0, -0.6], fov: 50, env: "tunnel" });
+});
+$("#seaArt").innerHTML = `<rect width="572" height="230" rx="16" fill="#8CC8EC"/><rect y="0" width="572" height="40" fill="#CFEAFB"/><path d="M0 40 q24 -10 48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0" fill="none" stroke="#fff" stroke-width="5"/><path d="M0 150 L572 150 L572 230 L0 230 Z" fill="#C9A77A"/><rect x="40" y="166" width="492" height="40" rx="20" fill="#2A3350"/><rect x="60" y="178" width="140" height="16" rx="8" fill="#fff"/><text x="300" y="196" font-family="JetBrains Mono" font-weight="800" font-size="18" fill="#FFB547">~7 KM</text>${[[120, 90], [300, 70], [440, 110]].map(([x, y]) => `<g class="fish" transform="translate(${x} ${y})"><path d="M0 0 q18 -12 36 0 q-18 12 -36 0z" fill="#F5A524"/><path d="M36 0 l10 -8 l0 16z" fill="#F5A524"/><circle cx="8" cy="-2" r="2.5" fill="#1B2340"/></g>`).join("")}`;
+gsap.set(["#sea", "#u1", "#u2", "#u3"], { autoAlpha: 0 });
+tl.fromTo("#sea", { autoAlpha: 0, y: -60, rotation: -4 }, { autoAlpha: 1, y: 0, rotation: -1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("dives under"));
+sfx(w("dives under"), "bloop", { gain: 0.25 });
+$$("#seaArt .fish").forEach((f, i) => tl.fromTo(f, { x: 0 }, { x: i % 2 ? -80 : 80, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, w("dives under") + i * 0.2));
+const tU = [w("creek") + 0.35, w("creek") + 0.95, w("creek") + 1.25];
+["#u1", "#u2", "#u3"].forEach((id, i) => { tl.fromTo(id, { autoAlpha: 0, scale: 1.4, rotation: -8 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, tU[i]); sfx(tU[i], "impact", { gain: 0.22 }); });
+
+EX.doors(T.close, { mode: "close", sign: "NEXT · COACH C5 · WHO DRIVES?" });
+REEL.finish(END);
+</script>
+</body></html>

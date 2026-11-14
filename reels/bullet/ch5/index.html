@@ -1,0 +1,139 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bullet Ch5 Who drives</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.dig{font-family:"JetBrains Mono";font-weight:800}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/journey.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: a football field every second -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:#E7F6EA"></div>
+    <div id="field" class="abs" data-ob="field" style="left:260px;top:270px;width:1400px;height:600px;border-radius:18px;overflow:hidden;background:repeating-linear-gradient(90deg,#5DBB72 0 140px,#52B067 140px 280px);box-shadow:0 18px 40px rgba(27,35,64,.15)">
+      <svg class="abs" style="left:0;top:0" width="1400" height="600"><g stroke="#fff" stroke-width="6" fill="none"><rect x="30" y="30" width="1340" height="540"/><line x1="700" y1="30" x2="700" y2="570"/><circle cx="700" cy="300" r="90"/><rect x="30" y="160" width="160" height="280"/><rect x="1210" y="160" width="160" height="280"/></g></svg>
+      <div id="topTrain" class="abs" style="left:0;top:262px;width:900px;height:76px"><svg width="900" height="76" viewBox="0 0 900 76"><path d="M0 38 Q 0 8 40 8 L 760 8 Q 860 8 900 38 Q 860 68 760 68 L 40 68 Q 0 68 0 38 Z" fill="#FBFCFE" stroke="#1B2340" stroke-width="3"/><rect x="40" y="33" width="780" height="10" fill="#2F6FE0"/>${""}</svg></div>
+    </div>
+    <div class="lbl x3d" id="s1t" data-ob="s1t" style="left:100px;top:110px;font-size:110px;--xf:#fff">Who's <span style="color:#12A4C4">driving?</span></div>
+    <div class="chip" id="sec" data-ob="sec" style="left:1290px;top:150px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:32px">⏱ 1 SECOND ≈ 89 M</div>
+  </section>
+
+  <!-- S2: signals blur past -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#CFEAFB 0%,#EAF6FD 70%,#CFE9D3 70%)"></div>
+    <div id="sigs" class="abs" style="left:0;top:330px;width:6000px;height:460px"></div>
+    <div class="abs" style="left:0;top:780px;width:1920px;height:20px;background:#9AA3B4"></div>
+    <div class="lbl x3d" id="s2t" data-ob="s2t" style="left:100px;top:110px;font-size:96px;--xf:#fff">Signals on poles? <span style="color:#F0566E">blur.</span></div>
+    <div class="pcard" id="missed" data-ob="missed" style="left:1240px;top:220px;width:560px"><div class="tape"></div><div style="display:flex;align-items:center;gap:18px"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#F0566E"/><path d="M18 26 Q32 14 46 26 L42 32 L36 28 L28 28 L22 32 Z" fill="#fff" transform="rotate(135 32 32)"/></svg><div><div class="m" style="font-size:18px;color:#8a7f6a">PHONE · NOW</div><div class="h" style="font-size:44px">Missed call</div></div></div><div class="serif" style="font-size:30px;color:#4a5070;margin-top:6px">…that's how fast a signal goes by</div></div>
+  </section>
+
+  <!-- S3: in the cab -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#E3E9F3 0,#E3E9F3 96px,#5B6890 96px)"></div>
+    <div id="wind" class="abs" style="left:150px;top:110px;width:1620px;height:470px;clip-path:polygon(6% 0,94% 0,100% 100%,0 100%);overflow:hidden">
+      <div class="abs" style="inset:0;background:linear-gradient(180deg,#9ED3F2,#E6F4FC 60%,#CFE9D3 60%)"></div>
+      <svg class="abs" style="left:0;top:0" width="1620" height="470"><path d="M760 282 L 300 470 L 1320 470 L 860 282 Z" fill="#C9D0DC"/><path d="M790 282 L 640 470 M830 282 L 980 470" stroke="#7A859C" stroke-width="8"/></svg>
+      <div id="wPoles" class="abs" style="inset:0"></div>
+    </div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M0 560 L1920 560 L1920 1080 L0 1080 Z" fill="#6B78A0"/><path d="M0 560 L1920 560" stroke="#8D99BD" stroke-width="10"/><path d="M150 110 L 1770 110 L 1870 580 L 50 580 Z" fill="none" stroke="#3B4566" stroke-width="26" stroke-linejoin="round"/></svg>
+    <div id="atc" class="abs" data-ob="atc" style="left:600px;top:610px;width:720px;height:320px;border-radius:24px;background:#0B1122;border:6px solid #3B4566;box-shadow:0 0 40px rgba(62,224,255,.25)">
+      <div class="abs dig" style="left:30px;top:18px;font-size:20px;letter-spacing:.2em;color:#8A94B0">ATC · CAB SIGNAL</div>
+      <div class="abs dig" id="spd" style="left:30px;top:60px;font-size:120px;color:#5BE49B">320</div>
+      <div class="abs dig" style="left:300px;top:118px;font-size:30px;color:#8A94B0">KM/H</div>
+      <div class="abs" style="left:430px;top:66px;width:250px">
+        <div class="dig" style="font-size:18px;color:#8A94B0;letter-spacing:.15em">SAFE SPEED</div>
+        <div class="dig" id="lim" style="font-size:54px;color:#FFB547">320</div>
+      </div>
+      <div class="abs" id="ahead" style="left:30px;top:220px;width:660px;height:30px;display:flex;gap:6px"></div>
+      <div class="abs dig" style="left:30px;top:262px;font-size:16px;color:#8A94B0;letter-spacing:.15em">TRACK AHEAD →</div>
+      <div class="abs dig" id="brake" style="left:470px;top:256px;padding:4px 14px;border-radius:8px;font-size:22px;color:#fff;background:#E0324B;opacity:.15">AUTO BRAKE</div>
+    </div>
+    <div class="chip" id="inside" data-ob="inside" style="left:200px;top:640px;color:#1B2340;background:#5BE49B;border-color:#5BE49B;font-size:28px">SIGNALS COME INSIDE</div>
+    <div id="host" class="abs" data-ob="host" data-bleed style="left:1460px;top:480px"></div>
+    <div class="serif" id="polite" data-ob="polite" style="position:absolute;left:120px;top:740px;font-size:58px;line-height:1.05;color:#fff;white-space:nowrap">politely.<br>without asking.</div>
+  </section>
+
+</div></div>
+<script type="module">
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, show, every, pop, rise, draw } = EX;
+const { ART } = PAPER;
+EX.coachStart(5, 7, "Who drives?");
+const T = { s2: w("so a driver") - 0.15, s3: w("instead the") - 0.15, close: W.last() + 1.4 };
+const END = T.close + 0.9;
+
+// ================================================= S1: a football field every second
+show("#s1", 0, T.s2 + 0.3, { y: 0 });
+gsap.set(["#s1t", "#sec", "#field"], { autoAlpha: 0 });
+rise("#s1t", w("who's driving") - 0.1);
+pop("#field", w("at three") - 0.2, { from: 0.85, sfx: "pop", gain: 0.12 });
+const tF = w("every second") - 0.4;
+tl.fromTo("#topTrain", { x: -950 }, { x: 1450, duration: 1.0, ease: "none", immediateRender: false }, tF);
+sfx(tF, "whoosh", { gain: 0.35, dur: 1.0 });
+pop("#sec", tF + 0.5, { sfx: "ding", gain: 0.2 });
+
+// ================================================= S2: signals blur past (a train streaks by)
+EX.passBy(T.s2);
+show("#s2", T.s2, T.s3 + 0.4, { y: 0 });
+const sig = (c) => `<svg width="90" height="460" viewBox="0 0 90 460"><rect x="38" y="120" width="14" height="340" fill="#5C677E"/><rect x="10" y="0" width="70" height="150" rx="16" fill="#1B2340"/><circle cx="45" cy="40" r="20" fill="${c === "r" ? "#F0566E" : "#3A1A22"}"/><circle cx="45" cy="104" r="20" fill="${c === "g" ? "#5BE49B" : "#173A2A"}"/></svg>`;
+$("#sigs").innerHTML = Array.from({ length: 16 }, (_, i) => `<div class="abs" style="left:${i * 380}px;top:0">${sig(i % 2 ? "r" : "g")}</div>`).join("");
+REEL.onFrame((t) => { if (t < T.s2 - 0.5 || t > T.s3 + 0.5) return; const u = t - T.s2; $("#sigs").style.transform = `translateX(${-((u * 4200) % 380) - 400}px) scaleX(1.6)`; $("#sigs").style.filter = `blur(${Math.min(14, u * 18)}px)`; });
+gsap.set(["#s2t", "#missed"], { autoAlpha: 0 });
+rise("#s2t", T.s2 + 0.3);
+tl.fromTo("#missed", { autoAlpha: 0, y: -80 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("missed call") - 0.2);
+sfx(w("missed call") - 0.2, "beep", { gain: 0.25, pitch: 1.3 }); sfx(w("missed call"), "beep", { gain: 0.2, pitch: 1.3 });
+
+// ================================================= S3: in the cab (cube turn)
+EX.cube("#s2", "#s3", T.s3);
+gsap.set("#s3", { autoAlpha: 0 });
+$("#wPoles").innerHTML = Array.from({ length: 6 }, (_, i) => `<div class="abs wp" style="left:0;top:0;width:30px;height:470px;background:#5C677E"></div>`).join("");
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.5) return;
+  $$("#wPoles .wp").forEach((p, i) => { const u = ((t * 1.6 + i / 6) % 1), x = 840 + (u * u) * 1100, s = 0.1 + u * u * 1.6; p.style.transform = `translateX(${x}px) scaleX(${s})`; p.style.opacity = u; });
+});
+$("#ahead").innerHTML = Array.from({ length: 10 }, (_, i) => `<div class="seg" style="flex:1;border-radius:6px;background:${i < 6 ? "#5BE49B" : i < 8 ? "#FFB547" : "#5BE49B"}"></div>`).join("");
+$("#host").innerHTML = ART.host({ w: 330, id: "h", cap: true, shirt: "#3E7BFA" });
+gsap.set(["#atc", "#inside", "#host", "#polite", ...$$("#ahead .seg")], { autoAlpha: 0 });
+pop("#inside", w("come inside"), { sfx: "chime", gain: 0.18 });
+tl.fromTo("#atc", { autoAlpha: 0, scale: 0.6, y: 60 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("a screen") - 0.1);
+sfx(w("a screen"), "bloop", { gain: 0.2 });
+$$("#ahead .seg").forEach((s, i) => tl.fromTo(s, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, immediateRender: false }, w("track ahead") - 0.3 + i * 0.06));
+tl.to("#lim", { scale: 1.2, transformOrigin: "0% 50%", duration: 0.15, yoyo: true, repeat: 1 }, w("safe speed"));
+// speed creeps over the limit, then the train brakes itself
+const tFast = w("go too"), tSlow = w("slows itself");
+REEL.onFrame((t) => {
+  let v = 320;
+  if (t > tFast) v = 320 + Math.min(1, (t - tFast) / 0.7) * 16;
+  if (t > tSlow) v = 336 - Math.min(1, (t - tSlow) / 0.9) * 26;
+  $("#spd").textContent = Math.round(v);
+  $("#spd").style.color = v > 321 ? "#F0566E" : "#5BE49B";
+  $("#brake").style.opacity = t > tSlow && t < tSlow + 1.6 ? (Math.sin(t * 20) > 0 ? 1 : 0.5) : 0.15;
+});
+sfx(tFast + 0.4, "beep", { gain: 0.25, pitch: 1.5 }); sfx(tFast + 0.6, "beep", { gain: 0.25, pitch: 1.5 });
+sfx(tSlow, "whoosh", { gain: 0.2, dur: 0.8 });
+tl.fromTo("#host", { autoAlpha: 1, x: 520 }, { x: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, w("go too") - 0.3);
+PAPER.lipSync($("#hMouth"), { from: w("go too") - 0.3, open: 18 });
+rise("#polite", w("politely"));
+tl.to("#hArm", { keyframes: { rotation: [-18, 8, 0] }, svgOrigin: "300 450", duration: 0.6 }, w("politely"));
+
+EX.doors(T.close, { mode: "close", sign: "NEXT · COACH C6 · STOPPING" });
+REEL.finish(END);
+</script>
+</body></html>

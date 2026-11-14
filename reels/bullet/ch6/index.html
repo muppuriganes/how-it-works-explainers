@@ -1,0 +1,157 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Bullet Ch6 Stopping</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase}
+.bub{position:absolute;padding:12px 24px 16px;border-radius:24px 24px 24px 6px;font-family:Archivo;font-weight:900;font-size:40px;white-space:nowrap;box-shadow:0 10px 24px rgba(27,35,64,.18);background:#F0566E;color:#fff}
+.stamp{position:absolute;padding:8px 18px;border:6px solid currentColor;border-radius:12px;background:rgba(255,255,255,.92);font-family:Archivo;font-weight:900;font-stretch:72%;font-size:44px;text-transform:uppercase;white-space:nowrap}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/journey.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: four kilometres to stop -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#FFE1C8 0%,#FFF4EA 100%)"></div>
+    <div class="lbl x3d" id="s1t" data-ob="s1t" style="left:100px;top:110px;font-size:100px;--xf:#fff">Terrible at <span style="color:#F0566E">stopping</span></div>
+    <svg id="ruler" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div id="train" class="abs" data-ob="train" data-bleed style="left:0;top:480px;width:900px;height:170px;overflow:hidden"></div>
+    <div class="bub" id="cant" data-ob="cant" style="left:640px;top:330px">I CAN'T STOP!</div>
+    <div class="chip" id="fifty" data-ob="fifty" style="left:1260px;top:300px;color:#1B2340;background:#F5A524;border-color:#F5A524;font-size:30px">4 KM ≈ 40 FOOTBALL FIELDS</div>
+    <div id="cpu" class="abs" data-ob="cpu" style="left:1560px;top:700px"></div>
+    <div class="chip" id="plan" data-ob="plan" style="left:960px;top:830px;color:#3E7BFA;font-size:28px">PLANS EVERY STOP WAY AHEAD →</div>
+  </section>
+
+  <!-- S2: brakes that make electricity -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#DDEBFB 0%,#F0F5FD 100%)"></div>
+    <svg id="wire2" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><line x1="0" y1="330" x2="1920" y2="330" stroke="#1B2340" stroke-width="6"/><line id="juice" x1="0" y1="330" x2="1920" y2="330" stroke="#FFC93D" stroke-width="10" stroke-dasharray="30 30" opacity="0"/><path id="up" d="M760 640 L 760 470 L 820 470 L 820 342" stroke="#FFC93D" stroke-width="12" fill="none" stroke-dasharray="26 18" opacity="0" stroke-linejoin="round"/></svg>
+    <div id="tr2" class="abs" data-ob="tr2" style="left:110px;top:420px;width:1700px;height:250px"></div>
+    <div class="lbl x3d" id="s2t" data-ob="s2t" style="left:100px;top:110px;font-size:96px;--xf:#fff">Brakes that <span style="color:#F5A524">make power</span></div>
+    <div class="chip" id="gen" data-ob="gen" style="left:540px;top:720px;color:#1B2340;font-size:28px">MOTORS → GENERATORS</div>
+    <div class="chip" id="back" data-ob="back" style="left:1000px;top:256px;color:#B9770E;font-size:28px">⚡ BACK INTO THE WIRE</div>
+  </section>
+
+  <!-- S3: earthquakes -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(160deg,#F4EFE2 0%,#E7F2E4 100%)"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M0 0 L380 0 C 330 200, 420 360, 310 520 C 230 640, 330 820, 250 1080 L0 1080 Z" fill="#BFE3F7"/></svg>
+    <svg id="quake" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div class="lbl x3d" id="s3t" data-ob="s3t" style="left:440px;top:100px;font-size:96px;--xf:#fff">Now, <span style="color:#F0566E">earthquakes</span></div>
+    <div class="chip" id="c28" data-ob="c28" style="left:1340px;top:860px;color:#1B2340;background:#5BE49B;border-color:#5BE49B;font-size:28px">28 SEISMOMETERS</div>
+    <div class="chip" id="pw" data-ob="pw" style="left:1340px;top:250px;color:#3E7BFA;font-size:26px">P-WAVE · FAST, GENTLE</div>
+    <div class="chip" id="sw" data-ob="sw" style="left:1340px;top:310px;color:#E0324B;font-size:26px">S-WAVE · SLOW, STRONG</div>
+    <div class="stamp" id="cut" data-ob="cut" style="left:450px;top:730px;color:#E0324B;transform:rotate(-6deg)">⚡ Power cut</div>
+    <div class="stamp" id="brk" data-ob="brk" style="left:470px;top:872px;color:#1F9D5A;transform:rotate(3deg)">All trains brake ✓</div>
+  </section>
+
+</div></div>
+<script type="module">
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, show, every, pop, rise, draw } = EX;
+const { ART } = PAPER;
+EX.coachStart(6, 7, "Stopping");
+const T = { s2: w("and when the") - 0.15, s3: w("now earthquakes") - 0.15, close: W.last() + 1.2 };
+const END = T.close + 0.9;
+
+// ================================================= S1: around four kilometres to stop
+show("#s1", 0, T.s2 + 0.3, { y: 0 });
+$("#ruler").innerHTML = `<rect x="100" y="652" width="1720" height="14" fill="#9AA3B4"/>${[0, 1, 2, 3, 4].map((k) => `<g class="tk" transform="translate(${180 + k * 400} 0)"><rect x="-3" y="670" width="6" height="40" fill="#1B2340"/><text x="0" y="748" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="30" fill="#1B2340">${k} km</text></g>`).join("")}
+  <g id="stn" transform="translate(1780 520)"><rect x="-6" y="0" width="12" height="132" fill="#5C677E"/><rect x="-120" y="-10" width="160" height="56" rx="10" fill="#1B2340"/><text x="-40" y="28" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="24" fill="#FFB547">STATION</text></g>
+  <g id="flag" transform="translate(180 520)"><rect x="-4" y="0" width="8" height="132" fill="#5C677E"/><path d="M4 2 L 94 18 L 4 36 Z" fill="#F0566E"/><text x="12" y="-10" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#E0324B">BRAKE HERE</text></g>`;
+$("#train").innerHTML = `<div style="position:absolute;right:0;top:0;transform:scaleX(-1)">${ISO.bulletTrain({ w: 2200, cars: 4, id: "t1" })}</div>`;
+$("#cpu").innerHTML = ISO.server({ w: 150, color: "#3E7BFA", id: "cp" });
+gsap.set(["#s1t", "#cant", "#fifty", "#cpu", "#plan", "#train", "#stn", "#flag", ...$$("#ruler .tk")], { autoAlpha: 0 });
+rise("#s1t", w("bullet trains") - 0.2);
+tl.fromTo("#train", { autoAlpha: 1, x: -900 }, { x: -260, duration: 0.6, ease: "none", immediateRender: false }, w("terrible") - 0.3);
+sfx(w("terrible") - 0.3, "whoosh", { gain: 0.25, dur: 0.6 });
+pop("#cant", w("stopping quickly"), { sfx: "bloop", gain: 0.2 });
+for (let k = 0; k < 8; k++) tl.to("#train", { y: k % 2 ? 0 : -3, duration: 0.06 }, w("stopping quickly") + k * 0.07);
+// the long slide: brake at 0 km, stop at 4 km
+const tB = w("from top");
+tl.to("#cant", { autoAlpha: 0, duration: 0.2 }, tB - 0.1);
+pop("#flag", tB - 0.2, { from: 0.5, sfx: false });
+$$("#ruler .tk").forEach((k, i) => tl.fromTo(k, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.2, immediateRender: false }, tB + i * 0.12));
+tl.to("#train", { x: 1630 - 900, duration: w("four kilometres") - tB + 0.6, ease: "power2.out" }, tB);
+sfx(tB, "whoosh", { gain: 0.25, dur: 2.5 }); sfx(tB + 0.3, "glitch", { gain: 0.06 });
+pop("#fifty", w("four kilometres") + 0.2, { sfx: "ding", gain: 0.2 });
+pop("#stn", w("so the") - 0.2, { from: 0.5, sfx: false });
+pop("#cpu", w("computer"), { from: 0.4, sfx: "bloop", gain: 0.2 });
+pop("#plan", w("plans every"), { sfx: "tick", gain: 0.2 });
+
+// ================================================= S2: regenerative braking (a train streaks past)
+EX.passBy(T.s2);
+show("#s2", T.s2, T.s3 + 0.02, { y: 0 });
+$("#tr2").innerHTML = `<div style="transform:scaleX(-1);width:1700px">${ISO.bulletTrain({ w: 1700, cars: 4, id: "t2" })}</div>` + [0, 1, 2, 3].map((i) => `<div class="abs gr" style="left:${170 + i * 410}px;top:120px"><svg width="64" height="64" viewBox="-32 -32 64 64"><g fill="#F5A524">${Array.from({ length: 8 }, (_, k) => `<rect x="-5" y="-30" width="10" height="14" rx="3" transform="rotate(${k * 45})"/>`).join("")}<circle r="19"/></g><circle r="8" fill="#fff"/></svg></div>`).join("");
+gsap.set(["#s2t", "#gen", "#back", ...$$("#tr2 .gr")], { autoAlpha: 0 });
+rise("#s2t", T.s2 + 0.3);
+$$("#tr2 .gr").forEach((g, i) => { pop(g, w("motors flip") + i * 0.1, { from: 0.3, sfx: "pop", gain: 0.1 }); tl.fromTo(g, { rotation: 0 }, { rotation: -540, duration: T.s3 - T.s2, ease: "none", immediateRender: false }, T.s2); });
+pop("#gen", w("generators"), { sfx: "chime", gain: 0.16 });
+tl.to(["#up", "#juice"], { opacity: 1, duration: 0.2 }, w("push electricity"));
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.3) return; $("#up").setAttribute("stroke-dashoffset", (t * 140) % 44); $("#juice").setAttribute("stroke-dashoffset", -((t * 400) % 60)); });
+sfx(w("push electricity"), "glitch", { gain: 0.12 });
+pop("#back", w("back into"), { sfx: "ding", gain: 0.2 });
+
+// ================================================= S3: earthquakes (alarm-red burst)
+EX.iris("#s3", T.s3, 960, 540, { color: "#F0566E" });
+show("#s3", T.s3, null, { y: 0 });
+const RD = "M520 900 C 720 980, 880 800, 1020 780 S 1260 640, 1350 560 S 1490 380, 1560 330";
+const EP = [470, 330];
+$("#quake").innerHTML = `${ISO.road(RD, { wd: 24, id: "route", color: "#fff", edge: "#3E7BFA", dash: "#9DB8E8" })}
+  <g id="sensors"></g><circle id="pRing" cx="${EP[0]}" cy="${EP[1]}" r="10" fill="none" stroke="#3E7BFA" stroke-width="8" opacity="0"/><circle id="sRing" cx="${EP[0]}" cy="${EP[1]}" r="10" fill="none" stroke="#E0324B" stroke-width="22" opacity="0"/>
+  <g id="epi" transform="translate(${EP[0]} ${EP[1]})"><circle r="16" fill="#E0324B"/><path d="M-26 0 l12 -14 l8 22 l8 -22 l12 14" stroke="#E0324B" stroke-width="5" fill="none"/></g>
+  <g id="trains"><g id="ta"><rect x="-34" y="-12" width="68" height="24" rx="12" fill="#fff" stroke="#1B2340" stroke-width="3"/><rect x="-30" y="-2" width="60" height="5" fill="#2F6FE0"/></g><g id="tb"><rect x="-34" y="-12" width="68" height="24" rx="12" fill="#fff" stroke="#1B2340" stroke-width="3"/><rect x="-30" y="-2" width="60" height="5" fill="#2F6FE0"/></g></g>`;
+const route = $("#route"), RL = route.getTotalLength();
+const SP = Array.from({ length: 28 }, (_, i) => route.getPointAtLength((i + 0.5) / 28 * RL));
+$("#sensors").innerHTML = SP.map((p) => `<rect class="sn" x="${p.x - 9}" y="${p.y - 9}" width="18" height="18" rx="5" fill="#1F9D5A" stroke="#fff" stroke-width="3"/>`).join("");
+gsap.set(["#s3t", "#c28", "#pw", "#sw", "#cut", "#brk", "#epi", ...$$("#sensors .sn")], { autoAlpha: 0 });
+rise("#s3t", T.s3 + 0.3);
+draw(route, T.s3 + 0.2, 0.8);
+$$("#sensors .sn").forEach((s, i) => tl.fromTo(s, { autoAlpha: 0, scale: 0.2, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, w("twenty eight") + i * 0.04));
+pop("#c28", w("seismometers"), { sfx: "chime", gain: 0.16 });
+// the quake: a fast gentle P-wave, then the slow strong S-wave
+const tP = w("first faster") - 0.2, tCut = w("power is"), tBrake = w("brakes ideally") > 0 ? w("brakes ideally") : w("area brakes");
+tl.fromTo("#epi", { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, tP - 0.5);
+sfx(tP - 0.5, "clunk", { gain: 0.25 });
+pop("#pw", tP, { sfx: false });
+const pR = (t) => (t - tP) * 520, sR = (t) => (t - (tP + 1.5)) * 100;
+REEL.onFrame((t) => {
+  if (t < T.s3) return;
+  const p = pR(t), s = sR(t);
+  $("#pRing").setAttribute("r", Math.max(10, p)); $("#pRing").setAttribute("opacity", t > tP ? Math.max(0, 1 - p / 1900) : 0);
+  $("#sRing").setAttribute("r", Math.max(10, s)); $("#sRing").setAttribute("opacity", t > tP + 1.5 ? 0.65 : 0);
+  $$("#sensors .sn").forEach((el, i) => { const d = Math.hypot(SP[i].x - EP[0], SP[i].y - EP[1]); el.setAttribute("fill", p > d && t > tP ? "#F5A524" : "#1F9D5A"); });
+  // two trains running, then braking to a stop after the cut
+  const run = (u0, v) => { const tt = Math.min(t, tCut + 0.3); let d = u0 + (tt - T.s3) * v; if (t > tCut + 0.3) d += v * Math.min(1.2, (t - tCut - 0.3)) * (1 - Math.min(1.2, t - tCut - 0.3) / 2.4); return route.getPointAtLength(Math.min(RL, d)); };
+  const a = run(RL * 0.12, 70), b = run(RL * 0.55, 70);
+  $("#ta").setAttribute("transform", `translate(${a.x} ${a.y})`); $("#tb").setAttribute("transform", `translate(${b.x} ${b.y})`);
+});
+sfx(tP, "riser", { gain: 0.12, dur: 1.2 });
+pop("#sw", tP + 0.6, { sfx: false });
+tl.fromTo("#cut", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, tCut);
+sfx(tCut + 0.14, "stamp", { gain: 0.4 });
+tl.to("#route", { stroke: "#9AA3B4", duration: 0.3 }, tCut);
+tl.fromTo("#brk", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power4.in", immediateRender: false }, w("area brakes"));
+sfx(w("area brakes") + 0.14, "stamp", { gain: 0.4 });
+REEL.shake($("#shake"), w("shaking"), 10);
+sfx(w("shaking"), "impact", { gain: 0.3 });
+
+EX.doors(T.close, { mode: "close", sign: "NEXT · COACH C7 · ARRIVAL" });
+REEL.finish(END);
+</script>
+</body></html>
