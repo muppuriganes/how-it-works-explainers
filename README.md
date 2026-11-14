@@ -10,12 +10,23 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 
 | Video | Length | File | Chapters |
 | --- | --- | --- | --- |
+| **How a food delivery order reaches you in 30 minutes** | 3:15 | [`reels/food/final.mp4`](reels/food/final.mp4) | Stop 1 Order placed · Stop 2 Restaurant accepts · Stop 3 Rider assigned · Stop 4 On the way · Stop 5 Delivered |
 | **How India's bullet train works** | 3:36 | [`reels/bullet/final.mp4`](reels/bullet/final.mp4) | C1 All aboard · C2 The nose · C3 The power · C4 The track · C5 Who drives? · C6 Stopping · C7 Arrival |
 | **How UPI works — where your ₹10 actually goes** | 3:41 | [`reels/upi/final.mp4`](reels/upi/final.mp4) | The ₹10 chai · Meet the gang · The 2-second journey · The PIN · Why is it free? · Money debited, payment failed · The big picture |
 | **How a phone call connects** | 6:00 | [`reels/phonecall/final.mp4`](reels/phonecall/final.mp4) | One hello · Your voice becomes numbers · Into the air · Finding your friend · Across the world · Back into a voice · All together |
 | **METER** (short product reel) | 0:45 | [`reels/meter/final.mp4`](reels/meter/final.mp4) · [9:16](reels/meter/final_9x16.mp4) | single scene |
 
 Script for the UPI explainer: [`reels/upi/SCRIPT.md`](reels/upi/SCRIPT.md). Every chapter keeps its narration in `audio/script.txt`.
+
+### The food delivery explainer — an order tracker
+- The chapter count follows the concept: an order really goes through **5 tracker stages**, so the video has 5 stops. A mini order tracker (TAP → DOOR) in the corner moves one stop per chapter.
+- Every chapter ends with a push notification ("Order placed ✓", "Restaurant accepted ✓"...) that drops in and grows to fill the screen; the next chapter opens by shrinking it back ([`lib/food.js`](lib/food.js)). Anything already at the top of the scene clears first, so cards never stack.
+- Scene changes: a delivery rider wipe, iris, stripes, a camera dive, a rolling coin, and a scene shrinking into the phone screen.
+- Picture-style wow shots: a perspective night city full of order pins, a side-scrolling street ride (red signal, a cow's meeting, the security gate, "Tower B, behind the temple").
+- Running gag: "Your rider is 2 minutes away" — with a stopwatch at 9:00, and once more after the food has arrived.
+- Every overlay card has a dark outline + solid edge + soft shadow, on deeper tinted backgrounds, so nothing blends in.
+- Voice: Kokoro `af_heart`, with a simple flat girl host (`ART.host({ girl: true })` in [`lib/cast.js`](lib/cast.js)). Narration: [`reels/food/SCRIPT.md`](reels/food/SCRIPT.md).
+- Facts from news reports and public research: just-in-time rider assignment and batching, ML food-preparation-time prediction, 15–30% commission, ₹14.9 / ₹17.58 platform fees (2026), ₹50–70 rider pay per order (critics say less), tips on only 3–5% of orders. The 14 min prep, minute-8 dispatch and ≈26 min wait are example values to explain the logic, not real data.
 
 ### The bullet train explainer — a train journey
 - Every chapter is a **coach**: chapters end with sliding train doors and an LED "NEXT · COACH" sign, and the next one opens the same doors. A route map (Mumbai → Ahmedabad) in the corner moves one stop per coach.
@@ -42,6 +53,7 @@ lib/        engine + art
   cast.js        the simple host character (optional conductor cap)
   train3d.js     real 3D bullet train world (three.js): lofted kingfisher-nose train, viaduct, catenary, tunnel, station
   journey.js     train-journey kit: route-map chrome, coach doors, passing-train wipe, kingfisher art
+  food.js        order-tracker kit: tracker chrome, notification wipe, rider wipe, shrink-into-phone, map/rider/handi art
   paper.js       cast art (referee, you, chai, QR...), lip sync, blink
   fonts/ vendor/ self-hosted fonts and GSAP
 tools/

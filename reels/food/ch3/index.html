@@ -1,0 +1,285 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Food Ch3 Rider assigned</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(27,35,64,.12) 2.5px,transparent 3px);background-size:44px 44px}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:10px 24px 14px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:38px;white-space:nowrap}
+.tile{position:absolute;border-radius:40px;overflow:hidden;background:linear-gradient(180deg,#FFFFFF 0%,#FFF8F2 100%);box-shadow:inset 0 0 0 5px #fff,0 24px 0 rgba(27,35,64,.55),0 56px 70px rgba(10,30,40,.35)}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.1em;color:#fff;white-space:nowrap}
+.mk{position:absolute;width:104px;height:104px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.fbox{position:absolute;padding:16px 24px;border-radius:24px;background:#fff;font-family:Archivo;text-align:center}
+.fbox .k{font-family:"JetBrains Mono";font-weight:800;font-size:20px;letter-spacing:.12em;color:rgba(27,35,64,.55)}
+.fbox .v{font-weight:900;font-size:50px;color:#1B2340;white-space:nowrap}
+.op{position:absolute;font-family:Archivo;font-weight:900;font-size:80px;color:#fff;text-shadow:0 5px 0 #1B2340}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/food.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: the map: not the nearest rider -->
+  <section class="scene" id="s1">
+    <div id="map1" class="abs" style="inset:0"></div>
+    <svg id="rings" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="nl" d="M960 480 L 960 600 L 720 600" stroke="#F2553D" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 16"/></svg>
+    <div id="rest1" class="abs" data-ob="rest1" style="left:900px;top:330px"></div>
+    <div class="mk fc" id="m0" data-ob="m0" style="left:668px;top:548px"></div>
+    <div class="mk fc" id="m1" data-ob="m1" style="left:1388px;top:248px"></div>
+    <div class="mk fc" id="m2" data-ob="m2" style="left:428px;top:188px"></div>
+    <div class="mk fc" id="m3" data-ob="m3" style="left:1148px;top:668px"></div>
+    <div class="pill fc" id="near" data-ob="near" style="left:430px;top:690px;background:#1B2340;color:#FFC93D">NEAREST: 2 MIN AWAY</div>
+    <div class="bub fc" id="nope" data-ob="nope" style="left:560px;top:420px;background:#F2553D;color:#fff;transform:rotate(-5deg)">✗ NOT YET</div>
+    <div class="lbl x3d" id="t1" data-ob="t1" style="left:110px;top:96px;font-size:92px;--xf:#fff">Nearest rider? <span style="color:#F2553D">Nope.</span></div>
+  </section>
+
+  <!-- S2: too early vs too late -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#8FA9E6 0%,#5574C4 100%)"></div><div class="dots"></div>
+    <div class="tile" id="pA" data-ob="pA" style="left:110px;top:150px;width:800px;height:720px">
+      <div class="pill fc" style="left:40px;top:34px;background:#F5A524;color:#1B2340">TOO EARLY</div>
+      <div id="clk" class="abs" style="left:600px;top:24px"></div>
+      <div id="kA" class="abs" style="left:20px;top:250px"></div>
+      <div id="wA" class="abs" style="left:560px;top:250px"></div>
+      <div class="bub fc" id="zz" style="left:470px;top:160px;background:#fff;color:#1B2340;font-size:30px">tap… tap… 😴</div>
+      <div class="pill fc" id="rA" style="left:200px;top:610px;background:#1B2340;color:#FFC93D">RIDER STANDS AROUND</div>
+    </div>
+    <div class="tile" id="pB" data-ob="pB" style="left:1010px;top:150px;width:800px;height:720px">
+      <div id="frost" class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(170,215,255,.0) 0%,rgba(150,200,255,.75) 100%)"></div>
+      <div class="pill fc" style="left:40px;top:34px;background:#12A4C4">TOO LATE</div>
+      <div class="abs" style="left:120px;top:470px;width:560px;height:60px;border-radius:12px;background:#E7DCCB;box-shadow:0 14px 0 #CDBFA8"></div>
+      <div id="hB" class="abs" style="left:260px;top:240px"></div>
+      <div id="th" class="abs" style="left:640px;top:150px"></div>
+      <div class="pill fc" id="rB" style="left:240px;top:610px;background:#12A4C4">GOING COLD 🥶</div>
+    </div>
+  </section>
+
+  <!-- S3: just in time -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#9FDDB4 0%,#55B57E 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t3" data-ob="t3" style="left:160px;width:1600px;text-align:center;top:100px;font-size:92px;--xf:#fff">Just-in-time <span style="color:#FFC93D">assignment</span></div>
+    <div class="tile" id="jA" data-ob="jA" style="left:110px;top:250px;width:800px;height:560px">
+      <div class="pill fc" style="left:40px;top:34px;background:#F2553D">KITCHEN</div>
+      <div id="jH" class="abs" style="left:270px;top:150px"></div>
+      <div id="jB" class="abs" style="left:300px;top:170px"></div>
+      <div class="pill fc" id="okA" style="left:290px;top:460px;background:#22B573">✓ PACKED</div>
+    </div>
+    <div class="tile" id="jB2" data-ob="jB2" style="left:1010px;top:250px;width:800px;height:560px">
+      <div class="pill fc" style="left:40px;top:34px;background:#12A4C4">RESTAURANT DOOR</div>
+      <div class="abs" style="left:430px;top:110px;width:240px;height:330px;border-radius:20px 20px 0 0;background:#C99A70;border:12px solid #9A6B45;border-bottom:none"></div>
+      <div class="abs" style="left:442px;top:122px;width:216px;height:318px;background:linear-gradient(180deg,#FFE9C2,#FFD48A)"></div>
+      <div class="abs" style="left:0;top:440px;width:800px;height:12px;background:#CDBFA8"></div>
+      <div id="jW" class="abs" style="left:480px;top:96px"></div>
+      <div class="pill fc" id="okB" style="left:290px;top:470px;background:#22B573">✓ WALKS IN</div>
+    </div>
+    <div class="pill fc" id="same" data-ob="same" style="left:620px;top:850px;background:#1B2340;color:#FFC93D;font-size:30px">⚡ SAME MOMENT · 0 MIN WAITING</div>
+  </section>
+
+  <!-- S4: two races -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#93D3F2 0%,#4C9FD6 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t4" data-ob="t4" style="left:160px;width:1600px;text-align:center;top:96px;font-size:92px;--xf:#fff">Two races. <span style="color:#FFC93D">At once.</span></div>
+    <div class="abs fc" id="ln1" data-ob="ln1" style="left:110px;top:240px;width:1700px;height:150px;border-radius:30px;background:#fff;overflow:hidden">
+      <div class="abs" style="left:0;top:66px;width:1700px;height:8px;background:repeating-linear-gradient(90deg,#E6E8F0 0 40px,transparent 40px 70px)"></div>
+      <div class="abs" style="left:1560px;top:0;width:40px;height:150px;background:repeating-conic-gradient(#1B2340 0 25%,#fff 0 50%) 0 0/20px 20px"></div>
+      <div class="pill" style="left:24px;top:14px;background:#F2553D;font-size:20px;padding:6px 16px">RACE 1 · KITCHEN COOKING</div>
+      <div id="tok1" class="abs" style="left:230px;top:40px"></div>
+      <div class="pill" id="f1" style="left:1380px;top:94px;background:#F2553D;font-size:22px;padding:6px 16px">14 MIN</div>
+      <div class="pill" id="slow" style="left:1130px;top:94px;background:#1B2340;color:#FFC93D;font-size:22px;padding:6px 16px">🐢 SLOWER</div>
+    </div>
+    <div class="abs fc" id="ln2" data-ob="ln2" style="left:110px;top:430px;width:1700px;height:150px;border-radius:30px;background:#fff;overflow:hidden">
+      <div class="abs" style="left:0;top:66px;width:1700px;height:8px;background:repeating-linear-gradient(90deg,#E6E8F0 0 40px,transparent 40px 70px)"></div>
+      <div class="abs" style="left:1560px;top:0;width:40px;height:150px;background:repeating-conic-gradient(#1B2340 0 25%,#fff 0 50%) 0 0/20px 20px"></div>
+      <div class="pill" style="left:24px;top:14px;background:#12A4C4;font-size:20px;padding:6px 16px">RACE 2 · RIDER TO RESTAURANT</div>
+      <div id="tok2" class="abs" style="left:230px;top:28px"></div>
+      <div class="pill" id="f2" style="left:1410px;top:94px;background:#12A4C4;font-size:22px;padding:6px 16px">6 MIN</div>
+    </div>
+    <div class="fbox fc" id="fx1" data-ob="fx1" style="left:240px;top:650px;width:420px"><div class="k">SLOWER RACE</div><div class="v">🍳 14 MIN</div></div>
+    <div class="op" id="op1" data-ob="op1" style="left:690px;top:660px">+</div>
+    <div class="fbox fc" id="fx2" data-ob="fx2" style="left:770px;top:650px;width:440px"><div class="k">RIDE TO YOUR DOOR</div><div class="v">🛵 12 MIN</div></div>
+    <div class="op" id="op2" data-ob="op2" style="left:1240px;top:660px">=</div>
+    <div class="fbox fc" id="fx3" data-ob="fx3" style="left:1320px;top:650px;width:360px;background:#FFF1C7"><div class="k">YOUR WAIT</div><div class="v" style="color:#F2553D">≈ 26 MIN</div></div>
+  </section>
+
+  <!-- S5: batching -->
+  <section class="scene" id="s5">
+    <div id="map5" class="abs" style="inset:0"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="rt" d="M480 720 L 480 480 L 1200 480 L 1200 240 L 1680 240" stroke="#F2553D" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 18"/></svg>
+    <div id="rest5" class="abs" data-ob="route" style="left:420px;top:570px"></div>
+    <div id="hA" class="abs" data-ob="route" style="left:1150px;top:115px"></div>
+    <div id="hB5" class="abs" data-ob="route" style="left:1630px;top:115px"></div>
+    <div class="mk fc" id="rk" data-ob="route" data-bleed style="left:428px;top:668px"><div id="rkIn"></div><div id="x2" class="abs" style="right:-18px;top:-18px;width:52px;height:52px;border-radius:50%;background:#FFC93D;border:3px solid #1B2340;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:900;font-size:24px;color:#1B2340">×2</div></div>
+    <div class="fbox fc" id="o1" data-ob="o1" style="left:600px;top:560px;width:330px;text-align:left;padding:12px 20px"><div class="k">ORDER #4821</div><div class="v" style="font-size:30px">→ Tower B</div></div>
+    <div class="fbox fc" id="o2" data-ob="o2" style="left:600px;top:690px;width:330px;text-align:left;padding:12px 20px"><div class="k">ORDER #4822</div><div class="v" style="font-size:30px">→ Tower C</div></div>
+    <div id="host5" class="abs" data-ob="host5" style="left:40px;top:500px"></div>
+    <div class="lbl x3d" id="t5" data-ob="t5" style="left:110px;top:96px;font-size:110px;--xf:#fff">Batching.</div>
+    <div class="pill fc" id="trip" data-ob="trip" style="left:116px;top:230px;background:#F2553D">1 TRIP · 2 ORDERS</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+EX.stopStart(3, 5, "Rider assigned");
+const T = { s2: w("too early") - 0.2, s3: w("so the app") - 0.15, s4: w("think of it") - 0.15, s5: w("orders are") - 0.1, close: we("batching") + 1.4 };
+const END = T.close + 1.4;
+const clamp = (u) => Math.max(0, Math.min(1, u));
+const miniRider = (id) => FD.rider({ w: 84, id });
+
+// ================================================= S1: the map
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+$("#map1").innerHTML = FD.map({ seed: 4 });
+$("#rest1").innerHTML = FD.pin("chef", 120);
+["#m0", "#m1", "#m2", "#m3"].forEach((m, i) => ($(m).innerHTML = miniRider("mr" + i)));
+gsap.set(["#rest1", "#m0", "#m1", "#m2", "#m3", "#near", "#nope", "#t1"], { autoAlpha: 0 });
+gsap.set("#nl", { drawSVG: "0%" });
+EX.drop("#rest1", 1.0, { from: -500 });
+["#m0", "#m1", "#m2", "#m3"].forEach((m, i) => pop(m, 1.3 + i * 0.12, { sfx: "pop", gain: 0.1 }));
+$("#rings").innerHTML = [0, 1, 2].map(() => `<circle class="rg" cx="960" cy="480" r="0" fill="none" stroke="#F2553D" stroke-width="6"/>`).join("");
+REEL.onFrame((t) => { if (t > T.s2 + 0.5) return; $$("#rings .rg").forEach((c, i) => { const u = (((t - 1.2) * 0.45 + i / 3) % 1 + 1) % 1; c.setAttribute("r", (u * 520).toFixed(1)); c.setAttribute("opacity", t < 1.2 ? 0 : (0.6 * (1 - u)).toFixed(2)); }); });
+tl.fromTo("#t1", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("does not"));
+sfx(w("does not"), "slam", { gain: 0.18 });
+tl.to("#nl", { drawSVG: "100%", duration: 0.5 }, w("the nearest") - 0.1);
+pop("#near", w("nearest rider"), { sfx: "bloop", gain: 0.16 });
+tl.to("#m0", { scale: 1.2, duration: 0.2, yoyo: true, repeat: 1 }, w("nearest rider"));
+tl.fromTo("#nope", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, w("you order"));
+sfx(w("you order") + 0.16, "stamp", { gain: 0.45 });
+
+// ================================================= S2: too early / too late (rider wipe)
+EX.scooterWipe(T.s2, { dur: 0.8 });
+show("#s2", T.s2, T.s3 + 0.5, { y: 0 });
+$("#kA").innerHTML = FD.kitchen({ w: 500, id: "k2" });
+$("#wA").innerHTML = FD.walker({ w: 150, id: "w2" });
+$("#hB").innerHTML = FD.handi({ w: 260, id: "h2" });
+EX.steam("#kA", T.s2, T.s3 + 0.5);
+$("#clk").innerHTML = `<svg width="150" height="150" viewBox="0 0 150 150"><circle cx="75" cy="75" r="66" fill="#fff" stroke="#1B2340" stroke-width="8"/>${Array.from({ length: 12 }, (_, i) => { const a = (i / 12) * Math.PI * 2; return `<line x1="${75 + Math.sin(a) * 52}" y1="${75 - Math.cos(a) * 52}" x2="${75 + Math.sin(a) * 44}" y2="${75 - Math.cos(a) * 44}" stroke="#1B2340" stroke-width="5"/>`; }).join("")}<g id="cM"><line x1="75" y1="75" x2="75" y2="24" stroke="#F2553D" stroke-width="7" stroke-linecap="round"/></g><g id="cH"><line x1="75" y1="75" x2="75" y2="42" stroke="#1B2340" stroke-width="8" stroke-linecap="round"/></g><circle cx="75" cy="75" r="8" fill="#1B2340"/></svg>`;
+$("#th").innerHTML = `<svg width="80" height="300" viewBox="0 0 80 300"><rect x="22" y="6" width="36" height="230" rx="18" fill="#fff" stroke="#1B2340" stroke-width="6"/><circle cx="40" cy="250" r="34" fill="#fff" stroke="#1B2340" stroke-width="6"/><circle id="thB" cx="40" cy="250" r="24" fill="#F2553D"/><rect id="thM" x="31" y="40" width="18" height="200" rx="9" fill="#F2553D"/></svg>`;
+gsap.set(["#pA", "#pB", "#zz", "#rA", "#rB"], { autoAlpha: 0 });
+tl.fromTo("#pA", { autoAlpha: 0, y: 140, rotation: -3 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, w("too early") - 0.1);
+sfx(w("too early") - 0.1, "slam", { gain: 0.16 });
+pop("#zz", w("stands around"), { sfx: "bloop", gain: 0.14 });
+pop("#rA", w("waiting") - 0.1, { sfx: "pop", gain: 0.14 });
+const tW0 = w("too early");
+REEL.onFrame((t) => {
+  if (t < T.s2 - 0.3 || t > T.s3 + 0.6) return;
+  const m = Math.max(0, t - tW0) * 300;   // the clock races: minutes fly by while the rider waits
+  $("#cM").setAttribute("transform", `rotate(${(m % 360).toFixed(1)} 75 75)`);
+  $("#cH").setAttribute("transform", `rotate(${((m / 12) % 360).toFixed(1)} 75 75)`);
+  const tap = Math.max(0, Math.sin(t * 14)) * 10;  // foot tapping
+  $("#w2LR").setAttribute("transform", `rotate(${-tap} 68 150)`);
+  const u = clamp((t - w("too late")) / 2.6);
+  $("#frost").style.opacity = u.toFixed(2);
+  $("#thM").setAttribute("y", (40 + 150 * u).toFixed(1)); $("#thM").setAttribute("height", (200 - 150 * u).toFixed(1));
+  const col = u < 0.5 ? "#F2553D" : u < 0.8 ? "#9C8FE0" : "#3E7BFA";
+  $("#thM").setAttribute("fill", col); $("#thB").setAttribute("fill", col);
+  $$("#hB .stm").forEach((p, i) => { const k = ((t * 0.7 + i * 0.37) % 1); p.setAttribute("transform", `translate(${Math.sin((t + i) * 3) * 6} ${-k * 34})`); p.setAttribute("opacity", ((1 - u) * 0.85 * Math.sin(k * Math.PI)).toFixed(2)); });
+});
+tl.fromTo("#pB", { autoAlpha: 0, y: 140, rotation: 3 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, w("too late") - 0.1);
+sfx(w("too late") - 0.1, "slam", { gain: 0.16 });
+pop("#rB", w("going cold"), { sfx: "glitch", gain: 0.16 });
+
+// ================================================= S3: just in time (iris)
+EX.iris("#s3", T.s3, 960, 540, { color: "#22B573" });
+show("#s3", T.s3, T.s4 + 0.5, { y: 0 });
+$("#jH").innerHTML = FD.handi({ w: 260, id: "h3" });
+$("#jB").innerHTML = FD.bag({ w: 200 });
+$("#jW").innerHTML = FD.walker({ w: 150, id: "w3" });
+EX.steam("#jH", T.s3, T.s4 + 0.5);
+gsap.set(["#t3", "#jA", "#jB2", "#jB", "#okA", "#okB", "#same", "#jW"], { autoAlpha: 0 });
+tl.fromTo("#jA", { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, w("times it") - 0.2);
+tl.fromTo("#jB2", { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, w("times it") - 0.05);
+sfx(w("times it") - 0.2, "slam", { gain: 0.15 });
+tl.fromTo("#t3", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("just in time") - 0.1);
+sfx(w("just in time") - 0.1, "impact", { gain: 0.24 });
+// rider walks in from the right edge of the door tile
+const tWalk = w("walk in") - 0.6, tPk = w("packed");
+tl.set("#jW", { autoAlpha: 1 }, tWalk);
+tl.fromTo("#jW", { x: 420 }, { x: 0, duration: tPk - tWalk, ease: "power1.out", immediateRender: false }, tWalk);
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.5) return; const walking = t > tWalk && t < tPk; const a = walking ? Math.sin(t * 12) * 20 : 0; $("#w3LL").setAttribute("transform", `rotate(${a} 54 150)`); $("#w3LR").setAttribute("transform", `rotate(${-a} 68 150)`); });
+tl.to("#jH", { scale: 0.3, autoAlpha: 0, duration: 0.3, ease: "back.in(2)" }, tPk - 0.4);
+tl.fromTo("#jB", { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)", immediateRender: false }, tPk - 0.15);
+sfx(tPk - 0.4, "swish", { gain: 0.2 });
+pop("#okA", tPk + 0.05, { sfx: "ding", gain: 0.22 });
+pop("#okB", tPk + 0.1, { sfx: false });
+pop("#same", tPk + 0.4, { sfx: "chime", gain: 0.2 });
+
+// ================================================= S4: two races (stripes)
+EX.stripes(T.s4, { colors: ["#4C9FD6", "#FFC93D", "#F2553D", "#22B573", "#7B61FF"] });
+show("#s4", T.s4, T.s5 + 0.5, { y: 0 });
+$("#tok1").innerHTML = FD.handi({ w: 90, id: "t1h", steam: false });
+$("#tok2").innerHTML = FD.rider({ w: 150, id: "t2r" });
+gsap.set(["#t4", "#ln1", "#ln2", "#f1", "#f2", "#slow", "#fx1", "#op1", "#fx2", "#op2", "#fx3"], { autoAlpha: 0 });
+tl.fromTo("#t4", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("two races") - 0.1);
+sfx(w("two races") - 0.1, "impact", { gain: 0.22 });
+const tK0 = w("kitchen cooking") - 0.3, tK1 = w("slower") - 0.1, tR0 = w("rider riding") - 0.3, tR1 = w("your wait") + 0.2;
+tl.fromTo("#ln1", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, w("race one") - 0.2);
+tl.fromTo("#ln2", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, w("race two") - 0.2);
+sfx(w("race one") - 0.2, "whoosh", { gain: 0.2 }); sfx(w("race two") - 0.2, "whoosh", { gain: 0.2 });
+const ease = (u) => (u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2);
+REEL.onFrame((t) => {
+  if (t < T.s4 - 0.2 || t > T.s5 + 0.6) return;
+  const a = ease(clamp((t - tK0) / (tK1 - tK0))), b = ease(clamp((t - tR0) / (tR1 - tR0)));
+  $("#tok1").style.transform = `translateX(${(1310 * a).toFixed(1)}px) translateY(${(Math.abs(Math.sin(t * 9)) * -6).toFixed(1)}px)`;
+  $("#tok2").style.transform = `translateX(${(1210 * b).toFixed(1)}px)`;
+  $$("#tok2 .wh").forEach((g) => g.setAttribute("transform", `translate(${g.dataset.cx} 176) rotate(${b < 1 && t > tR0 ? (t * 900) % 360 : 0})`));
+});
+sfx(tK0, "roll", { gain: 0.12 }); sfx(tR0, "roll", { gain: 0.14 });
+pop("#f2", tR1, { sfx: "ding", gain: 0.2 });
+pop("#f1", tK1, { sfx: "ding", gain: 0.2, });
+pop("#slow", w("slower") - 0.05, { sfx: "bloop", gain: 0.16 });
+pop("#fx1", w("slower") + 0.15, { sfx: "pop", gain: 0.16 });
+pop("#op1", w("plus the") - 0.05, { sfx: false });
+pop("#fx2", w("ride to your") - 0.1, { sfx: "pop", gain: 0.16 });
+pop("#op2", w("ride to your") + 0.15, { sfx: false });
+pop("#fx3", w("ride to your") + 0.3, { sfx: "chime", gain: 0.2 });
+
+// ================================================= S5: batching (dive into the result)
+EX.dive("#s4", "#s5", T.s5, 1500, 720);
+$("#map5").innerHTML = FD.map({ seed: 7 });
+$("#rest5").innerHTML = FD.pin("chef", 120);
+$("#hA").innerHTML = FD.pin("home", 100, "#12A4C4");
+$("#hB5").innerHTML = FD.pin("home", 100, "#7B61FF");
+$("#rkIn").innerHTML = miniRider("rk");
+$("#host5").innerHTML = ART.host({ w: 300, id: "h5", shirt: "#F2553D", girl: true });
+gsap.set(["#hA", "#hB5", "#rk", "#o1", "#o2", "#t5", "#trip", "#x2", "#host5"], { autoAlpha: 0 });
+gsap.set("#rt", { drawSVG: "0%" });
+tl.fromTo("#host5", { autoAlpha: 1, y: 520 }, { y: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s5 + 0.2);
+PAPER.lipSync($("#h5Mouth"), { from: T.s5 + 0.2, open: 16 });
+PAPER.blink($("#h5Eyes"), [T.s5 + 1.2, w("batching") + 0.4]);
+pop("#o1", w("going the") - 0.1, { sfx: "paper", gain: 0.2 });
+pop("#o2", w("going the") + 0.1, { sfx: "paper", gain: 0.2 });
+pop("#hA", w("same way") - 0.3, { sfx: "pop", gain: 0.14 });
+pop("#hB5", w("same way") - 0.1, { sfx: "pop", gain: 0.14 });
+tl.to("#rt", { drawSVG: "100%", duration: 0.7, ease: "power2.inOut" }, w("same way"));
+const tGo = w("one rider") - 0.1, tEnd = we("batching") + 0.2;
+pop("#rk", tGo - 0.3, { sfx: "bloop", gain: 0.16 });
+tl.to(["#o1", "#o2"], { x: -60, y: 80, scale: 0.3, autoAlpha: 0, duration: 0.35, ease: "power2.in", stagger: 0.1 }, tGo);
+pop("#x2", tGo + 0.4, { sfx: "coin", gain: 0.2 });
+const rt = $("#rt"), RL = rt.getTotalLength();
+REEL.onFrame((t) => { if (t < T.s5) return; const u = ease(clamp((t - tGo - 0.4) / (tEnd - tGo - 0.4))), p = rt.getPointAtLength(RL * u); $("#rk").style.transform = `translate(${(p.x - 480).toFixed(1)}px,${(p.y - 720).toFixed(1)}px)`; });
+sfx(tGo + 0.4, "whoosh", { gain: 0.22, dur: 1.4 });
+tl.to("#hA", { scale: 1.2, duration: 0.15, yoyo: true, repeat: 1 }, tGo + 0.4 + (tEnd - tGo - 0.4) * 0.62);
+sfx(tGo + 0.4 + (tEnd - tGo - 0.4) * 0.62, "ding", { gain: 0.18 });
+tl.fromTo("#t5", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("batching") - 0.1);
+pop("#trip", w("batching") + 0.25, { sfx: "chime", gain: 0.18 });
+sfx(w("batching") - 0.1, "impact", { gain: 0.22 });
+
+// ================================================= close
+EX.notify(T.close, { mode: "close", title: "Rider assigned ✓", sub: "Your rider is heading to the restaurant", big: "Rider assigned", next: "NEXT STOP · ON THE WAY" });
+REEL.finish(END);
+</script>
+</body></html>

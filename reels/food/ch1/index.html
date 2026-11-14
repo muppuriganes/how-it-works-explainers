@@ -1,0 +1,389 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Food Ch1 Order placed</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.serif{font-family:Garamond;font-style:italic;font-weight:500}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:12px 26px 16px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:44px;white-space:nowrap;box-shadow:0 10px 24px rgba(27,35,64,.18)}
+.tile{position:absolute;border-radius:40px;background:linear-gradient(180deg,#FFFFFF 0%,#FFF8F2 100%);box-shadow:inset 0 0 0 5px #fff,0 24px 0 #C9805F,0 30px 0 rgba(120,50,25,.18),0 56px 70px rgba(110,40,15,.32)}
+.cap{position:absolute;left:50%;transform:translateX(-50%);padding:10px 26px;border-radius:999px;background:var(--c,#1B2340);box-shadow:0 6px 0 rgba(27,35,64,.22);text-align:center;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.14em;color:#fff;white-space:nowrap}
+.scr *{box-sizing:border-box}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:96px;letter-spacing:.04em;background:rgba(255,255,255,.85);white-space:nowrap}
+.sl{position:absolute;font-family:Archivo;font-weight:800;font-size:26px;color:#1B2340;text-align:center;line-height:1.08;width:230px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/food.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: 10 pm, a living room, one tap -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#CCC6EE 0%,#DCD6F4 72%,#BDB2E0 72%,#AFA3D6 100%)"></div>
+    <div class="abs" style="left:1210px;top:300px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,226,150,.8) 0%,rgba(255,226,150,0) 70%)"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080">
+      <!-- door -->
+      <rect x="96" y="250" width="270" height="530" rx="10" fill="#B98A62"/><rect x="112" y="266" width="238" height="514" rx="6" fill="#C99A70"/><rect x="134" y="292" width="194" height="200" rx="8" fill="#B98A62" opacity=".6"/><rect x="134" y="520" width="194" height="230" rx="8" fill="#B98A62" opacity=".6"/><circle cx="320" cy="530" r="12" fill="#F5C64B" stroke="#1B2340" stroke-width="3"/><rect x="70" y="776" width="320" height="12" rx="6" fill="#9F86C9"/>
+      <!-- window with a night city -->
+      <rect x="440" y="250" width="330" height="290" rx="20" fill="#E9E5F8" stroke="#B4A9D8" stroke-width="16"/>
+      <defs><linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D4A8E"/><stop offset="1" stop-color="#7A82C8"/></linearGradient><clipPath id="wclip"><rect x="448" y="258" width="314" height="274" rx="14"/></clipPath></defs>
+      <g clip-path="url(#wclip)"><rect x="448" y="258" width="314" height="274" fill="url(#nsky)"/><circle cx="700" cy="310" r="26" fill="#FFF3C4"/><circle cx="712" cy="302" r="22" fill="#5966AC"/>
+        <g id="wcity"></g></g>
+      <path d="M605 250 L605 540 M440 395 L770 395" stroke="#B4A9D8" stroke-width="10"/>
+      <!-- lamp -->
+      <rect x="1376" y="430" width="10" height="300" fill="#7C6EA8"/><path d="M1330 430 L1432 430 L1410 360 L1352 360 Z" fill="#FFE3A3" stroke="#1B2340" stroke-width="3"/><ellipse cx="1381" cy="735" rx="50" ry="10" fill="#7C6EA8"/>
+    </svg>
+    <div id="host1" class="abs" data-ob="host1" style="left:818px;top:318px"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080">
+      <!-- sofa in front of the host -->
+      <ellipse cx="980" cy="905" rx="380" ry="20" fill="#1B2340" opacity=".14"/>
+      <rect x="640" y="660" width="680" height="170" rx="40" fill="#3FA3A8"/><rect x="640" y="660" width="680" height="40" rx="20" fill="#5BBFC3"/>
+      <rect x="600" y="720" width="120" height="180" rx="40" fill="#348C91"/><rect x="1240" y="720" width="120" height="180" rx="40" fill="#348C91"/>
+      <rect x="690" y="790" width="580" height="90" rx="24" fill="#4BB3B8"/><rect x="980" y="796" width="6" height="80" fill="#3FA3A8"/>
+      <rect x="640" y="890" width="20" height="26" fill="#2A6E72"/><rect x="1300" y="890" width="20" height="26" fill="#2A6E72"/>
+    </svg>
+    <div id="ph1" class="abs" data-ob="ph1" style="left:1500px;top:250px"></div>
+    <div class="lbl x3d" id="t10" data-ob="t10" style="left:440px;top:110px;font-size:110px;--xf:#fff">10:00 <span style="color:#7B61FF">PM</span></div>
+    <div class="bub" id="grr" data-ob="grr" style="left:470px;top:600px;background:#F5A524;color:#1B2340;border-radius:26px 26px 26px 6px;transform:rotate(-6deg)">GRRRR…</div>
+    <div class="bub" id="m30" data-ob="m30" style="left:1110px;top:120px;background:#1B2340;color:#FFC93D;font-family:'JetBrains Mono';font-weight:800;font-size:46px">⏱ 30 MIN</div>
+    <div id="hd1" class="abs" data-ob="hd1" style="left:126px;top:612px"></div>
+    <div id="spk" class="abs" style="left:60px;top:560px;width:380px;height:300px"></div>
+    <div class="lbl serif" id="magic" data-ob="magic" style="left:120px;top:110px;font-size:110px;color:#7B61FF;text-transform:none;font-family:Garamond;font-weight:600">like magic ✨</div>
+    <div class="stamp" id="nope" data-ob="magic" style="left:160px;top:130px;transform:rotate(-8deg)">NOPE.</div>
+  </section>
+
+  <!-- S2: not magic, a relay of three -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 25%,#FFC8A8 0%,#F7A47E 60%,#EE8C66 100%)"></div>
+    <div class="abs" style="inset:0;background-image:radial-gradient(rgba(120,40,10,.14) 2.5px,transparent 3px);background-size:44px 44px"></div>
+    <div class="lbl x3d" id="t2" data-ob="t2" style="left:0;width:1920px;text-align:center;top:96px;font-size:100px;--xf:#fff">Not magic. <span style="color:#F2553D">A relay.</span></div>
+    <svg id="arrows2" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><path id="ar1" d="M640 560 Q 680 520 720 560" stroke="#fff" stroke-width="6" fill="none" stroke-dasharray="4 14" stroke-linecap="round"/><path id="ar2" d="M1220 560 Q 1260 520 1300 560" stroke="#fff" stroke-width="6" fill="none" stroke-dasharray="4 14" stroke-linecap="round"/></svg>
+    <div class="tile" id="p1" data-ob="p1" style="left:90px;top:290px;width:540px;height:560px"><div id="kit" class="abs" style="left:50px;top:110px"></div><div class="cap" style="top:470px;--c:#F2553D">THE KITCHEN</div></div>
+    <div class="tile" id="p2" data-ob="p2" style="left:690px;top:290px;width:540px;height:560px">
+      <div id="srv" class="abs" style="left:150px;top:150px"></div>
+      <div class="abs fc" id="g1" style="left:24px;top:60px;padding:10px 18px;border-radius:16px;background:#7B61FF;color:#fff;font-family:'JetBrains Mono';font-weight:800;font-size:26px;white-space:nowrap">COOK: 18 MIN?</div>
+      <div class="abs fc" id="g2" style="left:280px;top:110px;padding:10px 18px;border-radius:16px;background:#12A4C4;color:#fff;font-family:'JetBrains Mono';font-weight:800;font-size:26px;white-space:nowrap">RIDE: 12 MIN?</div>
+      <div class="cap" style="top:470px;--c:#7B61FF">PREDICTION MODELS</div></div>
+    <div class="tile" id="p3" data-ob="p3" style="left:1290px;top:290px;width:540px;height:560px;overflow:hidden">
+      <div class="abs" style="left:0;top:330px;width:540px;height:120px;background:#E4E6EE"></div><div class="abs" style="left:0;top:386px;width:540px;height:6px;background:repeating-linear-gradient(90deg,#fff 0 40px,transparent 40px 70px)"></div>
+      <div id="sig" class="abs" style="left:400px;top:70px"></div><div id="rd2" class="abs" style="left:30px;top:200px"></div>
+      <div class="abs" id="cnt" style="left:300px;top:40px;padding:6px 14px;border-radius:12px;background:#1B2340;color:#F0566E;font-family:'JetBrains Mono';font-weight:800;font-size:30px">03</div>
+      <div class="cap" style="top:470px;--c:#12A4C4">ONE RIDER</div></div>
+  </section>
+
+  <!-- S3: a city at night full of orders (perspective picture) -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#434D8C 0%,#7C7FC0 34%,#A9A2D6 44%,#5B649F 44%)"></div>
+    <div id="cw3" class="abs" style="inset:0;transform-origin:50% 62%">
+      <svg id="city3" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+      <svg id="dots3" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+      <div id="pins3" class="abs" style="inset:0"></div>
+    </div>
+    <div class="lbl x3d" id="t3" data-ob="t3" style="left:110px;top:110px;font-size:104px;--xf:#fff">Millions of orders.</div>
+    <div class="lbl" id="t3b" data-ob="t3b" style="left:116px;top:220px;font-size:64px;color:#FFD58A">Every. Single. Day.</div>
+    <div class="abs fc soft" id="ctr" data-ob="ctr" style="left:1290px;top:110px;padding:18px 30px;border-radius:26px;background:#fff"><div style="font-family:'JetBrains Mono';font-weight:800;font-size:20px;letter-spacing:.14em;color:rgba(27,35,64,.55)">FOOD ORDERS / DAY*</div><div id="ctrN" style="font-family:Archivo;font-weight:900;font-size:76px;color:#F2553D;line-height:1">0</div><div style="font-family:Archivo;font-weight:600;font-size:20px;color:rgba(27,35,64,.55)">*both apps, rough estimates</div></div>
+  </section>
+
+  <!-- S4: follow one order, seven stops -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#FFE6D3 0%,#F9C6A9 100%)"></div>
+    <div class="lbl x3d" id="t4" data-ob="t4" style="left:160px;width:1600px;text-align:center;top:100px;font-size:96px;--xf:#fff">One order. <span style="color:#F2553D">One biryani.</span></div>
+    <div id="hd4" class="abs" data-ob="hd4" style="left:830px;top:230px"></div>
+    <svg id="trk" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><line x1="300" y1="660" x2="1620" y2="660" stroke="#E8C9B7" stroke-width="16" stroke-linecap="round"/><line id="trkOn" x1="300" y1="660" x2="1620" y2="660" stroke="#F2553D" stroke-width="16" stroke-linecap="round"/></svg>
+    <div id="stops" class="abs" style="inset:0"></div>
+    <div class="abs fc" id="tapE" data-ob="tapE" style="left:238px;top:840px;padding:6px 14px;border-radius:999px;background:#1B2340;color:#fff;font-family:'JetBrains Mono';font-weight:800;font-size:22px;letter-spacing:.1em">YOUR TAP</div>
+    <div class="abs fc" id="doorE" data-ob="doorE" style="left:1550px;top:840px;padding:6px 14px;border-radius:999px;background:#1B2340;color:#fff;font-family:'JetBrains Mono';font-weight:800;font-size:22px;letter-spacing:.1em">YOUR DOOR</div>
+  </section>
+
+  <!-- S5: the famous two minutes -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:linear-gradient(160deg,#BFDDF2 0%,#D9CCF0 100%)"></div><div class="abs" style="inset:0;background-image:radial-gradient(rgba(27,35,64,.10) 2.5px,transparent 3px);background-size:44px 44px"></div>
+    <div id="host5" class="abs" data-ob="host5" style="left:120px;top:330px"></div>
+    <div id="ph5" class="abs" data-ob="ph5" style="left:760px;top:310px"></div>
+    <div id="nb5" class="abs" data-ob="nb5" style="left:200px;top:110px"></div>
+    <div class="lbl x3d" id="t5" data-ob="t5" style="left:1220px;top:120px;font-size:80px;--xf:#fff">Start a <span style="color:#F2553D">timer.</span></div>
+    <div id="sw" class="abs" data-ob="sw" style="left:1270px;top:280px"></div>
+    <div class="bub" id="sus" data-ob="sus" style="left:1240px;top:760px;background:#fff;color:#1B2340;font-size:36px;border-radius:26px 26px 26px 6px">2 min. Sure. 🙂</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+EX.tracker(1, 5, "Order placed");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+tl.to(["#tag", "#prog"], { autoAlpha: 1, duration: 0.4 }, 0.2);
+const T = { s2: w("it's a restaurant") - 0.15, s3: w("in india") - 0.2, s4: w("so tonight") - 0.12, s5: w("oh and") - 0.12, close: w("order placed") + 1.3 };
+const END = T.close + 1.4;
+const lerp = (a, b, u) => a + (b - a) * u, clamp = (u) => Math.max(0, Math.min(1, u));
+
+// ================================================= S1: ten at night, one tap
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+$("#wcity").innerHTML = ISO.city({ w: 330, h: 150, color: "#5664A8", seed: 4 }).replace("<svg ", '<svg x="448" y="382" ');
+$("#host1").innerHTML = ART.host({ w: 300, id: "h1", shirt: "#F2553D", girl: true });
+// the phone and its app screen
+const P1 = EX.phoneBox("#ph1", { w: 300, accent: "#F2553D" });
+P1.scr.innerHTML = `<div class="abs" style="inset:0;background:#FFF7F2;font-family:Archivo">
+  <div style="display:flex;justify-content:space-between;padding:16px 22px 0;font-family:'JetBrains Mono';font-weight:800;font-size:15px;color:#1B2340"><span>22:00</span><span>▮▮▮ 5G</span></div>
+  <div style="padding:16px 22px 0;font-weight:600;font-size:18px;color:rgba(27,35,64,.55)">Good evening</div>
+  <div style="padding:0 22px;font-weight:900;font-size:40px;color:#1B2340">Dinner?</div>
+  <div style="margin:14px 16px 0;padding:14px;border-radius:22px;background:#fff;box-shadow:0 8px 20px rgba(27,35,64,.1)"><div style="display:flex;justify-content:center">${FD.handi({ w: 170, id: "ph", steam: false })}</div>
+    <div style="font-weight:900;font-size:24px;color:#1B2340;margin-top:8px">Chicken Biryani</div><div style="font-family:'JetBrains Mono';font-weight:700;font-size:15px;color:rgba(27,35,64,.6);margin-top:4px">★ 4.3 · 30 MIN · ₹300</div></div>
+  <div id="btn1" style="position:absolute;left:16px;right:16px;bottom:22px;height:64px;border-radius:18px;background:#F2553D;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;letter-spacing:.04em">PLACE ORDER</div>
+  <div id="btn1b" style="position:absolute;left:16px;right:16px;bottom:22px;height:64px;border-radius:18px;background:#22B573;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;letter-spacing:.04em">ORDERED ✓</div></div>`;
+$("#hd1").innerHTML = FD.handi({ w: 210, id: "d1" });
+EX.steam("#hd1", w("shows up"), T.s2 + 0.5);
+$("#spk").innerHTML = Array.from({ length: 9 }, (_, i) => `<svg class="abs spk" style="left:${[20, 300, 60, 330, 170, 0, 250, 120, 340][i]}px;top:${[30, 10, 230, 200, 0, 140, 270, 280, 110][i]}px" width="40" height="40" viewBox="0 0 40 40"><path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="${["#FFC93D", "#7B61FF", "#F2553D"][i % 3]}"/></svg>`).join("");
+gsap.set(["#host1", "#ph1", "#t10", "#grr", "#m30", "#hd1", "#magic", "#nope", "#btn1b", ...$$("#spk .spk")], { autoAlpha: 0 });
+tl.fromTo("#t10", { autoAlpha: 0, y: -50, rotationX: 80 }, { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("ten at") - 0.1);
+sfx(w("ten at"), "tick", { gain: 0.25 }); sfx(w("ten at") + 0.3, "tick", { gain: 0.2 });
+tl.fromTo("#host1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, 0.25);
+PAPER.lipSync($("#h1Mouth"), { from: 0.3, to: T.s2, open: 14 });
+PAPER.blink($("#h1Eyes"), [1.0, 3.6, 6.8]);
+pop("#grr", w("hungry"), { sfx: "bloop", gain: 0.2 });
+for (let k = 0; k < 6; k++) tl.to("#grr", { x: k % 2 ? -5 : 5, duration: 0.06 }, w("hungry") + 0.3 + k * 0.06);
+tl.to("#grr", { autoAlpha: 0, scale: 0.6, duration: 0.25 }, w("tap one") + 0.3);
+tl.fromTo("#ph1", { autoAlpha: 1, y: 700, rotation: 8 }, { y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.3)", immediateRender: false }, 0.6);
+sfx(0.6, "whoosh", { gain: 0.2 });
+// the tap
+EX.tap(P1.scr, 128, 510, w("one button") + 0.1, "#F2553D");
+sfx(w("one button") + 0.1, "click", { gain: 0.35 });
+tl.to("#h1Arm", { keyframes: { rotation: [-14, 6, 0] }, svgOrigin: "300 450", duration: 0.5 }, w("tap one"));
+tl.set("#btn1b", { autoAlpha: 1 }, w("one button") + 0.2);
+tl.fromTo("#btn1b", { scale: 0.8 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, w("one button") + 0.2);
+sfx(w("one button") + 0.22, "ding", { gain: 0.2 });
+pop("#m30", w("thirty minutes"), { sfx: "tick", gain: 0.25 });
+tl.fromTo("#hd1", { autoAlpha: 1, y: -540, scaleY: 1.1 }, { y: 0, scaleY: 1, duration: 0.55, ease: "bounce.out", immediateRender: false }, w("a biryani") - 0.15);
+sfx(w("a biryani") + 0.2, "clunk", { gain: 0.22 });
+sfx(w("your door") - 0.05, "ding", { gain: 0.28 }); sfx(w("your door") + 0.25, "ding", { gain: 0.24, pitch: 0.8 });   // ding-dong
+// like magic: sparkles + script text
+$$("#spk .spk").forEach((s, i) => { const t0 = w("like magic") - 0.1 + i * 0.05; tl.fromTo(s, { autoAlpha: 0, scale: 0, rotation: 0 }, { autoAlpha: 1, scale: 1, rotation: 90, duration: 0.35, ease: "back.out(3)", immediateRender: false }, t0); tl.to(s, { autoAlpha: 0, scale: 0.3, duration: 0.3 }, w("except") + 0.1); });
+tl.fromTo("#magic", { autoAlpha: 0, y: 30, scale: 0.8 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("like magic"));
+tl.to("#t10", { autoAlpha: 0, y: -30, duration: 0.25 }, w("like magic") - 0.3);
+sfx(w("like magic"), "chime", { gain: 0.22 });
+// except... record scratch, NOPE stamp
+tl.fromTo("#nope", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, w("not magic"));
+sfx(w("except"), "glitch", { gain: 0.3 }); sfx(w("not magic") + 0.16, "stamp", { gain: 0.5 });
+REEL.shake($("#shake"), w("not magic") + 0.16, 8);
+tl.to("#h1BrowL", { y: -12, duration: 0.15, yoyo: true, repeat: 1 }, w("except"));
+tl.to("#h1BrowR", { y: -12, duration: 0.15, yoyo: true, repeat: 1 }, w("except"));
+
+// ================================================= S2: a kitchen, models, a rider (iris from the phone)
+EX.iris("#s2", T.s2, 1650, 560, { color: "#F2553D" });
+show("#s2", T.s2, T.s3 + 0.5, { y: 0 });
+
+$("#kit").innerHTML = FD.kitchen({ w: 440, id: "k2" });
+$("#srv").innerHTML = ISO.server({ w: 240, id: "sv2", color: "#7B61FF", screen: "#E3DCFA" });
+$("#sig").innerHTML = FD.signal({ h: 250, id: "sg2" });
+$("#rd2").innerHTML = FD.rider({ w: 340, id: "r2" });
+EX.steam("#kit", T.s2, T.s3 + 0.5);
+EX.ride("#rd2", T.s2, T.s3 + 0.5, 0);
+gsap.set(["#t2", "#p1", "#p2", "#p3", "#g1", "#g2", "#cnt"], { autoAlpha: 0 });
+gsap.set(["#ar1", "#ar2"], { drawSVG: "0%" });
+tl.fromTo("#t2", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T.s2 + 0.35);
+[["#p1", w("restaurant kitchen")], ["#p2", w("prediction models")], ["#p3", w("one rider")]].forEach(([el, t], i) => {
+  tl.fromTo(el, { autoAlpha: 0, y: 160, rotation: [-6, 4, -4][i] }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, t - 0.1);
+  sfx(t - 0.1, "slam", { gain: 0.18 });
+});
+tl.to("#ar1", { drawSVG: "100%", duration: 0.4 }, w("a bunch"));
+tl.to("#ar2", { drawSVG: "100%", duration: 0.4 }, w("and one"));
+// flames flicker
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; $$("#kit .fl path").forEach((p, i) => p.setAttribute("transform", `translate(0 ${4 * Math.sin(t * 17 + i * 1.3)}) `)); });
+pop("#g1", w("prediction") + 0.2, { sfx: "bloop", gain: 0.16 });
+pop("#g2", w("models") + 0.3, { sfx: "bloop", gain: 0.16 });
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; const f = $("#sv2Face"); if (f) f.setAttribute("transform", `translate(${3 * Math.sin(t * 6)} 0)`); });
+// the signal counts down, goes green, the rider launches
+pop("#cnt", w("traffic signal") - 0.3, { sfx: "beep", gain: 0.12 });
+const tGo = w("signal") + 0.6;
+REEL.onFrame((t) => {
+  if (t < T.s2 || t > T.s3 + 0.5) return;
+  const left = Math.max(0, Math.ceil(tGo - t));
+  $("#cnt").textContent = String(left).padStart(2, "0");
+  const go = t >= tGo;
+  $("#sg2R").setAttribute("fill", go ? "#5A3038" : "#F0566E");
+  $("#sg2G").setAttribute("fill", go ? "#22D07A" : "#2E4A3A");
+  $("#cnt").style.color = go ? "#22D07A" : "#F0566E";
+});
+sfx(tGo, "beep", { gain: 0.2, pitch: 1.5 });
+for (let k = 0; k < 8; k++) tl.to("#rd2", { y: k % 2 ? 0 : -3, duration: 0.08 }, w("racing") + k * 0.12);
+tl.to("#rd2", { x: 30, duration: 0.25, ease: "power1.inOut", yoyo: true, repeat: 3 }, w("racing"));
+EX.ride("#rd2", tGo, T.s3 + 0.5);
+tl.to("#rd2", { x: 700, duration: 0.7, ease: "power3.in" }, tGo + 0.05);
+sfx(tGo + 0.05, "whoosh", { gain: 0.25 });
+
+// ================================================= S3: the whole city at night (scooter wipe in)
+EX.scooterWipe(T.s3, { dur: 0.8 });
+show("#s3", T.s3, T.s4 + 0.4, { y: 0 });
+// perspective projection: camera above the city looking at the horizon
+const F = 900, HZ = 400, CAMH = 560;
+const pj = (X, Y, Z) => [960 + (F * X) / Z, HZ + (F * (CAMH - Y)) / Z];
+const sh = (hex, k) => { const n = parseInt(hex.slice(1), 16); let r = n >> 16, g = (n >> 8) & 255, b = n & 255; const f = (c) => Math.round(k > 0 ? c + (255 - c) * k : c * (1 + k)); return `rgb(${f(r)},${f(g)},${f(b)})`; };
+(function buildCity() {
+  const R = rng(11), BLK = 520, STR = 130, rows = [];
+  let s = "";
+  const poly = (pts, fill, extra = "") => `<polygon points="${pts.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="${fill}" ${extra}/>`;
+  // ground + street glow lines
+  s += poly([pj(-9000, 0, 420), pj(9000, 0, 420), pj(9000, 0, 9000), pj(-9000, 0, 9000)], "#59629E");
+  const blocks = [];
+  for (let zi = 0; zi < 15; zi++) for (let xi = -7; xi <= 6; xi++) {
+    const z0 = 520 + zi * (BLK + STR), z1 = z0 + BLK, x0 = xi * (BLK + STR) + STR / 2, x1 = x0 + BLK;
+    blocks.push({ x0, x1, z0, z1 });
+  }
+  // sidewalks/blocks
+  blocks.forEach((b) => { s += poly([pj(b.x0, 0, b.z0), pj(b.x1, 0, b.z0), pj(b.x1, 0, b.z1), pj(b.x0, 0, b.z1)], "#6A73B0"); });
+  // street lamps glow lines along streets
+  for (let xi = -7; xi <= 7; xi++) { const X = xi * (BLK + STR); const a = pj(X, 0, 440), b = pj(X, 0, 9000); s += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#FFD58A" stroke-opacity=".28" stroke-width="3"/>`; }
+  for (let zi = 0; zi < 16; zi++) { const Z = 520 + zi * (BLK + STR) - STR / 2; const a = pj(-9000, 0, Z), b = pj(9000, 0, Z); s += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#FFD58A" stroke-opacity=".22" stroke-width="2"/>`; }
+  // buildings: far rows first, outer columns first
+  const bld = [];
+  blocks.forEach((b) => {
+    const n = 1 + Math.floor(R() * 3), wEach = (b.x1 - b.x0 - 40) / n;
+    for (let k = 0; k < n; k++) {
+      const x0 = b.x0 + 20 + k * wEach + 8, x1 = x0 + wEach - 16, d = 160 + R() * 260, z0 = b.z0 + 20 + R() * (b.z1 - b.z0 - d - 40);
+      const near = Math.abs(x0 + x1) / 2 < 500 && b.z0 < 1300;
+      const h = near ? 60 + R() * 120 : 90 + R() * (b.z0 > 3000 ? 700 : 420);
+      bld.push({ x0, x1, z0, z1: z0 + d, h, c: ["#6F78B8", "#7A73B6", "#6586BA", "#8A7DBE"][Math.floor(R() * 4)], lit: R() });
+    }
+  });
+  bld.sort((a, b) => b.z0 - a.z0 || Math.abs(b.x0 + b.x1) - Math.abs(a.x0 + a.x1));
+  bld.forEach((q) => {
+    const { x0, x1, z0, z1, h, c } = q;
+    // side face (towards the camera axis)
+    if (x1 < 0) s += poly([pj(x1, 0, z0), pj(x1, h, z0), pj(x1, h, z1), pj(x1, 0, z1)], sh(c, -0.18));
+    else if (x0 > 0) s += poly([pj(x0, 0, z0), pj(x0, h, z0), pj(x0, h, z1), pj(x0, 0, z1)], sh(c, -0.18));
+    // top
+    if (h < CAMH) s += poly([pj(x0, h, z0), pj(x1, h, z0), pj(x1, h, z1), pj(x0, h, z1)], sh(c, 0.22));
+    // front face + windows
+    const [ax, ay] = pj(x0, h, z0), [bx, by] = pj(x1, 0, z0);
+    s += `<rect x="${ax.toFixed(1)}" y="${ay.toFixed(1)}" width="${(bx - ax).toFixed(1)}" height="${(by - ay).toFixed(1)}" fill="${c}"/>`;
+    const ww = bx - ax, hh = by - ay, sc = F / z0;
+    if (sc > 0.12) {
+      const cols = Math.max(1, Math.floor(ww / (46 * sc))), rowsN = Math.max(1, Math.floor(hh / (56 * sc)));
+      for (let r = 0; r < rowsN; r++) for (let k = 0; k < cols; k++) {
+        if (R() > 0.42 + q.lit * 0.3) continue;
+        const wx = ax + (k + 0.25) * (ww / cols), wy = ay + (r + 0.3) * (hh / rowsN);
+        s += `<rect x="${wx.toFixed(1)}" y="${wy.toFixed(1)}" width="${((ww / cols) * 0.5).toFixed(1)}" height="${((hh / rowsN) * 0.42).toFixed(1)}" fill="${R() < 0.75 ? "#FFD58A" : "#FFF1C9"}" opacity=".92"/>`;
+      }
+    }
+  });
+  $("#city3").innerHTML = s;
+})();
+// riders: glowing dots driving the streets (pure function of t)
+const RIDERS = (() => { const R = rng(5), a = []; for (let i = 0; i < 46; i++) { const along = R() < 0.55; a.push({ along, lane: along ? (Math.floor(R() * 13) - 6) * 650 + (R() < 0.5 ? -25 : 25) : 520 + Math.floor(R() * 12) * 650 - 65, p: R(), v: (R() < 0.5 ? -1 : 1) * (0.05 + R() * 0.07) }); } return a; })();
+$("#dots3").innerHTML = RIDERS.map(() => `<g class="rdot"><circle r="10" fill="#FFB547" opacity=".35"/><circle r="4.5" fill="#FFF3C4"/></g>`).join("");
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.5 || t > T.s4 + 0.5) return;
+  $$("#dots3 .rdot").forEach((g, i) => {
+    const q = RIDERS[i], u = (((q.p + q.v * t) % 1) + 1) % 1;
+    let X, Z; if (q.along) { X = q.lane; Z = 600 + u * 8000; } else { Z = q.lane; X = -4500 + u * 9000; }
+    const [x, y] = pj(X, 0, Z), s = Math.max(0.35, Math.min(2.2, 1100 / Z));
+    g.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${s.toFixed(2)})`);
+    g.setAttribute("opacity", y < HZ + 40 ? 0 : 1);
+  });
+});
+// order pins pop all over the city
+const pinSvg = (s) => `<svg width="${s}" height="${s * 1.3}" viewBox="0 0 64 84" style="overflow:visible"><ellipse cx="32" cy="82" rx="12" ry="4" fill="#1B2340" opacity=".35"/><path d="M32 82 C 32 82, 4 48, 4 30 A28 28 0 0 1 60 30 C 60 48, 32 82, 32 82 Z" fill="#F2553D" stroke="#fff" stroke-width="4"/><path d="M24 18 L24 30 Q24 34 28 34 L28 44 M20 18 L20 28 M28 18 L28 28 M40 44 L40 18 Q46 21 46 30 L40 32" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`;
+const PINS = (() => { const R = rng(23), a = []; let guard = 0; while (a.length < 40 && guard++ < 4000) { const X = (R() * 2 - 1) * 3600, Z = 900 + Math.pow(R(), 1.6) * 5200; const [x, y] = pj(X, 0, Z), s = Math.max(30, Math.min(76, 52000 / Z)); if (x < 200 || x > 1720 || y - s * 1.3 < 380 || y > 900) continue; if (a.some((b) => Math.abs(b.x - x) < (s + b.s) * 0.62 && Math.abs(b.y - y) < (s + b.s) * 0.8)) continue; a.push({ x, y, s, Z }); } return a.sort((p, q) => q.Z - p.Z); })();
+$("#pins3").innerHTML = PINS.map((p) => `<div class="abs pin3" data-ob="pins" style="left:${(p.x - p.s / 2).toFixed(1)}px;top:${(p.y - p.s * 1.3).toFixed(1)}px;transform-origin:50% 100%">${pinSvg(p.s)}</div>`).join("");
+const pinEls = $$("#pins3 .pin3");
+gsap.set([...pinEls, "#t3", "#t3b", "#ctr"], { autoAlpha: 0 });
+const tP = w("deliver") - 0.2;
+pinEls.forEach((el, i) => { const t0 = tP + (i / pinEls.length) * 2.2; tl.fromTo(el, { autoAlpha: 0, scale: 0, y: -40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(3)", immediateRender: false }, t0); if (i % 3 === 0) sfx(t0, "pop", { gain: 0.08, pitch: 0.9 + (i % 5) * 0.08 }); });
+tl.fromTo("#cw3", { scale: 1 }, { scale: 1.1, duration: T.s4 - T.s3 + 0.4, ease: "sine.inOut", immediateRender: false }, T.s3);
+tl.fromTo("#t3", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("millions") - 0.1);
+sfx(w("millions") - 0.1, "impact", { gain: 0.26 });
+tl.fromTo("#t3b", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, w("every single"));
+pop("#ctr", w("india") + 0.1, { sfx: "chime", gain: 0.15 });
+const tC0 = w("deliver"), tC1 = w("day") + 0.1;
+REEL.onFrame((t) => { const u = clamp((t - tC0) / (tC1 - tC0)), e = 1 - Math.pow(1 - u, 3); $("#ctrN").textContent = u >= 1 ? "2,000,000+" : Math.round(2000000 * e).toLocaleString("en-US"); });
+sfx(tC0, "riser", { gain: 0.12, dur: tC1 - tC0 });
+
+// ================================================= S4: dive into one pin, one order, seven stops
+const P0 = PINS.reduce((a, b) => (Math.abs(b.x - 960) + Math.abs(b.y - 700) < Math.abs(a.x - 960) + Math.abs(a.y - 700) ? b : a));
+EX.dive("#cw3", "#s4", T.s4, P0.x, P0.y - P0.s * 0.7);
+
+$("#hd4").innerHTML = FD.handi({ w: 260, id: "d4" });
+EX.steam("#hd4", T.s4, T.s5 + 0.5);
+const NS = EX.STOPS.length, SX = (i) => 300 + i * (1320 / (NS - 1));
+$("#stops").innerHTML = EX.STOPS.map((n, i) => `<div class="abs stp" data-ob="stp${i}" style="left:${SX(i) - 60}px;top:600px;width:120px;height:120px">${FD.stopIcon(EX.STOP_ICON[i], 120, true)}</div><div class="sl stl" data-ob="stl${i}" style="left:${SX(i) - 115}px;top:744px">${n.replace(" ", "<br>")}</div>`).join("") +
+  `<div id="mr" class="abs" data-ob="mr" style="left:${SX(0) - 70}px;top:470px"></div>`;
+$("#mr").innerHTML = FD.rider({ w: 150, id: "mr" });
+gsap.set(["#t4", "#hd4", "#tapE", "#doorE", "#mr", ...$$("#stops .stp"), ...$$("#stops .stl")], { autoAlpha: 0 });
+gsap.set("#trkOn", { drawSVG: "0%" });
+tl.fromTo("#t4", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("one order") - 0.1);
+sfx(w("one order") - 0.1, "slam", { gain: 0.18 });
+tl.fromTo("#hd4", { autoAlpha: 0, scale: 0, rotation: -20 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2.2)", immediateRender: false }, w("one biryani") - 0.2);
+sfx(w("one biryani") + 0.15, "clunk", { gain: 0.22 });
+$$("#stops .stp").forEach((el, i) => { const t0 = w("five stops") + i * 0.2; pop(el, t0, { from: 0.2, sfx: "pop", gain: 0.12 }); rise($$("#stops .stl")[i], t0 + 0.08, { y: 20 }); });
+tl.to("#trkOn", { drawSVG: "100%", duration: 1.2, ease: "power2.inOut" }, w("order tracker"));
+pop("#mr", w("order tracker") - 0.1, { sfx: false });
+pop("#tapE", w("your tap"), { sfx: "click", gain: 0.2 });
+pop("#doorE", w("to your door") + 0.15, { sfx: "ding", gain: 0.2 });
+tl.to($$("#stops .stp")[NS - 1], { scale: 1.15, duration: 0.2, yoyo: true, repeat: 1 }, w("to your door") + 0.15);
+EX.ride("#mr", T.s4, T.s5 + 0.5, 300);
+
+// ================================================= S5: "your rider is 2 minutes away" (cube turn)
+// S4 shrinks into the phone screen of S5 (phone at 760,310 w300 -> screen 782,335 256x566)
+EX.shrinkInto("#s4", "#s5", T.s5, { x: 782, y: 335, w: 256, h: 566, r: 22, dur: 0.75 });
+tl.set("#s4", { autoAlpha: 0 }, T.s5 + 1.05);
+$("#host5").innerHTML = ART.host({ w: 380, id: "h5", shirt: "#F2553D", girl: true });
+const P5 = EX.phoneBox("#ph5", { w: 300, accent: "#F2553D" });
+P5.scr.innerHTML = `<div class="abs" style="inset:0;background:#EEF1F7;font-family:Archivo">
+  <svg class="abs" style="left:0;top:0" width="256" height="566"><rect width="256" height="566" fill="#E9EDF4"/>
+    ${[60, 170, 280, 390, 500].map((y) => `<rect x="0" y="${y}" width="256" height="22" fill="#fff"/>`).join("")}${[50, 150, 220].map((x) => `<rect x="${x}" y="0" width="20" height="566" fill="#fff"/>`).join("")}
+    <path id="rt5" d="M60 470 L 60 291 L 160 291 L 160 181 L 230 181 L 230 120" stroke="#F2553D" stroke-width="6" fill="none" stroke-dasharray="2 10" stroke-linecap="round"/>
+    <circle cx="230" cy="112" r="14" fill="#1B2340"/><path d="M222 112 L230 104 L238 112 L238 120 L222 120 Z" fill="#fff"/></svg>
+  <div id="mini5" class="abs" style="left:28px;top:430px">${FD.rider({ w: 70, id: "m5" })}</div>
+  <div id="ban5" class="abs" style="left:10px;right:10px;top:16px;padding:12px 12px;border-radius:16px;background:#fff;box-shadow:0 8px 20px rgba(27,35,64,.18);display:flex;gap:10px;align-items:center">${FD.icon(38)}<div style="font-weight:900;font-size:17px;line-height:1.15;color:#1B2340">Your rider is<br><span style="color:#F2553D">2 minutes away</span></div></div></div>`;
+$("#sw").innerHTML = `<svg viewBox="0 0 400 440" width="400" height="440" style="overflow:visible">${ISO.shadow(200, 436, 170, 16, 0.18)}
+  <rect x="170" y="10" width="60" height="40" rx="10" fill="#1B2340"/><rect x="290" y="64" width="44" height="30" rx="8" fill="#1B2340" transform="rotate(40 312 79)"/>
+  <circle cx="200" cy="250" r="176" fill="#1B2340"/><circle cx="200" cy="250" r="150" fill="#fff"/>
+  ${Array.from({ length: 12 }, (_, i) => { const a = (i / 12) * Math.PI * 2; return `<line x1="${200 + Math.sin(a) * 132}" y1="${250 - Math.cos(a) * 132}" x2="${200 + Math.sin(a) * 116}" y2="${250 - Math.cos(a) * 116}" stroke="#1B2340" stroke-width="6" stroke-linecap="round"/>`; }).join("")}
+  <path id="swArc" d="M200 120 A130 130 0 1 1 199.9 120" stroke="#F2553D" stroke-width="12" fill="none" opacity=".25"/>
+  <g id="swHand"><path d="M196 250 L200 130 L204 250 Z" fill="#F2553D"/></g><circle cx="200" cy="250" r="14" fill="#1B2340"/>
+  <rect x="120" y="290" width="160" height="56" rx="12" fill="#1B2340"/><text id="swNum" x="200" y="330" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="36" fill="#FFC93D">00:00</text></svg>`;
+$("#nb5").innerHTML = FD.notif(`Your rider is <span style="color:#F2553D">2 minutes away</span>`, "Almost there! 🛵", { w: 940 });
+gsap.set(["#nb5", "#host5", "#ph5", "#ban5", "#t5", "#sw", "#sus"], { autoAlpha: 0 });
+tl.fromTo("#host5", { autoAlpha: 1, x: -500 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s5 + 0.55);
+PAPER.lipSync($("#h5Mouth"), { from: T.s5 + 0.2, open: 18 });
+PAPER.blink($("#h5Eyes"), [T.s5 + 1.2, w("start a") + 0.5]);
+tl.set("#ph5", { autoAlpha: 1 }, T.s5);
+tl.fromTo("#ban5", { autoAlpha: 0, y: -80 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("your rider"));
+sfx(w("your rider"), "bloop", { gain: 0.25 });
+tl.fromTo("#nb5", { autoAlpha: 0, y: -60, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("your rider") + 0.1);
+tl.to("#nb5", { scale: 1.05, duration: 0.15, yoyo: true, repeat: 1 }, w("two minutes"));
+tl.to("#nb5", { autoAlpha: 0, y: -40, duration: 0.25 }, w("order placed") - 0.25);
+tl.to("#h5BrowL", { y: -14, duration: 0.2 }, w("two minutes"));
+tl.to("#h5BrowL", { y: 0, duration: 0.2 }, w("start a"));
+tl.to("#h5Arm", { keyframes: { rotation: [-18, 8, 0] }, svgOrigin: "300 450", duration: 0.7 }, w("start a"));
+pop("#sus", w("away") + 0.1, { sfx: "pop", gain: 0.14 });
+tl.fromTo("#t5", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("start a"));
+pop("#sw", w("start a") - 0.05, { from: 0.4, sfx: "slam", gain: 0.18 });
+const tSW = w("timer") + 0.1;
+REEL.onFrame((t) => { if (t < T.s5) return; const e = Math.max(0, t - tSW), s = Math.floor(e); $("#swNum").textContent = `00:${String(s).padStart(2, "0")}`; $("#swHand").setAttribute("transform", `rotate(${((e * 360) / 60 * 6).toFixed(2)} 200 250)`); });
+sfx(tSW, "click", { gain: 0.35 });
+every(tSW + 1, END, 1, (t) => sfx(t, "tick", { gain: 0.12 }));
+// the mini scooter on the map creeps... barely
+const rt5 = $("#rt5");
+REEL.onFrame((t) => { if (t < T.s5) return; const L = rt5.getTotalLength(), u = clamp((t - T.s5) / 30) * 0.18, p = rt5.getPointAtLength(L * u); $("#mini5").style.transform = `translate(${(p.x - 60).toFixed(1)}px ${(p.y - 470).toFixed(1)}px)`; });
+
+// ================================================= close: "Order placed" notification takes over
+EX.notify(T.close, { mode: "close", title: "Order placed ✓", sub: "Waiting for the restaurant to accept", big: "Order placed", next: "NEXT STOP · RESTAURANT ACCEPTS" });
+
+REEL.finish(END);
+</script>
+</body></html>

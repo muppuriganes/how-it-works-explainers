@@ -1,0 +1,282 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Food Ch2 Restaurant accepts</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(27,35,64,.12) 2.5px,transparent 3px);background-size:44px 44px}
+.lbl{position:absolute;font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.86;letter-spacing:-0.01em;text-transform:uppercase;white-space:nowrap}
+.bub{position:absolute;padding:10px 26px 14px;border-radius:26px;font-family:Archivo;font-weight:900;font-size:44px;white-space:nowrap}
+.tile{position:absolute;border-radius:40px;background:linear-gradient(180deg,#FFFFFF 0%,#FFF8F2 100%);box-shadow:inset 0 0 0 5px #fff,0 24px 0 rgba(27,35,64,.55),0 56px 70px rgba(10,30,40,.35)}
+.card{position:absolute;padding:18px 24px;border-radius:24px;background:#fff;font-family:Archivo}
+.card .k{font-family:"JetBrains Mono";font-weight:800;font-size:20px;letter-spacing:.14em;color:rgba(27,35,64,.55)}
+.card .v{font-weight:900;font-size:40px;color:#1B2340;margin-top:4px;white-space:nowrap}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.1em;color:#fff;white-space:nowrap}
+.mono{font-family:"JetBrains Mono";font-weight:800}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/food.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: the order lands on the kitchen tablet -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:linear-gradient(180deg,#7CC2BD 0%,#6DB5B0 76%)"></div>
+    <div class="abs" style="left:0;top:0;width:1920px;height:820px;background-image:linear-gradient(rgba(255,255,255,.22) 3px,transparent 3px),linear-gradient(90deg,rgba(255,255,255,.22) 3px,transparent 3px);background-size:96px 96px"></div>
+    <div class="abs" style="left:0;top:800px;width:1920px;height:30px;background:#E0A56C"></div>
+    <div class="abs" style="left:0;top:830px;width:1920px;height:250px;background:linear-gradient(180deg,#C9874B,#B5743C)"></div>
+    <div id="ph1" class="abs" data-ob="ph1" style="left:150px;top:250px"></div>
+    <div id="fly" class="abs card fc" data-ob="tab" data-bleed style="left:0;top:0;width:250px;padding:14px 18px"><div class="k">ORDER #4821</div><div style="font-weight:900;font-size:26px;color:#1B2340;margin-top:4px">1 × Chicken Biryani</div></div>
+    <div id="tab" class="abs" data-ob="tab" style="left:1060px;top:230px;width:700px;height:470px;border-radius:44px;background:#1B2340">
+      <div id="tabScr" class="abs" style="left:26px;top:26px;width:648px;height:418px;border-radius:24px;overflow:hidden;background:#fff;font-family:Archivo">
+        <div id="tabHead" class="abs" style="left:0;top:0;width:648px;height:76px;background:#F2553D;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono';font-weight:800;font-size:30px;letter-spacing:.14em">🔔 NEW ORDER</div>
+        <div class="abs mono" style="left:40px;top:104px;font-size:24px;color:rgba(27,35,64,.55);letter-spacing:.1em">#4821 · PAID ₹300</div>
+        <div class="abs" style="left:40px;top:146px;font-weight:900;font-size:50px;color:#1B2340">1 × Chicken Biryani</div>
+        <div class="abs" style="left:40px;top:214px;font-weight:600;font-size:28px;color:rgba(27,35,64,.6)">Extra raita · no onions</div>
+        <div id="acc" class="abs" style="left:174px;top:290px;width:300px;height:88px;border-radius:22px;background:#22B573;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px;box-shadow:0 8px 0 #158A55">ACCEPT</div>
+        <div id="accd" class="abs" style="inset:0;background:#22B573;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-weight:900;font-size:64px">ACCEPTED ✓<div class="mono" style="font-size:26px;letter-spacing:.12em;opacity:.85">COOKING STARTS NOW</div></div>
+      </div>
+      <div id="hand" class="abs" data-bleed style="left:270px;top:410px"></div>
+    </div>
+    <div class="lbl x3d" id="loud" data-ob="loud" style="left:480px;top:110px;font-size:110px;--xf:#fff">Loudly.</div>
+    <div class="bub fc" id="b1" data-ob="b1" style="left:1010px;top:116px;background:#F2553D;color:#fff;transform:rotate(-6deg)">BEEP!</div>
+    <div class="bub fc" id="b2" data-ob="b2" style="left:1460px;top:110px;background:#FFC93D;color:#1B2340;transform:rotate(5deg)">BEEP!!</div>
+  </section>
+
+  <!-- S2: the guess: food preparation time -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#C4B8F2 0%,#9E8FE0 100%)"></div><div class="dots"></div>
+    <div class="lbl x3d" id="t2" data-ob="t2" style="left:160px;width:1600px;text-align:center;top:100px;font-size:96px;--xf:#fff">Food <span style="color:#FFC93D">preparation</span> time</div>
+    <svg id="wires" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080">
+      <path id="wA" d="M580 365 C 640 365, 650 470, 720 480" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="2 14"/>
+      <path id="wB" d="M580 545 C 640 545, 660 540, 720 540" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="2 14"/>
+      <path id="wC" d="M580 725 C 640 725, 650 610, 720 600" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="2 14"/>
+      <path id="wD" d="M1220 540 L 1330 540" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path id="wDh" d="M1316 524 L 1336 540 L 1316 556" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="card fc" id="in1" data-ob="in1" style="left:110px;top:300px;width:470px"><div class="k">WHAT YOU ORDERED</div><div class="v">🍛 Chicken biryani</div></div>
+    <div class="card fc" id="in2" data-ob="in2" style="left:110px;top:480px;width:470px"><div class="k">HOW MANY ITEMS</div><div class="v">1 item</div></div>
+    <div class="card fc" id="in3" data-ob="in3" style="left:110px;top:660px;width:470px"><div class="k">HOW BUSY IS THE KITCHEN</div><div class="v" style="display:flex;gap:12px;align-items:center"><span id="busyTxt">Busy-ish</span><svg width="150" height="26"><rect width="150" height="26" rx="13" fill="#E6E8F0"/><rect id="busyBar" width="96" height="26" rx="13" fill="#F5A524"/></svg></div></div>
+    <div id="model" class="abs fc soft" data-ob="model" style="left:720px;top:330px;width:500px;height:420px;border-radius:40px;background:linear-gradient(160deg,#2B3354,#1B2340)">
+      <svg id="net" class="abs" style="left:0;top:0" width="500" height="420"></svg>
+      <div class="abs mono" style="left:0;right:0;top:350px;text-align:center;font-size:24px;letter-spacing:.16em;color:#C4B8F2">ML MODEL</div>
+    </div>
+    <div class="card fc" id="out" data-ob="out" style="left:1340px;top:410px;width:470px;text-align:center;background:#FFF6E8"><div class="k">PREP TIME GUESS</div><div class="v" style="font-size:96px;color:#F2553D;margin-top:8px"><span id="outN">??</span> <span style="font-size:52px">MIN</span></div></div>
+    <div class="bub fc" id="q2" data-ob="q2" style="left:1380px;top:780px;background:#fff;color:#1B2340;font-size:36px">How long will it take? 🤔</div>
+  </section>
+
+  <!-- S3: Tuesday afternoon vs Friday night -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 30%,#6FC0BB 0%,#3E9792 100%)"></div><div class="dots"></div>
+    <div class="tile" id="pA" data-ob="pA" style="left:110px;top:150px;width:800px;height:720px">
+      <div class="pill fc" style="left:40px;top:34px;background:#12A4C4">TUESDAY · 3 PM</div>
+      <svg class="abs" style="left:0;top:120px" width="800" height="120"><line x1="60" y1="20" x2="740" y2="20" stroke="#8A93AB" stroke-width="8" stroke-linecap="round"/></svg>
+      <div id="tkA" class="abs" style="left:0;top:132px;width:800px;height:120px"></div>
+      <div id="kA" class="abs" style="left:200px;top:260px"></div>
+      <div id="mA" class="abs" style="left:40px;top:560px"></div>
+      <div class="pill fc" id="rA" style="left:330px;top:600px;background:#22B573">QUICK ✓ ≈ 12 MIN</div>
+    </div>
+    <div class="tile" id="pB" data-ob="pB" style="left:1010px;top:150px;width:800px;height:720px">
+      <div class="pill fc" style="left:40px;top:34px;background:#7B61FF">FRIDAY · 9 PM</div>
+      <div class="pill fc" id="n40" style="left:470px;top:34px;background:#1B2340;color:#FFC93D">0 ORDERS</div>
+      <svg class="abs" style="left:0;top:120px" width="800" height="120"><line x1="60" y1="20" x2="740" y2="20" stroke="#8A93AB" stroke-width="8" stroke-linecap="round"/></svg>
+      <div id="tkB" class="abs" style="left:0;top:132px;width:800px;height:140px"></div>
+      <div id="kB" class="abs" style="left:200px;top:260px"></div>
+      <div id="mB" class="abs" style="left:40px;top:560px"></div>
+      <div class="pill fc" id="rB" style="left:330px;top:600px;background:#F2553D">GOOD LUCK 😬 ≈ 35 MIN</div>
+    </div>
+  </section>
+
+  <!-- S4: the guess decides when to send the rider -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 60% 30%,#FFE3A0 0%,#F7C35C 100%)"></div><div class="dots"></div>
+    <div id="host4" class="abs" data-ob="host4" style="left:90px;top:330px"></div>
+    <div class="lbl x3d" id="t4" data-ob="t4" style="left:600px;top:110px;font-size:88px;--xf:#fff">The guess picks <span style="color:#F2553D">the moment.</span></div>
+    <svg id="tln" class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"></svg>
+    <div class="pill fc" id="lk" data-ob="lk" style="left:620px;top:300px;background:#F2553D">🍳 KITCHEN · 14 MIN</div>
+    <div class="pill fc" id="lr" data-ob="lr" style="left:1094px;top:520px;background:#12A4C4">🛵 RIDE IN · 6 MIN</div>
+    <div class="card fc" id="flag" data-ob="flag" style="left:700px;top:660px;width:520px;text-align:center;background:#1B2340"><div class="k" style="color:#FFC93D">SO THE APP SENDS THE RIDER AT</div><div class="v" style="color:#fff;font-size:54px">MINUTE 8</div></div>
+    <div class="pill fc" id="both" data-ob="both" style="left:1380px;top:700px;background:#22B573">✓ BOTH ARRIVE AT 14</div>
+  </section>
+
+</div></div>
+<script>
+const { tl, W, sfx, rng } = REEL;
+const { $, $$, w, we, show, every, pop, rise, fade, draw } = EX;
+const { ART } = PAPER;
+EX.stopStart(2, 5, "Restaurant accepts");
+const T = { s2: w("now the app") - 0.15, s3: w("one biryani on") - 0.15, s4: w("and this guess") - 0.15, close: we("your rider") + 1.4 };
+const END = T.close + 1.4;
+const clamp = (u) => Math.max(0, Math.min(1, u));
+
+// ================================================= S1: phone pays -> order flies -> tablet beeps -> chef taps accept
+show("#s1", 0, T.s2 + 0.5, { y: 0 });
+const P1 = EX.phoneBox("#ph1", { w: 260, accent: "#F2553D" });
+P1.scr.innerHTML = `<div class="abs" style="inset:0;background:#FFF7F2;font-family:Archivo;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+  ${FD.handi({ w: 130, id: "p1h", steam: false })}<div style="font-weight:900;font-size:26px;color:#1B2340">Chicken Biryani</div>
+  <div id="pay" style="width:180px;height:58px;border-radius:16px;background:#F2553D;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px">PAY ₹300</div>
+  <div id="paid" style="position:absolute;left:24px;right:24px;top:368px;height:58px;border-radius:16px;background:#22B573;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px">PAID ✓</div></div>`;
+$("#hand").innerHTML = `<svg width="170" height="480" viewBox="0 0 170 480" style="overflow:visible"><path d="M50 480 L 50 230 Q 50 196 84 196 L 116 196 Q 150 196 150 230 L 150 480 Z" fill="#fff" stroke="#1B2340" stroke-width="4"/><rect x="44" y="236" width="112" height="18" fill="#F2553D"/>
+  <path d="M60 200 L 60 120 Q 60 100 80 100 L 80 40 Q 80 14 98 14 Q 116 14 116 40 L 116 110 Q 140 108 142 128 L 142 200 Z" fill="#E2A77D" stroke="#1B2340" stroke-width="4"/></svg>`;
+gsap.set(["#ph1", "#fly", "#tab", "#loud", "#b1", "#b2", "#paid", "#accd", "#hand"], { autoAlpha: 0 });
+tl.fromTo("#ph1", { autoAlpha: 0, y: 160 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)", immediateRender: false }, 0.6);
+tl.fromTo("#tab", { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", immediateRender: false }, 0.9);
+const tPay = 1.15;
+EX.tap(P1.scr, 128, 397, tPay, "#F2553D");
+tl.set("#paid", { autoAlpha: 1 }, tPay + 0.12);
+sfx(tPay + 0.1, "coin", { gain: 0.28 });
+// the order ticket flies along an arc into the tablet
+const tF = 1.45, tFe = w("restaurant kitchen") + 0.1;
+tl.set("#fly", { autoAlpha: 1 }, tF);
+tl.fromTo("#fly", { x: 160, y: 300, rotation: -8, scale: 0.7 }, { motionPath: { path: [{ x: 160, y: 300 }, { x: 640, y: 40 }, { x: 1250, y: 300 }], curviness: 1.4 }, rotation: 6, scale: 1, duration: tFe - tF, ease: "power1.inOut", immediateRender: false }, tF);
+tl.to("#fly", { scale: 0.2, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, tFe);
+sfx(tF, "whoosh", { gain: 0.3, dur: tFe - tF });
+// beeping: red header flashes, tablet shakes, bubbles pop
+const tB = w("it beeps"), tA = w("taps accept") + 0.15;
+every(tB, tA, 0.42, (t) => sfx(t, "beep", { gain: 0.2, pitch: 1.4 }));
+REEL.onFrame((t) => {
+  if (t < T.s2 - 0.5 && t > tB - 0.1) {
+    const on = t < tA && Math.floor((t - tB) / 0.21) % 2 === 0;
+    $("#tabHead").style.background = on ? "#FFC93D" : "#F2553D";
+    $("#tabHead").style.color = on ? "#1B2340" : "#fff";
+    $("#tab").style.boxShadow = t < tA ? `0 0 0 ${on ? 14 : 6}px rgba(242,85,61,.55),0 30px 60px rgba(10,30,40,.35)` : "0 30px 60px rgba(10,30,40,.35)";
+    $("#tab").style.transform = t < tA ? `rotate(${(Math.sin(t * 60) * 0.8).toFixed(2)}deg)` : "none";
+  }
+});
+pop("#b1", tB + 0.05, { sfx: false });
+pop("#b2", w("loudly") - 0.05, { sfx: false });
+tl.fromTo("#loud", { autoAlpha: 0, scale: 1.8, rotation: -6 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, w("loudly"));
+sfx(w("loudly"), "slam", { gain: 0.2 });
+REEL.shake($("#shake"), w("loudly") + 0.1, 7);
+// the chef's finger comes up and taps ACCEPT
+tl.set("#hand", { autoAlpha: 1 }, w("until someone") - 0.2);
+tl.fromTo("#hand", { y: 520 }, { y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, w("until someone") - 0.2);
+tl.to("#hand", { y: 18, duration: 0.08, yoyo: true, repeat: 1 }, tA - 0.1);
+tl.to("#hand", { y: 560, duration: 0.4, ease: "power2.in" }, tA + 0.35);
+tl.set("#accd", { autoAlpha: 1 }, tA);
+tl.fromTo("#accd", { scale: 0.8 }, { scale: 1, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, tA);
+tl.to(["#b1", "#b2", "#loud"], { autoAlpha: 0, scale: 0.6, duration: 0.25 }, tA);
+sfx(tA, "click", { gain: 0.35 }); sfx(tA + 0.05, "chime", { gain: 0.22 });
+
+// ================================================= S2: the model makes a guess (iris out of the tablet)
+EX.iris("#s2", T.s2, 1410, 470, { color: "#7B61FF" });
+show("#s2", T.s2, T.s3 + 0.5, { y: 0 });
+(function net() {
+  const L = [[90, [90, 170, 250]], [210, [60, 130, 200, 270]], [330, [90, 170, 250]], [430, [170]]];
+  let s = "";
+  for (let i = 0; i < L.length - 1; i++) for (const a of L[i][1]) for (const b of L[i + 1][1]) s += `<line class="ne" x1="${L[i][0]}" y1="${a + 20}" x2="${L[i + 1][0]}" y2="${b + 20}" stroke="#7B61FF" stroke-width="3" opacity=".55"/>`;
+  L.forEach(([x, ys], i) => ys.forEach((y) => (s += `<circle class="nn" cx="${x}" cy="${y + 20}" r="${i === 3 ? 22 : 16}" fill="${i === 3 ? "#FFC93D" : "#C4B8F2"}" stroke="#fff" stroke-width="3"/>`)));
+  $("#net").innerHTML = s;
+})();
+gsap.set(["#t2", "#in1", "#in2", "#in3", "#model", "#out", "#q2"], { autoAlpha: 0 });
+["#wA", "#wB", "#wC", "#wD", "#wDh"].forEach((p) => gsap.set(p, { drawSVG: "0%" }));
+pop("#out", w("how long") - 0.1, { from: 0.5, sfx: "bloop", gain: 0.18 });
+pop("#q2", w("this biryani take"), { sfx: "pop", gain: 0.14 });
+tl.fromTo("#t2", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)", immediateRender: false }, w("food preparation") - 0.1);
+sfx(w("food preparation") - 0.1, "impact", { gain: 0.24 });
+pop("#model", w("machine learning") - 0.1, { from: 0.6, sfx: "slam", gain: 0.18 });
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; const on = t > w("machine learning"); $$("#net .nn").forEach((c, i) => c.setAttribute("opacity", on ? (0.55 + 0.45 * Math.abs(Math.sin(t * 5 + i * 0.9))).toFixed(2) : 0.4)); });
+[["#in1", "#wA", w("what you ordered")], ["#in2", "#wB", w("how many items")], ["#in3", "#wC", w("how busy")]].forEach(([c, p, t]) => {
+  tl.fromTo(c, { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, t - 0.1);
+  tl.to(p, { drawSVG: "100%", duration: 0.45, ease: "power2.out" }, t + 0.15);
+  sfx(t - 0.1, "pop", { gain: 0.16 });
+});
+REEL.onFrame((t) => { const u = clamp((t - w("how busy")) / 1.0); $("#busyBar").setAttribute("width", (20 + 110 * u).toFixed(1)); $("#busyBar").setAttribute("fill", u > 0.7 ? "#F2553D" : "#F5A524"); });
+tl.to(["#wD", "#wDh"], { drawSVG: "100%", duration: 0.35 }, w("right now") - 0.1);
+tl.to("#q2", { autoAlpha: 0, duration: 0.2 }, w("right now") - 0.1);
+const tN = w("right now") + 0.1;
+REEL.onFrame((t) => { if (t < T.s2) return; const u = clamp((t - tN) / 0.7); $("#outN").textContent = t < tN ? "??" : u < 1 ? String(Math.floor(5 + 30 * ((t * 13) % 1))) : "≈14"; });
+tl.to("#out", { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1 }, tN + 0.7);
+sfx(tN, "roll", { gain: 0.15 }); sfx(tN + 0.7, "ding", { gain: 0.25 });
+
+// ================================================= S3: Tuesday afternoon vs Friday night (stripes)
+EX.stripes(T.s3, { colors: ["#12A4C4", "#7B61FF", "#F2553D", "#FFC93D", "#22B573"] });
+show("#s3", T.s3, T.s4 + 0.5, { y: 0 });
+$("#kA").innerHTML = FD.kitchen({ w: 400, id: "kA" });
+$("#kB").innerHTML = FD.kitchen({ w: 400, id: "kB" });
+EX.steam("#kA", T.s3, T.s4 + 0.5); EX.steam("#kB", T.s3, T.s4 + 0.5);
+const ticket = (x, y, r, c = "#fff") => `<svg class="abs tk" style="left:${x}px;top:${y}px;transform:rotate(${r}deg)" width="46" height="64" viewBox="0 0 46 64"><rect x="2" y="2" width="42" height="60" rx="4" fill="${c}" stroke="#1B2340" stroke-width="3"/><path d="M10 18 L36 18 M10 28 L32 28 M10 38 L28 38" stroke="#8A93AB" stroke-width="3"/></svg>`;
+$("#tkA").innerHTML = ticket(380, 0, -3);
+const R3 = rng(9);
+$("#tkB").innerHTML = Array.from({ length: 40 }, (_, i) => ticket(70 + (i % 20) * 32 + R3() * 6, Math.floor(i / 20) * 46 + R3() * 8, R3() * 16 - 8, i % 5 === 0 ? "#FFF3C4" : "#fff")).join("");
+const meter = (id) => `<svg width="230" height="140" viewBox="0 0 230 140" style="overflow:visible"><path d="M20 120 A95 95 0 0 1 210 120" stroke="#E6E8F0" stroke-width="26" fill="none" stroke-linecap="round"/><path d="M20 120 A95 95 0 0 1 75 34" stroke="#22B573" stroke-width="26" fill="none" stroke-linecap="round"/><path d="M155 34 A95 95 0 0 1 210 120" stroke="#F2553D" stroke-width="26" fill="none" stroke-linecap="round"/><g id="${id}N"><path d="M111 120 L115 40 L119 120 Z" fill="#1B2340"/></g><circle cx="115" cy="120" r="12" fill="#1B2340"/></svg>`;
+$("#mA").innerHTML = meter("mA"); $("#mB").innerHTML = meter("mB");
+const tkB = $$("#tkB .tk");
+gsap.set(["#pA", "#pB", "#rA", "#rB", ...tkB, "#tkA .tk"], { autoAlpha: 0 });
+const tTue = w("tuesday"), tFri = w("forty orders");
+tl.fromTo("#pA", { autoAlpha: 0, y: 140, rotation: -3 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, T.s3 + 0.15);
+tl.fromTo("#pB", { autoAlpha: 0, y: 140, rotation: 3 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, T.s3 + 0.3);
+sfx(T.s3 + 0.15, "slam", { gain: 0.15 }); sfx(T.s3 + 0.3, "slam", { gain: 0.15 });
+pop("#tkA .tk", tTue, { sfx: "paper", gain: 0.2 });
+pop("#rA", w("quick"), { sfx: "ding", gain: 0.2 });
+tkB.forEach((el, i) => { const t0 = tFri - 0.2 + i * 0.035; tl.fromTo(el, { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "back.out(2)", immediateRender: false }, t0); if (i % 4 === 0) sfx(t0, "paper", { gain: 0.08 }); });
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.2 || t > T.s4 + 0.6) return;
+  const n = Math.max(0, Math.min(40, Math.floor((t - tFri + 0.2) / 0.035) + 1));
+  $("#n40").textContent = `${t < tFri - 0.2 ? 0 : n} ORDERS`;
+  const a = -80 + 40 * clamp((t - tTue) / 0.8) + Math.sin(t * 3) * 2;
+  const b = -80 + 160 * clamp((t - tFri) / 1.4) + (t > tFri + 1.4 ? Math.sin(t * 30) * 4 : 0);
+  $("#mAN").setAttribute("transform", `rotate(${a.toFixed(1)} 115 120)`);
+  $("#mBN").setAttribute("transform", `rotate(${b.toFixed(1)} 115 120)`);
+  const big = clamp((t - tFri) / 1.4);
+  $$("#kB .fl path").forEach((p, i) => p.setAttribute("transform", `translate(${(i * 25 + 150) * (1 - (1 + big * 0.8))} ${152 * (1 - (1 + big * 0.8)) + 4 * Math.sin(t * 20 + i)}) scale(${1 + big * 0.8})`));
+  $$("#kA .fl path").forEach((p, i) => p.setAttribute("transform", `translate(0 ${3 * Math.sin(t * 12 + i)})`));
+});
+pop("#rB", w("good luck"), { sfx: "glitch", gain: 0.2 });
+REEL.shake($("#shake"), w("good luck") + 0.1, 6);
+
+// ================================================= S4: the guess decides when to send the rider (dive into the Friday meter)
+EX.dive("#s3", "#s4", T.s4, 1160, 640);
+$("#host4").innerHTML = ART.host({ w: 380, id: "h4", shirt: "#F2553D", girl: true });
+const X0 = 620, PX = 1180 / 14, YK = 380, YR = 600;
+$("#tln").innerHTML = `
+  <line x1="${X0}" y1="900" x2="${X0 + 14 * PX}" y2="900" stroke="#1B2340" stroke-width="5" stroke-linecap="round"/>
+  ${Array.from({ length: 8 }, (_, i) => `<line x1="${X0 + i * 2 * PX}" y1="890" x2="${X0 + i * 2 * PX}" y2="910" stroke="#1B2340" stroke-width="5"/><text x="${X0 + i * 2 * PX}" y="948" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="26" fill="#1B2340">${i * 2}</text>`).join("")}
+  <text x="${X0 + 14 * PX + 26}" y="908" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#1B2340">MIN</text>
+  <rect x="${X0}" y="${YK}" width="${14 * PX}" height="70" rx="35" fill="rgba(27,35,64,.15)"/>
+  <rect id="barK" x="${X0}" y="${YK}" width="0" height="70" rx="35" fill="#F2553D" stroke="#1B2340" stroke-width="4"/>
+  <rect x="${X0}" y="${YR}" width="${14 * PX}" height="70" rx="35" fill="rgba(27,35,64,.15)"/>
+  <rect id="barR" x="${X0 + 8 * PX}" y="${YR}" width="0" height="70" rx="35" fill="#12A4C4" stroke="#1B2340" stroke-width="4"/>
+  <line id="d8" x1="${X0 + 8 * PX}" y1="${YR - 30}" x2="${X0 + 8 * PX}" y2="895" stroke="#1B2340" stroke-width="5" stroke-dasharray="6 10"/>
+  <line id="d14" x1="${X0 + 14 * PX}" y1="${YK - 20}" x2="${X0 + 14 * PX}" y2="895" stroke="#22B573" stroke-width="6" stroke-dasharray="6 10"/>`;
+gsap.set(["#host4", "#t4", "#lk", "#lr", "#flag", "#both"], { autoAlpha: 0 });
+gsap.set(["#d8", "#d14"], { drawSVG: "0%" });
+tl.fromTo("#host4", { autoAlpha: 1, x: -500 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s4 + 0.25);
+PAPER.lipSync($("#h4Mouth"), { from: T.s4 + 0.25, open: 18 });
+PAPER.blink($("#h4Eyes"), [T.s4 + 1.4, w("exactly") + 0.3]);
+tl.fromTo("#t4", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("matters more"));
+sfx(w("matters more"), "impact", { gain: 0.22 });
+const tK = w("more than anything");
+pop("#lk", tK - 0.2, { sfx: "pop", gain: 0.15 });
+REEL.onFrame((t) => {
+  if (t < T.s4) return;
+  $("#barK").setAttribute("width", (14 * PX * clamp((t - tK) / 1.1)).toFixed(1));
+  $("#barR").setAttribute("width", (6 * PX * clamp((t - w("decides exactly")) / 0.9)).toFixed(1));
+});
+sfx(tK, "riser", { gain: 0.12, dur: 1.1 });
+const tD = w("decides exactly");
+pop("#lr", tD - 0.2, { sfx: "pop", gain: 0.15 });
+tl.to("#d8", { drawSVG: "100%", duration: 0.4 }, tD);
+tl.fromTo("#flag", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("send your") - 0.2);
+sfx(w("send your") - 0.2, "slam", { gain: 0.2 });
+tl.to("#d14", { drawSVG: "100%", duration: 0.4 }, w("your rider"));
+pop("#both", w("your rider") + 0.2, { sfx: "ding", gain: 0.22 });
+tl.to("#h4BrowL", { y: -12, duration: 0.15, yoyo: true, repeat: 1 }, w("exactly"));
+tl.to("#h4Arm", { keyframes: { rotation: [-16, 8, 0] }, svgOrigin: "300 450", duration: 0.6 }, w("send your"));
+
+// ================================================= close
+EX.notify(T.close, { mode: "close", title: "Restaurant accepted ✓", sub: "Your biryani is being cooked", big: "Accepted", next: "NEXT STOP · RIDER ASSIGNED" });
+REEL.finish(END);
+</script>
+</body></html>
