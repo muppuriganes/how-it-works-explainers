@@ -1,0 +1,529 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Plane Ch1 Take-off</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:18px;letter-spacing:.16em;opacity:.6}
+.big{font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.9;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:72px;letter-spacing:.03em;background:rgba(255,255,255,.94);white-space:nowrap}
+.fl{display:inline-block;padding:2px 6px;border-radius:6px;background:#1B2340;white-space:pre}
+.row{display:flex;align-items:center;height:70px;border-bottom:2px solid rgba(255,255,255,.06);font-family:"JetBrains Mono";font-weight:800;font-size:31px;color:#FFC93D}
+.opt{position:absolute;top:0;width:520px;height:450px;border-radius:30px;text-align:center;font-family:"JetBrains Mono";font-weight:800;color:#1B2340}
+.opt .ab{position:absolute;left:22px;top:20px;width:70px;height:70px;border-radius:20px;background:#1B2340;color:#FFC93D;font-family:Archivo;font-weight:900;font-size:48px;line-height:70px}
+.bar{height:44px;border-radius:12px;border:3px solid #1B2340}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/plane.js"></script>
+<script src="../../../lib/planefx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S0: you, seat 23A, the window seat (won in a family argument) -->
+  <section class="scene" id="s0">
+    <div class="bg" style="background:linear-gradient(160deg,#13A0BE 0%,#0B6E8F 55%,#0A4A6E 100%)"></div><div class="dots"></div>
+    <div class="pill fc" id="hd0" data-ob="hd0" style="left:60px;top:150px;background:#1B2340;color:#FFC93D">✈ SEAT MAP · HX 2026</div>
+    <div id="map0" class="abs" data-ob="map0" style="left:60px;top:250px"></div>
+    <div id="pin0" class="abs" data-ob="map0" style="left:640px;top:190px;width:116px;height:120px"></div>
+    <div id="wg0" class="abs" style="left:656px;top:266px;width:84px;height:40px;border-radius:20px;box-shadow:0 0 0 8px #FFE08A,0 0 40px 18px rgba(255,224,138,.8)"></div>
+    <div class="card fc" id="score" data-ob="score" style="left:1300px;top:150px;width:560px;padding:22px 26px;background:#DDF7EA">
+      <div style="display:inline-block;padding:6px 14px;border-radius:999px;background:#F2553D;color:#fff;font-size:18px">⚡ VERY SERIOUS FAMILY ARGUMENT</div>
+      <div style="font-family:Archivo;font-weight:900;font-size:44px;margin:12px 0 6px">🏆 WINDOW-SEAT FINAL</div>
+      <div class="sr" style="display:flex;align-items:center;gap:14px;font-size:26px;padding:10px 0;border-bottom:3px dashed rgba(27,35,64,.2)"><span style="font-size:40px">👩</span>MOM<span style="flex:1"></span><span style="font-size:40px">0</span></div>
+      <div class="sr" style="display:flex;align-items:center;gap:14px;font-size:26px;padding:10px 0;border-bottom:3px dashed rgba(27,35,64,.2)"><span style="font-size:40px">👧</span>DIDI <span style="font-size:18px;opacity:.6">(CRIED)</span><span style="flex:1"></span><span style="font-size:40px">0</span></div>
+      <div class="sr" id="win0" style="display:flex;align-items:center;gap:14px;font-size:26px;padding:10px 12px;border-radius:16px"><span style="font-size:40px">🧑</span>YOU<span style="flex:1"></span><span style="font-size:40px;color:#22B573">1 ✓</span></div>
+    </div>
+    <div id="host0" class="abs" data-ob="host0" style="left:1520px;top:600px"></div>
+    <div class="pill fc pk" data-ob="pk1" style="left:60px;top:760px;background:#FFC93D;color:#1B2340">🪟 VIEW ✓</div>
+    <div class="pill fc pk" data-ob="pk2" style="left:300px;top:760px;background:#FFC93D;color:#1B2340">😴 NAP ON THE WALL ✓</div>
+    <div class="pill fc pk" data-ob="pk3" style="left:730px;top:760px;background:#F2553D">🚻 TOILET = CLIMB OVER 2 PEOPLE ✗</div>
+  </section>
+
+  <!-- 3D world (S1 runway, S5 engines + roll, S7 rotation) with info overlays -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <!-- S1 -->
+    <div class="card fc" id="wt" data-ob="wt" style="left:1300px;top:150px;width:560px;padding:22px 26px;background:#FFF1C9">
+      <div class="ttl">ALL OF THIS, ON THE RUNWAY</div>
+      <div class="big" style="font-size:118px">≈ <span id="wtN">0</span> T</div>
+      <div style="display:flex;height:46px;border-radius:12px;overflow:hidden;border:3px solid #1B2340;margin:12px 0 12px;background:#F3E6C2">
+        <div class="sg" style="width:60%;background:#7F8AA3"></div><div class="sg" style="width:14.3%;background:#F5A524"></div><div class="sg" style="width:25.7%;background:#12A4C4"></div></div>
+      <div class="lg" style="display:flex;justify-content:space-between;font-size:22px;padding:4px 0"><span>■ <span style="color:#5C677E">METAL</span></span><span>~42 T</span></div>
+      <div class="lg" style="display:flex;justify-content:space-between;font-size:22px;padding:4px 0"><span>■ <span style="color:#C47D10">FUEL</span></span><span>~10 T</span></div>
+      <div class="lg" style="display:flex;justify-content:space-between;font-size:22px;padding:4px 0"><span>■ <span style="color:#0E7C93">PEOPLE + BAGS</span> <span id="incl" style="padding:2px 10px;border-radius:999px;background:#12A4C4;color:#fff;font-size:17px">INCL. YOU</span></span><span>~18 T</span></div>
+      <div id="pickle" style="margin-top:10px;padding:12px 16px;border-radius:16px;background:#2B3354;color:#FFC93D;font-size:21px;display:flex;justify-content:space-between"><span>🫙 AUNTY'S PICKLE JAR</span><span style="color:#F2553D">CRITICAL</span></div>
+    </div>
+    <div class="card fc" id="tm1" data-ob="tm1" style="left:60px;top:150px;width:420px;height:180px;padding:20px 24px;background:#DDF7EA">
+      <svg class="abs" style="left:20px;top:22px" width="136" height="136" viewBox="0 0 172 172"><circle cx="86" cy="86" r="70" fill="none" stroke="#B9E4CC" stroke-width="16"/><circle id="tmrR" cx="86" cy="86" r="70" fill="none" stroke="#22B573" stroke-width="16" stroke-linecap="round" transform="rotate(-90 86 86)" stroke-dasharray="440 440"/><text x="86" y="100" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="40" fill="#1B2340">✈</text></svg>
+      <div class="abs" style="left:176px;top:26px"><div style="font-size:22px">WHEELS UP IN</div><div class="big" id="tmrN" style="font-size:92px">01:00</div></div>
+    </div>
+    <div class="abs" id="sure" data-ob="sure" style="left:560px;top:640px;width:800px;text-align:center">
+      <div id="sq" style="display:inline-block;padding:14px 30px;border-radius:24px;background:#1B2340;color:#fff;font-family:Archivo;font-weight:900;font-size:58px;box-shadow:0 9px 0 #0B0F20">70 TONNES. FLYING?</div><br>
+      <div id="sa" class="stamp" style="position:relative;display:inline-block;margin-top:18px;transform:rotate(-5deg);border-color:#7B61FF;color:#7B61FF">🤨 SURE.</div>
+    </div>
+    <div class="pill fc" id="rwy" data-ob="rwy" style="left:60px;top:880px;background:#1B2340;color:#FFC93D">🛬 RUNWAY 09 · 3 KM OF CONCRETE</div>
+    <!-- S5 -->
+    <div class="card fc" id="n1c" data-ob="n1" style="left:60px;top:150px;width:470px;height:470px;padding:20px 24px;background:#DDF7EA">
+      <div class="ttl">ENGINE POWER</div>
+      <svg id="n1g" class="abs" style="left:20px;top:56px" width="280" height="260" viewBox="0 0 280 260"></svg>
+      <svg id="thr" class="abs" style="left:300px;top:60px" width="150" height="330" viewBox="0 0 150 330"></svg>
+      <div class="abs" style="left:24px;top:330px;width:270px;font-size:20px;line-height:1.35">N1 = FAN SPEED<br><span style="opacity:.6">% OF MAX RPM</span></div>
+      <div id="toga" class="abs" style="left:24px;top:400px;padding:8px 16px;border-radius:12px;background:#22B573;color:#fff;font-size:22px">TAKE-OFF POWER ✓</div>
+    </div>
+    <div class="card fc" id="spc" data-ob="spd" style="left:1430px;top:150px;width:430px;height:500px;padding:20px 24px;background:#16204A;color:#fff">
+      <div class="ttl" style="color:#8FA0D6;opacity:1">GROUND SPEED</div>
+      <svg id="spg" class="abs" style="left:25px;top:52px" width="380" height="340" viewBox="0 0 380 340"></svg>
+      <div class="abs" style="left:0;right:0;top:384px;text-align:center"><span class="big" id="spN" style="font-size:96px;color:#fff">0</span><span style="font-size:26px"> KM/H</span></div>
+    </div>
+    <div class="card fc" id="ans" data-ob="ans" style="left:60px;top:150px;width:620px;padding:22px 26px;background:#FFF1C9">
+      <div class="ttl">QUICK GUESS · ANSWER</div>
+      <div class="big" style="font-size:96px;margin:6px 0 14px">IT'S <span style="color:#12A4C4">C</span> ✓</div>
+      <div class="br" style="display:flex;align-items:center;gap:12px;font-size:20px;margin:8px 0"><span style="width:150px">🛵 SCOOTER</span><div class="bar bb" style="width:69px;background:#F5A524"></div><span>60</span></div>
+      <div class="br" style="display:flex;align-items:center;gap:12px;font-size:20px;margin:8px 0"><span style="width:150px">🚆 RAJDHANI</span><div class="bar bb" style="width:150px;background:#F2553D"></div><span>130</span></div>
+      <div class="br" style="display:flex;align-items:center;gap:12px;font-size:20px;margin:8px 0"><span style="width:150px">✈ TAKE-OFF</span><div class="bar bb" style="width:300px;background:#12A4C4"></div><span>260</span></div>
+      <div id="dbl" style="display:inline-block;margin-top:10px;padding:8px 16px;border-radius:12px;background:#1B2340;color:#FFC93D;font-size:22px">= 2 × RAJDHANI (KM/H)</div>
+    </div>
+    <!-- S7 -->
+    <div class="card fc" id="pc" data-ob="spd" style="left:1430px;top:150px;width:430px;height:500px;padding:20px 24px;background:#ECE6FF">
+      <div class="ttl">NOSE ANGLE (PITCH)</div>
+      <svg id="pcS" class="abs" style="left:45px;top:60px" width="340" height="300" viewBox="0 0 340 300"></svg>
+      <div class="abs" style="left:0;right:0;top:384px;text-align:center"><span class="big" id="pcN" style="font-size:96px">0°</span></div>
+    </div>
+    <div class="stamp" id="rot" data-ob="rot" style="left:660px;top:190px;transform:rotate(-6deg)">ROTATION ✓</div>
+    <div id="bub" class="abs" data-ob="bub" style="left:560px;top:230px">
+      <div style="position:relative;padding:20px 30px;border-radius:30px;background:#FFC93D;border:4px solid #1B2340;box-shadow:0 9px 0 #1B2340;font-family:Archivo;font-weight:900;font-size:52px;color:#1B2340;white-space:nowrap">RELAX. WE'VE GOT THIS.<div style="font-family:'JetBrains Mono';font-weight:800;font-size:20px;opacity:.65;margin-top:4px">— THE WINGS</div></div>
+      <svg class="abs" style="left:260px;top:150px;overflow:visible" width="80" height="80"><path d="M10 0 L 60 0 L 120 80 Z" fill="#FFC93D" stroke="#1B2340" stroke-width="4" stroke-linejoin="round"/><path d="M8 -4 L 62 -4" stroke="#FFC93D" stroke-width="8"/></svg>
+    </div>
+  </section>
+
+  <!-- S2: departures board at sunset — 3,000 take-offs a day -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#FF9E6E 0%,#F2738C 34%,#7B5BC4 62%,#3B3466 62%,#2B2550 100%)"></div>
+    <div class="abs" style="left:0;top:0;width:1920px;height:670px;background:repeating-linear-gradient(90deg,transparent 0 236px,#231C46 236px 252px)"></div>
+    <div class="abs" style="left:0;top:654px;width:1920px;height:16px;background:#231C46"></div>
+    <div class="card fc" id="board" data-ob="board" style="left:70px;top:130px;width:1110px;height:780px;background:#0E1530;padding:22px 30px">
+      <div style="display:flex;align-items:center;gap:18px;color:#fff;font-family:Archivo;font-weight:900;font-size:50px"><span style="display:inline-flex;width:64px;height:64px;border-radius:16px;background:#FFC93D;color:#1B2340;align-items:center;justify-content:center;font-size:38px">✈</span>DEPARTURES<span style="flex:1"></span><span class="fl" id="clk" style="font-family:'JetBrains Mono';font-size:40px;color:#FFC93D">07:40</span></div>
+      <div class="row" style="height:54px;color:#8FA0D6;font-size:20px;letter-spacing:.14em;border-bottom:3px solid rgba(255,255,255,.15)"><span style="width:150px">TIME</span><span style="width:210px">FLIGHT</span><span style="width:330px">TO</span><span style="width:110px">GATE</span><span>STATUS</span></div>
+      <div id="rows"></div>
+    </div>
+    <div class="card fc" id="cnt" data-ob="cnt" style="left:1220px;top:130px;width:630px;height:470px;padding:22px 26px;background:#ECE6FF">
+      <div class="ttl">INDIA · EVERY SINGLE DAY</div>
+      <div class="big" style="font-size:118px;margin-top:4px">≈ <span id="cntN">0</span></div>
+      <div style="font-size:24px;margin-top:2px">DOMESTIC TAKE-OFFS</div>
+      <div id="grid" style="display:grid;grid-template-columns:repeat(15,36px);gap:2px 1px;margin-top:14px;font-size:26px;color:#7B61FF"></div>
+      <div style="font-size:17px;opacity:.6;margin-top:6px">EACH ✈ = 50 FLIGHTS</div>
+    </div>
+    <div class="card fc" id="pm" data-ob="pm" style="left:1220px;top:630px;width:630px;height:280px;padding:22px 26px;background:#DDF7EA">
+      <svg class="abs" style="left:24px;top:30px" width="220" height="220" viewBox="0 0 220 220"><circle cx="110" cy="116" r="92" fill="#fff" stroke="#1B2340" stroke-width="6"/><rect x="96" y="6" width="28" height="22" rx="6" fill="#1B2340"/><line id="pmH" x1="110" y1="116" x2="110" y2="40" stroke="#F2553D" stroke-width="7" stroke-linecap="round"/><circle cx="110" cy="116" r="9" fill="#1B2340"/></svg>
+      <div id="pmP1" class="abs" style="left:150px;top:40px;font-size:44px;color:#12A4C4">✈</div><div id="pmP2" class="abs" style="left:150px;top:40px;font-size:44px;color:#12A4C4">✈</div>
+      <div class="abs" style="left:270px;top:40px;width:340px"><div class="ttl">EVERY MINUTE, ROUGHLY</div><div class="big" style="font-size:108px">2 ✈</div><div style="font-size:22px">TAKE-OFFS. DAY AND NIGHT.</div></div>
+    </div>
+  </section>
+
+  <!-- S3: seatbelts on, then one flight / five phases -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(180deg,#2F7FD8 0%,#6FB4EC 62%,#B4E0F7 100%)"></div>
+    <div class="card fc" id="belt" data-ob="belt" style="left:560px;top:250px;width:800px;height:400px;background:#1B2340;padding:26px">
+      <div style="display:flex;justify-content:center;gap:60px;margin-top:20px">
+        <div style="width:200px;height:150px;border-radius:24px;background:#2B3354;display:flex;align-items:center;justify-content:center;font-size:90px;opacity:.5">🚭</div>
+        <div id="bsign" style="width:200px;height:150px;border-radius:24px;background:#2B3354;display:flex;align-items:center;justify-content:center"><svg width="150" height="110" viewBox="0 0 150 110"><circle cx="75" cy="22" r="16" fill="currentColor"/><path d="M50 108 L 52 54 Q 75 40 98 54 L 100 108 Z" fill="currentColor"/><rect x="20" y="66" width="110" height="16" rx="8" fill="currentColor"/></svg></div>
+      </div>
+      <svg id="buckle" class="abs" style="left:150px;top:220px" width="500" height="150" viewBox="0 0 500 150"><rect x="0" y="58" width="500" height="34" rx="10" fill="#5C677E"/><g id="bkL"><rect x="40" y="40" width="150" height="70" rx="14" fill="#C9D0DC" stroke="#0B0F20" stroke-width="4"/><rect x="190" y="58" width="40" height="34" rx="6" fill="#9AA3B4" stroke="#0B0F20" stroke-width="3"/></g><g id="bkR"><rect x="300" y="36" width="160" height="78" rx="16" fill="#E9ECF2" stroke="#0B0F20" stroke-width="4"/><rect x="320" y="60" width="120" height="30" rx="8" fill="#9AA3B4"/></g></svg>
+      <div id="click" class="abs" style="left:560px;top:20px;padding:8px 18px;border-radius:14px;background:#FFC93D;font-family:Archivo;font-weight:900;font-size:40px;transform:rotate(8deg)">CLICK!</div>
+    </div>
+    <div id="host3" class="abs" data-ob="host3" style="left:40px;top:430px"></div>
+    <div id="hl3" class="abs big" data-ob="hl3" style="left:440px;top:140px;font-size:78px;color:#fff;text-shadow:0 6px 0 #1B2340">ONE FLIGHT · <span style="color:#FFC93D;display:inline-block">FIVE PHASES</span></div>
+    <svg id="prof" class="abs" data-ob="prof" style="left:420px;top:250px;overflow:visible" width="1460" height="640" viewBox="0 0 1460 640"></svg>
+    <div id="bp3" class="abs" data-ob="bp3" style="left:500px;top:380px;transform-origin:0 0"></div>
+  </section>
+
+  <!-- S4: quick guess (quiz show) -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 25%,#9255DA 0%,#4E2283 58%,#2A1150 100%)"></div><div class="dots"></div>
+    <svg id="spot" class="abs" style="left:0;top:0" width="1920" height="1080"><path id="sp1" d="M300 -40 L 120 1100 L 620 1100 Z" fill="#fff" opacity=".07"/><path id="sp2" d="M1620 -40 L 1300 1100 L 1800 1100 Z" fill="#fff" opacity=".07"/></svg>
+    <div class="pill fc" id="qg" data-ob="qg" style="left:760px;top:120px;background:#FFC93D;color:#1B2340;font-size:30px">🤔 QUICK GUESS</div>
+    <div class="card fc" id="qq" data-ob="qq" style="left:260px;top:210px;width:1400px;padding:22px 34px;background:#FFF1C9;text-align:center">
+      <div style="font-family:Archivo;font-weight:900;font-size:50px;line-height:1.05">HOW FAST IS THE PLANE GOING WHEN ITS WHEELS <span style="color:#7B61FF">LEAVE THE GROUND?</span></div>
+    </div>
+    <div id="opts" class="abs" data-ob="opts" style="left:120px;top:420px;width:1680px;height:470px">
+      <div class="opt fc" id="oA" style="left:0;background:#FFE0C2"><div class="ab">A</div><div class="ar" style="margin-top:70px;display:flex;justify-content:center"></div><div style="font-family:Archivo;font-weight:900;font-size:40px;margin-top:6px">SCOOTER SPEED</div><div style="font-size:24px;opacity:.7">~60 KM/H</div></div>
+      <div class="opt fc" id="oB" style="left:580px;background:#FFDCDC"><div class="ab">B</div><div class="ar" style="margin-top:84px;display:flex;justify-content:center"></div><div style="font-family:Archivo;font-weight:900;font-size:40px;margin-top:6px">RAJDHANI SPEED</div><div style="font-size:24px;opacity:.7">~130 KM/H</div></div>
+      <div class="opt fc" id="oC" style="left:1160px;background:#CDEFFA"><div class="ab">C</div><div class="ar" style="margin-top:96px;display:flex;justify-content:center"></div><div style="font-family:Archivo;font-weight:900;font-size:40px;margin-top:6px">WAY, WAY FASTER</div><div style="font-size:24px;opacity:.7">??? KM/H</div></div>
+      <div class="stamp" id="lock" style="left:520px;top:150px;transform:rotate(-8deg);border-color:#1B2340;color:#1B2340;background:#FFC93D">🔒 LOCKED IN</div>
+    </div>
+    <div id="cd" class="abs" data-ob="cd" style="left:1700px;top:150px;width:130px;height:84px;border-radius:24px;background:#F2553D;border:4px solid #1B2340;box-shadow:0 7px 0 #1B2340;color:#fff;font-family:Archivo;font-weight:900;font-size:58px;text-align:center;line-height:78px">3</div>
+  </section>
+
+  <!-- S6: movies vs real life -->
+  <section class="scene" id="s6">
+    <div class="bg" style="background:linear-gradient(90deg,#3A0F1F 0%,#3A0F1F 50%,#7CC0EE 50%,#BFE6F8 100%)"></div>
+    <div class="card fc" id="mv" data-ob="mv" style="left:60px;top:150px;width:860px;height:760px;background:#5A1A2E;color:#fff;overflow:hidden">
+      <div class="abs" style="left:30px;top:26px;font-family:Archivo;font-weight:900;font-size:56px">🎬 IN THE MOVIES</div>
+      <svg id="mvS" class="abs" style="left:0;top:110px" width="860" height="650" viewBox="0 0 860 650"></svg>
+      <div class="stamp" id="mvX" style="left:420px;top:520px;transform:rotate(-8deg)">❌ NOPE</div>
+    </div>
+    <div class="card fc" id="rl" data-ob="rl" style="left:1000px;top:150px;width:860px;height:760px;background:#E3F3FD;overflow:hidden">
+      <div class="abs" style="left:30px;top:26px;font-family:Archivo;font-weight:900;font-size:56px">✈ REAL LIFE</div>
+      <svg id="rlS" class="abs" style="left:0;top:110px" width="860" height="650" viewBox="0 0 860 650"></svg>
+      <div class="stamp" id="rlV" style="left:420px;top:520px;transform:rotate(-6deg);border-color:#22B573;color:#22B573">✓ GENTLE</div>
+    </div>
+  </section>
+
+  <!-- S8: row 23 — the uncle in 23C -->
+  <section class="scene" id="s8">
+    <div class="bg" style="background:linear-gradient(180deg,#8EA2C6 0%,#B9C6DE 35%,#4A5677 92%)"></div>
+    <div id="cw8" class="abs" style="inset:0;transform-origin:1075px 660px">
+      <div id="cab8" class="abs" style="left:0;top:150px"></div>
+      <div id="scan" class="abs" style="left:0;top:0;width:150px;height:200px;border:7px solid #FFC93D;border-radius:22px;box-shadow:0 0 0 6px rgba(255,201,61,.3)"></div>
+      <div id="ring8" class="abs" style="left:1015px;top:600px;width:120px;height:120px;border-radius:50%;border:7px dashed #F2553D"></div>
+    </div>
+    <div class="pill fc" id="sbOn" data-ob="plan" style="left:80px;top:160px;background:#1B2340;color:#FFC93D">🔔 SEATBELT SIGN: STILL ON</div>
+    <div class="card fc" id="plan" data-ob="plan" style="left:80px;top:150px;width:580px;padding:20px 24px;background:#FFF1C9">
+      <div style="font-family:Archivo;font-weight:900;font-size:40px">🧠 UNCLE'S PLAN</div>
+      <div class="pl" style="font-size:24px;padding:9px 0;border-bottom:2px dashed rgba(27,35,64,.18)">☐ 1 · WHEELS TOUCH DOWN</div>
+      <div class="pl" style="font-size:24px;padding:9px 0;border-bottom:2px dashed rgba(27,35,64,.18)">☐ 2 · IGNORE SEATBELT SIGN</div>
+      <div class="pl" id="pl3" style="font-size:24px;padding:9px 6px;border-bottom:2px dashed rgba(27,35,64,.18);border-radius:10px">☐ 3 · STAND UP. IMMEDIATELY.</div>
+      <div class="pl" style="font-size:24px;padding:9px 0">☐ 4 · OPEN BIN, BLOCK AISLE</div>
+    </div>
+    <div id="dots8" class="abs" data-ob="plan" style="left:600px;top:500px;width:60px;height:60px"><div class="abs" style="left:0;top:0;width:22px;height:22px;border-radius:50%;background:#FFF1C9;border:3px solid #1B2340"></div><div class="abs" style="left:30px;top:30px;width:14px;height:14px;border-radius:50%;background:#FFF1C9;border:3px solid #1B2340"></div></div>
+    <div class="pill fc" id="row8" data-ob="row8" style="left:500px;top:760px;background:#1B2340;color:#FFC93D">23C · AISLE · 2 SEATS FROM YOU</div>
+    <div class="card fc" id="file" data-ob="file" style="left:1190px;top:190px;width:640px;height:590px;padding:22px 26px;background:#F3DDA6">
+      <div class="abs" style="left:26px;top:-40px;width:220px;height:46px;border-radius:14px 14px 0 0;background:#F3DDA6;border:3px solid #1B2340;border-bottom:none;font-size:18px;padding:10px 16px">FILE · 23C</div>
+      <div class="ttl">PASSENGER FILE · TOP SECRET</div>
+      <div id="photo" class="abs" style="left:26px;top:66px;width:200px;height:220px;border-radius:18px;background:#E8EEF7;border:3px solid #1B2340;overflow:hidden"></div>
+      <div class="abs" style="left:250px;top:70px;width:370px;font-size:22px;line-height:1.55">NAME: <span style="color:#0E7C93">"UNCLE"</span><br>SEAT: 23C (AISLE)<br>BAG: OVERHEAD, READY<br>SKILL: STANDING EARLY</div>
+      <div class="abs" style="left:26px;top:318px;width:588px;font-size:22px;line-height:1.6">SEATED LANDINGS: <span style="color:#C8361F">0</span><br>STOOD UP BEFORE THE SIGN: <span style="color:#C8361F">ALWAYS</span></div>
+      <div class="abs" style="left:26px;top:420px;width:588px;font-size:22px">THREAT LEVEL</div>
+      <div class="abs" style="left:26px;top:456px;display:flex;gap:8px"><i class="tl8" style="width:100px;height:30px;border-radius:8px;background:#FFF6DD;border:3px solid #1B2340"></i><i class="tl8" style="width:100px;height:30px;border-radius:8px;background:#FFF6DD;border:3px solid #1B2340"></i><i class="tl8" style="width:100px;height:30px;border-radius:8px;background:#FFF6DD;border:3px solid #1B2340"></i><i class="tl8" style="width:100px;height:30px;border-radius:8px;background:#FFF6DD;border:3px solid #1B2340"></i><i class="tl8" style="width:100px;height:30px;border-radius:8px;background:#FFF6DD;border:3px solid #1B2340"></i></div>
+      <div class="stamp" id="eye" style="left:22px;top:250px;font-size:42px;transform:rotate(-8deg)">👀 KEEP AN EYE ON HIM</div>
+    </div>
+  </section>
+
+</div></div>
+<script type="module">
+import { planeWorld } from "../../../lib/plane3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const { ART } = PAPER;
+const P = PLANE, INK = "#1B2340", TEAL = "#12A4C4", RED = "#F2553D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+const tr = (a, b) => (window.__trans = window.__trans || []).push([a, b]);
+
+EX.passChrome(1, "Take-off");
+$("#subs").dataset.ob = "subs";
+EX.subtitles();
+
+const T = { s1: w("outside") - 0.45, s2: w("fun fact") - 0.2, s3: w("so seatbelts") - 0.15, s4: w("but first") - 0.15, s5: w("engines to full") - 0.25, s6: w("and no the pilot") - 0.1, s7: w("the nose lifts") - 0.15, s8: w("oh and quick") - 0.2, close: we("the climb") + 0.38 };
+const END = T.close + 1.3;
+
+// ================================================= opening: the window shade lifts on the seat map
+EX.shadeOpen(0.45, { phase: 1 });
+gsap.set("#s0", { autoAlpha: 1 });
+
+// ================================================= S0: seat 23A, the window seat, won in a family argument
+$("#map0").innerHTML = P.seatmap({ w: 1200, id: "sm", hi: { "23A": "#FFC93D" } });
+$("#pin0").innerHTML = `<svg width="116" height="120" viewBox="0 0 116 120" style="overflow:visible"><path d="M58 116 L 30 70 A 40 40 0 1 1 86 70 Z" fill="${RED}" stroke="${INK}" stroke-width="4"/><text x="58" y="50" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="30" fill="#fff">YOU</text></svg>`;
+$("#host0").innerHTML = ART.host({ w: 250, id: "h0", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h0Mouth"), { from: 0.3, to: T.s1, open: 14 });
+PAPER.blink($("#h0Eyes"), [2.2, 5.0]);
+tl.fromTo("#host0", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, 0.9);
+gsap.set(["#pin0", "#wg0", "#score", ...$$("#score .sr"), ...$$(".pk"), "#hd0"], { autoAlpha: 0 });
+pop("#hd0", 1.0, { sfx: false });
+tl.fromTo("#map0", { y: 40 }, { y: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 0.5);
+const tPin = w("twenty three a") - 0.05;
+tl.fromTo("#pin0", { autoAlpha: 1, y: -400 }, { y: 0, duration: 0.5, ease: "bounce.out", immediateRender: false }, tPin);
+sfx(tPin + 0.35, "clunk", { gain: 0.2 });
+REEL.onFrame((t) => { if (t > T.s1 + 1) return; const s = $("#smS23A"); if (s) s.setAttribute("fill", t > tPin + 0.4 && Math.floor(t * 4) % 2 ? "#FFE08A" : "#FFC93D"); });
+tl.fromTo("#wg0", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, immediateRender: false }, w("window seat") - 0.05);
+tl.to("#wg0", { scale: 1.15, duration: 0.3, yoyo: true, repeat: 5 }, w("window seat") + 0.2);
+sfx(w("window seat"), "chime", { gain: 0.16 });
+$$(".pk").forEach((p, i) => { pop(p, w("window seat") + 0.35 + i * 0.32, { sfx: i === 2 ? "glitch" : "pop", gain: 0.12 }); });
+tl.fromTo("#score", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("which you won") - 0.1);
+$$("#score .sr").forEach((r, i) => { const tt = w("which you won") + 0.3 + i * 0.45; tl.fromTo(r, { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, tt); sfx(tt, i < 2 ? "bloop" : "ding", { gain: 0.14 }); });
+tl.to("#win0", { backgroundColor: "#FFC93D", duration: 0.2 }, w("argument") - 0.1);
+tl.to("#score", { rotation: -1.5, duration: 0.06, yoyo: true, repeat: 7 }, w("serious family") - 0.05);
+
+// ================================================= 3D camera + aircraft as pure functions of t
+const W3 = planeWorld($("#c3"), { w: 1920, h: 1080 }), G = W3.GROUND;
+const shift = (c, l, k) => { const f = [l[0] - c[0], l[2] - c[2]], d = Math.hypot(f[0], f[1]); return [l[0] - (f[1] / d) * k * d, l[1], l[2] + (f[0] / d) * k * d]; };
+const TS = w("races down") - 0.25, TR = w("it's c"), VR = 72, ACC = VR / (TR - TS);
+const X = (t) => (t < TS ? 70 : t < TR ? 70 + 0.5 * ACC * (t - TS) ** 2 : 70 + 0.5 * ACC * (TR - TS) ** 2 + VR * (t - TR) + 0.7 * (t - TR) ** 2);
+const tTh = w("full power") - 0.3;
+const fanA = (t) => { const w0 = 3, w1 = 24, a = tTh, b = tTh + 1.6; if (t < a) return w0 * t; if (t < b) { const u = t - a; return w0 * a + w0 * u + ((w1 - w0) * u * u) / (2 * (b - a)); } return w0 * a + w0 * (b - a) + ((w1 - w0) * (b - a)) / 2 + w1 * (t - b); };
+const R0 = w("the nose lifts") + 0.2, LIFT = R0 + 1.35, CH = w("and the wings") - 0.2;
+const pitch = (t) => (t < R0 ? 0 : t < LIFT ? 0.14 * sm((t - R0) / 1.15) : 0.14 + 0.1 * sm((t - LIFT) / 1.6));
+const alt = (t) => (t < LIFT ? 0 : 2.6 * (t - LIFT) ** 2);
+const XC = X(T.s7) + 80;
+function shot(t) {
+  const fan = fanA(t), base = { flaps: 0.4, gear: 1, fan, mood: "day" };
+  if (t < T.s4) { const u = clamp((t - T.s1) / (T.s2 + 0.8 - T.s1)), a = 0.3 + 0.5 * u, c = [70 + 45 * Math.cos(a), 2.2 + 1.2 * u, 45 * Math.sin(a)]; return { ...base, p: [70, G, 0], cam: c, look: shift(c, [68, 4.2, 0], 0.15), fov: 38 }; }
+  if (t < TS + 0.3) { const u = clamp((t - T.s5) / 2.4), c = [84.4 - 2.6 * u, 1.45, 13.4 - 1.6 * u]; return { ...base, p: [X(t), G, 0], cam: c, look: [73.2, 1.3, 5.75], fov: 36 }; }
+  const x = X(t), sh = t > TS ? Math.min(1, (t - TS) / 4) * 0.05 : 0, jit = Math.sin(t * 61) * sh;
+  if (t < TS + 3.1) { const c = [x + 25, 1.7 + jit, 21]; return { ...base, p: [x, G, 0], cam: c, look: shift(c, [x + 1, 3.3, 0], -0.06), fov: 40 }; }
+  if (t < T.s6 + 1) { const c = [x - 2, 3.0 + jit, 54]; return { ...base, p: [x, G, 0], cam: c, look: [x + 8, 4.0, 0], fov: 40 }; }
+  const p = [x, G + alt(t), 0], gear = 1 - sm((t - LIFT - 2.2) / 1.4);
+  if (t < CH) { const u = clamp((t - T.s7) / 3.3); return { ...base, p, pitch: pitch(t), gear, cam: [XC, 2.4, 50], look: [x + 6, G + alt(t) * 0.8 + 2, 0], fov: 34 - 6 * u }; }
+  const y = G + alt(t);
+  return { ...base, p, pitch: pitch(t), gear, cam: [x - 30, y + 5, 26], look: [x + 9, y + 2.5, 0], fov: 40 };
+}
+const on3d = (t) => (t >= T.s1 - 0.05 && t <= T.s2 + 0.8) || (t >= T.s5 - 0.6 && t <= T.s6 + 0.1) || (t >= T.s7 - 0.1 && t <= T.s8 + 0.8);
+REEL.onFrame((t) => { if (on3d(t)) W3.frame(shot(t)); });
+
+// ================================================= S1: outside — 70 tonnes, aunty's pickle, one minute (window reveal from 23A)
+EX.windowReveal("#s3d", T.s1, 696, 286, { out: "#s0" });
+gsap.set(["#wt", "#rwy", "#tm1", "#sure", "#sq", "#sa", "#incl", "#pickle", ...$$("#wt .sg"), ...$$("#wt .lg")], { autoAlpha: 0 });
+tl.fromTo("#wt", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("seventy") + 0.05);
+REEL.onFrame((t) => { if (t < T.s1 || t > T.s2 + 1) return; $("#wtN").textContent = Math.round(70 * sm((t - w("seventy")) / 0.7)); });
+[["metal", 0], ["fuel", 1], ["people", 2]].forEach(([wd, i]) => { const tt = w(wd) - 0.1; tl.fromTo($$("#wt .sg")[i], { autoAlpha: 0, scaleX: 0, transformOrigin: "0 50%" }, { autoAlpha: 1, scaleX: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, tt); tl.fromTo($$("#wt .lg")[i], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, tt); sfx(tt, "pop", { gain: 0.12, pitch: 1 + i * 0.15 }); });
+pop("#incl", w("including you") - 0.05, { sfx: "bloop", gain: 0.14 });
+tl.fromTo("#pickle", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)", immediateRender: false }, w("pickle jar") - 0.2);
+sfx(w("pickle jar") - 0.1, "coin", { gain: 0.2 });
+tl.to("#pickle", { rotation: 2, duration: 0.05, yoyo: true, repeat: 7 }, w("pickle jar") + 0.2);
+tl.fromTo("#tm1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("one minute") - 0.15);
+sfx(w("one minute"), "beep", { gain: 0.12 });
+REEL.onFrame((t) => { if (t < T.s1 || t > T.s2 + 1) return; const k = Math.max(0, t - w("one minute")), rem = Math.max(0, 60 - k), sec = Math.min(60, Math.ceil(rem - 0.0001)); $("#tmrN").textContent = sec >= 60 ? "01:00" : `00:${String(sec).padStart(2, "0")}`; $("#tmrR").setAttribute("stroke-dasharray", `${(440 * rem / 60).toFixed(1)} 440`); });
+tl.set("#sure", { autoAlpha: 1 }, w("seventy tonnes flying") - 0.1);
+pop("#sq", w("seventy tonnes flying") - 0.05, { sfx: "impact", gain: 0.14 });
+tl.fromTo("#sa", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("sure") - 0.05);
+sfx(w("sure") + 0.15, "stamp", { gain: 0.3 });
+pop("#rwy", w("all of that") - 0.1, { sfx: "pop", gain: 0.12 });
+sfx(T.s1 + 0.3, "jet", { gain: 0.05, dur: 9, pitch: 0.7 });
+
+// ================================================= S2: 3,000 take-offs a day, 2 a minute (radar sweep)
+EX.radarSweep("#s3d", "#s2", T.s2);
+tl.set(["#wt", "#rwy", "#tm1", "#sure"], { autoAlpha: 0 }, T.s2 + 0.8);
+const FL = [["07:40", "HX 2026", "MUMBAI", "12", "BOARDING"], ["07:45", "QK 318", "BENGALURU", "04", "ON TIME"], ["07:50", "VJ 902", "KOLKATA", "21", "ON TIME"], ["07:55", "RT 144", "GOA", "09", "BOARDING"], ["08:00", "HX 711", "CHENNAI", "15", "ON TIME"], ["08:05", "ZP 260", "HYDERABAD", "02", "DELAYED"], ["08:10", "KS 507", "JAIPUR", "18", "ON TIME"], ["08:15", "MN 833", "LUCKNOW", "07", "ON TIME"]];
+const WD = [150, 210, 330, 110];
+$("#rows").innerHTML = FL.map((r, i) => `<div class="row" ${i === 0 ? 'id="r0" style="background:rgba(255,201,61,.12);border-radius:12px"' : ""}>${r.slice(0, 4).map((c, j) => `<span style="width:${WD[j]}px"><span class="fl c${j}">${" ".repeat(c.length)}</span></span>`).join("")}<span><span class="fl c4" style="color:${r[4] === "DELAYED" ? RED : r[4] === "BOARDING" ? "#22D07A" : "#FFC93D"}">${" ".repeat(9)}</span></span></div>`).join("");
+FL.forEach((r, i) => r.forEach((c, j) => EX.flapText($$(`#rows .row`)[i].querySelector(`.c${j}`), j === 4 ? c.padEnd(9) : c, T.s2 + 0.3 + i * 0.1 + j * 0.06, { seed: i * 7 + j + 1 })));
+every(T.s2 + 0.3, T.s2 + 1.3, 0.09, (t) => sfx(t, "tick", { gain: 0.08 }));
+const tDep = w("every single minute") + 0.2;
+EX.flapText($("#r0 .c4"), "DEPARTING", tDep, { seed: 99 });
+tl.set("#r0 .c4", { color: "#FFFFFF" }, tDep); tl.to("#r0", { backgroundColor: "rgba(34,208,122,.25)", duration: 0.2 }, tDep);
+every(tDep, tDep + 0.6, 0.08, (t) => sfx(t, "tick", { gain: 0.08 }));
+$("#grid").innerHTML = Array.from({ length: 60 }, () => `<span class="gi">✈</span>`).join("");
+gsap.set(["#cnt", "#pm", ...$$("#grid .gi")], { autoAlpha: 0 });
+tl.fromTo("#cnt", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("this happens") - 0.1);
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.8) return; $("#cntN").textContent = Math.round(3000 * sm((t - w("three thousand") + 0.1) / 1.1)).toLocaleString("en-IN"); });
+$$("#grid .gi").forEach((g, i) => { const tt = w("times a day") - 0.2 + i * 0.022; tl.fromTo(g, { autoAlpha: 0, scale: 0.2 }, { autoAlpha: 1, scale: 1, duration: 0.18, ease: "back.out(3)", immediateRender: false }, tt); if (i % 6 === 0) sfx(tt, "tick", { gain: 0.06, pitch: 1 + i / 80 }); });
+tl.fromTo("#pm", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("that's two") - 0.1);
+sfx(w("that's two"), "ding", { gain: 0.16 });
+REEL.onFrame((t) => {
+  if (t < T.s2 || t > T.s3 + 0.8) return;
+  const t0 = w("that's two"), a = ((t - t0) / 2.0) * 360; $("#pmH").setAttribute("transform", `rotate(${Math.max(0, a).toFixed(1)} 110 116)`);
+  [0, 180].forEach((deg, i) => { const k = ((a - deg) % 360 + 360) % 360 / 360, el = $(`#pmP${i + 1}`), on = t > t0 + (deg / 360) * 2.0 && k < 0.45; el.style.opacity = on ? 1 - k / 0.45 : 0; el.style.transform = `translate(${(k * 260).toFixed(1)}px,${(-k * 120).toFixed(1)}px) rotate(-20deg)`; });
+});
+every(w("that's two"), T.s3, 1.0, (t) => sfx(t, "whoosh", { gain: 0.06, dur: 0.4 }));
+
+// ================================================= S3: seatbelts on, then five phases (contrail wipe)
+EX.contrailWipe(T.s3);
+EX.swap("#s2", "#s3", T.s3);
+EX.ambientClouds("#s3", { from: T.s3, to: T.s4 + 1, seed: 8, n: 8, y0: 40, y1: 720, op: 0.85 });
+gsap.set(["#belt", "#click"], { autoAlpha: 0 });
+tl.fromTo("#belt", { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)", immediateRender: false }, T.s3 + 0.15);
+const tBk = w("seatbelts on") + 0.1;
+tl.fromTo("#bkL", { x: -60 }, { x: 70, duration: 0.3, ease: "power3.in", immediateRender: false }, tBk);
+pop("#click", tBk + 0.3, { sfx: "click", gain: 0.35 });
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s3 + 3) return; $("#bsign").style.color = t > tBk + 0.25 ? "#FFC93D" : "#4A5677"; $("#bsign").style.boxShadow = t > tBk + 0.25 ? "0 0 40px 6px rgba(255,201,61,.55)" : "none"; });
+sfx(tBk + 0.32, "ding", { gain: 0.24 });
+const tToday = w("today we ride") - 0.1;
+tl.to("#belt", { autoAlpha: 0, scale: 0.6, y: -80, duration: 0.3, ease: "power3.in" }, tToday - 0.35);
+$("#host3").innerHTML = ART.host({ w: 300, id: "h3", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h3Mouth"), { from: T.s3, to: T.s4, open: 16 });
+PAPER.blink($("#h3Eyes"), [T.s3 + 1.6, T.s3 + 4.8]);
+gsap.set("#host3", { autoAlpha: 0 });
+tl.fromTo("#host3", { autoAlpha: 1, x: -420 }, { x: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, T.s3 + 0.25);
+$("#bp3").innerHTML = P.pass(1, { w: 500 });
+gsap.set("#bp3", { autoAlpha: 0, scale: 1.76 });
+tl.fromTo("#bp3", { autoAlpha: 0, scale: 0.6, rotation: -8 }, { autoAlpha: 1, scale: 1.76, rotation: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, tToday);
+sfx(tToday, "paper", { gain: 0.2 });
+const tFly = w("start to finish") - 0.15;
+tl.to("#bp3", { x: 1376 - 500, y: 20 - 380, scale: 1, duration: 0.55, ease: "power3.inOut" }, tFly);
+tl.set("#prog", { autoAlpha: 1 }, tFly + 0.55); tl.set("#bp3", { autoAlpha: 0 }, tFly + 0.56);
+tl.to("#tag", { autoAlpha: 1, duration: 0.35 }, tFly + 0.6);
+sfx(tFly, "whoosh", { gain: 0.2 }); sfx(tFly + 0.55, "stamp", { gain: 0.2 });
+tr(tFly - 0.05, tFly + 0.6);
+const CURVE = "M40 620 L 200 620 Q 270 620 340 560 L 600 140 L 1000 140 L 1280 560 Q 1330 615 1420 620";
+const MK = [[260, 604], [470, 350], [800, 140], [1140, 350], [1352, 610]];
+const CARD = [[40, 380, "🛫", "TAKE-OFF", "0 → 260 KM/H", "#FFE3D3"], [520, 400, "↗", "CLIMB", "UP TO 35,000 FT", "#DDF7EA"], [680, 0, "☁", "CRUISE", "830 KM/H", "#ECE6FF"], [880, 400, "↘", "DESCENT", "~200 KM OUT", "#FFF1C9"], [1190, 0, "🛬", "LANDING", "~250 KM/H", "#FFDCE6"]];
+$("#prof").innerHTML = `<rect x="0" y="618" width="1460" height="22" rx="6" fill="#3E4A6A"/>${Array.from({ length: 18 }, (_, i) => `<rect x="${20 + i * 80}" y="626" width="40" height="5" fill="#fff"/>`).join("")}
+  <path id="cv" d="${CURVE}" stroke="#fff" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+  <path id="cv2" d="${CURVE}" stroke="#7B61FF" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26 16"/>
+  ${MK.map(([x, y], i) => `<g class="mk" transform="translate(${x} ${y})"><circle r="26" fill="#FFC93D" stroke="${INK}" stroke-width="4"/><text y="10" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="28" fill="${INK}">${i + 1}</text></g>`).join("")}
+  ${CARD.map(([x, y, ic, n, st, bg]) => `<g class="pcd"><rect x="${x}" y="${y + 7}" width="250" height="116" rx="20" fill="${INK}"/><rect x="${x}" y="${y}" width="250" height="116" rx="20" fill="${bg}" stroke="${INK}" stroke-width="3"/><text x="${x + 20}" y="${y + 46}" font-family="Archivo" font-weight="900" font-size="34" fill="${INK}">${ic} ${n}</text><text x="${x + 20}" y="${y + 88}" font-family="JetBrains Mono" font-weight="800" font-size="21" fill="#0E7C93">${st}</text></g>`).join("")}
+  <g id="pl3"><g transform="translate(-80 -26)">${P.side({ w: 160, id: "p3", gear: false })}</g></g>`;
+const cv = $("#cv"), L3 = cv.getTotalLength();
+gsap.set(["#prof", "#hl3", ...$$("#prof .mk"), ...$$("#prof .pcd")], { autoAlpha: 0 });
+tl.set("#prof", { autoAlpha: 1 }, tFly + 0.05);
+tl.fromTo(["#cv", "#cv2"], { drawSVG: "0%" }, { drawSVG: "100%", duration: 1.25, ease: "power1.inOut", immediateRender: false }, tFly + 0.05);
+sfx(tFly + 0.1, "riser", { gain: 0.1, dur: 1.2 });
+pop("#hl3", tFly + 0.7, { sfx: "pop", gain: 0.14 });
+tl.fromTo("#hl3 span", { scale: 1 }, { scale: 1.12, duration: 0.18, yoyo: true, repeat: 1, immediateRender: false }, w("five phases") - 0.05); sfx(w("five phases"), "impact", { gain: 0.16 });
+const PH = [w("take off climb"), w("climb cruise"), w("cruise descent"), w("descent and"), w("landing")].map((x) => x - 0.1);
+const lenAt = MK.map(([x, y]) => { let best = 0, bd = 1e9; for (let s = 0; s <= L3; s += 4) { const p = cv.getPointAtLength(s), d = Math.hypot(p.x - x, p.y - y); if (d < bd) { bd = d; best = s; } } return best; });
+PH.forEach((tt, i) => { tl.fromTo($$("#prof .mk")[i], { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, tt); tl.fromTo($$("#prof .pcd")[i], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, tt + 0.05); sfx(tt, "pop", { gain: 0.16, pitch: 0.9 + i * 0.12 }); });
+REEL.onFrame((t) => {
+  if (t < T.s3 || t > T.s4 + 0.6) return;
+  let s;
+  if (t < PH[0] - 0.4) s = L3 * sm((t - tFly - 0.05) / 1.25);
+  else { s = 0; PH.forEach((tt, i) => { if (t >= tt - 0.1) s = (i ? lenAt[i - 1] : 0) + (lenAt[i] - (i ? lenAt[i - 1] : 0)) * sm((t - tt + 0.1) / 0.4); }); }
+  if (t > PH[0] - 0.4 && t < PH[0] - 0.1) s = 0;
+  const p = cv.getPointAtLength(Math.max(0.1, s)), q = cv.getPointAtLength(Math.min(L3, s + 6)), a = (Math.atan2(q.y - p.y, q.x - p.x) * 180) / Math.PI;
+  $("#pl3").setAttribute("transform", `translate(${p.x.toFixed(1)} ${(p.y - 14).toFixed(1)}) rotate(${a.toFixed(1)})`);
+  $("#pl3").setAttribute("opacity", t < tFly + 0.05 ? 0 : 1);
+});
+
+// ================================================= S4: quick guess — the quiz show (stripes)
+EX.stripes(T.s4, { colors: ["#7B61FF", "#FFC93D", "#F2553D", "#12A4C4", "#9255DA"] });
+EX.swap("#s3", "#s4", T.s4);
+$("#oA .ar").innerHTML = P.scooter({ w: 260 }); $("#oB .ar").innerHTML = P.train({ w: 330 });
+$("#oC .ar").innerHTML = `<div style="position:relative;width:340px;height:110px"><svg class="abs" style="left:0;top:20px" width="340" height="90">${[0, 1, 2].map((i) => `<path d="M${10 + i * 14} ${26 + i * 20} L ${110 + i * 14} ${26 + i * 20}" stroke="#12A4C4" stroke-width="8" stroke-linecap="round" opacity=".6"/>`).join("")}</svg><div class="abs" style="left:90px;top:0;transform:rotate(-10deg)">${P.side({ w: 250, id: "qc", gear: false })}</div></div>`;
+gsap.set(["#qg", "#qq", "#oA", "#oB", "#oC", "#lock", "#cd"], { autoAlpha: 0 });
+pop("#qg", T.s4 + 0.25, { sfx: "chime", gain: 0.18 });
+tl.fromTo("#qq", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, w("how fast") - 0.1);
+[["#oA", w("a scooter")], ["#oB", w("b rajdhani")], ["#oC", w("or c")]].forEach(([el, tt], i) => { tl.fromTo(el, { autoAlpha: 0, y: 120, rotation: (i - 1) * 6 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, tt - 0.1); sfx(tt, "pop", { gain: 0.18, pitch: 0.9 + i * 0.15 }); });
+tl.to("#oC", { scale: 1.04, duration: 0.25, yoyo: true, repeat: 1 }, w("way way faster"));
+REEL.onFrame((t) => { if (t < T.s4 || t > T.s5 + 0.6) return; $("#sp1").setAttribute("transform", `rotate(${(Math.sin(t * 1.1) * 9).toFixed(1)} 300 -40)`); $("#sp2").setAttribute("transform", `rotate(${(Math.sin(t * 1.3 + 1) * 9).toFixed(1)} 1620 -40)`); $("#oC .ar > div").style.transform = `translateX(${(Math.sin(t * 9) * 4).toFixed(1)}px)`; });
+const tLock = w("lock your answer") - 0.1;
+tl.set("#cd", { autoAlpha: 1 }, tLock);
+REEL.onFrame((t) => { if (t < tLock - 0.1 || t > T.s5 + 0.5) return; const n = 3 - Math.floor((t - tLock) / 0.3); $("#cd").textContent = n > 0 ? n : "GO"; });
+[0, 0.3, 0.6].forEach((d) => sfx(tLock + d, "beep", { gain: 0.12, pitch: 1.2 }));
+["#oA", "#oB", "#oC"].forEach((el, i) => tl.to(el, { y: -10, duration: 0.08, yoyo: true, repeat: 3 }, tLock + i * 0.1));
+tl.fromTo("#lock", { autoAlpha: 0, scale: 2.0 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tLock + 0.55);
+sfx(tLock + 0.72, "stamp", { gain: 0.3 });
+
+// ================================================= S5: full power + take-off roll (iris from option C)
+EX.iris("#s3d", T.s5, 120 + 1160 + 260, 420 + 225, { color: TEAL });
+EX.swap("#s4", "#s3d", T.s5);
+const pa = (cx, cy, r, a) => [cx + r * Math.cos((a * Math.PI) / 180), cy - r * Math.sin((a * Math.PI) / 180)];
+const arc = (cx, cy, r, a0, a1) => { const [x0, y0] = pa(cx, cy, r, a0), [x1, y1] = pa(cx, cy, r, a1); return `M${x0.toFixed(1)} ${y0.toFixed(1)} A ${r} ${r} 0 ${a0 - a1 > 180 ? 1 : 0} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`; };
+$("#n1g").innerHTML = `<circle cx="140" cy="140" r="118" fill="#0E1530"/><path d="${arc(140, 140, 96, 210, -30)}" stroke="#2B3354" stroke-width="20" fill="none"/><path id="n1A" stroke="#22D07A" stroke-width="20" fill="none"/><path d="${arc(140, 140, 96, -18, -30)}" stroke="${RED}" stroke-width="20" fill="none"/><line id="n1L" x1="140" y1="140" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="140" cy="140" r="10" fill="#fff"/><text id="n1T" x="140" y="216" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="40" fill="#22D07A">21%</text>`;
+$("#thr").innerHTML = `<rect x="58" y="20" width="34" height="290" rx="17" fill="#2B3354" stroke="${INK}" stroke-width="3"/>${[["TOGA", 40], ["FLX", 95], ["CLB", 150], ["IDLE", 270]].map(([n, y]) => `<line x1="40" y1="${y}" x2="58" y2="${y}" stroke="${INK}" stroke-width="3"/><text x="36" y="${y + 6}" text-anchor="end" font-family="JetBrains Mono" font-weight="800" font-size="15" fill="${INK}">${n}</text>`).join("")}<g id="lev"><rect x="30" y="-14" width="90" height="34" rx="12" fill="#FFC93D" stroke="${INK}" stroke-width="3"/><rect x="66" y="16" width="18" height="40" fill="#9AA3B4"/></g>`;
+gsap.set(["#n1c", "#spc", "#toga", "#ans", "#dbl", ...$$("#ans .br")], { autoAlpha: 0 });
+tl.fromTo("#n1c", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s5 + 0.35);
+REEL.onFrame((t) => {
+  if (t < T.s5 - 0.2 || t > T.s6 + 0.5) return;
+  const k = sm((t - tTh) / 0.45), y = 270 - 230 * k; $("#lev").setAttribute("transform", `translate(0 ${y.toFixed(1)})`);
+  const n1 = 21 + 71 * sm((t - tTh - 0.2) / 1.4), a = 210 - 240 * (n1 / 100), [lx, ly] = pa(140, 140, 82, a);
+  $("#n1A").setAttribute("d", arc(140, 140, 96, 210, a)); $("#n1L").setAttribute("x2", lx.toFixed(1)); $("#n1L").setAttribute("y2", ly.toFixed(1)); $("#n1T").textContent = `${Math.round(n1)}%`;
+});
+sfx(tTh, "click", { gain: 0.3 }); sfx(tTh + 0.1, "jet", { gain: 0.32, dur: T.s6 - tTh + 0.2 });
+pop("#toga", tTh + 1.5, { sfx: "ding", gain: 0.14 });
+tl.to("#n1c", { autoAlpha: 0, duration: 0.25 }, TS + 2.6);
+$("#spg").innerHTML = `<circle cx="190" cy="180" r="160" fill="#0B0F20"/>${Array.from({ length: 31 }, (_, i) => { const v = i * 10, a = 210 - 240 * (v / 300), [x0, y0] = pa(190, 180, 146, a), [x1, y1] = pa(190, 180, i % 5 ? 132 : 120, a); return `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" stroke="#C9D0DC" stroke-width="${i % 5 ? 3 : 5}"/>${i % 5 === 0 ? (() => { const [tx, ty] = pa(190, 180, 98, a); return `<text x="${tx.toFixed(1)}" y="${(ty + 8).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#fff">${v}</text>`; })() : ""}`; }).join("")}
+  <path d="${arc(190, 180, 154, 210 - 240 * (250 / 300), 210 - 240 * (270 / 300))}" stroke="#FFC93D" stroke-width="14" fill="none"/>
+  <line id="spL" x1="190" y1="180" stroke="${RED}" stroke-width="8" stroke-linecap="round"/><circle cx="190" cy="180" r="14" fill="#fff" stroke="${INK}" stroke-width="3"/>`;
+tl.fromTo("#spc", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, TS + 0.1);
+const vAt = (t) => (t < TS ? 0 : t < TR ? ACC * (t - TS) : VR + 1.4 * (t - TR));
+REEL.onFrame((t) => {
+  if (t < TS - 0.2 || t > T.s6 + 0.3) return;
+  const kmh = vAt(t) * 3.6, a = 210 - 240 * (Math.min(300, kmh) / 300), [x, y] = pa(190, 180, 128, a);
+  $("#spL").setAttribute("x2", x.toFixed(1)); $("#spL").setAttribute("y2", y.toFixed(1)); $("#spN").textContent = Math.round(kmh);
+  $("#spN").style.color = kmh >= 259 ? "#22D07A" : "#fff";
+});
+sfx(TR, "ding", { gain: 0.2 });
+tl.fromTo("#ans", { autoAlpha: 0, x: -80, rotation: -3 }, { autoAlpha: 1, x: 0, rotation: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, TR - 0.05);
+sfx(TR, "chime", { gain: 0.2 });
+$$("#ans .br").forEach((b, i) => { const tt = TR + 0.25 + i * 0.22; tl.fromTo(b, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15, immediateRender: false }, tt); tl.fromTo($(".bb", b), { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, tt); sfx(tt, "tick", { gain: 0.1 }); });
+pop("#dbl", w("double a rajdhani") - 0.05, { sfx: "pop", gain: 0.16 });
+
+// ================================================= S6: movies vs real life (film strip wipes in + out)
+EX.filmWipe(T.s6, { dir: 1 });
+EX.swap("#s3d", "#s6", T.s6);
+const stick = (rot, c) => `<g transform="translate(560 470) rotate(${rot})"><ellipse cx="0" cy="0" rx="110" ry="28" fill="#1B2340"/><path d="M-22 0 L -14 -170 Q -20 -220 14 -232 Q 50 -226 44 -180 L 22 0 Z" fill="${c}" stroke="${INK}" stroke-width="5"/><circle cx="20" cy="-208" r="11" fill="${RED}"/></g>`;
+$("#mvS").innerHTML = `<g id="mvStick">${stick(0, "#3E4A6A")}</g><g id="mvSw">${[[640, 230], [670, 300], [610, 180]].map(([x, y]) => `<path d="M${x} ${y} q 10 18 0 28 q -10 -10 0 -28 Z" fill="#7FC8FF"/>`).join("")}</g>
+  <text id="mvY" x="40" y="120" font-family="Archivo" font-weight="900" font-size="88" fill="#FFC93D">YAAANK!!</text>
+  <g id="mvP" transform="translate(150 470) rotate(-70)"><g transform="translate(-130 -40)">${P.side({ w: 260, id: "mvp", gear: false })}</g></g>`;
+$("#rlS").innerHTML = `<g id="rlStick">${stick(0, "#3E4A6A")}</g><text x="40" y="120" font-family="JetBrains Mono" font-weight="800" font-size="34" fill="#0E7C93">A SMOOTH, STEADY PULL</text><text x="40" y="168" font-family="JetBrains Mono" font-weight="800" font-size="26" fill="${INK}" opacity=".6">(LIKE POURING HOT CHAI)</text>
+  <g id="rlP" transform="translate(220 420) rotate(-8)"><g transform="translate(-130 -40)">${P.side({ w: 260, id: "rlp", gear: true })}</g></g><path d="M80 470 L 400 470" stroke="#3E4A6A" stroke-width="10" stroke-linecap="round"/>`;
+gsap.set(["#mv", "#rl", "#mvX", "#rlV", "#mvY"], { autoAlpha: 0 });
+tl.fromTo("#mv", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, T.s6 + 0.1);
+const tYank = w("yank") - 0.1;
+REEL.onFrame((t) => {
+  if (t < T.s6 || t > T.s7 + 0.6) return;
+  const k = sm((t - tYank) / 0.18), wob = t > tYank ? Math.sin(t * 40) * 3 * Math.max(0, 1 - (t - tYank) / 1.2) : 0;
+  $("#mvStick").setAttribute("transform", `rotate(${(-38 * k + wob).toFixed(1)} 560 470)`);
+  $("#mvP").setAttribute("transform", `translate(${(150 + 20 * k).toFixed(1)} ${(470 - 260 * sm((t - tYank - 0.1) / 0.8)).toFixed(1)}) rotate(${(-70 * k).toFixed(1)})`);
+  $("#mvSw").setAttribute("opacity", t > tYank ? 1 : 0); $("#mvSw").setAttribute("transform", `translate(0 ${(((t * 120) % 60)).toFixed(1)})`);
+  const g = sm((t - w("gentle pull") + 0.1) / 1.0); $("#rlStick").setAttribute("transform", `rotate(${(-10 * g).toFixed(1)} 560 470)`); $("#rlP").setAttribute("transform", `translate(${(220 + 80 * g).toFixed(1)} ${(420 - 40 * g).toFixed(1)}) rotate(${(-8 * g).toFixed(1)})`);
+});
+pop("#mvY", tYank, { sfx: "impact", gain: 0.2 }); REEL.shake($("#shake"), tYank + 0.05, 7);
+tl.fromTo("#mvX", { autoAlpha: 0, scale: 2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("movies") + 0.05);
+sfx(w("movies") + 0.22, "stamp", { gain: 0.28 });
+tl.fromTo("#rl", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, w("just a gentle") - 0.2);
+tl.fromTo("#rlV", { autoAlpha: 0, scale: 2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("pull back") + 0.1);
+sfx(w("pull back") + 0.27, "ding", { gain: 0.2 });
+
+// ================================================= S7: rotation — nose up, the wings talk (film strip out)
+EX.filmWipe(T.s7, { dir: -1 });
+EX.swap("#s6", "#s3d", T.s7);
+tl.set(["#spc", "#ans"], { autoAlpha: 0 }, T.s7);
+$("#pcS").innerHTML = `<defs><clipPath id="pcC"><circle cx="170" cy="150" r="130"/></clipPath></defs><circle cx="170" cy="150" r="138" fill="${INK}"/><g clip-path="url(#pcC)"><g id="hz"><rect x="0" y="-200" width="340" height="350" fill="#3E9BFF"/><rect x="0" y="150" width="340" height="350" fill="#A0622E"/><line x1="0" y1="150" x2="340" y2="150" stroke="#fff" stroke-width="5"/>${[-20, -10, 10, 20].map((d) => `<line x1="${170 - (Math.abs(d) === 10 ? 30 : 50)}" y1="${150 + d * 6}" x2="${170 + (Math.abs(d) === 10 ? 30 : 50)}" y2="${150 + d * 6}" stroke="#fff" stroke-width="3"/><text x="${230}" y="${156 + d * 6}" font-family="JetBrains Mono" font-weight="800" font-size="16" fill="#fff">${Math.abs(d)}</text>`).join("")}</g></g><path d="M96 150 L 140 150 L 152 164 M244 150 L 200 150 L 188 164" stroke="#FFC93D" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="163" y="143" width="14" height="14" fill="#FFC93D"/>`;
+gsap.set(["#pc", "#rot", "#bub"], { autoAlpha: 0 });
+tl.fromTo("#pc", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s7 + 0.4);
+REEL.onFrame((t) => { if (t < T.s7 - 0.2 || t > T.s8 + 0.3) return; const deg = (pitch(t) * 180) / Math.PI; $("#hz").setAttribute("transform", `translate(0 ${(deg * 6).toFixed(1)})`); $("#pcN").textContent = `+${Math.round(deg)}°`; });
+tl.fromTo("#rot", { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.22, ease: "power4.in", immediateRender: false }, w("rotation") - 0.05);
+sfx(w("rotation") + 0.15, "stamp", { gain: 0.3 }); REEL.shake($("#shake"), w("rotation") + 0.17, 5);
+sfx(LIFT, "whoosh", { gain: 0.16, dur: 0.8 }); sfx(R0, "jet", { gain: 0.16, dur: T.s8 - R0 + 0.3 });
+tl.to("#rot", { autoAlpha: 0, duration: 0.2 }, w("relax") - 0.5);
+tl.fromTo("#bub", { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.2)", immediateRender: false }, w("relax") - 0.15);
+sfx(w("relax") - 0.1, "bloop", { gain: 0.2 });
+
+// ================================================= S8: row 23 — the uncle in 23C (cloud wipe)
+EX.cloudWipe(T.s8);
+EX.swap("#s3d", "#s8", T.s8);
+tl.set(["#pc", "#bub"], { autoAlpha: 0 }, T.s8);
+const uncleSeat = `<g id="unS"><path d="M750 474 L 750 420 Q 750 398 784 398 Q 818 398 818 420 L 818 474 Z" fill="#F5A524" stroke="${INK}" stroke-width="3"/>
+  <g transform="translate(784 360)"><circle r="36" fill="#C98B5E" stroke="${INK}" stroke-width="3"/><path d="M-35 -8 Q -28 -40 0 -40 Q 28 -40 35 -8 Q 22 -22 0 -21 Q -22 -22 -35 -8 Z" fill="#5C677E"/>
+  <circle cx="-13" cy="0" r="7" fill="#fff"/><circle cx="13" cy="0" r="7" fill="#fff"/><circle class="pu" cx="-13" cy="0" r="3.6" fill="${INK}"/><circle class="pu" cx="13" cy="0" r="3.6" fill="${INK}"/>
+  <path d="M-20 13 Q 0 5 20 13 Q 0 22 -20 13 Z" fill="#2B2118"/><path d="M-8 26 Q 0 30 8 26" stroke="${INK}" stroke-width="3" fill="none" stroke-linecap="round"/></g></g>`;
+$("#cab8").innerHTML = P.cabin({ w: 1920, id: "cb" }).replace(/<\/svg>$/, uncleSeat + "</svg>");
+gsap.set("#cbUn", { display: "none" });
+$("#photo").innerHTML = `<svg width="200" height="220" viewBox="0 0 200 220"><path d="M30 220 Q 30 150 100 140 Q 170 150 170 220 Z" fill="#F5A524" stroke="${INK}" stroke-width="3"/><g transform="translate(100 92) scale(1.9)"><circle r="36" fill="#C98B5E" stroke="${INK}" stroke-width="2"/><path d="M-35 -8 Q -28 -40 0 -40 Q 28 -40 35 -8 Q 22 -22 0 -21 Q -22 -22 -35 -8 Z" fill="#5C677E"/><circle cx="-13" cy="0" r="4" fill="${INK}"/><circle cx="13" cy="0" r="4" fill="${INK}"/><path d="M-20 13 Q 0 5 20 13 Q 0 22 -20 13 Z" fill="#2B2118"/></g></svg>`;
+gsap.set(["#plan", "#dots8", "#row8", "#file", "#eye", "#ring8", "#scan", "#sbOn", ...$$("#plan .pl")], { autoAlpha: 0 });
+const k8 = 1920 / 1400, seatX = (i) => (60 + i * 200) * k8;
+const tRow = w("quick look at");
+tl.set("#scan", { autoAlpha: 1, x: seatX(0) - 8, y: 150 + 286 * k8, width: 100 * k8 + 16, height: 160 * k8 }, tRow);
+[1, 2, 3].forEach((i, n) => { tl.to("#scan", { x: seatX(i) - 8, duration: 0.18, ease: "power2.out" }, tRow + 0.25 * (n + 1)); sfx(tRow + 0.25 * (n + 1), "tick", { gain: 0.12 }); });
+const tZ = w("twenty three c") - 0.05;
+tl.to("#cw8", { scale: 1.9, x: -375, y: -60, duration: 0.7, ease: "power3.inOut" }, tZ);
+tl.to("#scan", { autoAlpha: 0, duration: 0.2 }, tZ + 0.1);
+sfx(tZ, "whoosh", { gain: 0.18 });
+tl.fromTo("#ring8", { autoAlpha: 0, scale: 1.8, rotation: -90 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2)", immediateRender: false }, tZ + 0.6);
+REEL.onFrame((t) => { if (t < T.s8 || t > END) return; const sx = Math.sin(t * 2.6) * 3.2; $$("#unS .pu").forEach((p) => p.setAttribute("transform", `translate(${sx.toFixed(1)} 0)`)); $("#ring8").style.rotate = `${(t * 40) % 360}deg`; const b = $("#cbBelt"); if (b) b.setAttribute("opacity", t > w("seatbelt sign") && Math.floor(t * 3) % 2 ? 0.35 : 1); });
+pop("#row8", w("that uncle") - 0.1, { sfx: "pop", gain: 0.16 });
+tl.fromTo("#file", { autoAlpha: 0, x: 80, rotation: 4 }, { autoAlpha: 1, x: 0, rotation: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("that uncle") + 0.15);
+sfx(w("that uncle") + 0.15, "paper", { gain: 0.2 });
+pop("#sbOn", w("seatbelt sign") - 0.1, { sfx: "ding", gain: 0.2 });
+const tPlan = w("already planning") - 0.15;
+tl.to("#sbOn", { autoAlpha: 0, duration: 0.15 }, tPlan - 0.2);
+tl.fromTo("#plan", { autoAlpha: 0, scale: 0.6, transformOrigin: "90% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, tPlan);
+tl.fromTo("#dots8", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, immediateRender: false }, tPlan - 0.1);
+sfx(tPlan, "bloop", { gain: 0.16 });
+$$("#plan .pl").forEach((p, i) => { const tt = tPlan + 0.3 + i * 0.3; tl.fromTo(p, { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, tt); sfx(tt, "tick", { gain: 0.1 }); });
+const tSU = w("stand up") - 0.05;
+tl.to("#pl3", { backgroundColor: "#FFC93D", scale: 1.04, duration: 0.2 }, tSU); tl.to("#pl3", { scale: 1, duration: 0.2 }, tSU + 0.25);
+sfx(tSU, "ding", { gain: 0.14 });
+$$("#file .tl8").forEach((b, i) => { tl.to(b, { backgroundColor: i < 4 ? RED : "#FFF6DD", duration: 0.1 }, tSU + 0.2 + i * 0.12); if (i < 4) sfx(tSU + 0.2 + i * 0.12, "beep", { gain: 0.07, pitch: 1 + i * 0.2 }); });
+const tEye = w("keep an eye") - 0.05;
+tl.fromTo("#eye", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tEye);
+sfx(tEye + 0.18, "stamp", { gain: 0.32 }); REEL.shake($("#shake"), tEye + 0.2, 6);
+
+// ================================================= close: the window shade comes down — NEXT: CLIMB
+EX.shadeClose(T.close, { phase: 1 });
+REEL.finish(END);
+</script></body></html>

@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>plane 3d test</title>
+<link rel="stylesheet" href="../../../lib/fonts.css"><link rel="stylesheet" href="../../../lib/explainer.css">
+<script src="../../../lib/vendor/gsap.min.js"></script><script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script><script src="../../../lib/vendor/SplitText.min.js"></script><script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script><script src="../../../lib/vendor/CustomEase.min.js"></script><script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script>window.WORDS=[];</script><script src="../../../lib/reel.js"></script>
+</head><body><div id="shake"><div id="bgfx"></div><div id="stage"><canvas id="c" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas></div></div>
+<script type="module">
+import { planeWorld } from "../../../lib/plane3d.js";
+const W = planeWorld(document.getElementById("c")), G = W.GROUND;
+const SH = [
+  { p: [120, G, 0], cam: [140, 4, 48], look: [118, 3, 0], fov: 32, mood: "day", fan: 0 },
+  { p: [120, G, 0], cam: [168, 2.6, 26], look: [118, 3.5, 0], fov: 38, mood: "day", fan: 0.4 },
+  { p: [0, 1300, 0], pitch: 0.16, gear: 0, cam: [-28, 1306, 52], look: [2, 1301, 0], fov: 34, mood: "sunset", clouds: true, cloudY: 820, fan: 0.8 },
+  { p: [0, 1300, 0], pitch: 0.02, gear: 0, cam: [-60, 1325, -40], look: [0, 1300, 0], fov: 34, mood: "sunset", clouds: true, cloudY: 820 },
+  { p: [-400, 60, 0], pitch: 0.05, gear: 1, flaps: 1, cam: [-330, 40, 40], look: [-400, 60, 0], fov: 34, mood: "night" },
+  { p: [900, G, 0], gear: 1, flaps: 1, spoil: 1, cam: [884, 14, 30], look: [900, 2, 6], fov: 40, mood: "day" },
+];
+REEL.onFrame((t) => { const i = Math.min(SH.length - 1, Math.floor(t)); W.frame(SH[i]); });
+REEL.finish(6);
+</script></body></html>

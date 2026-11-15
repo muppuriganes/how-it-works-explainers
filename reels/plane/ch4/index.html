@@ -1,0 +1,207 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Plane Ch4 Descent</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:18px;letter-spacing:.16em;opacity:.6}
+.big{font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.9;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:64px;letter-spacing:.03em;background:rgba(255,255,255,.94);white-space:nowrap}
+.eq{display:inline-block;padding:6px 18px;border-radius:16px;background:#fff;border:4px solid #1B2340;box-shadow:0 6px 0 #1B2340;margin:0 6px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/plane.js"></script>
+<script src="../../../lib/planefx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- 3D: descent start (S1) + final approach (S5) -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="card fc" id="q1" data-ob="q1" style="left:360px;top:150px;width:1200px;padding:22px 30px;background:#FFF1C9;text-align:center">
+      <div class="ttl">🤔 QUICK GUESS</div><div style="font-family:Archivo;font-weight:900;font-size:56px;margin-top:6px">WHEN DOES THE PLANE START COMING DOWN?</div>
+    </div>
+    <div class="pill fc" id="oa" data-ob="oa" style="left:360px;top:420px;background:#7B61FF;font-size:34px">10 KM BEFORE?</div>
+    <div class="pill fc" id="ob" data-ob="ob" style="left:830px;top:420px;background:#F2553D;font-size:34px">50 KM?</div>
+    <div class="stamp" id="o200" data-ob="o200" style="left:1220px;top:480px;transform:rotate(-6deg);border-color:#22B573;color:#22B573">TRY 200 KM 😮</div>
+    <div class="pill fc" id="fl5" data-ob="fl5" style="left:60px;top:150px;background:#12A4C4">FLAPS OUT → MORE LIFT AT LOW SPEED</div>
+    <div class="pill fc" id="gr5" data-ob="gr5" style="left:60px;top:240px;background:#1B2340;color:#FFC93D">🛞 LANDING GEAR: DOWN</div>
+    <div id="clunk" class="abs" data-ob="clunk" style="left:720px;top:300px;font-family:Archivo;font-weight:900;font-size:150px;color:#FFC93D;-webkit-text-stroke:6px #1B2340;transform:rotate(-6deg)">CLUNK!</div>
+    <div class="pill fc" id="norm" data-ob="norm" style="left:780px;top:520px;background:#22B573;font-size:32px">TOTALLY NORMAL ✓</div>
+    <div class="card fc" id="sit" data-ob="sit" style="left:1300px;top:640px;width:560px;padding:18px 22px;background:#1B2340;color:#FFC93D;display:flex;align-items:center;gap:16px">
+      <svg width="110" height="110" viewBox="-60 -60 120 120"><circle r="50" fill="#C98B5E" stroke="#FFC93D" stroke-width="4"/><path d="M-49 -10 Q -40 -54 0 -54 Q 40 -54 49 -10 Q 30 -30 0 -29 Q -30 -30 -49 -10 Z" fill="#5C677E"/><circle cx="-18" cy="0" r="6" fill="#1B2340"/><circle cx="18" cy="0" r="6" fill="#1B2340"/><path d="M-28 18 Q 0 8 28 18 Q 0 30 -28 18 Z" fill="#2B2118"/></svg>
+      <div><div style="font-size:20px;opacity:.8">🔔 CABIN ANNOUNCEMENT</div><div style="font-family:Archivo;font-weight:900;font-size:58px">UNCLE, SIT DOWN.</div></div>
+    </div>
+  </section>
+
+  <!-- S2: the 3-for-1 rule -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#F49A7A 0%,#9255DA 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="rule" data-ob="rule" style="left:60px;top:150px;width:1800px;padding:20px 30px;background:#FFF1C9;text-align:center">
+      <div class="ttl">THE PILOTS' SIMPLE RULE</div>
+      <div style="font-family:Archivo;font-weight:900;font-size:60px;margin-top:4px">3 NAUTICAL MILES <span style="color:#7B61FF">FOR EVERY</span> 1,000 FT</div>
+    </div>
+    <svg id="slope" class="abs" data-ob="slope" style="left:60px;top:350px" width="1800" height="380" viewBox="0 0 1800 380"></svg>
+    <div id="calc" class="abs" data-ob="calc" style="left:60px;top:760px;width:1800px;text-align:center;font-family:Archivo;font-weight:900;font-size:58px;color:#1B2340">
+      <span class="eq e1">35,000 FT</span><span class="eq e2" style="background:#FFC93D">× 3</span><span class="eq e3">≈ 100 NM</span><span class="eq e4" style="background:#22B573;color:#fff">≈ 200 KM</span>
+    </div>
+    <div class="stamp" id="sm1" data-ob="calc" style="left:1400px;top:866px;font-size:44px;transform:rotate(-6deg);border-color:#22B573;color:#22B573;display:none">SIMPLE MATHS ✓</div>
+  </section>
+
+  <!-- S3: ATC — the queue at the ticket counter -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(160deg,#0B4F3A 0%,#0E7C5A 100%)"></div><div class="dots"></div>
+    <div id="rad" class="abs" data-ob="rad" style="left:60px;top:170px"></div>
+    <div class="card fc" id="busy" data-ob="busy" style="left:60px;top:780px;width:620px;padding:14px 22px;background:#1B2340;color:#7CFFB2;font-size:26px">📡 BIG AIRPORT SKY: BUSY</div>
+    <div class="card fc" id="cntr" data-ob="cntr" style="left:740px;top:170px;width:1120px;height:740px;background:#FFE9DA;overflow:hidden">
+      <div class="abs" style="left:26px;top:20px;font-family:Archivo;font-weight:900;font-size:46px">🎟️ RUNWAY 27 · LANDING COUNTER</div>
+      <svg id="q" class="abs" style="left:0;top:90px" width="1120" height="650" viewBox="0 0 1120 650"></svg>
+      <div class="stamp" id="nocut" style="left:300px;top:110px;font-size:52px;transform:rotate(-6deg)">❌ NO LINE CUTTING</div>
+      <div class="pill" id="nunc" style="left:560px;top:600px;background:#F2553D;font-size:28px">NOT EVEN UNCLE 🙅</div>
+    </div>
+  </section>
+
+  <!-- S4: ILS — slide down the radio ramp -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:linear-gradient(180deg,#2B3A70 0%,#F49A7A 85%,#FFD39A 100%)"></div>
+    <div id="ilsW" class="abs" data-ob="ils" style="left:60px;top:420px"></div>
+    <div class="card fc" id="ilsC" data-ob="ilsC" style="left:60px;top:150px;width:900px;padding:16px 24px;background:#DDF7EA;display:flex;align-items:center;gap:18px"><span style="font-size:52px">📻</span><div><div class="ttl">ILS · INSTRUMENT LANDING SYSTEM</div><div style="font-size:26px">AN INVISIBLE RADIO BEAM = A <span style="color:#0E7C93">PERFECT 3° SLOPE</span></div></div></div>
+    <div class="card fc" id="mrb" data-ob="mrb" style="left:1380px;top:150px;width:480px;height:260px;background:#FFF1C9;overflow:hidden"><div class="ttl" style="padding:16px 20px 0">LIKE A MARBLE ON A RAMP</div><svg id="mrbS" class="abs" style="left:0;top:40px" width="480" height="220"></svg></div>
+  </section>
+
+</div></div>
+<script type="module">
+import { planeWorld } from "../../../lib/plane3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const P = PLANE, INK = "#1B2340", TEAL = "#12A4C4", RED = "#F2553D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+
+EX.phaseStart(4, "Descent", { t: 0.75 });
+const T = { s2: w("pilots use") - 0.2, s3: w("now the sky") - 0.2, s4: w("closer in") - 0.15, s5: w("flaps slide") - 0.25, close: we("sit down") + 1.5 };
+const END = T.close + 1.3;
+gsap.set("#s3d", { autoAlpha: 1 });
+
+// ================================================= 3D: starting down above the clouds (S1) and the final approach (S5)
+const W3 = planeWorld($("#c3"), { w: 1920, h: 1080 });
+const tF = w("flaps slide"), tG = w("landing gear");
+function shot(t) {
+  if (t < T.s2 + 1) { const x = 230 * t, y = 1300 - 6 * t, u = clamp(t / 8); return { p: [x, y, 0], pitch: -0.04, gear: 0, flaps: 0, fan: t * 18, mood: "sunset", clouds: true, cloudY: 820, cam: [x - 44 + 10 * u, y + 7, 30 - 4 * u], look: [x + 4, y - 1, 0], fov: 40 }; }
+  const x = -980 + 68 * (t - T.s5), y = 3.77 + Math.max(0, -x) * Math.tan((3 * Math.PI) / 180), u = clamp((t - T.s5) / (END - T.s5));
+  const flaps = sm((t - tF) / 1.6), gear = sm((t - tG) / 1.3), jolt = t > tG + 1.2 && t < tG + 1.6 ? Math.sin((t - tG) * 60) * 0.12 : 0;
+  return { p: [x, y + jolt, 0], pitch: 0.04, gear, flaps, fan: t * 14, mood: "sunset", beaconOn: t, cam: [x - 6 + 4 * u, y - 1.2, 26 - 3 * u], look: [x + 1, y - 0.6, 0], fov: 38 };
+}
+const on3d = (t) => t <= T.s2 + 0.9 || t >= T.s5 - 0.6;
+REEL.onFrame((t) => { if (on3d(t)) W3.frame(shot(t)); });
+sfx(0.6, "jet", { gain: 0.06, dur: 7.5, pitch: 0.7 });
+
+// ================================================= S1: quick guess — when does it start coming down?
+gsap.set(["#q1", "#oa", "#ob", "#o200", "#fl5", "#gr5", "#clunk", "#norm", "#sit"], { autoAlpha: 0 });
+tl.fromTo("#q1", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, w("quick guess") - 0.1);
+sfx(w("quick guess"), "chime", { gain: 0.16 });
+pop("#oa", w("ten kilometres") - 0.1, { sfx: "pop", gain: 0.16 }); pop("#ob", w("fifty") - 0.1, { sfx: "pop", gain: 0.16 });
+tl.to(["#oa", "#ob"], { autoAlpha: 0.35, duration: 0.2 }, w("try two") - 0.1);
+tl.fromTo("#o200", { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("two hundred") - 0.05);
+sfx(w("two hundred") + 0.12, "stamp", { gain: 0.3 }); REEL.shake($("#shake"), w("two hundred") + 0.14, 5);
+
+// ================================================= S2: the 3-for-1 rule (stripes)
+EX.stripes(T.s2, { colors: ["#F49A7A", "#FFC93D", "#9255DA", "#12A4C4", "#22B573"] });
+EX.swap("#s3d", "#s2", T.s2);
+const SX = (nm) => 1720 - nm * 15.6, SY = (ft) => 330 - ft * 0.0082;   // 0..105 NM across, 0..35,000 ft up
+let stairs = `M${SX(105)} ${SY(35000)}`; for (let k = 6; k >= 0; k--) stairs += ` L ${SX((k + 1) * 15)} ${SY(k * 5000)} L ${SX(k * 15)} ${SY(k * 5000)}`;
+const LAB = Array.from({ length: 8 }, (_, k) => `<text x="${SX(k * 15)}" y="${SY(0) + 34}" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="#fff">${k * 15} NM</text><text x="${SX(k * 15) - 10}" y="${SY(k * 5000) - 12}" text-anchor="end" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="#FFF1C9">${k < 7 ? k * 5 + "K FT" : ""}</text>`).join("");
+$("#slope").innerHTML = `<line x1="20" y1="${SY(0)}" x2="1780" y2="${SY(0)}" stroke="${INK}" stroke-width="5"/>
+  <path id="stp" d="${stairs}" stroke="#FFC93D" stroke-width="8" fill="none" stroke-linejoin="round"/>${LAB}<path id="ln" d="M${SX(105)} ${SY(35000)} L ${SX(0)} ${SY(0)}" stroke="#fff" stroke-width="8" stroke-dasharray="20 14"/>
+  <rect x="${SX(0) - 20}" y="${SY(0) - 10}" width="80" height="16" rx="4" fill="#3E4A6A"/><text x="${SX(0) + 30}" y="${SY(0) - 22}" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="24" fill="#fff">BOM</text>
+  <g id="dp" transform="translate(${SX(105)} ${SY(35000)})"><g transform="translate(-110 -36) rotate(4)">${P.side({ w: 220, id: "dp", gear: false })}</g></g>
+  <g id="tick1"><rect x="${SX(40)}" y="${SY(5000) - 10}" width="300" height="50" rx="14" fill="#1B2340"/><text x="${SX(40) + 150}" y="${SY(5000) + 24}" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#FFC93D">EVERY 3 NM ↓ 1,000 FT</text></g>`;
+gsap.set(["#rule", "#stp", "#ln", "#tick1", ...$$("#calc .eq"), "#sm1"], { autoAlpha: 0 });
+tl.fromTo("#rule", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, w("simple rule") - 0.1);
+tl.set("#stp", { autoAlpha: 1 }, w("three nautical") - 0.1);
+tl.fromTo("#stp", { drawSVG: "0%" }, { drawSVG: "100%", duration: 2.2, ease: "none", immediateRender: false }, w("three nautical") - 0.1);
+pop("#tick1", w("every thousand") - 0.1, { sfx: "ding", gain: 0.14 });
+[[".e1", w("thirty five")], [".e2", w("times three")], [".e3", w("a hundred nautical")], [".e4", w("two hundred kilometres")]].forEach(([e, tt], i) => { tl.fromTo($(`#calc ${e}`), { autoAlpha: 0, y: 30, scale: 0.6 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2.4)", immediateRender: false }, tt - 0.1); sfx(tt, i === 3 ? "ding" : "pop", { gain: 0.18 }); });
+tl.set("#ln", { autoAlpha: 1 }, w("simple maths") - 0.3);
+REEL.onFrame((t) => { if (t < T.s2 || t > T.s3 + 0.5) return; const k = sm((t - w("simple maths") + 0.3) / 1.6), x = SX(105 * (1 - k)), y = SY(35000 * (1 - k)); $("#dp").setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)})`); });
+tl.set("#sm1", { display: "block" }, 0);
+tl.fromTo("#sm1", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("smooth landing") - 0.05);
+sfx(w("smooth landing") + 0.15, "stamp", { gain: 0.24 });
+
+// ================================================= S3: ATC — the ticket-counter queue (radar sweep)
+EX.radarSweep("#s2", "#s3", T.s3);
+$("#rad").innerHTML = P.radar({ w: 600, id: "rd" });
+const QX = [220, 400, 580, 760, 940];
+$("#q").innerHTML = `<rect x="20" y="40" width="200" height="460" rx="20" fill="#3E4A6A" stroke="${INK}" stroke-width="5"/><rect x="40" y="60" width="160" height="34" rx="8" fill="#FFC93D"/><text x="120" y="84" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="18" fill="${INK}">NOW SERVING</text><text id="ns" x="120" y="170" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="80" fill="#7CFFB2">41</text>
+  <circle cx="120" cy="280" r="44" fill="#C98B5E"/><path d="M76 270 Q 120 220 164 270" stroke="${INK}" stroke-width="10" fill="none"/><circle cx="78" cy="282" r="12" fill="${INK}"/><text x="120" y="400" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="#fff">ATC</text>
+  <line x1="240" y1="560" x2="1100" y2="560" stroke="${INK}" stroke-width="6" stroke-dasharray="20 14" opacity=".4"/>
+  ${QX.map((x, i) => `<g class="qp"><g transform="translate(${x + 40} 440)"><g transform="translate(-75 -40)">${P.side({ w: 150, id: "qp" + i, gear: true })}</g><rect x="-44" y="40" width="88" height="40" rx="10" fill="#fff" stroke="${INK}" stroke-width="3"/><text x="0" y="68" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="${INK}">${42 + i}</text></g></g>`).join("")}
+  <g id="cut"><g transform="translate(620 300)"><g transform="translate(-75 -40) rotate(-12 75 40)">${P.side({ w: 150, id: "cutp", gear: false })}</g><circle cx="40" cy="-60" r="28" fill="#C98B5E" stroke="${INK}" stroke-width="3"/><path d="M14 -66 Q 40 -96 66 -66" fill="#5C677E"/><path d="M26 -50 Q 40 -56 54 -50" fill="#2B2118"/></g></g>`;
+gsap.set(["#busy", "#cntr", "#nocut", "#nunc", "#cut"], { autoAlpha: 0 });
+const sw = $("#rdSw");
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.6) return; sw.setAttribute("transform", `rotate(${((t * 120) % 360).toFixed(1)} 300 300)`); $$("#rad .bp").forEach((b, i) => { const k = sm((t - w("lines everyone") + 0.2) / 1.6), tx = (300 - 40 + i * 0) - [380, 460, 400, 330, 180][i], ty = (120 + i * 70) - [150, 260, 380, 340, 200][i]; b.setAttribute("transform", `translate(${(tx * k).toFixed(1)} ${(ty * k).toFixed(1)})`); }); });
+pop("#busy", w("is busy") - 0.1, { sfx: "beep", gain: 0.14 });
+tl.fromTo("#cntr", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("like a queue") - 0.3);
+$$("#q .qp").forEach((g, i) => { tl.fromTo(g, { autoAlpha: 0, x: 300 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, w("like a queue") + i * 0.12); });
+sfx(w("ticket counter"), "ding", { gain: 0.18 });
+tl.fromTo("#cut", { autoAlpha: 0, x: 400, y: -60 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, w("except here") - 0.1);
+sfx(w("except here"), "swish", { gain: 0.2 });
+tl.fromTo("#nocut", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("cut the line") - 0.05);
+sfx(w("cut the line") + 0.15, "stamp", { gain: 0.28 });
+tl.to("#cut", { x: 500, y: -200, rotation: 10, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, w("not even uncle") + 0.2);
+pop("#nunc", w("not even uncle") - 0.05, { sfx: "glitch", gain: 0.16 });
+
+// ================================================= S4: ILS — slide down the ramp (contrail wipe)
+EX.contrailWipe(T.s4);
+EX.swap("#s3", "#s4", T.s4);
+$("#ilsW").innerHTML = P.ils({ w: 1500, id: "il" });
+$("#mrbS").innerHTML = `<path d="M30 40 L 450 190 L 30 190 Z" fill="#C9D0DC" stroke="${INK}" stroke-width="4"/><circle id="mb" cx="50" cy="20" r="20" fill="#7B61FF" stroke="${INK}" stroke-width="3"/>`;
+gsap.set(["#ilsC", "#mrb"], { autoAlpha: 0 });
+tl.fromTo("#ilsC", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("called ils") - 0.1);
+sfx(w("called ils"), "beep", { gain: 0.16, pitch: 0.8 });
+const beam = $("#ilBeam"), pl = $("#ilPl");
+gsap.set(beam, { opacity: 0 });
+tl.to(beam, { opacity: 1, duration: 0.5 }, w("radio beam") - 0.1);
+REEL.onFrame((t) => {
+  if (t < T.s4 || t > T.s5 + 0.6) return;
+  beam.setAttribute("opacity", (0.6 + 0.4 * Math.sin(t * 5)).toFixed(2));
+  const k = sm((t - w("slides down") + 0.4) / 2.6), x = 160 + (900 - 160) * k, y = 180 + (400 - 180) * ((x) / 960);
+  pl.setAttribute("transform", `translate(${x.toFixed(1)} ${(y - 26).toFixed(1)}) rotate(3)`);
+  const m = sm((t - w("like a marble") + 0.1) / 1.0); $("#mb").setAttribute("cx", (50 + 380 * m).toFixed(1)); $("#mb").setAttribute("cy", (20 + 136 * m).toFixed(1));
+});
+tl.fromTo("#mrb", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, w("like a marble") - 0.3);
+sfx(w("like a marble"), "roll", { gain: 0.16 });
+
+// ================================================= S5: final approach — flaps, gear, clunk (iris)
+EX.iris("#s3d", T.s5, 960, 540, { color: "#F49A7A" });
+EX.swap("#s4", "#s3d", T.s5);
+tl.set(["#q1", "#oa", "#ob", "#o200"], { autoAlpha: 0 }, T.s5);
+pop("#fl5", tF - 0.05, { sfx: "swish", gain: 0.18 });
+sfx(tF + 0.1, "roll", { gain: 0.14 });
+pop("#gr5", tG - 0.05, { sfx: "pop", gain: 0.16 });
+const tCl = w("clunk");
+tl.fromTo("#clunk", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, tCl - 0.12);
+sfx(tCl, "clunk", { gain: 0.42 }); sfx(tCl + 0.05, "impact", { gain: 0.2 }); REEL.shake($("#shake"), tCl, 9);
+tl.to("#clunk", { autoAlpha: 0, duration: 0.25 }, w("totally normal") + 0.6);
+pop("#norm", w("totally normal") - 0.05, { sfx: "ding", gain: 0.16 });
+tl.fromTo("#sit", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.8)", immediateRender: false }, w("uncle sit") - 0.1);
+sfx(w("uncle sit"), "ding", { gain: 0.26 });
+sfx(T.s5, "jet", { gain: 0.1, dur: END - T.s5, pitch: 0.75 });
+
+// ================================================= close: shade down — NEXT: LANDING
+EX.shadeClose(T.close, { phase: 4 });
+REEL.finish(END);
+</script></body></html>

@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Plane assets</title><link rel="stylesheet" href="../../../lib/fonts.css"><link rel="stylesheet" href="../../../lib/explainer.css"><script src="../../../lib/vendor/gsap.min.js"></script><script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script><script src="../../../lib/vendor/SplitText.min.js"></script><script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script><script src="../../../lib/vendor/CustomEase.min.js"></script><script src="../../../lib/vendor/MotionPathPlugin.min.js"></script><script src="../sheets.js"></script><script src="../../../lib/reel.js"></script><script src="../../../lib/explainer.js"></script><script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script><script src="../../../lib/iso.js"></script><script src="../../../lib/explainer2.js"></script><script src="../../../lib/plane.js"></script></head><body><div id="shake"><div id="bgfx"></div><div id="stage"></div></div>
+<canvas id="c3" width="960" height="720" style="display:none"></canvas>
+<script type="module">
+import { planeWorld } from "../../../lib/plane3d.js";
+const W = planeWorld(document.getElementById("c3"), { w: 960, h: 720 }), G = W.GROUND;
+const SH = [
+  { p: [200, G, 0], cam: [226, 2.4, 33], look: [196, 4.4, 0], fov: 36, mood: "day" },
+  { p: [200, G, 0], cam: [226, 2.2, 15], look: [208, 2.6, 4], fov: 40, mood: "day", fan: 0.5 },
+  { p: [1300, G + 1.5, 0], pitch: 0.16, gear: 1, flaps: 0.4, cam: [1280, 3, 40], look: [1300, 7, 0], fov: 40, mood: "day", fan: 1.2 },
+  { p: [0, 1300, 0], pitch: 0.03, gear: 0, cam: [36, 1305.5, 22], look: [-6, 1300.5, -3], fov: 42, mood: "sunset", clouds: true, cloudY: 820, fan: 0.8 },
+  { p: [-260, 45, 0], pitch: 0.05, gear: 1, flaps: 1, cam: [-330, 52, 10], look: [400, 0, 0], fov: 42, mood: "night", beaconOn: 0.1 },
+  { p: [700, G, 0], gear: 1, flaps: 1, spoil: 1, cam: [676, 18, -26], look: [702, 2, 4], fov: 42, mood: "day" },
+];
+const imgs = SH.map((s) => { W.frame(s); return document.getElementById("c3").toDataURL("image/jpeg", 0.92); });
+PLANESHEET(1, imgs);
+</script></body></html>

@@ -273,13 +273,25 @@ def s_pour(d=1.5):
     return norm(x * e, 0.5)
 
 
+def s_jet(d=4.0):
+    """jet engine spool-up: a turbine whine that climbs, under a broadband roar that swells and holds."""
+    t = t_(d)
+    k = np.minimum(1, t / (0.45 * d))
+    whine = sine(380 + 1300 * k ** 1.4, d) * 0.12 + sine(2 * (380 + 1300 * k ** 1.4), d) * 0.05
+    n = noise(d, 77)
+    roar = lp(n, 500) * 1.0 + bp(n, 600, 2600) * 0.45 * k
+    x = whine * (0.4 + 0.6 * k) + roar * (0.15 + 0.85 * k ** 1.2)
+    e = np.minimum(1, t / 0.15) * np.minimum(1, (d - t) / 0.6)
+    return norm(x * e, 0.6)
+
+
 SFX = {
     "tick": s_tick, "click": s_click, "pop": s_pop, "print": s_print, "stamp": s_stamp, "clunk": s_clunk,
     "ding": s_ding, "whoosh": s_whoosh, "riser": s_riser, "fire": s_fire, "paper": s_paper, "tear": s_tear,
     "swish": s_swish, "impact": s_impact, "glitch": s_glitch, "beep": s_beep, "pistol": s_pistol,
-    "crowd": s_crowd, "slam": s_slam, "roll": s_roll, "bloop": s_bloop, "chime": s_chime, "coin": s_coin, "pour": s_pour,
+    "crowd": s_crowd, "slam": s_slam, "roll": s_roll, "bloop": s_bloop, "chime": s_chime, "coin": s_coin, "pour": s_pour, "jet": s_jet,
 }
-VARIABLE_LEN = {"whoosh", "riser", "fire", "crowd", "pour"}
+VARIABLE_LEN = {"whoosh", "riser", "fire", "crowd", "pour", "jet"}
 _cache = {}
 
 

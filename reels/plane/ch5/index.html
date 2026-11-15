@@ -1,0 +1,226 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Plane Ch5 Landing</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:18px;letter-spacing:.16em;opacity:.6}
+.big{font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.9;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:64px;letter-spacing:.03em;background:rgba(255,255,255,.94);white-space:nowrap}
+.opt{position:absolute;top:0;width:520px;height:420px;border-radius:30px;text-align:center;font-family:"JetBrains Mono";font-weight:800;color:#1B2340}
+.bub{position:absolute;padding:16px 26px;border-radius:26px;border:4px solid #1B2340;box-shadow:0 8px 0 #1B2340;font-family:Archivo;font-weight:900;font-size:44px;white-space:nowrap}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/plane.js"></script>
+<script src="../../../lib/planefx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: 3D touchdown at sunset -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="card fc" id="sp1" data-ob="sp1" style="left:1440px;top:150px;width:420px;padding:18px 22px;background:#16204A;color:#fff"><div class="ttl" style="color:#8FA0D6;opacity:1">TOUCHDOWN SPEED</div><div class="big" style="font-size:90px;color:#fff"><span id="spN">250</span> <span style="font-size:40px">KM/H</span></div></div>
+    <div id="thump" class="abs" data-ob="thump" style="left:640px;top:330px;font-family:Archivo;font-weight:900;font-size:170px;color:#FFC93D;-webkit-text-stroke:7px #1B2340;transform:rotate(-5deg)">THUMP!</div>
+    <div class="card fc" id="kiss" data-ob="kiss" style="left:60px;top:150px;width:700px;padding:18px 24px;background:#FFDCE6">
+      <div class="ttl">LANDING STYLE-O-METER</div>
+      <div style="display:flex;justify-content:space-between;font-family:Archivo;font-weight:900;font-size:38px;margin-top:8px"><span>💋 KISS</span><span>HIGH FIVE 🙌</span></div>
+      <div style="position:relative;height:30px;border-radius:15px;background:linear-gradient(90deg,#F7A6C1,#FFC93D,#F2553D);border:3px solid #1B2340;margin-top:10px"><div id="kn" class="abs" style="left:0;top:-14px;width:22px;height:52px;border-radius:8px;background:#1B2340"></div></div>
+    </div>
+  </section>
+
+  <!-- S2: quick guess — how does 70 t stop? -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 25%,#9255DA 0%,#4E2283 58%,#2A1150 100%)"></div><div class="dots"></div>
+    <div class="pill fc" id="qg" data-ob="qg" style="left:740px;top:130px;background:#FFC93D;color:#1B2340;font-size:30px">🤔 QUICK GUESS</div>
+    <div class="card fc" id="qq" data-ob="qq" style="left:260px;top:220px;width:1400px;padding:20px 34px;background:#FFF1C9;text-align:center"><div style="font-family:Archivo;font-weight:900;font-size:54px">HOW DO YOU STOP <span style="color:#F2553D">70 TONNES</span>, FAST?</div></div>
+    <div id="opts" class="abs" data-ob="opts" style="left:120px;top:420px;width:1680px;height:440px">
+      <div class="opt fc" id="oA" style="left:0;background:#FFE0C2"><div style="font-size:170px;margin-top:40px">🪂</div><div style="font-family:Archivo;font-weight:900;font-size:46px">A PARACHUTE?</div></div>
+      <div class="opt fc" id="oB" style="left:580px;background:#CDEFFA"><div style="font-size:170px;margin-top:40px">⚓</div><div style="font-family:Archivo;font-weight:900;font-size:46px">AN ANCHOR?</div></div>
+      <div class="opt fc" id="oC" style="left:1160px;background:#DDF7EA"><div style="font-family:Archivo;font-weight:900;font-size:220px;margin-top:20px;color:#22B573">3</div><div style="font-family:Archivo;font-weight:900;font-size:46px">TRICKS ✓</div></div>
+      <div class="stamp" id="xA" style="left:100px;top:150px;transform:rotate(-10deg)">NOPE</div>
+      <div class="stamp" id="xB" style="left:680px;top:150px;transform:rotate(8deg)">NOPE</div>
+    </div>
+  </section>
+
+  <!-- S3: the three tricks -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(160deg,#1E2A55 0%,#3B3466 100%)"></div><div class="dots"></div>
+    <div id="stp" class="abs" data-ob="stp" style="left:60px;top:140px"></div>
+    <div class="stamp" id="dram" data-ob="stp" style="left:740px;top:560px;font-size:46px;transform:rotate(-6deg);border-color:#3E7BFA;color:#3E7BFA">🎭 DRAMATIC. YES.</div>
+    <div class="card fc" id="spd" data-ob="spd" style="left:60px;top:830px;width:1800px;height:110px;padding:14px 26px;background:#FFF1C9;display:flex;align-items:center;gap:24px">
+      <div style="font-size:24px;width:250px">SPEED</div><div style="flex:1;height:36px;border-radius:18px;background:#E9DDB8;border:3px solid #1B2340;overflow:hidden"><div id="sbar" style="height:100%;width:100%;background:linear-gradient(90deg,#22B573,#F2553D)"></div></div>
+      <div class="big" style="font-size:66px;width:330px;text-align:right"><span id="sN">250</span> KM/H</div><div id="walk" style="font-size:24px;padding:8px 14px;border-radius:12px;background:#1B2340;color:#FFC93D">🚶 WALKING · &lt; 1 MIN</div>
+    </div>
+  </section>
+
+  <!-- S4: right on cue — uncle -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:linear-gradient(180deg,#8EA2C6 0%,#B9C6DE 35%,#4A5677 92%)"></div>
+    <div id="cab4" class="abs" style="left:0;top:150px"></div>
+    <div class="bub" id="crew" data-ob="crew" style="left:120px;top:150px;background:#DDF7EA">🎙️ CREW: "PLEASE REMAIN SEATED."</div>
+    <div class="bub" id="unb" data-ob="unb" style="left:1050px;top:290px;background:#FFC93D">"I AM REMAINING STANDING." 😤</div>
+    <div id="claps" class="abs" data-ob="claps" style="left:1500px;top:640px;width:380px;height:260px"></div>
+  </section>
+
+  <!-- S5: recap — five phases ✓ + what actually flew -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:linear-gradient(180deg,#2F7FD8 0%,#6FB4EC 62%,#B4E0F7 100%)"></div>
+    <svg id="prof" class="abs" data-ob="prof" style="left:60px;top:200px;overflow:visible" width="1300" height="520" viewBox="0 0 1460 640"></svg>
+    <div id="arr" class="stamp" data-ob="prof" style="left:420px;top:150px;transform:rotate(-5deg);border-color:#22B573;color:#22B573">ARRIVED ✓ DEL → BOM</div>
+    <div class="card fc" id="what" data-ob="what" style="left:1400px;top:150px;width:460px;padding:20px 24px;background:#FFF1C9">
+      <div class="ttl">WHAT ACTUALLY FLEW</div>
+      <div class="wi" style="font-size:28px;padding:10px 0;border-bottom:2px dashed rgba(27,35,64,.2)">🔩 METAL</div>
+      <div class="wi" style="font-size:28px;padding:10px 0;border-bottom:2px dashed rgba(27,35,64,.2)">⛽ FUEL</div>
+      <div class="wi" style="font-size:28px;padding:10px 0;border-bottom:2px dashed rgba(27,35,64,.2)">👥 PEOPLE</div>
+      <div class="wi" id="pj" style="font-size:28px;padding:10px 12px;border-radius:14px">🫙 ONE PICKLE JAR</div>
+    </div>
+  </section>
+
+  <!-- S6: welcome to Mumbai — collect your pickle -->
+  <section class="scene" id="s6">
+    <div class="bg" style="background:linear-gradient(180deg,#FF9E6E 0%,#F2738C 45%,#3B3466 45%,#2B2550 100%)"></div>
+    <div class="card fc" id="wel" data-ob="wel" style="left:360px;top:150px;width:1200px;padding:24px 30px;background:#1B2340;color:#FFC93D;text-align:center"><div style="font-family:Archivo;font-weight:900;font-size:96px;line-height:1">WELCOME TO MUMBAI 🌊</div><div style="font-size:24px;color:#fff;margin-top:8px">LOCAL TIME: ARRIVED · BELT 4</div></div>
+    <svg id="belt" class="abs" data-ob="belt" style="left:0;top:520px" width="1920" height="380"></svg>
+    <div class="stamp" id="esp" data-ob="belt" style="left:640px;top:472px;font-size:48px;transform:rotate(-3deg)">ESPECIALLY THE PICKLE 🫙</div>
+  </section>
+
+</div></div>
+<script type="module">
+import { planeWorld } from "../../../lib/plane3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const P = PLANE, INK = "#1B2340", TEAL = "#12A4C4", RED = "#F2553D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+
+EX.phaseStart(5, "Landing", { t: 0.75 });
+const T = { s2: w("now seventy") - 0.15, s3: w("three tricks") + 0.6, s4: w("and right on cue") - 0.15, s5: w("so take off") - 0.1, s6: w("welcome to mumbai") - 0.2, close: we("especially the pickle") + 1.4 };
+const END = T.close + 1.6;
+gsap.set("#s3d", { autoAlpha: 1 });
+
+// ================================================= S1: 3D touchdown — kiss or high five
+const W3 = planeWorld($("#c3"), { w: 1920, h: 1080 }), G = W3.GROUND;
+const TD = w("thump") - 0.1, V0 = 69, DEC = 3.2;
+const X = (t) => (t < TD ? 400 - V0 * (TD - t) : 400 + V0 * (t - TD) - 0.5 * DEC * (t - TD) ** 2);
+const H = (t) => (t < TD ? (TD - t) * (1.0 + 2.6 * clamp((TD - t) / 3)) : 0);
+function shot(t) {
+  const x = X(t), y = G + H(t), pitch = t < TD ? 0.05 + 0.05 * sm(1 - (TD - t) / 2) : 0.1 * (1 - sm((t - TD) / 1.6)), spoil = sm((t - TD - 0.25) / 0.4);
+  const base = { p: [x, y, 0], pitch, gear: 1, flaps: 1, spoil, fan: t * 10, mood: "sunset" };
+  if (t < TD + 1.8) return { ...base, cam: [430, 2.0, 46], look: [x + 4, y, 0], fov: 32 };
+  return { ...base, cam: [x - 6, 3.0 + Math.sin(t * 40) * 0.02, 40], look: [x + 8, 3.6, 0], fov: 40 };
+}
+REEL.onFrame((t) => { if (t <= T.s2 + 0.9) W3.frame(shot(t)); });
+sfx(0.6, "jet", { gain: 0.1, dur: TD, pitch: 0.7 });
+gsap.set(["#sp1", "#thump", "#kiss"], { autoAlpha: 0 });
+tl.fromTo("#sp1", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("at about") - 0.1);
+REEL.onFrame((t) => { if (t > T.s2 + 1) return; $("#spN").textContent = Math.round((t < TD ? V0 : V0 - DEC * (t - TD)) * 3.6); });
+tl.fromTo("#thump", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.15, ease: "power4.in", immediateRender: false }, TD - 0.05);
+sfx(TD + 0.08, "impact", { gain: 0.42 }); sfx(TD + 0.1, "clunk", { gain: 0.3 }); REEL.shake($("#shake"), TD + 0.1, 10);
+tl.to("#thump", { autoAlpha: 0, duration: 0.25 }, TD + 1.1);
+tl.fromTo("#kiss", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("sometimes") - 0.2);
+REEL.onFrame((t) => { if (t < TD || t > T.s2 + 0.8) return; const k = sm((t - w("high five") + 0.3) / 0.6); $("#kn").style.left = `${(40 + 560 * k).toFixed(1)}px`; });
+sfx(w("high five") + 0.1, "slam", { gain: 0.22 });
+sfx(TD + 0.3, "whoosh", { gain: 0.2, dur: 1.5 });
+
+// ================================================= S2: quick guess — parachute? anchor? (stripes)
+EX.stripes(T.s2, { colors: ["#9255DA", "#FFC93D", "#F2553D", "#12A4C4", "#22B573"] });
+EX.swap("#s3d", "#s2", T.s2);
+gsap.set(["#qg", "#qq", "#oA", "#oB", "#oC", "#xA", "#xB"], { autoAlpha: 0 });
+pop("#qg", w("quick guess") - 0.1, { sfx: "chime", gain: 0.16 });
+tl.fromTo("#qq", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, T.s2 + 0.3);
+[["#oA", w("a parachute")], ["#oB", w("an anchor")], ["#oC", w("three tricks")]].forEach(([el, tt], i) => { tl.fromTo(el, { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, tt - 0.1); sfx(tt, i === 2 ? "ding" : "pop", { gain: 0.18 }); });
+[["#xA", w("nope") - 0.05], ["#xB", w("nope") + 0.12]].forEach(([el, tt]) => { tl.fromTo(el, { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, tt); sfx(tt + 0.14, "stamp", { gain: 0.24 }); });
+
+// ================================================= S3: the three tricks (iris)
+EX.iris("#s3", T.s3, 1560, 640, { color: "#22B573" });
+EX.swap("#s2", "#s3", T.s3);
+$("#stp").innerHTML = P.stopping({ w: 1800, id: "st" });
+const panels = $$("#stp svg > rect").slice(0, 3);
+gsap.set(["#dram", "#walk", "#spd"], { autoAlpha: 0 });
+const tO = [w("one"), w("two reverse"), w("three the brakes")];
+const spG = $("#stSp"), rvs = $$("#stp .rv"), brk = $("#stBrk");
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.2 || t > T.s4 + 0.6) return;
+  const k1 = sm((t - w("spoilers pop")) / 0.4); spG.setAttribute("opacity", k1.toFixed(2)); spG.setAttribute("transform", `translate(0 ${(30 * (1 - k1)).toFixed(1)})`);
+  const k2 = t > w("blow air") - 0.2 ? 1 : 0; rvs.forEach((r, i) => r.setAttribute("opacity", k2 * (0.55 + 0.45 * Math.abs(Math.sin(t * 8 + i)))));
+  const k3 = sm((t - w("the brakes") + 0.1) / 0.6); brk.setAttribute("opacity", (k3 * (0.8 + 0.2 * Math.sin(t * 12))).toFixed(2));
+  const v = 250 - 244 * sm((t - w("from two") + 0.1) / 1.6); $("#sN").textContent = Math.round(v); $("#sbar").style.width = `${(v / 250 * 100).toFixed(1)}%`;
+});
+tO.forEach((tt, i) => { sfx(tt, "ding", { gain: 0.14, pitch: 0.9 + i * 0.12 }); });
+sfx(w("spoilers pop"), "clunk", { gain: 0.24 }); sfx(w("blow air") - 0.2, "jet", { gain: 0.3, dur: 2.6 }); sfx(w("the brakes"), "fire", { gain: 0.12, dur: 1.2 });
+tl.fromTo("#dram", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("because it is") - 0.05);
+sfx(w("because it is") + 0.15, "stamp", { gain: 0.24 }); REEL.shake($("#shake"), w("because it is") + 0.17, 6);
+tl.to("#dram", { autoAlpha: 0, duration: 0.2 }, w("three the brakes") - 0.2);
+tl.fromTo("#spd", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("from two") - 0.3);
+pop("#walk", w("walking speed") - 0.05, { sfx: "pop", gain: 0.16 });
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.6) return; [w("one"), w("two reverse"), w("three the brakes")].forEach((tt, i) => { const p = $$("#stp svg > rect")[i]; if (p) p.setAttribute("opacity", t >= tt - 0.1 ? 1 : 0.35); }); });
+
+// ================================================= S4: right on cue — the uncle (radar sweep)
+EX.radarSweep("#s3", "#s4", T.s4);
+$("#cab4").innerHTML = P.cabin({ w: 1920, id: "cb" });
+gsap.set(["#crew", "#unb", "#claps"], { autoAlpha: 0 });
+const tUp = w("uncle is up");
+REEL.onFrame((t) => { if (t < T.s4 - 0.2 || t > T.s5 + 0.6) return; const u = sm((t - tUp + 0.2) / 0.45), bob = Math.sin(t * 7) * 3 * u; $("#cbUn").setAttribute("transform", `translate(690 ${(200 + 260 * (1 - u) + bob).toFixed(1)}) scale(0.62)`); $("#cbUArm") && $("#cbUArm").setAttribute("transform", `rotate(${(Math.sin(t * 5) * 6).toFixed(1)} 220 240)`); });
+sfx(tUp, "swish", { gain: 0.24 }); sfx(w("bag in hand"), "pop", { gain: 0.16 });
+tl.fromTo("#crew", { autoAlpha: 0, scale: 0.6, transformOrigin: "10% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)", immediateRender: false }, w("the crew says") - 0.1);
+sfx(w("please remain"), "ding", { gain: 0.2 });
+tl.fromTo("#unb", { autoAlpha: 0, scale: 0.6, transformOrigin: "10% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)", immediateRender: false }, w("uncle says") - 0.1);
+sfx(w("remaining standing"), "slam", { gain: 0.2 });
+$("#claps").innerHTML = Array.from({ length: 7 }, (_, i) => `<div class="abs cl" style="left:${(i % 4) * 90}px;top:${Math.floor(i / 4) * 110 + (i % 2) * 30}px;font-size:76px">👏</div>`).join("");
+tl.set("#claps", { autoAlpha: 1 }, w("is clapping") - 0.2);
+$$("#claps .cl").forEach((c, i) => tl.fromTo(c, { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "back.out(3)", immediateRender: false }, w("is clapping") - 0.2 + i * 0.08));
+REEL.onFrame((t) => { if (t < T.s4 || t > T.s5 + 0.6) return; $$("#claps .cl").forEach((c, i) => (c.style.rotate = `${(Math.sin(t * 16 + i) * 14).toFixed(1)}deg`)); });
+every(w("is clapping") - 0.1, T.s5 + 0.3, 0.14, (t) => sfx(t, "click", { gain: 0.12, pitch: 0.7 + ((t * 7) % 1) * 0.4 }));
+
+// ================================================= S5: recap — five phases ✓ (contrail wipe)
+EX.contrailWipe(T.s5);
+EX.swap("#s4", "#s5", T.s5);
+const CURVE = "M40 620 L 200 620 Q 270 620 340 560 L 600 140 L 1000 140 L 1280 560 Q 1330 615 1420 620";
+const MK = [[260, 604], [470, 350], [800, 140], [1140, 350], [1352, 610]];
+const NM = ["TAKE-OFF", "CLIMB", "CRUISE", "DESCENT", "LANDING"];
+$("#prof").innerHTML = `<rect x="0" y="618" width="1460" height="22" rx="6" fill="#3E4A6A"/><path id="cv" d="${CURVE}" stroke="#fff" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><path d="${CURVE}" stroke="#22B573" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  ${MK.map(([x, y], i) => `<g class="mk" transform="translate(${x} ${y})"><circle r="34" fill="#22B573" stroke="${INK}" stroke-width="5"/><text y="12" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="38" fill="#fff">✓</text><g transform="translate(0 ${i === 2 ? -70 : 80})"><rect x="-95" y="-28" width="190" height="46" rx="14" fill="#fff" stroke="${INK}" stroke-width="3"/><text y="4" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="${INK}">${NM[i]}</text></g></g>`).join("")}`;
+gsap.set(["#arr", "#what", ...$$("#prof .mk"), ...$$("#what .wi")], { autoAlpha: 0 });
+const PH = [w("take off climb"), w("climb cruise"), w("cruise descent"), w("descent landing"), w("landing that's")].map((x) => x - 0.1);
+PH.forEach((tt, i) => { tl.fromTo($$("#prof .mk")[i], { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, tt); sfx(tt, "ding", { gain: 0.14, pitch: 0.9 + i * 0.12 }); });
+tl.fromTo("#arr", { autoAlpha: 0, scale: 1.5 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, PH[4] + 0.4);
+sfx(PH[4] + 0.58, "stamp", { gain: 0.28 });
+tl.fromTo("#what", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("that's how seventy") - 0.1);
+[w("metal"), w("fuel"), w("people"), w("one pickle")].forEach((tt, i) => { tl.fromTo($$("#what .wi")[i], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, tt - 0.1); sfx(tt, i === 3 ? "coin" : "pop", { gain: 0.16 }); });
+tl.to("#pj", { backgroundColor: "#FFC93D", scale: 1.06, duration: 0.2 }, w("pickle jar")); tl.to("#pj", { scale: 1, duration: 0.2 }, w("pickle jar") + 0.25);
+
+// ================================================= S6: welcome to Mumbai — collect the pickle (window reveal)
+EX.windowReveal("#s6", T.s6, 960, 540, { out: "#s5" });
+const BAG = [["#7B61FF", 0], ["#F2553D", 1], ["#12A4C4", 0], ["PICKLE", 2], ["#FFC93D", 0], ["#22B573", 1]];
+$("#belt").innerHTML = `<rect x="0" y="230" width="1920" height="60" fill="#5C677E"/><rect x="0" y="222" width="1920" height="14" fill="#9AA3B4"/>${Array.from({ length: 40 }, (_, i) => `<rect class="sl" x="${i * 50}" y="244" width="30" height="34" rx="4" fill="#3E4A6A"/>`).join("")}
+  <g id="bags">${BAG.map(([c, k], i) => c === "PICKLE" ? `<g class="bg1" data-i="${i}"><rect x="-55" y="-150" width="110" height="150" rx="26" fill="#E8A317" stroke="${INK}" stroke-width="5"/><rect x="-62" y="-176" width="124" height="34" rx="10" fill="#C8361F" stroke="${INK}" stroke-width="5"/><rect x="-40" y="-110" width="80" height="60" rx="10" fill="#FFF1C9" stroke="${INK}" stroke-width="3"/><text y="-72" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="20" fill="${INK}">ACHAAR</text></g>` : `<g class="bg1" data-i="${i}"><rect x="-80" y="-${k ? 150 : 120}" width="160" height="${k ? 150 : 120}" rx="18" fill="${c}" stroke="${INK}" stroke-width="5"/><rect x="-30" y="-${k ? 170 : 140}" width="60" height="24" rx="10" fill="none" stroke="${INK}" stroke-width="6"/></g>`).join("")}</g>`;
+gsap.set(["#wel", "#esp"], { autoAlpha: 0 });
+tl.fromTo("#wel", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, T.s6 + 0.4);
+sfx(T.s6 + 0.5, "chime", { gain: 0.22 });
+REEL.onFrame((t) => {
+  if (t < T.s6 - 0.2 || t > END) return;
+  const slow = t > w("especially") ? Math.max(0, 1 - (t - w("especially")) / 0.6) : 1, off = (t - T.s6) * 220 * (0.4 + 0.6 * slow) + (t > w("especially") ? 0 : 0);
+  $$("#belt .sl").forEach((s, i) => s.setAttribute("x", (((i * 50 + off) % 2000) - 50).toFixed(1)));
+  $$("#belt .bg1").forEach((g) => { const i = +g.dataset.i, x = -200 + i * 320 + Math.min(off, 760 + (i === 3 ? 0 : 0)); g.setAttribute("transform", `translate(${(x).toFixed(1)} 230)`); });
+});
+tl.fromTo("#esp", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("the pickle", EX.idx("especially")) - 0.05);
+sfx(w("the pickle", EX.idx("especially")) + 0.15, "stamp", { gain: 0.3 }); REEL.shake($("#shake"), w("the pickle", EX.idx("especially")) + 0.17, 6);
+sfx(T.s6 + 0.2, "roll", { gain: 0.12 });
+
+// ================================================= close: the last shade — LANDED ✓
+EX.shadeClose(T.close, { phase: 5 });
+REEL.finish(END);
+</script></body></html>

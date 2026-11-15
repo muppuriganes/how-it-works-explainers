@@ -10,6 +10,7 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 
 | Video | Length | File | Chapters |
 | --- | --- | --- | --- |
+| **How a plane actually flies: runway to 35,000 ft and back** | 5:23 | [`reels/plane/final.mp4`](reels/plane/final.mp4) | Phase 1 Take-off · Phase 2 Climb · Phase 3 Cruise · Phase 4 Descent · Phase 5 Landing |
 | **How an ATM gives you cash in 10 seconds** | 3:03 | [`reels/atm/final.mp4`](reels/atm/final.mp4) | Step 1 Card & chip · Step 2 PIN check · Step 3 Bank network · Step 4 Bank says yes · Step 5 Cash out |
 | **How a food delivery order reaches you in 30 minutes** | 3:15 | [`reels/food/final.mp4`](reels/food/final.mp4) | Stop 1 Order placed · Stop 2 Restaurant accepts · Stop 3 Rider assigned · Stop 4 On the way · Stop 5 Delivered |
 | **How India's bullet train works** | 3:36 | [`reels/bullet/final.mp4`](reels/bullet/final.mp4) | C1 All aboard · C2 The nose · C3 The power · C4 The track · C5 Who drives? · C6 Stopping · C7 Arrival |
@@ -18,6 +19,12 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 | **METER** (short product reel) | 0:45 | [`reels/meter/final.mp4`](reels/meter/final.mp4) · [9:16](reels/meter/final_9x16.mp4) | single scene |
 
 Script for the UPI explainer: [`reels/upi/SCRIPT.md`](reels/upi/SCRIPT.md). Every chapter keeps its narration in `audio/script.txt`.
+
+### The plane explainer — a real 3D plane, a quiz in every phase
+- **Assets first:** a real 3D airliner and airport ([`lib/plane3d.js`](lib/plane3d.js), three.js, unbranded A320-class) plus a 2D diagram kit ([`lib/plane.js`](lib/plane.js)), approved on four asset sheets ([`reels/plane/assets_sheet1.jpg`](reels/plane/assets_sheet1.jpg)–[`4`](reels/plane/assets_sheet4.jpg)) before any animation was built.
+- 5 chapters for the 5 real phases of a flight. The chapter change is **one aircraft window**: the shade comes down on "NEXT ▶ PHASE 0N" and opens on the next phase ([`lib/planefx.js`](lib/planefx.js)), with a boarding pass for the phase tracker.
+- Tone: you are in seat 23A, there is a "quick guess" quiz in most phases, and a running gag about the uncle in 23C. Narration by Kokoro `af_heart`.
+- Facts: rotation at ~260 km/h; ~3,000 domestic flights a day in India; bypass air makes ~80% of the push; cruise at 35,000 ft, −50 °C outside, cabin pressure equal to 6–8,000 ft; descent starts ~200 km out (3 nautical miles per 1,000 ft); ILS glide slope 3°; touchdown at ~250 km/h. The flight codes, weights split and route chart are illustrative.
 
 ### The ATM explainer — one continuous receipt
 - **Assets first:** every visual was drawn up front as a reusable art kit ([`lib/atm.js`](lib/atm.js)) and approved on three asset sheets ([`reels/atm/assets_sheet1.jpg`](reels/atm/assets_sheet1.jpg)–[`3`](reels/atm/assets_sheet3.jpg)) before any animation was built.

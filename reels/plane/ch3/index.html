@@ -1,0 +1,263 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Plane Ch3 Cruise</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:18px;letter-spacing:.16em;opacity:.6}
+.big{font-family:Archivo;font-weight:900;font-stretch:68%;line-height:.9;color:#1B2340}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:64px;letter-spacing:.03em;background:rgba(255,255,255,.94);white-space:nowrap}
+.ck{display:flex;align-items:center;gap:14px;font-size:25px;padding:9px 0;border-bottom:2px dashed rgba(27,35,64,.18)}
+.ck i{display:inline-flex;width:38px;height:38px;border-radius:10px;border:3px solid #1B2340;background:#fff;align-items:center;justify-content:center;font-style:normal;color:#22B573;font-size:26px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/plane.js"></script>
+<script src="../../../lib/planefx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S1: 3D cruise above the clouds at sunset -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div id="fdp" class="abs" data-ob="fdp" style="left:60px;top:840px"></div>
+  </section>
+
+  <!-- S2: how high is 35,000 ft? -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:linear-gradient(180deg,#1B2A6B 0%,#3E5FB8 55%,#7FB3E8 100%)"></div><div class="dots"></div>
+    <div id="lad" class="abs" data-ob="lad" style="left:80px;top:150px"></div>
+    <div id="brk" class="abs" data-ob="lad" style="left:520px;top:300px;width:320px;height:240px"></div>
+    <div class="card fc" id="hq" data-ob="hq" style="left:900px;top:150px;width:940px;padding:22px 28px;background:#FFF1C9">
+      <div class="ttl">QUICK · HOW HIGH IS 35,000 FT?</div>
+      <div class="cm" style="display:flex;align-items:center;gap:20px;font-size:30px;padding:14px 0;border-bottom:3px dashed rgba(27,35,64,.2)"><span style="font-size:58px">🗼</span><span>≈ <b style="font-family:Archivo;font-size:52px">145</b> QUTUB MINARS, STACKED</span></div>
+      <div class="cm" style="display:flex;align-items:center;gap:20px;font-size:30px;padding:14px 0"><span style="font-size:58px">🏙️</span><span>≈ <b style="font-family:Archivo;font-size:52px">13</b> BURJ KHALIFAS, STACKED</span></div>
+    </div>
+    <div class="card fc" id="ev" data-ob="ev" style="left:900px;top:560px;width:940px;padding:22px 28px;background:#ECE6FF;display:flex;align-items:center;gap:24px">
+      <span style="font-size:90px">🏔️</span><div><div class="ttl">PUT EVEREST UNDER YOU</div><div class="big" style="font-size:84px">STILL <span style="color:#7B61FF">~6,000 FT</span> ABOVE</div></div>
+    </div>
+  </section>
+
+  <!-- S3: cold + thin air -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:linear-gradient(160deg,#0E7C93 0%,#0B4F7A 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="tOut" data-ob="tOut" style="left:60px;top:150px;width:560px;height:760px;background:#DDF2FB;text-align:center;padding:24px">
+      <div class="ttl">OUTSIDE THE WINDOW</div><svg id="th1" width="200" height="460" viewBox="0 0 200 460" style="margin-top:14px"></svg><div class="big" style="font-size:110px;color:#1B5E9E"><span id="tN">0</span>°C</div>
+    </div>
+    <div class="card fc" id="frz" data-ob="frz" style="left:660px;top:150px;width:520px;height:760px;background:#FFF1C9;text-align:center;padding:24px">
+      <div class="ttl">YOUR FREEZER AT HOME</div><svg id="fr" width="300" height="440" viewBox="0 0 300 440" style="margin-top:20px"></svg><div class="big" style="font-size:110px;color:#3E7BFA">−18°C</div>
+      <div class="stamp" id="wimp" style="left:80px;top:300px;font-size:48px;transform:rotate(-8deg)">AMATEUR 🥶</div>
+    </div>
+    <div class="card fc" id="thin" data-ob="thin" style="left:1220px;top:150px;width:640px;height:760px;background:#ECE6FF;padding:24px">
+      <div class="ttl">AIR IN ONE BREATH</div>
+      <div style="display:flex;gap:20px;margin-top:16px">
+        <div style="flex:1;text-align:center"><svg id="b0" width="280" height="340" viewBox="0 0 280 340"></svg><div style="font-size:22px">SEA LEVEL</div></div>
+        <div style="flex:1;text-align:center"><svg id="b1" width="280" height="340" viewBox="0 0 280 340"></svg><div style="font-size:22px">35,000 FT</div></div>
+      </div>
+      <div id="qtr" style="margin-top:22px;padding:14px 18px;border-radius:16px;background:#1B2340;color:#FFC93D;font-size:24px;text-align:center">ONLY ~¼ THE AIR PRESSURE</div>
+      <div id="noB" style="margin-top:14px;padding:14px 18px;border-radius:16px;background:#F2553D;color:#fff;font-size:26px;text-align:center">😵 TOO THIN TO BREATHE</div>
+    </div>
+  </section>
+
+  <!-- S4: the flying hill station -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:linear-gradient(180deg,#8FD0F2 0%,#C8E8F7 55%,#7BB86F 55%,#4F8F4A 100%)"></div>
+    <svg id="hills" class="abs" style="left:0;top:0" width="1920" height="1080"></svg>
+    <div id="pl4" class="abs" data-ob="pl4" style="left:120px;top:170px"></div>
+    <svg id="pump" class="abs" data-ob="pl4" style="left:0;top:0;overflow:visible" width="1" height="1"></svg>
+    <div class="card fc" id="cabF" data-ob="cabF" style="left:1360px;top:150px;width:500px;padding:20px 24px;background:#DDF7EA"><div class="ttl">CABIN FEELS LIKE</div><div class="big" style="font-size:96px">~<span id="cfN">0</span> FT</div><div style="font-size:22px;color:#0E7C93">PUMPED UP · NOT LIKE OUTSIDE</div></div>
+    <div class="card fc" id="post" data-ob="post" style="left:1360px;top:430px;width:500px;padding:18px 22px;background:#FFE3D3">
+      <div class="ttl">BASICALLY, A HILL STATION</div>
+      <div style="font-size:26px;line-height:1.6;margin-top:6px">🌲 SHIMLA · ~7,400 FT<br>🌲 OOTY · ~7,300 FT</div>
+    </div>
+    <div class="card fc" id="sand" data-ob="sand" style="left:1360px;top:700px;width:500px;padding:16px 22px;background:#FFF1C9;display:flex;align-items:center;gap:16px"><span style="font-size:70px">🥪</span><div><div style="font-size:22px">ONE SANDWICH</div><div class="big" style="font-size:66px;color:#C8361F">₹450 😬</div></div></div>
+  </section>
+
+  <!-- S5: why so high? thin air, less drag -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:linear-gradient(90deg,#6FB4EC 0%,#6FB4EC 50%,#1B2A6B 50%,#2F4A9E 100%)"></div>
+    <div class="card fc" id="lo" data-ob="lo" style="left:60px;top:150px;width:880px;height:560px;background:#E3F3FD;overflow:hidden"><div class="abs" style="left:26px;top:20px;font-family:Archivo;font-weight:900;font-size:44px">DOWN LOW · THICK AIR</div><svg id="loS" class="abs" style="left:0;top:80px" width="880" height="480"></svg></div>
+    <div class="card fc" id="hi" data-ob="hi" style="left:980px;top:150px;width:880px;height:560px;background:#E9E6FF;overflow:hidden"><div class="abs" style="left:26px;top:20px;font-family:Archivo;font-weight:900;font-size:44px">UP HIGH · THIN AIR</div><svg id="hiS" class="abs" style="left:0;top:80px" width="880" height="480"></svg></div>
+    <div class="card fc" id="cr" data-ob="cr" style="left:60px;top:740px;width:1800px;height:170px;padding:20px 28px;background:#FFF1C9;display:flex;align-items:center;gap:40px">
+      <div><div class="ttl">CRUISE SPEED</div><div class="big" style="font-size:96px"><span id="crN">0</span> KM/H</div></div>
+      <div style="font-size:26px;line-height:1.5">DELHI → MUMBAI<br><span style="color:#0E7C93">IN ABOUT 2 HOURS</span></div><span style="flex:1"></span>
+      <div class="stamp" id="smart" style="position:relative;transform:rotate(-6deg);border-color:#22B573;color:#22B573">SMART 🧠</div>
+    </div>
+  </section>
+
+  <!-- S6: who's flying? -->
+  <section class="scene" id="s6">
+    <div class="bg" style="background:linear-gradient(160deg,#2B3A70 0%,#1B2340 100%)"></div><div class="dots"></div>
+    <div id="ckp" class="abs" data-ob="ckp" style="left:50px;top:160px"></div>
+    <div class="stamp" id="apS" data-ob="apS" style="left:300px;top:812px;font-size:50px;transform:rotate(-4deg);border-color:#22B573;color:#22B573">AUTOPILOT: ON ✓</div>
+    <div class="card fc" id="map" data-ob="map" style="left:1160px;top:150px;width:700px;padding:14px;background:#F4F8FB"></div>
+    <div class="card fc" id="chk" data-ob="chk" style="left:1160px;top:610px;width:700px;padding:16px 24px;background:#DDF7EA">
+      <div class="ttl">MEANWHILE, THE PILOTS</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:20px">
+        <div class="ck"><i class="cx"></i>WATCH SCREENS</div><div class="ck"><i class="cx"></i>CHECK FUEL</div>
+        <div class="ck"><i class="cx"></i>CHECK WEATHER</div><div class="ck"><i class="cx"></i>TALK TO ATC 📻</div>
+        <div class="ck" id="slp"><i class="cy" style="color:#F2553D">✗</i>SLEEPING</div><div class="ck" id="chai"><i class="cy">☕</i>CHAI (PROBABLY)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7: seatbelt sign off — guess who's in the aisle -->
+  <section class="scene" id="s7">
+    <div class="bg" style="background:linear-gradient(180deg,#8EA2C6 0%,#B9C6DE 35%,#4A5677 92%)"></div>
+    <div id="cab7" class="abs" style="left:0;top:150px"></div>
+    <div id="ding" class="abs" data-ob="ding" style="left:960px;top:150px;padding:12px 26px;border-radius:24px;background:#FFC93D;border:4px solid #1B2340;box-shadow:0 7px 0 #1B2340;font-family:Archivo;font-weight:900;font-size:52px">DING! 🔔 SEATBELT SIGN OFF</div>
+    <div class="stamp" id="ofc" data-ob="ofc" style="left:1300px;top:620px;transform:rotate(-6deg)">OF COURSE. 🙄</div>
+  </section>
+
+</div></div>
+<script type="module">
+import { planeWorld } from "../../../lib/plane3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const P = PLANE, INK = "#1B2340", TEAL = "#12A4C4", RED = "#F2553D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+
+EX.phaseStart(3, "Cruise", { t: 0.75 });
+const T = { s2: w("quick how high") - 0.2, s3: w("outside") - 0.25, s4: w("so the plane pumps") - 0.15, s5: w("but why go") - 0.15, s6: w("and who's flying") - 0.15, s7: w("meanwhile") - 0.2, close: we("the descent") + 0.38 };
+const END = T.close + 1.3;
+gsap.set("#s3d", { autoAlpha: 1 });
+
+// ================================================= S1: 3D cruise at sunset above a sea of clouds
+const W3 = planeWorld($("#c3"), { w: 1920, h: 1080 });
+REEL.onFrame((t) => { if (t > T.s2 + 0.9) return; const x = 230 * t, u = clamp(t / 4.6); W3.frame({ p: [x, 1300, 0], pitch: 0.03, gear: 0, flaps: 0, fan: t * 24, mood: "sunset", clouds: true, cloudY: 820, cam: [x + 40 - 8 * u, 1306 - 0.8 * u, 26 - 5 * u], look: [x - 6, 1300.5, -3], fov: 42 }); });
+$("#fdp").innerHTML = P.fdp({ alt: `<span id="fa">0</span> ft`, spd: `<span id="fs">0</span> km/h`, temp: `<span id="ft">0</span> °C`, w: 760 });
+gsap.set("#fdp", { autoAlpha: 0 });
+tl.fromTo("#fdp", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, 1.0);
+REEL.onFrame((t) => { if (t > T.s2 + 1) return; const k = sm((t - w("thirty five")) / 1.1); $("#fa").textContent = Math.round(35000 * k).toLocaleString("en-IN"); $("#fs").textContent = Math.round(830 * k); $("#ft").textContent = k > 0.02 ? `−${Math.round(50 * k)}` : "0"; });
+sfx(0.6, "whoosh", { gain: 0.1, dur: 3 });
+
+// ================================================= S2: how high? (radar sweep)
+EX.radarSweep("#s3d", "#s2", T.s2);
+$("#lad").innerHTML = P.ladder({ w: 500, id: "ld" });
+const ly = (ft) => (1060 - ft * 0.025) * (500 / 700);   // ladder svg y -> px inside #lad
+$("#brk").style.top = `${150 + ly(35000)}px`; $("#brk").style.height = `${ly(29032) - ly(35000)}px`;
+$("#brk").innerHTML = `<div class="abs" style="left:0;top:0;width:34px;height:100%;border:6px solid #FFC93D;border-left:none;border-radius:0 14px 14px 0"></div><div class="abs" style="left:46px;top:50%;transform:translateY(-50%);padding:8px 14px;border-radius:12px;background:#FFC93D;border:3px solid ${INK};font-family:'JetBrains Mono';font-weight:800;font-size:24px;white-space:nowrap">+6,000 FT</div>`;
+gsap.set(["#hq", "#ev", "#brk", ...$$("#hq .cm")], { autoAlpha: 0 });
+tl.fromTo("#lad", { y: 60 }, { y: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, T.s2);
+tl.fromTo("#hq", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s2 + 0.3);
+$$("#hq .cm").forEach((c, i) => { tl.fromTo(c, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.3, immediateRender: false }, T.s2 + 0.6 + i * 0.5); sfx(T.s2 + 0.6 + i * 0.5, "pop", { gain: 0.16 }); });
+tl.fromTo("#ev", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("put mount everest") - 0.1);
+sfx(w("put mount everest"), "clunk", { gain: 0.18 });
+tl.fromTo("#brk", { autoAlpha: 0, scaleY: 0, transformOrigin: "0 100%" }, { autoAlpha: 1, scaleY: 1, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("six thousand") - 0.1);
+sfx(w("six thousand"), "ding", { gain: 0.18 });
+
+// ================================================= S3: cold + thin (cloud wipe)
+EX.cloudWipe(T.s3);
+EX.swap("#s2", "#s3", T.s3);
+$("#th1").innerHTML = `<rect x="80" y="20" width="40" height="360" rx="20" fill="#fff" stroke="${INK}" stroke-width="5"/><rect id="thL" x="88" y="40" width="24" height="340" rx="12" fill="#3E7BFA"/><circle cx="100" cy="400" r="44" fill="#3E7BFA" stroke="${INK}" stroke-width="5"/>${[0, 1, 2, 3, 4, 5].map((i) => `<line x1="124" y1="${60 + i * 56}" x2="146" y2="${60 + i * 56}" stroke="${INK}" stroke-width="4"/>`).join("")}<text x="30" y="70" font-size="40">❄️</text><text x="150" y="190" font-size="34">❄️</text>`;
+$("#fr").innerHTML = `<rect x="30" y="10" width="240" height="420" rx="26" fill="#E9ECF2" stroke="${INK}" stroke-width="5"/><line x1="30" y1="150" x2="270" y2="150" stroke="${INK}" stroke-width="5"/><rect x="236" y="50" width="12" height="60" rx="6" fill="#9AA3B4"/><rect x="236" y="190" width="12" height="90" rx="6" fill="#9AA3B4"/><text x="70" y="110" font-size="64">🧊</text><text x="80" y="300" font-size="70">🍦</text>`;
+const dots = (n, seed) => { const r = REEL.rng(seed); return Array.from({ length: n }, () => `<circle class="mo" cx="${(30 + r() * 220).toFixed(0)}" cy="${(30 + r() * 280).toFixed(0)}" r="9" fill="#7B61FF"/>`).join(""); };
+$("#b0").innerHTML = `<rect x="10" y="10" width="260" height="320" rx="24" fill="#fff" stroke="${INK}" stroke-width="4"/>${dots(80, 3)}`;
+$("#b1").innerHTML = `<rect x="10" y="10" width="260" height="320" rx="24" fill="#fff" stroke="${INK}" stroke-width="4"/>${dots(19, 5)}`;
+gsap.set(["#tOut", "#frz", "#thin", "#wimp", "#qtr", "#noB"], { autoAlpha: 0 });
+tl.fromTo("#tOut", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, T.s3 + 0.25);
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.6) return; const k = sm((t - w("minus fifty") + 0.3) / 1.0); $("#tN").textContent = k > 0.02 ? `−${Math.round(50 * k)}` : "0"; $("#thL").setAttribute("y", (40 + 300 * k).toFixed(1)); $("#thL").setAttribute("height", (340 - 300 * k).toFixed(1)); $$("#b0 .mo, #b1 .mo").forEach((d, i) => d.setAttribute("transform", `translate(${(Math.sin(t * 3 + i) * 5).toFixed(1)} ${(Math.cos(t * 2.4 + i * 1.7) * 5).toFixed(1)})`)); });
+sfx(w("minus fifty"), "glitch", { gain: 0.1 });
+tl.fromTo("#frz", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("your freezer") - 0.15);
+tl.fromTo("#wimp", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("minus eighteen") + 0.4);
+sfx(w("minus eighteen") + 0.58, "stamp", { gain: 0.26 });
+tl.fromTo("#thin", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("so thin") - 0.3);
+pop("#qtr", w("so thin") + 0.2, { sfx: "pop", gain: 0.14 });
+pop("#noB", w("can't breathe") - 0.05, { sfx: "glitch", gain: 0.14 });
+
+// ================================================= S4: the flying hill station (iris)
+EX.iris("#s4", T.s4, 1520, 600, { color: "#7BB86F" });
+EX.swap("#s3", "#s4", T.s4);
+$("#hills").innerHTML = `<path d="M0 600 L 220 420 L 420 560 L 640 380 L 900 590 L 1150 400 L 1400 580 L 1660 420 L 1920 560 L 1920 600 Z" fill="#9BC7A0"/><path d="M0 600 L 300 500 L 560 600 Z M800 600 L 1100 480 L 1380 600 Z" fill="#7FB07F"/>${Array.from({ length: 22 }, (_, i) => `<path d="M${40 + i * 90} 700 l 30 -90 l 30 90 Z" fill="${["#2F7A4A", "#3F8F5A"][i % 2]}"/>`).join("")}`;
+$("#pl4").innerHTML = `<div style="position:relative">${P.side({ w: 1200, id: "p4", gear: false })}<div class="abs tr4" style="left:300px;top:20px;font-size:64px;white-space:nowrap">🌲🌲🌲🌲🌲🌲🌲</div></div>`;
+$("#pump").innerHTML = [0, 1, 2, 3].map((i) => `<g class="pa">${'<path d="M' + (420 + i * 180) + ' 120 L ' + (420 + i * 180) + ' 290" stroke="#3E7BFA" stroke-width="16" stroke-linecap="round" stroke-dasharray="26 18"/><path d="M' + (400 + i * 180) + ' 280 L ' + (420 + i * 180) + ' 312 L ' + (440 + i * 180) + ' 280 Z" fill="#3E7BFA" stroke="' + INK + '" stroke-width="3"/>'}</g>`).join("");
+gsap.set(["#cabF", "#post", "#sand", ".tr4", ...$$("#pump .pa")], { autoAlpha: 0 });
+tl.fromTo("#pl4", { x: -200 }, { x: 0, duration: 0.8, ease: "power3.out", immediateRender: false }, T.s4);
+$$("#pump .pa").forEach((a, i) => tl.fromTo(a, { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.3, immediateRender: false }, w("pumps air") - 0.1 + i * 0.1));
+REEL.onFrame((t) => { if (t < T.s4 || t > T.s5 + 0.6) return; $$("#pump .pa path:first-child").forEach((p) => (p.style.strokeDashoffset = (-t * 160).toFixed(1))); const k = sm((t - w("pumps air")) / 2.0); $("#cfN").textContent = (Math.round(7000 * k / 100) * 100).toLocaleString("en-IN"); });
+sfx(w("pumps air"), "pour", { gain: 0.14, dur: 1.6 });
+tl.fromTo("#cabF", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("into the cabin") - 0.1);
+tl.fromTo("#post", { autoAlpha: 0, x: 60, rotation: 3 }, { autoAlpha: 1, x: 0, rotation: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("hill station") - 0.1);
+sfx(w("hill station"), "chime", { gain: 0.16 });
+tl.fromTo(".tr4", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, w("flying hill station") - 0.1);
+sfx(w("flying hill station"), "pop", { gain: 0.2 });
+tl.fromTo("#sand", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)", immediateRender: false }, w("overpriced") - 0.1);
+sfx(w("overpriced"), "coin", { gain: 0.22 });
+tl.to("#sand", { rotation: 2, duration: 0.05, yoyo: true, repeat: 7 }, w("sandwich") + 0.1);
+
+// ================================================= S5: why so high? (contrail wipe)
+EX.contrailWipe(T.s5);
+EX.swap("#s4", "#s5", T.s5);
+const flow = (sel, n, seed, dense) => { const r = REEL.rng(seed); $(sel).innerHTML = `<g transform="translate(250 160)">${P.side({ w: 380, id: sel.slice(1) + "p", gear: false })}</g>${Array.from({ length: n }, () => `<circle class="pt" data-y="${(20 + r() * 440).toFixed(0)}" data-o="${(r() * 900).toFixed(0)}" r="${dense ? 9 : 9}" fill="#3E7BFA" opacity=".75"/>`).join("")}
+  <g class="drag"><path d="M230 230 L ${dense ? 60 : 170} 230" stroke="${RED}" stroke-width="${dense ? 22 : 12}" stroke-linecap="round"/><path d="M${dense ? 70 : 178} ${dense ? 206 : 218} L ${dense ? 30 : 150} 230 L ${dense ? 70 : 178} ${dense ? 254 : 242} Z" fill="${RED}" stroke="${INK}" stroke-width="3"/><text x="${dense ? 40 : 150}" y="${dense ? 200 : 205}" font-family="JetBrains Mono" font-weight="800" font-size="22" fill="${RED}">DRAG ${dense ? "↑↑" : "↓"}</text></g>
+  <g transform="translate(680 330)"><circle r="78" fill="#fff" stroke="${INK}" stroke-width="5"/><path d="M-60 0 A 60 60 0 0 1 60 0" stroke="#E6E9F0" stroke-width="16" fill="none"/><line class="fn" x1="0" y1="0" x2="0" y2="-56" stroke="${RED}" stroke-width="7" stroke-linecap="round"/><text y="40" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="${INK}">⛽ FUEL</text></g>`; };
+flow("#loS", 110, 11, true); flow("#hiS", 26, 13, false);
+gsap.set(["#lo", "#hi", "#cr", "#smart", ...$$("#s5 .drag")], { autoAlpha: 0 });
+tl.fromTo("#lo", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s5 + 0.2);
+tl.fromTo("#hi", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("thin air means") - 0.15);
+tl.fromTo($$("#s5 .drag"), { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.3, stagger: 0.15, immediateRender: false }, w("less drag") - 0.1);
+sfx(w("less drag"), "whoosh", { gain: 0.2 });
+REEL.onFrame((t) => {
+  if (t < T.s5 || t > T.s6 + 0.6) return;
+  [["#loS", 900], ["#hiS", 900]].forEach(([sel]) => $$(`${sel} .pt`).forEach((c) => { const x = 880 - (((t * 520 + +c.dataset.o) % 900)); c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", c.dataset.y); }));
+  const k = clamp((t - w("less fuel") + 0.3) / 6), aLo = -70 + 140 * Math.min(1, k * 1.0), aHi = -70 + 140 * Math.min(1, k * 0.35);
+  $("#loS .fn").setAttribute("transform", `rotate(${(-aLo).toFixed(1)})`); $("#hiS .fn").setAttribute("transform", `rotate(${(-aHi).toFixed(1)})`);
+  $("#crN").textContent = Math.round(830 * sm((t - w("eight hundred") + 0.2) / 1.0));
+});
+sfx(w("less fuel"), "ding", { gain: 0.14 });
+tl.fromTo("#cr", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("so up here") - 0.1);
+tl.fromTo("#smart", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("smart") - 0.05);
+sfx(w("smart") + 0.15, "stamp", { gain: 0.26 });
+
+// ================================================= S6: who's flying? (stripes)
+EX.stripes(T.s6, { colors: ["#1B2340", "#FFC93D", "#22B573", "#3E7BFA", "#7B61FF"] });
+EX.swap("#s5", "#s6", T.s6);
+$("#ckp").innerHTML = P.cockpit({ w: 1080, id: "ck" });
+$("#map").innerHTML = P.airways({ w: 672, id: "aw" });
+gsap.set(["#map", "#chk", "#apS", ...$$("#chk .ck")], { autoAlpha: 0 });
+tl.fromTo("#ckp", { y: 60 }, { y: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, T.s6);
+const tAP = w("the autopilot");
+REEL.onFrame((t) => { if (t < T.s6 || t > T.s7 + 0.6) return; $("#ckAP").setAttribute("fill", t > tAP && t < tAP + 1.2 && Math.floor(t * 6) % 2 ? "#FFFFFF" : "#22D07A"); $("#ckHz").setAttribute("transform", `translate(0 ${(Math.sin(t * 0.8) * 4).toFixed(1)})`); });
+tl.fromTo("#apS", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tAP + 0.1);
+sfx(tAP + 0.25, "stamp", { gain: 0.26 });
+tl.fromTo("#map", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("invisible highways") - 0.2);
+const rt = $("#awRt"), rl = rt.getTotalLength();
+REEL.onFrame((t) => { if (t < T.s6 || t > T.s7 + 0.6) return; const k = sm((t - w("invisible highways")) / 3.2), p = rt.getPointAtLength(rl * k); $("#awPl").setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`); });
+[w("one waypoint"), w("to the next")].forEach((tt) => sfx(tt, "tick", { gain: 0.14 }));
+tl.fromTo("#chk", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("the pilots") - 0.1);
+const CK = [w("watch the screens"), w("check the fuel"), w("the weather"), w("talk to air"), w("not sleeping"), w("having chai")];
+$$("#chk .ck").forEach((c, i) => { tl.fromTo(c, { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.25, immediateRender: false }, CK[i] - 0.1); sfx(CK[i], i === 4 ? "glitch" : i === 5 ? "pour" : "tick", { gain: 0.14 }); });
+$$("#chk .cx").forEach((c, i) => tl.set(c, { innerHTML: "✓" }, CK[i] + 0.15));
+tl.to("#slp", { backgroundColor: "rgba(242,85,61,.15)", duration: 0.2 }, CK[4]);
+tl.to("#chai", { backgroundColor: "rgba(255,201,61,.35)", duration: 0.2 }, CK[5]);
+
+// ================================================= S7: seatbelt sign off — guess who's in the aisle (iris)
+EX.iris("#s7", T.s7, 960, 300, { color: "#FFC93D" });
+EX.swap("#s6", "#s7", T.s7);
+$("#cab7").innerHTML = P.cabin({ w: 1920, id: "cb" });
+gsap.set(["#ding", "#ofc"], { autoAlpha: 0 });
+const tOff = w("goes off"), tIn = w("already in");
+REEL.onFrame((t) => { if (t < T.s7 || t > END) return; const b = $("#cbBelt"); if (b) b.setAttribute("opacity", t > tOff ? 0.25 : 1); });
+REEL.onFrame((t) => { if (t < T.s7 - 0.2 || t > END) return; const u = clamp((t - tIn + 0.4) / 0.7), e = 1 + 2.4 * Math.pow(u - 1, 3) + 1.4 * Math.pow(u - 1, 2); $("#cbUn").setAttribute("transform", `translate(${(690 + 900 * (1 - e)).toFixed(1)} 200) scale(0.62)`); });
+sfx(tIn - 0.3, "swish", { gain: 0.22 });
+pop("#ding", w("ding") - 0.1, { sfx: "ding", gain: 0.32 });
+tl.fromTo("#ofc", { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("the aisle") + 0.1);
+sfx(w("the aisle") + 0.28, "stamp", { gain: 0.3 });
+
+// ================================================= close: shade down — NEXT: DESCENT
+EX.shadeClose(T.close, { phase: 3 });
+REEL.finish(END);
+</script></body></html>
