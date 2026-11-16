@@ -1,0 +1,281 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Rocket Ch3 Staging</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:17px;letter-spacing:.16em;opacity:.6}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:72px;letter-spacing:.03em;background:rgba(255,255,255,.95);white-space:nowrap}
+.tag3{position:absolute;left:0;top:0;display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:#0E1530;border:3px solid #1B2340;box-shadow:0 6px 0 #1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:24px;color:#fff;white-space:nowrap}
+.tag3:before{content:"";position:absolute;left:-46px;top:50%;width:46px;height:4px;background:#FFC93D}
+.tag3 i{position:absolute;left:-58px;top:calc(50% - 10px);width:20px;height:20px;border-radius:50%;background:#FFC93D;border:3px solid #1B2340}
+.opt{position:absolute;top:0;width:520px;height:500px;border-radius:30px;text-align:center;font-family:"JetBrains Mono";font-weight:800;color:#1B2340}
+.opt .ab{position:absolute;left:22px;top:20px;width:70px;height:70px;border-radius:20px;background:#1B2340;color:#FFC93D;font-family:Archivo;font-weight:900;font-size:48px;line-height:70px;z-index:2}
+.chipx{display:inline-flex;align-items:center;gap:12px;padding:12px 22px;border-radius:18px;background:#fff;border:3px solid #1B2340;box-shadow:0 6px 0 #1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:28px;color:#1B2340}
+.row5{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:16px;background:#fff;border:3px solid #1B2340;margin-top:12px;font-size:24px}
+.xx{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Archivo;font-weight:900;font-size:260px;color:#F2553D;opacity:0}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/rocket.js"></script>
+<script src="../../../lib/rocketfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S0: the first stage is nearly empty: very expensive dead weight -->
+  <section class="scene" id="s0">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 20%,#2FA3A8 0%,#18607A 55%,#0D2E48 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="gau" data-ob="gau" style="left:60px;top:150px;width:520px;height:640px;padding:20px 24px;background:#FFF1C9">
+      <div class="ttl">STAGE 1 · FUEL LEFT</div>
+      <div style="display:flex;gap:26px;align-items:flex-end;margin-top:18px">
+        <div style="position:relative;width:170px;height:470px;border:6px solid #1B2340;border-radius:40px 40px 20px 20px;background:#fff;overflow:hidden"><div id="gF" class="abs" style="left:0;right:0;bottom:0;height:100%;background:linear-gradient(180deg,#FFD27A,#F28C1E)"></div></div>
+        <div><div id="gN" style="font-family:Archivo;font-weight:900;font-size:110px;line-height:1">100%</div><div id="gS" style="margin-top:14px;padding:8px 14px;border-radius:12px;background:#0E1530;color:#5CF0A6;font-size:24px">STATUS: BURNING</div></div>
+      </div>
+    </div>
+    <div class="card fc" id="scl" data-ob="scl" style="left:640px;top:150px;width:620px;height:560px;padding:20px 24px;background:#DDF7EA">
+      <div class="ttl">⚖️ THE WEIGH-IN</div>
+      <svg width="572" height="360" viewBox="0 0 572 360">
+        <path d="M120 66 A 166 166 0 0 1 452 66" stroke="#22B573" stroke-width="22" fill="none" transform="translate(0 150)"/>
+        <g transform="translate(286 216)"><path d="M-166 0 A 166 166 0 0 1 -60 -155" stroke="#22B573" stroke-width="22" fill="none"/><path d="M-60 -155 A 166 166 0 0 1 60 -155" stroke="#FFC93D" stroke-width="22" fill="none"/><path d="M60 -155 A 166 166 0 0 1 166 0" stroke="#F2553D" stroke-width="22" fill="none"/>
+          <text x="-150" y="36" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="#1B2340">LIGHT</text><text x="96" y="36" font-family="JetBrains Mono" font-weight="800" font-size="20" fill="#C8361F">HEAVY</text>
+          <line id="sN" x1="0" y1="0" x2="-130" y2="0" stroke="#1B2340" stroke-width="9" stroke-linecap="round"/><circle r="16" fill="#1B2340"/></g>
+        <g transform="translate(286 250)"><rect x="-200" y="40" width="400" height="26" rx="10" fill="#5C677E" stroke="#1B2340" stroke-width="5"/><rect x="-70" y="-14" width="140" height="54" rx="22" fill="#fff" stroke="#1B2340" stroke-width="5"/><text y="22" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="22" fill="#1B2340">EMPTY TANK</text></g>
+      </svg>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:22px"><span class="chipx" style="font-size:22px">🌬️ CONTENTS: AIR</span><span class="chipx" style="font-size:22px">🏷️ PRICE: ₹₹₹₹</span></div>
+    </div>
+    <div class="card fc" id="nt0" data-ob="nt0" style="left:1300px;top:190px;width:260px;padding:14px 18px;background:#FFE36E;transform:rotate(4deg);font-size:21px;line-height:1.4">📋 FUEL LEFT: 3%<br>VIBES: HEAVY<br>USEFULNESS: 0</div>
+    <div class="stamp" id="dw0" data-ob="dw0" style="left:590px;top:800px;font-size:38px;transform:rotate(-4deg)">💸 VERY EXPENSIVE DEAD WEIGHT</div>
+    <div id="host0" class="abs" data-ob="host0" style="left:1600px;top:520px"></div>
+  </section>
+
+  <!-- 3D: S1 staging in space + S4 the booster lands on a boat -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div id="ov1" class="abs" style="left:0;top:0;width:1920px;height:1080px">
+      <div id="tel1" class="abs" data-ob="tel1" style="left:60px;top:150px"></div>
+      <div class="tag3" id="tgB" style="background:#5C677E"><i></i>🪫 STAGE 1 · EMPTY · BYE</div>
+      <div class="tag3" id="tgU" style="background:#F2553D"><i></i>🔥 STAGE 2 · LIT</div>
+      <div class="tag3" id="tgF" style="background:#7B61FF"><i></i>🐚 FAIRING · CLAMSHELL</div>
+      <div class="card fc" id="sky1" data-ob="sky1" style="left:1380px;top:150px;width:480px;padding:16px 22px;background:#ECE6FF">
+        <div class="ttl">👀 PAYLOAD STATUS</div><div id="skyT" style="font-family:Archivo;font-weight:900;font-size:36px;margin-top:6px">IN A BOX</div></div>
+      <div class="stamp" id="bang" style="left:700px;top:430px;font-size:120px;border-color:#FF8A2A;color:#FF8A2A">💥 BANG!</div>
+    </div>
+    <div id="ov2" class="abs" style="left:0;top:0;width:1920px;height:1080px">
+      <div class="card fc" id="alt4" data-ob="alt4" style="left:60px;top:150px;width:460px;padding:16px 22px;background:rgba(14,21,48,.9);color:#fff">
+        <div class="ttl" style="color:#8FA0D6;opacity:1">⬇ COMING HOME · TAIL FIRST</div>
+        <div style="display:flex;gap:16px;margin-top:8px"><div style="flex:1;background:#151E3E;border-radius:12px;padding:8px 12px"><div style="font-size:13px;color:#8FA0D6">ALT</div><div id="aA" style="font-size:30px;color:#22D07A">0 m</div></div><div style="flex:1;background:#151E3E;border-radius:12px;padding:8px 12px"><div style="font-size:13px;color:#8FA0D6">SPEED</div><div id="aS" style="font-size:30px;color:#FFC93D">0 km/h</div></div></div></div>
+      <div class="tag3" id="tgL"><i></i>🦵 LANDING LEGS · OUT</div>
+      <div class="tag3" id="tgE" style="background:#F2553D"><i></i>🔥 ENGINE · RELIT</div>
+      <div class="tag3" id="tgS" style="background:#12A4C4"><i></i>🚢 DRONE SHIP · WAITING</div>
+      <div class="card fc" id="pad4" data-ob="pad4" style="left:1340px;top:150px;width:520px;padding:16px 22px;background:#FFF1C9">
+        <div class="ttl">PLAN B</div><div style="font-family:Archivo;font-weight:900;font-size:29px;margin-top:6px">🅿️ OR A LANDING PAD ON LAND</div></div>
+      <div class="stamp" id="td4" style="left:110px;top:340px;font-size:80px;border-color:#22B573;color:#22B573;transform:rotate(-4deg)">✅ TOUCHDOWN!</div>
+    </div>
+  </section>
+
+  <!-- S3: quick guess: what happens to the dropped stage? -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 0%,#9B7BFF 0%,#5A3FC8 55%,#2A1D72 100%)"></div><div class="dots"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><g id="sp1"><path d="M300 -40 L 120 1100 L 480 1100 Z" fill="#fff" opacity=".07"/></g><g id="sp2"><path d="M1620 -40 L 1440 1100 L 1800 1100 Z" fill="#fff" opacity=".07"/></g></svg>
+    <div class="pill fc" id="qg" data-ob="qg" style="left:770px;top:132px;background:#FFC93D;color:#1B2340;font-family:Archivo;font-weight:900;font-size:40px">❓ QUICK GUESS</div>
+    <div class="abs" id="qq" data-ob="qq" style="left:0;right:0;top:220px;text-align:center;font-family:Archivo;font-weight:900;font-size:62px;color:#fff;text-shadow:0 6px 0 #1B2340">WHAT HAPPENS TO THE DROPPED STAGE?</div>
+    <div class="abs" id="opts" data-ob="opts" style="left:120px;top:330px;width:1680px;height:520px">
+      <div class="opt fc" id="oA" style="left:0;background:#DCEFFF;overflow:hidden"><div class="ab">A</div><div class="ar abs" style="left:110px;top:30px;width:300px;height:340px;overflow:hidden"></div><div class="abs" style="left:0;right:0;bottom:30px;font-family:Archivo;font-weight:900;font-size:42px">SINKS IN THE OCEAN</div><div class="xx">✗</div></div>
+      <div class="opt fc" id="oB" style="left:580px;background:#FFE3D3;overflow:hidden"><div class="ab">B</div><div class="ar abs" style="left:110px;top:30px;width:300px;height:340px;overflow:hidden"></div><div class="abs" style="left:0;right:0;bottom:30px;font-family:Archivo;font-weight:900;font-size:42px">BURNS UP</div><div class="xx">✗</div></div>
+      <div class="opt fc" id="oC" style="left:1160px;background:#DDF7EA;overflow:hidden"><div class="ab">C</div><div class="ar abs" style="left:110px;top:30px;width:300px;height:340px;overflow:hidden"></div><div class="abs" style="left:0;right:0;bottom:30px;font-family:Archivo;font-weight:900;font-size:42px">LANDS ON ITS TAIL</div></div>
+    </div>
+    <div class="abs" id="cd" style="left:900px;top:870px;width:120px;height:120px;border-radius:50%;background:#1B2340;color:#FFC93D;text-align:center;line-height:120px;font-family:Archivo;font-weight:900;font-size:66px">3</div>
+    <div class="stamp" id="lock" style="left:620px;top:470px;transform:rotate(-8deg)">🔒 LOCK IT IN!</div>
+    <div class="stamp" id="twist" style="left:470px;top:885px;font-size:58px;border-color:#22B573;color:#22B573;transform:rotate(-3deg)">🤯 PLOT TWIST: SOME DO C!</div>
+  </section>
+
+  <!-- S5: reusable = cheaper; every kilo you don't carry; the chai -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:radial-gradient(ellipse at 30% 20%,#7FD69A 0%,#2E9A68 55%,#145A44 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="sg5" data-ob="sg5" style="left:60px;top:150px;width:1000px;height:500px;overflow:hidden"><div id="sgA" class="abs" style="left:0;top:0"></div></div>
+    <div class="card fc" id="prc" data-ob="prc" style="left:1110px;top:150px;width:750px;padding:20px 24px;background:#FFF1C9">
+      <div class="ttl">💰 COST PER RIDE</div>
+      <div class="row5 rw"><span>🗑️ USE ONCE, THROW AWAY</span><span style="color:#C8361F">₹₹₹₹₹₹</span></div>
+      <div class="row5 rw"><span>♻️ LAND, REFUEL, REPEAT</span><span style="color:#22B573">₹₹</span></div>
+      <div class="rw" style="margin-top:14px;font-size:21px;color:#0E7C93">🛺 LIKE BUYING A NEW AUTO FOR EVERY TRIP. NO.</div>
+    </div>
+    <div class="stamp" id="chp" style="left:1440px;top:470px;font-size:52px;border-color:#22B573;color:#22B573;transform:rotate(-6deg)">↓ CHEAPER</div>
+    <div class="card fc" id="kg5" data-ob="kg5" style="left:60px;top:700px;width:1000px;height:230px;padding:20px 24px;background:#DCEFFF">
+      <div class="ttl">🎯 THE WHOLE TRICK</div>
+      <div style="display:flex;align-items:center;gap:22px;margin-top:22px"><span class="chipx kq">🏋️ 1 KG NOT CARRIED</span><span class="kq" style="font-family:Archivo;font-weight:900;font-size:60px">=</span><span class="chipx kq">⛽ FUEL NOT BURNED</span></div>
+    </div>
+    <div class="card fc" id="bb5" data-ob="bb5" style="left:1110px;top:600px;width:420px;padding:18px 22px;background:#fff;font-size:26px;line-height:1.35">☕ "…AND THAT, BETA, IS ROCKET SCIENCE."</div>
+    <div id="fd5" class="abs" data-ob="fd5" style="left:1580px;top:500px"></div>
+  </section>
+
+</div></div>
+<script type="module">
+import { rocketWorld } from "../../../lib/rocket3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const { ART } = PAPER;
+const R = ROCKET, INK = "#1B2340", TEAL = "#12A4C4", RED = "#F2553D", YEL = "#FFC93D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+const L = (a, b, k) => a + (b - a) * k, L3 = (a, b, k) => a.map((v, i) => L(v, b[i], k));
+
+const T = { s1: w("so the rocket") - 0.2, s3: w("quick guess") - 0.2, s4: w("landing legs") - 0.3, s5: w("reusable rockets") - 0.2, close: we("next up orbit") + 0.4 };
+const END = T.close + 1.4;
+EX.phaseStart(3, "Staging", { t: 0.55, clock: (t) => 150 + t });
+gsap.set("#s0", { autoAlpha: 1 });
+
+// ================================================= S0: nearly empty, very expensive dead weight
+$("#host0").innerHTML = ART.host({ w: 250, id: "h0", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h0Mouth"), { from: 0.3, to: T.s1, open: 14 }); PAPER.blink($("#h0Eyes"), [2.4, 6.2]);
+gsap.set(["#host0", "#gau", "#scl", "#nt0", "#dw0"], { autoAlpha: 0 });
+tl.fromTo("#host0", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, 1.0);
+tl.fromTo("#gau", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("two and a half") - 0.4);
+const tG0 = w("two and a half"), tG1 = we("nearly empty");
+REEL.onFrame((t) => { if (t > T.s1 + 1) return; const k = sm((t - tG0) / (tG1 - tG0)), v = 100 - 97 * k; $("#gF").style.height = `${v.toFixed(1)}%`; $("#gN").textContent = Math.round(v) + "%"; $("#gN").style.color = v < 20 ? "#C8361F" : INK; $("#gS").textContent = k >= 1 ? (Math.floor(t * 3) % 2 ? "⚠ LOW FUEL" : "⚠ BASICALLY AIR") : "STATUS: BURNING"; });
+every(tG0, tG1, 0.14, (t) => sfx(t, "tick", { gain: 0.07, pitch: 1.3 - (t - tG0) * 0.15 }));
+pop("#nt0", w("nearly empty") + 0.1, { sfx: "paper", gain: 0.18 });
+tl.fromTo("#scl", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, w("an empty fuel") - 0.2);
+sfx(w("an empty fuel"), "pop", { gain: 0.16 });
+const tDW = w("dead weight");
+REEL.onFrame((t) => { if (t > T.s1 + 1) return; const k = sm((t - tDW + 0.3) / 0.5), wob = t > tDW + 0.2 ? Math.sin(t * 28) * 3 : 0, a = Math.PI - Math.PI * 0.9 * k + (wob * Math.PI) / 180; $("#sN").setAttribute("x2", (130 * Math.cos(a)).toFixed(1)); $("#sN").setAttribute("y2", (-130 * Math.sin(a)).toFixed(1)); });
+sfx(tDW - 0.2, "clunk", { gain: 0.2 });
+tl.fromTo("#dw0", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tDW + 0.05);
+sfx(tDW + 0.22, "stamp", { gain: 0.3 }); REEL.shake($("#shake"), tDW + 0.25, 5);
+
+// ================================================= 3D world
+const W3 = rocketWorld($("#c3"), { w: 1920, h: 1080 });
+const STK = 45.4, X = 12000;
+const tMECO = w("drops it") - 0.1, tBang = w("bang"), tIgn = w("second stage lights") + 0.5, tFair = w("fairing opens") - 0.1;
+const tLeg = w("landing legs"), tRel = w("engines relit") - 0.1, tTD = w("landing pad") - 0.3, BY0 = 1.9;
+const upY = (t) => 0.5 * 1.2 * Math.max(0, t - tIgn) ** 2;
+const byY = (t) => { const k = clamp((t - T.s4 + 0.8) / (tTD - T.s4 + 0.8)); return BY0 + 150 * (1 - k) * (1 - k); };
+function shotStage(t) {
+  const sep = Math.max(0, t - tBang), ign = sm((t - tIgn) / 0.4), fo = sm((t - tFair) / 1.1), u = sm((t - T.s1) / (T.s3 - T.s1)), up = upY(t);
+  return { t, mood: "space", earthAlt: 95000, earthRot: [0.45, 1.75, 0.12], cityLights: 0,
+    booster: { p: [0.4 * sep, -STK - 1.25 * sep * sep, 0.3 * sep], rot: [0, 0, 0.05 * sep * sep], flame: t < tMECO ? 1 : Math.max(0, 1 - (t - tMECO) / 0.4), plumeLen: 1.6, vac: 1 },
+    upper: { p: [0, up, 0], flame: ign, vac: 0.8, fairing: fo * 0.9, fairingDrift: fo * fo * 6 }, smoke: {},
+    cam: L3([-46, -20, 70], [-30, 8 + up * 0.5, 50], u), look: L3([0, -12, 0], [0, 10 + up * 0.6, 0], u), fov: 46, shake: t > tBang && t < tBang + 0.5 ? 0.25 : 0 };
+}
+function shotLand(t) {
+  const by = byY(t), u = sm((t - T.s4 + 0.7) / (T.s5 - T.s4 + 1.4)), fl = sm((t - tRel) / 0.3) * (1 - sm((t - tTD) / 0.4));
+  return { t, mood: "day", sea: { amp: 0.5, foam: { c: [X + 10, 0], r: 30, k: fl, churn: fl } }, pad: false, smoke: {},
+    booster: { p: [X + 10, by, 0], rot: [0, 0, 0.5 * (1 - sm((t - T.s4 + 0.7) / 1.6))], legs: sm((t - tLeg) / 0.9), flame: fl, plumeLen: 0.5, light: fl },
+    boat: { p: [X, 0, 0], yaw: 0 }, cam: L3([X + 46, 12, 125], [X + 32, 7, 82], u), look: [X + 8, by * 0.55 + 18, 0], fov: 44 };
+}
+const mid = (T.s3 + T.s4) / 2, shot = (t) => (t < mid ? shotStage(t) : shotLand(t));
+const on3d = (t) => (t >= T.s1 - 0.05 && t <= T.s3 + 0.7) || (t >= T.s4 - 0.7 && t <= T.s5 + 0.7);
+const anchor = (el, p, dx = 0, dy = 0) => { const [x, y, z] = W3.project(p); el.style.transform = `translate(${(x + dx).toFixed(1)}px,${(y + dy).toFixed(1)}px)`; el.style.visibility = z < 1 ? "visible" : "hidden"; };
+REEL.onFrame((t) => {
+  if (!on3d(t)) return; const P = shot(t); W3.frame(P);
+  if (t < mid) { const sep = Math.max(0, t - tBang); anchor($("#tgB"), [0.4 * sep, -STK - 1.25 * sep * sep + 20, 0], 64, -24); anchor($("#tgU"), [0, upY(t) + 2, 0], 64, -24); anchor($("#tgF"), [0, upY(t) + 18, 0], 64, -24);
+    const fv = $$("#tel1 .fv"); if (fv.length) { const s = t - T.s1; fv[0].textContent = `${Math.round(68 + s * 1.2)} km`; fv[1].textContent = `${Math.round(6800 + s * (t > tIgn ? 260 : 40)).toLocaleString("en-IN")} km/h`; fv[2].textContent = t > tMECO && t < tIgn ? "0.0 g 🫠" : t < tMECO ? "3.2 g" : "1.1 g"; } }
+  else { const by = byY(t); anchor($("#tgL"), [X + 10, by + 12, 0], 64, -24); anchor($("#tgE"), [X + 10, by - 1, 0], 64, -24); anchor($("#tgS"), [X - 15, 6, 0], 64, -24);
+    $("#aA").textContent = `${Math.round(Math.max(0, by - BY0) * 60).toLocaleString("en-IN")} m`; $("#aS").textContent = `${Math.round(t > tTD ? 0 : 40 + (by - BY0) * 9)} km/h`; }
+});
+
+// ================================================= S1: MECO, bang, second stage lights, clamshell
+EX.smokeWipe(T.s1, { seed: 5 });
+EX.swap("#s0", "#s3d", T.s1);
+$("#tel1").innerHTML = R.telem({ alt: "68 km", spd: "6,800 km/h", g: "3.2 g", w: 600 });
+gsap.set(["#ov2", "#tgB", "#tgU", "#tgF", "#sky1", "#bang", "#tel1"], { autoAlpha: 0 });
+tl.fromTo("#tel1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s1 + 0.5);
+sfx(T.s1, "rumble", { gain: 0.2, dur: tMECO - T.s1 + 0.3 });
+sfx(tMECO, "clunk", { gain: 0.16 });
+tl.fromTo("#bang", { autoAlpha: 0, scale: 2.4 }, { autoAlpha: 1, scale: 1, duration: 0.18, ease: "power4.in", immediateRender: false }, tBang - 0.12);
+tl.to("#bang", { autoAlpha: 0, scale: 0.8, duration: 0.25 }, tBang + 0.75);
+sfx(tBang, "impact", { gain: 0.4 }); sfx(tBang + 0.05, "stamp", { gain: 0.25 }); REEL.shake($("#shake"), tBang + 0.05, 10);
+tl.fromTo("#tgB", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, w("first stage falls") - 0.1);
+sfx(w("falls away"), "whoosh", { gain: 0.2 });
+tl.to("#tgB", { autoAlpha: 0, duration: 0.25 }, tFair - 0.3);
+tl.fromTo("#tgU", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tIgn);
+sfx(tIgn - 0.3, "riser", { gain: 0.2, dur: 0.5 }); sfx(tIgn, "jet", { gain: 0.22, dur: T.s3 - tIgn + 0.5 });
+tl.to("#tgU", { autoAlpha: 0, duration: 0.25 }, tFair + 0.6);
+tl.fromTo("#tgF", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tFair + 0.3);
+sfx(tFair + 0.1, "clunk", { gain: 0.2 }); sfx(tFair + 0.3, "whoosh", { gain: 0.18 });
+tl.fromTo("#sky1", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, tFair - 0.5);
+REEL.onFrame((t) => { if (t < T.s1 || t > T.s3 + 0.7) return; $("#skyT").textContent = t > w("see the sky") - 0.1 ? "🌌 SEES THE SKY! ✨" : t > tFair + 0.4 ? "🫣 PEEKING OUT…" : "📦 STILL IN A BOX"; });
+sfx(w("see the sky"), "chime", { gain: 0.16 });
+
+// ================================================= S3: quick guess
+EX.stripes(T.s3, { colors: ["#7B61FF", "#FFC93D", "#F2553D", "#12A4C4", "#9255DA"] });
+EX.swap("#s3d", "#s3", T.s3);
+const stg = (wd, id) => R.rocket({ w: wd, id, s2: false, fairing: false, flameOn: false });
+$("#oA .ar").innerHTML = `<div class="abs" style="left:110px;top:10px;transform:rotate(28deg)">${stg(70, "qa")}</div><svg class="abs" style="left:0;top:200px" width="300" height="140"><path class="wv" d="M-30 14 q 15 -12 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 V 140 H -30 Z" fill="#1D5FB0" stroke="${INK}" stroke-width="4"/><text x="60" y="80" font-size="34">🫧</text><text x="190" y="110" font-size="28">🫧</text></svg>`;
+$("#oB .ar").innerHTML = `<div class="abs" style="left:40px;top:60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#FFD27A 0%,#FF8A2A 45%,rgba(242,85,61,0) 72%)"></div><div class="abs" style="left:115px;top:20px;transform:rotate(-38deg)">${stg(70, "qb")}</div><div class="abs" style="left:30px;top:220px;font-size:60px">🔥</div><div class="abs" style="left:200px;top:120px;font-size:54px">☄️</div>`;
+$("#oC .ar").innerHTML = `<div class="abs" style="left:-6px;top:0;transform:scale(.44);transform-origin:0 0">${R.landing({ w: 700, id: "ldq" })}</div>`;
+gsap.set(["#qg", "#qq", "#oA", "#oB", "#oC", "#lock", "#cd", "#twist"], { autoAlpha: 0 });
+pop("#qg", T.s3 + 0.25, { sfx: "chime", gain: 0.18 });
+tl.fromTo("#qq", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, w("what happens") - 0.1);
+[["#oA", w("a fall into")], ["#oB", w("b burn up")], ["#oC", w("or c fly")]].forEach(([el, tt], i) => { tl.fromTo(el, { autoAlpha: 0, y: 120, rotation: (i - 1) * 6 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, tt - 0.1); sfx(tt, "pop", { gain: 0.18, pitch: 0.9 + i * 0.15 }); });
+REEL.onFrame((t) => { if (t < T.s3 || t > T.s4 + 0.6) return; $("#sp1").setAttribute("transform", `rotate(${(Math.sin(t * 1.1) * 9).toFixed(1)} 300 -40)`); $("#sp2").setAttribute("transform", `rotate(${(Math.sin(t * 1.3 + 1) * 9).toFixed(1)} 1620 -40)`); const wv = $("#oA .wv"); if (wv) wv.setAttribute("transform", `translate(${(-((t * 40) % 30)).toFixed(1)} 0)`); });
+const tLock = we("its tail") + 0.05, tTw = w("plot twist");
+tl.set("#cd", { autoAlpha: 1 }, tLock);
+REEL.onFrame((t) => { if (t < tLock - 0.1 || t > T.s4 + 0.5) return; const n = 3 - Math.floor((t - tLock) / 0.2); $("#cd").textContent = n > 0 ? n : "GO"; });
+[0, 0.2, 0.4].forEach((d) => sfx(tLock + d, "beep", { gain: 0.12, pitch: 1.2 }));
+tl.fromTo("#lock", { autoAlpha: 0, scale: 2.0 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, tLock + 0.45);
+sfx(tLock + 0.6, "stamp", { gain: 0.28 });
+tl.to(["#lock", "#cd"], { autoAlpha: 0, duration: 0.15 }, tTw - 0.05);
+tl.to(["#oA", "#oB"], { opacity: 0.45, duration: 0.3 }, tTw);
+tl.to(["#oA .xx", "#oB .xx"], { opacity: 0.9, duration: 0.2 }, tTw + 0.05);
+tl.to("#oC", { scale: 1.06, boxShadow: "0 0 0 10px #22B573, 0 0 60px 10px rgba(92,240,166,.7)", duration: 0.35, ease: "back.out(2)" }, tTw + 0.1);
+sfx(tTw, "bloop", { gain: 0.2 });
+tl.fromTo("#twist", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("some of them") - 0.1);
+sfx(w("some of them") + 0.08, "stamp", { gain: 0.3 }); sfx(w("some of them") + 0.1, "chime", { gain: 0.18 });
+
+// ================================================= S4: legs out, engine relit, a boat waiting (3D)
+EX.iris("#s3d", T.s4, 120 + 1160 + 260, 330 + 250, { color: "#22B573" });
+EX.swap("#s3", "#s3d", T.s4);
+tl.set("#ov1", { autoAlpha: 0 }, T.s4); tl.set("#ov2", { autoAlpha: 1 }, T.s4);
+gsap.set(["#tgL", "#tgE", "#tgS", "#pad4", "#td4"], { autoAlpha: 0 });
+tl.fromTo("#alt4", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s4 + 0.3);
+tl.fromTo("#tgL", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tLeg + 0.2); sfx(tLeg + 0.2, "clunk", { gain: 0.2 });
+tl.fromTo("#tgE", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tRel + 0.1); sfx(tRel, "jet", { gain: 0.3, dur: tTD - tRel + 0.4 });
+tl.fromTo("#tgS", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, w("a boat") - 0.1); sfx(w("a boat"), "pop", { gain: 0.14 });
+sfx(T.s4, "whoosh", { gain: 0.16, dur: 1.2 }); sfx(T.s4 + 0.4, "water", { gain: 0.1, dur: T.s5 - T.s4 });
+tl.fromTo("#pad4", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("or a landing") - 0.1); sfx(w("or a landing"), "pop", { gain: 0.16, pitch: 1.2 });
+tl.to(["#tgL", "#tgE"], { autoAlpha: 0, duration: 0.2 }, tTD + 0.1);
+tl.fromTo("#td4", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tTD + 0.15);
+sfx(tTD + 0.05, "clunk", { gain: 0.3 }); sfx(tTD + 0.32, "stamp", { gain: 0.26 }); sfx(tTD + 0.4, "ding", { gain: 0.16 }); REEL.shake($("#shake"), tTD + 0.1, 5);
+
+// ================================================= S5: reusable = cheaper; every kilo; the chai
+EX.smokeWipe(T.s5, { seed: 7 });
+EX.swap("#s3d", "#s5", T.s5);
+$("#sgA").innerHTML = R.staging({ w: 1000, id: "sg" });
+$("#fd5").innerHTML = R.director({ w: 260, id: "fd" });
+gsap.set(["#sg5", "#prc", ...$$("#prc .rw"), "#chp", "#kg5", ...$$("#kg5 .kq"), "#bb5"], { autoAlpha: 0 });
+tl.fromTo("#fd5", { y: 60 }, { y: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, T.s5);
+tl.fromTo("#prc", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s5 + 0.3);
+[w("reusable rockets"), w("why spaceflight"), w("cheaper") - 0.5].forEach((tt, i) => { tl.fromTo($$("#prc .rw")[i], { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, tt + 0.2); sfx(tt + 0.2, "pop", { gain: 0.15, pitch: 1 + i * 0.12 }); });
+tl.fromTo("#chp", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("cheaper") + 0.1);
+sfx(w("cheaper") + 0.28, "stamp", { gain: 0.28 });
+const tDr = w("dropping weight");
+tl.fromTo("#sg5", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, tDr - 0.3);
+REEL.onFrame((t) => { if (t < T.s5 || t > END) return; $$("#sgA .sgWt").forEach((r, i) => { const k = sm((t - tDr - 0.2 - i * 0.35) / 0.5); r.style.transformBox = "fill-box"; r.style.transformOrigin = "0 50%"; r.style.transform = `scaleX(${Math.max(0.001, k).toFixed(3)})`; }); });
+every(tDr, tDr + 1.2, 0.35, (t) => sfx(t, "tick", { gain: 0.1 }));
+tl.fromTo("#kg5", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("every kilo") - 0.3);
+[w("every kilo"), w("is a kilo"), w("burn fuel")].forEach((tt, i) => { tl.fromTo($$("#kg5 .kq")[i], { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.5)", immediateRender: false }, tt); sfx(tt, "pop", { gain: 0.16, pitch: 1 + i * 0.12 }); });
+const tSip = w("to lift") - 0.6, tSipE = T.close - 1.3;
+pop("#bb5", tSip - 0.2, { sfx: "bloop", gain: 0.16 });
+REEL.onFrame((t) => {
+  if (t < T.s5 || t > END) return;
+  const lift = sm((t - tSip) / 0.5) * (1 - sm((t - tSipE) / 0.4)), arm = $("#fdArm"); if (arm) arm.setAttribute("transform", `rotate(${(118 * lift).toFixed(1)} 214 230)`);
+  const head = $("#fdHead"); if (head) head.setAttribute("transform", `rotate(${(Math.sin(t * 1.4) * 4 - 6 * lift).toFixed(1)} 140 190)`);
+});
+sfx(tSip + 0.4, "sip", { gain: 0.3 });
+
+// ================================================= close: NEXT: ORBIT
+EX.phaseClose(T.close, { phase: 3 });
+REEL.finish(END);
+</script></body></html>

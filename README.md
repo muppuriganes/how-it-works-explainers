@@ -11,6 +11,7 @@ Tone: a witty friend explaining things — playful, a little sarcastic, with an 
 | Video | Length | File | Chapters |
 | --- | --- | --- | --- |
 | **How a rocket reaches space: pad to orbit and back** | 3:03 | [`reels/rocket/final.mp4`](reels/rocket/final.mp4) · [captions](reels/rocket/captions.srt) | One continuous trip: countdown · liftoff · Max-Q · staging · orbit · re-entry · splashdown |
+| How a rocket reaches space — **v1, 5 chapters** (earlier version) | 4:13 | [`reels/rocket-v1/final.mp4`](reels/rocket-v1/final.mp4) · [captions](reels/rocket-v1/captions.srt) | Phase 1 Countdown · Phase 2 Liftoff · Phase 3 Staging · Phase 4 Orbit · Phase 5 Return |
 | **How a plane actually flies: runway to 35,000 ft and back** | 5:23 | [`reels/plane/final.mp4`](reels/plane/final.mp4) | Phase 1 Take-off · Phase 2 Climb · Phase 3 Cruise · Phase 4 Descent · Phase 5 Landing |
 | **How an ATM gives you cash in 10 seconds** | 3:03 | [`reels/atm/final.mp4`](reels/atm/final.mp4) | Step 1 Card & chip · Step 2 PIN check · Step 3 Bank network · Step 4 Bank says yes · Step 5 Cash out |
 | **How a food delivery order reaches you in 30 minutes** | 3:15 | [`reels/food/final.mp4`](reels/food/final.mp4) | Stop 1 Order placed · Stop 2 Restaurant accepts · Stop 3 Rider assigned · Stop 4 On the way · Stop 5 Delivered |
@@ -26,6 +27,8 @@ Script for the UPI explainer: [`reels/upi/SCRIPT.md`](reels/upi/SCRIPT.md). Ever
 - **Bullet-time freezes:** at Max-Q, staging, orbit, re-entry and ignition, mission time ramps to a hold while the camera keeps gliding. A small "⏸ TIME HELD" chip replaces any big pause icon, and the mission clock shows "▶▶×N" when time is sped up.
 - **Picture-first 2D:** each explanation is one small illustrated scene ([`lib/rocket2d.js`](lib/rocket2d.js)) beside the rocket or pinned to it: an x-ray cutaway, a balloon, a gravity turn, Max-Q, 3× g, dead weight, booster landing, Newton's cannon, a 90-minute lap, 16 sunrises, floating, and the heat shield. The countdown is a silent ticking dial.
 - Ends on a "Mission complete" board. No burned-in captions: the exact caption file is [`reels/rocket/captions.srt`](reels/rocket/captions.srt) (made with [`tools/srt.py`](tools/srt.py)). Script: [`reels/rocket/SCRIPT.md`](reels/rocket/SCRIPT.md). Narration by Kokoro `af_heart`.
+
+- **Earlier version kept for reference:** [`reels/rocket-v1`](reels/rocket-v1) is the first 5-chapter cut (phase boards, quizzes, the tired flight director with his chai). The journey version above replaced it.
 
 ### The plane explainer — a real 3D plane, a quiz in every phase
 - **Assets first:** a real 3D airliner and airport ([`lib/plane3d.js`](lib/plane3d.js), three.js, unbranded A320-class) plus a 2D diagram kit ([`lib/plane.js`](lib/plane.js)), approved on four asset sheets ([`reels/plane/assets_sheet1.jpg`](reels/plane/assets_sheet1.jpg)–[`4`](reels/plane/assets_sheet4.jpg)) before any animation was built.

@@ -1,0 +1,292 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Rocket Ch2 Liftoff</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:17px;letter-spacing:.16em;opacity:.6}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:72px;letter-spacing:.03em;background:rgba(255,255,255,.95);white-space:nowrap}
+.tag3{position:absolute;left:0;top:0;display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:#0E1530;border:3px solid #1B2340;box-shadow:0 6px 0 #1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:24px;color:#fff;white-space:nowrap}
+.tag3:before{content:"";position:absolute;left:-46px;top:50%;width:46px;height:4px;background:#FFC93D}
+.tag3 i{position:absolute;left:-58px;top:calc(50% - 10px);width:20px;height:20px;border-radius:50%;background:#FFC93D;border:3px solid #1B2340}
+.opt{position:absolute;top:0;width:360px;height:420px;border-radius:30px;text-align:center;font-family:"JetBrains Mono";font-weight:800;color:#1B2340}
+.opt .ab{position:absolute;left:20px;top:18px;width:64px;height:64px;border-radius:18px;background:#1B2340;color:#FFC93D;font-family:Archivo;font-weight:900;font-size:44px;line-height:64px}
+.opt .em{position:absolute;left:0;right:0;top:110px;font-size:120px;line-height:1}
+.opt .lb{position:absolute;left:14px;right:14px;bottom:28px;font-family:Archivo;font-weight:900;font-size:36px;line-height:1.1}
+.chipx{display:inline-flex;align-items:center;gap:12px;padding:12px 22px;border-radius:18px;background:#fff;border:3px solid #1B2340;box-shadow:0 6px 0 #1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:28px;color:#1B2340}
+.bar{position:relative;height:46px;border-radius:14px;background:#fff;border:3px solid #1B2340;overflow:hidden}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/rocket.js"></script>
+<script src="../../../lib/rocketfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- 3D world: pad liftoff, chase + gravity turn, Max-Q -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="tag3" id="tgM"><i></i>📏 MOVED: <span id="mvN">0 CM</span></div>
+    <div class="card fc" id="thr" data-ob="thr" style="left:1180px;top:150px;width:680px;height:422px;overflow:hidden;background:#D9ECFB"><div id="thrA" class="abs" style="left:0;top:0"></div></div>
+    <div class="pill fc" id="win" data-ob="win" style="left:1180px;top:610px;background:#F2553D">⚖️ WEIGHT IS WINNING… 😬</div>
+    <div id="tlm1" class="abs" data-ob="tlm1" style="left:1180px;top:720px"></div>
+    <div class="stamp" id="lift" style="left:250px;top:420px;font-size:104px;border-color:#22B573;color:#22B573;transform:rotate(-6deg)">🚀 UP SHE GOES!</div>
+    <div id="tlm2" class="abs" data-ob="tlm2" style="left:70px;top:150px"></div>
+    <div class="pill fc" id="lean" data-ob="lean" style="left:70px;top:280px;background:#1B2340;color:#FFC93D">↘ LEAN: <span id="lnN">0°</span></div>
+    <div class="stamp" id="odd" style="left:90px;top:760px;font-size:58px;border-color:#7B61FF;color:#7B61FF;transform:rotate(-5deg)">🤔 SOMETHING ODD…</div>
+    <div class="card fc" id="gtc" data-ob="gtc" style="left:1160px;top:150px;width:700px;height:377px;overflow:hidden;background:#0B2A6B"><div id="gtA" class="abs" style="left:0;top:0"></div></div>
+    <div class="pill fc" id="side" data-ob="side" style="left:1160px;top:570px;background:#FFC93D;color:#1B2340">🏎️ ORBIT = ~28,000 KM/H SIDEWAYS</div>
+    <div class="card fc" id="mqc" data-ob="mqc" style="left:1160px;top:150px;width:700px;height:408px;overflow:hidden;background:#EEF3FA"><div id="mqA" class="abs" style="left:0;top:0"></div></div>
+    <div class="card fc" id="thc" data-ob="thc" style="left:1160px;top:600px;width:700px;padding:18px 24px;background:#FFF1C9">
+      <div class="ttl">⚙️ ENGINE THROTTLE</div>
+      <div style="display:flex;align-items:center;gap:18px;margin-top:10px"><div class="bar" style="flex:1"><div id="thB" class="abs" style="left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,#22B573,#FFC93D 60%,#FF8A2A)"></div></div><div id="thN" style="font-family:Archivo;font-weight:900;font-size:48px;width:150px;text-align:right">100%</div></div>
+      <div id="thS" style="margin-top:10px;font-size:24px;color:#C8361F">🔥 FULL POWER</div>
+    </div>
+    <div class="card fc" id="fdc" data-ob="fdc" style="left:70px;top:290px;width:440px;height:300px;overflow:hidden;background:#FFE3D3">
+      <div class="ttl" style="position:absolute;left:22px;top:18px">📡 MEANWHILE, BACK ROW</div>
+      <div id="fdA" class="abs" style="left:8px;top:48px"></div>
+      <div class="abs" style="left:170px;top:70px;width:250px;font-family:Archivo;font-weight:900;font-size:32px;line-height:1.15">FLIGHT DIRECTOR GRIPS CHAI.<br><span style="color:#C8361F">TIGHTLY.</span></div>
+      <div id="spl" class="abs" style="left:190px;top:210px;font-size:22px;color:#0E7C93">☕ SPILLED: <span id="splN">0</span> ML</div>
+    </div>
+  </section>
+
+  <!-- S1: the balloon trick -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 20%,#FFC29A 0%,#E8794E 55%,#A0402C 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="myth" data-ob="myth" style="left:70px;top:150px;width:800px;padding:24px 28px;background:#FFF1C9">
+      <div class="ttl">🕵️ MYTH-BUSTER DESK</div>
+      <div style="font-family:Archivo;font-weight:900;font-size:46px;margin:10px 0 18px">PUSHES THE GROUND?</div>
+      <div id="mch" style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+        <span class="chipx mc">🔥 THROWS HOT GAS ↓ DOWN</span><span class="chipx mc">⬆️ GAS SHOVES ROCKET ↑ UP</span><span class="chipx mc" style="background:#1B2340;color:#FFC93D">🧠 NEWTON'S 3RD LAW. (ROCKET SCIENCE.)</span>
+      </div>
+    </div>
+    <div class="stamp" id="nope" style="left:620px;top:160px;font-size:56px;transform:rotate(8deg)">✗ NOPE</div>
+    <div class="card fc" id="bal" data-ob="bal" style="left:960px;top:150px;width:900px;height:504px;overflow:hidden;background:#FFE9DA"><div id="balA" class="abs" style="left:0;top:0"></div></div>
+    <div class="stamp" id="ton" style="left:1000px;top:720px;font-size:60px;border-color:#7B61FF;color:#7B61FF;transform:rotate(-4deg)">🎈 WEIGHS 500 TONNES</div>
+    <div id="host1" class="abs" data-ob="host1" style="left:150px;top:640px"></div>
+  </section>
+
+  <!-- S4: g-force + quick quiz -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 0%,#9B7BFF 0%,#5A3FC8 55%,#2A1D72 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="gm" data-ob="gm" style="left:70px;top:150px;width:560px;height:610px;overflow:hidden;background:#DDF7EA">
+      <div class="ttl" style="position:absolute;left:24px;top:20px">🎢 G-FORCE ON THE CREW</div>
+      <div id="gN" class="abs" style="left:24px;top:52px;font-family:Archivo;font-weight:900;font-size:96px">1.0 G</div>
+      <div class="abs" style="left:24px;right:24px;top:172px;display:flex;gap:10px"><div class="bar gs" style="flex:1"><div class="abs gf" style="left:0;top:0;bottom:0;width:0;background:#22B573"></div></div><div class="bar gs" style="flex:1"><div class="abs gf" style="left:0;top:0;bottom:0;width:0;background:#FFC93D"></div></div><div class="bar gs" style="flex:1"><div class="abs gf" style="left:0;top:0;bottom:0;width:0;background:#F2553D"></div></div></div>
+      <div class="abs" style="left:60px;right:60px;bottom:40px;height:40px;border-radius:14px;background:#5C677E;border:4px solid #1B2340"></div>
+      <div id="ast" class="abs" style="left:0;right:0;bottom:76px;text-align:center;font-size:190px;line-height:1;transform-origin:50% 100%">🧑‍🚀</div>
+      <div id="csn" class="abs" style="left:0;right:0;top:250px;text-align:center;font-size:84px;line-height:1">👦👧🧒</div>
+      <div id="wt" class="abs" style="right:22px;top:80px;padding:8px 14px;border-radius:12px;background:#1B2340;color:#FFC93D;font-size:22px">FEELS LIKE: <span id="wtN">70</span> KG</div>
+    </div>
+    <div class="card fc" id="scl" data-ob="scl" style="left:700px;top:150px;width:1160px;height:620px;background:#FFE3D3">
+      <div class="ttl" style="position:absolute;left:28px;top:22px">⚖️ IF THE CREW SAT ON A BATHROOM SCALE…</div>
+      <div id="face" class="abs" style="left:70px;top:110px;font-size:260px;line-height:1">😐</div>
+      <div class="abs" style="left:440px;top:120px;width:640px;height:300px;border-radius:40px;background:#1B2340;border:6px solid #1B2340;box-shadow:0 12px 0 #0B1030;text-align:center">
+        <div style="margin-top:34px;font-size:24px;letter-spacing:.2em;color:#8FA0D6">SCALE SAYS</div>
+        <div id="sclN" style="font-family:Archivo;font-weight:900;font-size:150px;line-height:1.1;color:#5CF0A6">70 KG</div></div>
+      <div id="sclS" class="abs" style="left:440px;top:460px;width:640px;text-align:center;font-family:Archivo;font-weight:900;font-size:44px">"ALL GOOD."</div>
+    </div>
+    <div class="stamp" id="x3" style="left:110px;top:800px;font-size:56px;border-color:#F2553D;color:#F2553D;transform:rotate(-4deg)">×3 HEAVIER</div>
+    <div class="pill fc" id="qg" data-ob="qg" style="left:700px;top:150px;background:#FFC93D;color:#1B2340;font-family:Archivo;font-weight:900;font-size:38px">❓ QUICK!</div>
+    <div class="abs" id="qq" data-ob="qq" style="left:700px;width:1160px;top:248px;font-family:Archivo;font-weight:900;font-size:60px;color:#fff;text-shadow:0 6px 0 #1B2340">HOW DOES 3 G FEEL?</div>
+    <div class="abs" id="opts" data-ob="opts" style="left:700px;top:350px;width:1160px;height:420px">
+      <div class="opt fc" id="oA" style="left:0;background:#FFE3D3"><div class="ab">A</div><div class="em">🪶</div><div class="lb">LIGHT AS A FEATHER</div></div>
+      <div class="opt fc" id="oB" style="left:400px;background:#DCEFFF"><div class="ab">B</div><div class="em">🛋️</div><div class="lb">A COMFY SOFA</div></div>
+      <div class="opt fc" id="oC" style="left:800px;background:#FFF1C9"><div class="ab">C</div><div class="em" style="font-size:80px;top:130px">👦👧🧒</div><div class="lb">3 COUSINS ON YOUR CHEST</div></div>
+    </div>
+    <div class="stamp" id="cOk" style="left:1460px;top:300px;font-size:56px;border-color:#22B573;color:#22B573;transform:rotate(7deg)">✓ IT'S C!</div>
+  </section>
+
+</div></div>
+<script type="module">
+import { rocketWorld } from "../../../lib/rocket3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const { ART } = PAPER;
+const R = ROCKET, INK = "#1B2340", TEAL = "#12A4C4", RED = "#F2553D", YEL = "#FFC93D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+const L = (a, b, k) => a + (b - a) * k, L3 = (a, b, k) => a.map((v, i) => L(v, b[i], k));
+
+const T = { s1: w("and no the") - 0.1, s2: w("then the rocket") - 0.15, s3: w("about a minute") - 0.15, s4: w("meanwhile") - 0.2, close: we("next up staging") + 0.4 };
+const END = T.close + 1.4;
+const TL = w("up she goes") - 0.2;
+EX.phaseStart(2, "Liftoff", { t: 0.55, clock: (t) => t });
+gsap.set("#s3d", { autoAlpha: 1 });
+
+// live telemetry: [t, alt km, speed km/h, g]
+const KEY = [[0, 0, 0, 1.0], [TL, 0, 0, 1.0], [TL + 1.5, 0.02, 40, 1.3], [T.s2, 2, 500, 1.5], [T.s3, 10, 1400, 1.9], [w("ease off"), 13, 1700, 2.2], [w("back on full"), 14, 1760, 1.7], [T.s4, 19, 2300, 2.5], [w("heavier") + 0.2, 28, 3300, 3.0], [END, 40, 4200, 3.0]];
+const tel = (t) => { let i = 0; while (i < KEY.length - 2 && t > KEY[i + 1][0]) i++; const a = KEY[i], b = KEY[i + 1], k = sm((t - a[0]) / (b[0] - a[0])); return [L(a[1], b[1], k), L(a[2], b[2], k), L(a[3], b[3], k)]; };
+const fmtT = (t) => { const [al, sp, g] = tel(t); return [al < 1 ? `${Math.round(al * 1000)} m` : `${al.toFixed(1)} km`, `${Math.round(sp).toLocaleString("en-IN")} km/h`, `${g.toFixed(1)} g`]; };
+$("#tlm1").innerHTML = R.telem({ w: 680 }); $("#tlm2").innerHTML = R.telem({ w: 640 });
+const setTel = (el, t) => { const v = fmtT(t); $$(`${el} .fv`).forEach((d, i) => (d.textContent = v[i])); };
+
+// ================================================= 3D world
+const W3 = rocketWorld($("#c3"), { w: 1920, h: 1080 });
+const shift = (c, l, k) => { const f = [l[0] - c[0], l[2] - c[2]], d = Math.hypot(f[0], f[1]); return [l[0] - (f[1] / d) * k * d, l[1], l[2] + (f[0] / d) * k * d]; };
+const STK = 45.4, TW = { mood: "dusk", mood2: "night", k: 0.5 }, stack = (bp, th) => [bp[0] - STK * Math.sin(th), bp[1] + STK * Math.cos(th), bp[2]];
+const alt = (t) => (t < TL ? 0 : 0.5 * 10 * (t - TL) ** 2);
+const tArm = w("engines roar") + 0.3, tLean = w("lean over") - 0.3, tEase = w("ease off") - 0.1, tFull = w("back on full");
+function shot(t) {
+  if (t < T.s1 + 1) {
+    const fl = sm((t + 0.4) / 2.2), y = 9 + alt(t), u = sm(t / (T.s1 + 1)), c = L3([-46, 22, 230], [-52, 34, 240], u), l = [0, y + 32 + 6 * u, 0];
+    return { t, ...TW, booster: { p: [0, y, 0], flame: L(0.5, 1, fl), plumeLen: L(0.4, 1, fl), light: 1.2 }, upper: { p: [0, y + STK, 0] },
+      smoke: { steam: t + 20, liftoff: t > TL - 0.6 ? t - TL + 0.6 : null, rocketY: y, sparks: t + 1.5, fire: Math.max(0.3, 1 - Math.max(0, t - TL) / 5) },
+      arm: sm((t - tArm) / 1.2), cam: c, look: shift(c, l, 0.17), fov: 30, shake: 0.05 + 0.08 * fl };
+  }
+  if (t < T.s3) {
+    const u = clamp((t - T.s2) / (T.s3 - T.s2)), th = L(-0.02, -0.3, sm((t - tLean) / 4.5)), y = L(900, 2600, u), x = (y - 900) * 0.12, bp = [x, y, 0];
+    return { t, mood: "dusk", booster: { p: bp, rot: [0, 0, th], flame: 1, plumeLen: 1.2 }, upper: { p: stack(bp, th), rot: [0, 0, th] }, smoke: { trail: { y0: y - 1400, y1: y - 2, x0: x - 170, x1: x, n: 600 } }, pad: false,
+      cam: [x + L(-60, -40, u), y - L(35, 10, u), L(95, 80, u)], look: [x - 2, y + 30, 0], fov: 44, shake: 0.06 };
+  }
+  const u = clamp((t - T.s3) / (T.s4 - T.s3)), th = -0.3, y = 11000 + 1350 * u, x = 3000 + 270 * u, bp = [x, y, 0], tp = stack(bp, th), ang = L(0.9, 1.9, sm(u));
+  const dip = sm((t - tEase) / 0.5) * (1 - sm((t - tFull) / 0.4)), q = sm((t - T.s3) / 1.5) * (1 - 0.7 * sm((t - tFull) / 1.2));
+  return { t, mood: "day", mood2: "high", k: 0.35, booster: { p: bp, rot: [0, 0, th], flame: 1 - 0.35 * dip, plumeLen: 1.4 - 0.4 * dip }, upper: { p: tp, rot: [0, 0, th] },
+    vapor: q * (0.75 + 0.25 * Math.sin(t * 9)), vaporAt: [tp[0] + 0.3, tp[1] + 1.5, 0], vaporRot: [0, 0, th], smoke: { trail: { y0: y - 3000, y1: y - 2, x0: x - 600, x1: x - 0.4, n: 500 } }, pad: false,
+    cam: [tp[0] + Math.cos(ang) * 74, tp[1] - 14, Math.sin(ang) * 74], look: [tp[0] - 4, tp[1] - 6, 0], fov: 40, shake: 0.04 + 0.14 * q };
+}
+const on3d = (t) => t <= T.s1 + 0.7 || (t >= T.s2 - 0.7 && t <= T.s4 + 0.7);
+const anchor = (el, p, dx = 0, dy = 0) => { const [x, y, z] = W3.project(p); el.style.transform = `translate(${(x + dx).toFixed(1)}px,${(y + dy).toFixed(1)}px)`; el.style.visibility = z < 1 ? "visible" : "hidden"; };
+REEL.onFrame((t) => {
+  if (!on3d(t)) return; W3.frame(shot(t));
+  if (t < T.s1 + 1) { anchor($("#tgM"), [0, 9 + alt(t) + 60, 0], 64, -24); const m = alt(t); $("#mvN").textContent = m < 0.01 ? "0 CM 😐" : `${m.toFixed(1)} M 🚀`; setTel("#tlm1", t); }
+  else setTel("#tlm2", t);
+  if (t > T.s2 && t < T.s3 + 0.5) $("#lnN").textContent = `${Math.round(sm((t - tLean) / 4.5) * 17)}°`;
+});
+
+// ================================================= S0: engines roar, nothing moves — thrust vs weight
+const P0 = ["#tgM", "#thr", "#win", "#tlm1", "#lift"], P2 = ["#tlm2", "#lean", "#odd", "#gtc", "#side"], P3 = ["#mqc", "#thc", "#fdc"];
+gsap.set([...P0, ...P2, ...P3], { autoAlpha: 0 });
+sfx(0, "rumble", { gain: 0.34, dur: T.s1 + 0.6 });
+tl.fromTo("#tgM", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, w("doesn't move") - 0.2); sfx(w("doesn't move"), "pop", { gain: 0.16 });
+sfx(tArm, "clunk", { gain: 0.18 });
+$("#thrA").innerHTML = R.thrust({ w: 680, id: "tw" });
+tl.fromTo("#thr", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("because thrust") - 0.3);
+tl.fromTo("#tlm1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("because thrust") + 0.1);
+pop("#win", w("beat weight"), { sfx: "bloop", gain: 0.16 });
+const tBeat = w("finally does") - 0.1;
+REEL.onFrame((t) => {
+  if (t > T.s1 + 1) return;
+  const k = 0.55 + 0.25 * sm((t - w("thrust has")) / 1.2) + 0.35 * sm((t - tBeat) / 0.7), a = $("#twT");
+  if (a) { a.style.transformBox = "fill-box"; a.style.transformOrigin = "50% 100%"; a.style.transform = `scaleY(${k.toFixed(3)})`; }
+  const r = $("#twR"); if (r) r.setAttribute("transform", `translate(500 ${(40 - Math.min(90, alt(t) * 12)).toFixed(1)}) scale(.7)`);
+  $("#win").textContent = t < tBeat + 0.4 ? "⚖️ WEIGHT IS WINNING… 😬" : "🚀 THRUST WINS! BYE, PAD";
+  $("#win").style.background = t < tBeat + 0.4 ? RED : "#22B573";
+});
+sfx(tBeat + 0.4, "ding", { gain: 0.2 });
+tl.fromTo("#lift", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, TL + 0.15);
+sfx(TL + 0.3, "impact", { gain: 0.3 }); REEL.shake($("#shake"), TL + 0.3, 8);
+tl.to("#lift", { autoAlpha: 0, duration: 0.25 }, T.s1 - 0.4);
+
+// ================================================= S1: not the ground — the balloon trick
+EX.smokeWipe(T.s1, { seed: 5 });
+EX.swap("#s3d", "#s1", T.s1);
+tl.set(P0, { autoAlpha: 0 }, T.s1);
+$("#balA").innerHTML = R.balloon({ w: 900, id: "bl" });
+$("#host1").innerHTML = ART.host({ w: 250, id: "h1", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h1Mouth"), { from: T.s1, to: T.s2, open: 14 }); PAPER.blink($("#h1Eyes"), [T.s1 + 2.1, T.s1 + 7.4]);
+gsap.set(["#myth", "#nope", "#bal", "#ton", "#host1", ...$$("#mch .mc")], { autoAlpha: 0 });
+tl.fromTo("#myth", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, T.s1 + 0.3);
+sfx(T.s1 + 0.3, "paper", { gain: 0.18 });
+tl.fromTo("#host1", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, T.s1 + 0.7);
+const tNope = w("not push") + 0.1;
+tl.fromTo("#nope", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tNope);
+sfx(tNope + 0.17, "stamp", { gain: 0.3 }); REEL.shake($("#shake"), tNope + 0.2, 4);
+[w("throws burning"), w("gas pushes"), w("same trick") - 0.3].forEach((tt, i) => { tl.fromTo($$("#mch .mc")[i], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, tt - 0.1); sfx(tt, "pop", { gain: 0.16, pitch: 1 + i * 0.12 }); });
+tl.fromTo("#bal", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("same trick") - 0.1);
+const tGo = w("letting go");
+sfx(tGo + 0.1, "jet", { gain: 0.16, dur: 1.6 });
+REEL.onFrame((t) => {
+  if (t < T.s1 || t > T.s2 + 0.7) return;
+  const k = sm((t - tGo) / 1.4), sw = 1 + 0.18 * sm((t - w("this balloon")) / 0.8), b = $("#blBal");
+  if (b) b.setAttribute("transform", `translate(${(520 + 150 * k + Math.sin(t * 11) * 6 * k).toFixed(1)} ${(260 + Math.sin(t * 7) * 10 * k).toFixed(1)}) rotate(${(-8 + Math.sin(t * 9) * 7 * k).toFixed(1)}) scale(${sw.toFixed(3)})`);
+  $$("#balA .air").forEach((p, i) => p.setAttribute("stroke-dashoffset", (-(t * 260 + i * 17) % 66).toFixed(1)));
+});
+const tTon = w("five hundred") - 0.1;
+tl.fromTo("#ton", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tTon);
+sfx(tTon + 0.17, "stamp", { gain: 0.3 }); sfx(we("tonnes") + 0.05, "clunk", { gain: 0.2, pitch: 0.6 });
+
+// ================================================= S2: chase through the clouds — the gravity turn
+EX.iris("#s3d", T.s2, 960, 540, { color: "#A0402C" });
+EX.swap("#s1", "#s3d", T.s2);
+sfx(T.s2, "rumble", { gain: 0.26, dur: T.s4 - T.s2 + 0.5 });
+tl.fromTo("#tlm2", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, T.s2 + 0.3);
+tl.fromTo("#odd", { autoAlpha: 0, scale: 2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("something odd"));
+sfx(w("something odd") + 0.17, "stamp", { gain: 0.24 });
+tl.to("#odd", { autoAlpha: 0, duration: 0.25 }, w("gently") - 0.2);
+pop("#lean", tLean, { sfx: "bloop", gain: 0.16 });
+$("#gtA").innerHTML = R.gturn({ w: 700, id: "gt" });
+tl.fromTo("#gtc", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("because getting") - 0.2);
+tl.fromTo("#gtPth", { drawSVG: "0%" }, { drawSVG: "100%", duration: 2.6, ease: "power1.inOut", immediateRender: false }, w("because getting"));
+sfx(w("because getting"), "whoosh", { gain: 0.14 });
+pop("#side", w("sideways speed"), { sfx: "ding", gain: 0.18 });
+
+// ================================================= S3: Max-Q — the air pushes back hardest
+EX.smokeWipe(T.s3, { seed: 11 });
+tl.set(["#lean", "#gtc", "#side", "#odd"], { autoAlpha: 0 }, T.s3);
+$("#mqA").innerHTML = R.maxq({ w: 700, id: "mq" });
+$("#fdA").innerHTML = R.director({ w: 150, id: "fd" });
+const mqSvg = $("#mqA svg"); mqSvg.insertAdjacentHTML("beforeend", `<circle id="mqMe" r="20" fill="${YEL}" stroke="${INK}" stroke-width="6"/>`);
+gsap.set("#mqDot", { autoAlpha: 0 });
+tl.fromTo("#mqc", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("max q") - 0.3);
+sfx(w("max q"), "riser", { gain: 0.16, dur: 2.4 });
+tl.fromTo("#thc", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("so the engines") - 0.3);
+const tHard = w("hardest");
+REEL.shake($("#shake"), tHard, 7); sfx(tHard, "impact", { gain: 0.22 });
+tl.fromTo("#fdc", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, tHard + 0.1);
+sfx(tHard + 0.4, "sip", { gain: 0.22 });
+sfx(tEase, "whoosh", { gain: 0.12, pitch: 0.7 }); sfx(tFull + 0.1, "riser", { gain: 0.14, dur: 0.8 });
+REEL.onFrame((t) => {
+  if (t < T.s3 - 0.5 || t > T.s4 + 0.8) return;
+  const cv = $("#mqCv"); if (cv) { const Lc = cv.getTotalLength(), p = cv.getPointAtLength(Lc * clamp((t - T.s3) / (T.s4 - T.s3 + 2))); $("#mqMe").setAttribute("cx", p.x.toFixed(1)); $("#mqMe").setAttribute("cy", p.y.toFixed(1)); }
+  const dip = sm((t - tEase) / 0.5) * (1 - sm((t - tFull) / 0.4)), th = Math.round(100 - 28 * dip);
+  $("#thB").style.width = `${th}%`; $("#thN").textContent = `${th}%`;
+  $("#thS").textContent = t < tEase ? "🔥 FULL POWER" : t < tFull ? "🐢 EASY… EASY…" : "🔥 BACK ON FULL!";
+  $("#splN").textContent = Math.round(40 * sm((t - tHard - 0.2) / 1.5) + (t > tFull ? 20 * sm((t - tFull) / 0.8) : 0));
+  const arm = $("#fdArm"); if (arm) arm.setAttribute("transform", `rotate(${(Math.sin(t * 24) * 6).toFixed(1)} 214 230)`);
+});
+
+// ================================================= S4: three times heavier + quick quiz
+EX.stripes(T.s4, { colors: ["#7B61FF", "#FFC93D", "#F2553D", "#12A4C4", "#9255DA"] });
+EX.swap("#s3d", "#s4", T.s4);
+gsap.set("#opts", { autoAlpha: 0 }); tl.set("#opts", { autoAlpha: 1 }, w("quick how")); gsap.set(["#scl", "#gm", "#x3", "#qg", "#qq", "#oA", "#oB", "#oC", "#cOk", "#csn"], { autoAlpha: 0 });
+tl.fromTo("#gm", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, T.s4 + 0.3);
+tl.fromTo("#scl", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(1.6)", immediateRender: false }, w("astronauts") - 0.2);
+tl.to("#scl", { autoAlpha: 0, x: 80, duration: 0.3, ease: "power2.in" }, w("quick how") - 0.45);
+const tG = w("their weight") - 0.1, tG3 = w("heavier") + 0.2, tCs = w("cousins") - 0.2;
+every(tG, tG3, 0.15, (t) => sfx(t, "tick", { gain: 0.07, pitch: 0.9 + (t - tG) * 0.25 }));
+tl.fromTo("#x3", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, w("three times") - 0.05);
+sfx(w("three times") + 0.12, "stamp", { gain: 0.28 });
+REEL.onFrame((t) => {
+  if (t < T.s4 || t > END) return;
+  const g = 1 + 2 * sm((t - tG) / (tG3 - tG)); $("#gN").textContent = `${g.toFixed(1)} G`; $("#wtN").textContent = Math.round(70 * g); $("#sclN").textContent = `${Math.round(70 * g)} KG`; $("#sclN").style.color = g < 1.6 ? "#5CF0A6" : g < 2.4 ? YEL : "#FF8A8A"; $("#face").textContent = g < 1.6 ? "😐" : g < 2.4 ? "😬" : "😵"; $("#sclS").textContent = g < 1.6 ? '"ALL GOOD."' : g < 2.4 ? '"HMM. HEAVY."' : '"WHO SAT ON ME?!"';
+  $$("#gm .gf").forEach((f, i) => (f.style.width = `${(clamp(g - 1 - i + 1) * 100).toFixed(1)}%`));
+  const cz = sm((t - tCs) / 0.4); $("#ast").style.transform = `scaleY(${(1 / (0.72 + 0.28 * g) - 0.06 * cz).toFixed(3)}) scaleX(${(1 + 0.05 * (g - 1)).toFixed(3)})`;
+  $("#csn").style.transform = `translateY(${(L(-200, 0, cz) + Math.sin(t * 8) * 4 * cz).toFixed(1)}px)`;
+});
+pop("#qg", w("quick how") - 0.1, { sfx: "chime", gain: 0.18 });
+tl.fromTo("#qq", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.8)", immediateRender: false }, w("how does") - 0.05);
+["#oA", "#oB", "#oC"].forEach((el, i) => { const tt = w("how does") + 0.1 + i * 0.22; tl.fromTo(el, { autoAlpha: 0, y: 120, rotation: (i - 1) * 6 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.35, ease: "back.out(1.8)", immediateRender: false }, tt); sfx(tt, "pop", { gain: 0.16, pitch: 0.9 + i * 0.15 }); });
+tl.to(["#oA", "#oB"], { opacity: 0.35, scale: 0.94, duration: 0.3 }, tCs);
+tl.to("#oC", { scale: 1.05, duration: 0.3, ease: "back.out(2)" }, tCs);
+tl.fromTo("#cOk", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tCs + 0.05);
+sfx(tCs + 0.22, "stamp", { gain: 0.3 }); sfx(tCs + 0.25, "chime", { gain: 0.18 });
+tl.fromTo("#csn", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, immediateRender: false }, tCs);
+sfx(tCs + 0.4, "clunk", { gain: 0.2, pitch: 0.8 });
+
+// ================================================= close: NEXT: STAGING
+EX.phaseClose(T.close, { phase: 2 });
+REEL.finish(END);
+</script></body></html>

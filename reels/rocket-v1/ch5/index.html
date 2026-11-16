@@ -1,0 +1,362 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Rocket Ch5 Return</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+.bg{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 2.5px,transparent 3px);background-size:44px 44px}
+.card{position:absolute;border-radius:26px;color:#1B2340;font-family:"JetBrains Mono";font-weight:800}
+.ttl{font-size:17px;letter-spacing:.16em;opacity:.6}
+.big{font-family:Archivo;font-weight:900}
+.pill{position:absolute;padding:10px 24px;border-radius:999px;font-family:"JetBrains Mono";font-weight:800;font-size:26px;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.stamp{position:absolute;padding:6px 26px;border:9px solid #F0566E;border-radius:18px;color:#F0566E;font-family:Archivo;font-weight:900;font-size:72px;letter-spacing:.03em;background:rgba(255,255,255,.95);white-space:nowrap}
+.tag3{position:absolute;left:0;top:0;display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:#0E1530;border:3px solid #1B2340;box-shadow:0 6px 0 #1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:24px;color:#fff;white-space:nowrap}
+.tag3:before{content:"";position:absolute;left:-46px;top:50%;width:46px;height:4px;background:#FFC93D}
+.tag3 i{position:absolute;left:-58px;top:calc(50% - 10px);width:20px;height:20px;border-radius:50%;background:#FFC93D;border:3px solid #1B2340}
+.chipx{display:inline-flex;align-items:center;gap:12px;padding:12px 22px;border-radius:18px;background:#fff;border:3px solid #1B2340;box-shadow:0 6px 0 #1B2340;font-family:"JetBrains Mono";font-weight:800;font-size:28px;color:#1B2340}
+.bar{position:relative;height:40px;border-radius:12px;background:#fff;border:3px solid #1B2340;overflow:hidden}
+.bar b{position:absolute;left:0;top:0;bottom:0}
+.hsb{width:118px;height:84px;border-radius:12px;border:4px solid #1B2340;background:#C98A4B;transform-origin:50% 100%}
+.ph{position:absolute;top:0;width:320px;height:250px;border-radius:26px;background:#3A3470;border:4px solid #1B2340;box-shadow:0 9px 0 #1B2340;text-align:center;font-family:Archivo;font-weight:900;color:#8D86C9}
+.ph .ic{font-size:76px;margin-top:26px;filter:grayscale(1);opacity:.5}
+.ph .nm{font-size:38px;margin-top:6px}
+.ph .ok{position:absolute;right:-14px;top:-18px;width:64px;height:64px;border-radius:50%;background:#22B573;color:#fff;border:4px solid #1B2340;font-size:40px;line-height:58px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/paper.js"></script><script src="../../../lib/cast.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/rocket.js"></script>
+<script src="../../../lib/rocketfx.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+
+  <!-- S0: going up was easy. coming back is the hard bit -->
+  <section class="scene" id="s0">
+    <div class="bg" style="background:radial-gradient(ellipse at 40% 25%,#2FB7C9 0%,#11708E 55%,#0A3A5A 100%)"></div><div class="dots"></div>
+    <div class="pill fc" id="hl0" data-ob="hl0" style="left:120px;top:150px;background:#FFC93D;color:#1B2340;font-family:Archivo;font-weight:900;font-size:46px;padding:10px 34px">🏠 THE WAY HOME</div>
+    <div class="card fc" id="mt0" data-ob="mt0" style="left:120px;top:280px;width:1000px;padding:24px 28px;background:#FFF1C9">
+      <div class="ttl">DIFFICULTY-O-METER</div>
+      <div style="font-size:26px;margin:16px 0 8px">🚀 GOING UP</div><div class="bar"><b id="mbU" style="width:60%;background:#FFC93D"></b></div>
+      <div style="font-size:26px;margin:22px 0 8px">🪂 COMING BACK <span id="mbT" style="color:#C8361F"></span></div><div class="bar"><b id="mbD" style="width:0%;background:linear-gradient(90deg,#FFC93D,#F2553D)"></b></div>
+    </div>
+    <div class="card fc" id="pc0" data-ob="pc0" style="left:120px;top:690px;width:760px;padding:20px 24px;background:#DDF7EA;transform:rotate(-2deg)">
+      <div class="ttl">📦 RETURN PARCEL · FRAGILE</div>
+      <div class="big" style="font-size:34px;margin-top:8px">1 CAPSULE · 3 HUMANS</div><div style="font-size:22px;margin-top:6px">HANDLE WITH CARE. VERY HOT. DO NOT DROP.<br>(WE WILL DROP IT.)</div>
+    </div>
+    <div class="stamp" id="hd0" style="left:930px;top:720px;font-size:58px;transform:rotate(-5deg)">😱 HARDEST PART</div>
+    <div id="host0" class="abs" data-ob="host0" style="left:1610px;top:500px"></div>
+  </section>
+
+  <!-- 3D world: deorbit + re-entry, then chutes, splash, boat -->
+  <section class="scene" id="s3d">
+    <canvas id="c3" width="1920" height="1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></canvas>
+    <div class="tag3" id="tgB" style="background:#F2553D"><i></i>🔥 ENGINES ON · BRAKES!</div>
+    <div class="tag3" id="tgP" style="background:#FF8A2A;color:#1B2340"><i></i>🌈 PLASMA · GLOWING AIR</div>
+    <div class="tag3" id="tgD"><i></i>🪂 SMALL ONES · DROGUES</div>
+    <div class="tag3" id="tgM" style="background:#22B573"><i></i>🪂 BIG ONES · MAINS</div>
+    <div class="tag3" id="tgBt"><i></i>🚤 RECOVERY BOAT</div>
+    <div class="tag3" id="tgDr" style="background:#7B61FF"><i></i>🚪 DOOR: OPEN</div>
+    <div class="card fc" id="spd" data-ob="spd" style="left:70px;top:150px;width:470px;padding:18px 22px;background:#DCEFFF">
+      <div class="ttl">🛸 CAPSULE SPEED</div>
+      <div class="big" style="font-size:66px;line-height:1.1;margin-top:6px"><span id="spN">28,000</span><span style="font-size:30px"> KM/H</span></div>
+      <div id="spS" style="font-size:22px;margin-top:6px;color:#0E7C93">≈ MUMBAI → DELHI IN 3 MIN</div>
+    </div>
+    <div class="card fc" id="tmp" data-ob="tmp" style="left:70px;top:420px;width:470px;padding:18px 22px;background:#FFE3D3">
+      <div class="ttl">🌡️ AIR IN FRONT</div>
+      <div class="big" style="font-size:66px;line-height:1.1;margin-top:6px"><span id="tpN">20</span><span style="font-size:30px"> °C</span></div>
+      <div class="bar" style="margin-top:10px"><b id="tpB" style="width:2%;background:linear-gradient(90deg,#FFC93D,#FF8A2A,#F2553D)"></b></div>
+      <div id="tpS" style="font-size:21px;margin-top:10px">🍳 HOT TAWA: 250 °C</div>
+    </div>
+    <div class="pill fc" id="loc" data-ob="loc" style="left:1330px;top:310px;background:#1B2340;color:#FFC93D">📍 BAY OF BENGAL · ROUGHLY</div>
+    <div class="stamp" id="home" data-ob="home" style="left:600px;top:150px;font-size:70px;border-color:#22B573;color:#22B573;transform:rotate(-4deg)">🏠 WELCOME HOME!</div>
+  </section>
+
+  <!-- S2: not friction — compression. the heat shield takes one for the team -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:radial-gradient(ellipse at 30% 30%,#FF9A5C 0%,#C9432E 55%,#6E1E28 100%)"></div><div class="dots"></div>
+    <div class="card fc" id="rn2" data-ob="rn2" style="left:70px;top:150px;width:900px;height:524px;overflow:hidden;background:#0E1530"><div id="rnA" class="abs" style="left:0;top:0"></div></div>
+    <div class="card fc" id="why" data-ob="why" style="left:1020px;top:150px;width:840px;padding:20px 24px;background:#FFF1C9">
+      <div class="ttl">WHY IT GLOWS</div>
+      <div class="big" style="font-size:34px;margin:8px 0 10px">AIR CAN'T GET OUT OF THE WAY → SQUASHED → HOT</div>
+      <div style="font-size:22px">🚲 LIKE A CYCLE PUMP GETTING WARM… × A LOT</div>
+    </div>
+    <div class="stamp" id="frX" data-ob="frX" style="left:1060px;top:440px;font-size:56px;border-color:#8D97B5;color:#8D97B5;transform:rotate(-5deg)">❌ FRICTION</div>
+    <div class="stamp" id="cmp" data-ob="cmp" style="left:1240px;top:590px;font-size:56px;border-color:#22B573;color:#22B573;transform:rotate(4deg)">✓ COMPRESSION</div>
+    <div class="card fc" id="hs" data-ob="hs" style="left:70px;top:720px;width:900px;padding:16px 22px;background:#F1E4D4">
+      <div class="ttl">🛡️ HEAT SHIELD · BURNS ON PURPOSE</div>
+      <div style="display:flex;gap:16px;align-items:flex-end;height:96px;margin-top:8px"><div class="hsb"></div><div class="hsb"></div><div class="hsb"></div><div class="hsb"></div><div class="hsb"></div><div class="hsb"></div></div>
+      <div style="font-size:21px;margin-top:6px">STATUS: <span id="hsS" style="color:#C8361F">FULL · READY</span></div>
+    </div>
+    <div id="host2" class="abs" data-ob="host2" style="left:1620px;top:720px"></div>
+  </section>
+
+  <!-- S6: the boat deck — the first request -->
+  <section class="scene" id="s6">
+    <div class="bg" style="background:linear-gradient(180deg,#7FD0F0 0%,#3D9BD6 45%,#1D5FB0 62%,#164A8C 100%)"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path id="wv6" d="M-200 640 q 60 -18 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 t 120 0 L 2200 1080 L -200 1080 Z" fill="#2A78C8" opacity=".7"/>
+      <path d="M0 780 L 1920 760 L 1920 1080 L 0 1080 Z" fill="#E9E2D0" stroke="#1B2340" stroke-width="6"/><path d="M0 820 L 1920 800" stroke="#C9BFA6" stroke-width="5"/><path d="M0 760 L 1920 740" stroke="#F2553D" stroke-width="14"/></svg>
+    <div class="pill fc" id="dk6" data-ob="dk6" style="left:80px;top:140px;background:#1B2340;color:#FFC93D">🚤 RECOVERY BOAT · DECK</div>
+    <div id="as6" class="abs" data-ob="as6" style="left:140px;top:300px"></div>
+    <div class="card fc" id="bb6" data-ob="bb6" style="left:470px;top:250px;width:500px;padding:20px 24px;background:#fff;border:4px solid #1B2340;box-shadow:0 8px 0 #1B2340">
+      <div class="ttl">👩‍🚀 ASTRONAUT, FIRST WORDS</div><div class="big" id="bbT" style="font-size:40px;margin-top:6px">"FIRST THING I WANT…"</div>
+    </div>
+    <div id="cup6" class="abs" data-ob="cup6" style="left:560px;top:500px;width:300px;height:220px;text-align:center"><div id="stm6" style="font-size:60px;line-height:1">♨️</div><div style="font-size:140px;line-height:1">☕</div></div>
+    <div class="stamp" id="oc6" style="left:1020px;top:150px;font-size:56px;border-color:#B07040;color:#B07040;transform:rotate(-6deg)">OF COURSE. 🙄</div>
+    <div id="fd6" class="abs" data-ob="fd6" style="left:1280px;top:330px"></div>
+    <div class="card fc" id="cc6" data-ob="cc6" style="left:1640px;top:320px;width:240px;padding:16px 18px;background:#FFF1C9">
+      <div class="ttl">CHAIS TODAY</div><div class="big" id="cc6N" style="font-size:72px;color:#C8361F">11</div>
+    </div>
+  </section>
+
+  <!-- S7: recap — five phases, one trip -->
+  <section class="scene" id="s7">
+    <div class="bg" style="background:radial-gradient(ellipse at 50% 0%,#8C6CFF 0%,#4B34B8 55%,#21195E 100%)"></div><div class="dots"></div>
+    <div class="pill fc" id="hl7" data-ob="hl7" style="left:100px;top:140px;background:#FFC93D;color:#1B2340;font-family:Archivo;font-weight:900;font-size:44px;padding:10px 34px">🏁 THE WHOLE TRIP</div>
+    <div class="abs" id="phs" data-ob="phs" style="left:100px;top:270px;width:1720px;height:260px">
+      <div class="ph" style="left:0"><div class="ic">⏱</div><div class="nm">COUNTDOWN</div></div>
+      <div class="ph" style="left:350px"><div class="ic">🔥</div><div class="nm">LIFTOFF</div></div>
+      <div class="ph" style="left:700px"><div class="ic">💥</div><div class="nm">STAGING</div></div>
+      <div class="ph" style="left:1050px"><div class="ic">🌍</div><div class="nm">ORBIT</div></div>
+      <div class="ph" style="left:1400px"><div class="ic">🪂</div><div class="nm">RETURN</div></div>
+    </div>
+    <div class="abs" id="ing" data-ob="ing" style="left:100px;top:600px;width:1380px;display:flex;flex-wrap:wrap;gap:18px">
+      <span class="chipx ig">⛽ 90% FUEL</span><span class="chipx ig">🛸 1 TINY CAPSULE</span><span class="chipx ig">☕ 1 VERY BRAVE, VERY TIRED FLIGHT DIRECTOR</span>
+    </div>
+    <div class="stamp" id="sp7" data-ob="sp7" style="left:180px;top:790px;font-size:58px;border-color:#7B61FF;color:#7B61FF;transform:rotate(-4deg)">🚀 SPACE ✓</div>
+    <div class="stamp" id="bk7" data-ob="bk7" style="left:640px;top:790px;font-size:58px;border-color:#22B573;color:#22B573;transform:rotate(3deg)">🏠 …AND BACK ✓</div>
+    <div id="host7" class="abs" data-ob="host7" style="left:1610px;top:600px"></div>
+  </section>
+
+  <!-- S8: seatbelt sign. still falling. -->
+  <section class="scene" id="s8">
+    <div class="bg" style="background:linear-gradient(180deg,#0A0F2E 0%,#1A2466 70%,#2C3C8C 100%)"></div>
+    <div class="abs" style="inset:0;background-image:radial-gradient(rgba(255,255,255,.75) 1.5px,transparent 2px);background-size:90px 70px;opacity:.5"></div>
+    <svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><circle cx="960" cy="2700" r="1900" fill="#9FD7FF" opacity=".3"/><circle cx="960" cy="2720" r="1900" fill="#1D5FB0" stroke="#1B2340" stroke-width="6"/>
+      <path d="M 120 900 A 1000 330 0 0 1 1800 900" stroke="#FFC93D" stroke-width="6" fill="none" stroke-dasharray="20 16" opacity=".7"/><g id="cp8"><circle r="22" fill="#F1F5FB" stroke="#1B2340" stroke-width="5"/><path d="M-12 -2 L 12 -2" stroke="#1B2340" stroke-width="4"/></g></svg>
+    <div class="card fc" id="sb8" data-ob="sb8" style="left:560px;top:200px;width:800px;padding:26px 30px;background:#0E1530;border:4px solid #FFC93D;text-align:center;color:#FFC93D">
+      <div style="font-size:70px">🔔 🧑‍🚀 🔒</div><div class="big" style="font-size:58px;margin-top:6px">PLEASE REMAIN SEATED</div>
+    </div>
+    <div class="stamp" id="sf8" data-ob="sf8" style="left:470px;top:560px;font-size:54px;border-color:#FF8A2A;color:#FF8A2A;transform:rotate(-3deg)">🌍 TECHNICALLY… STILL FALLING</div>
+    <div id="host8" class="abs" data-ob="host8" style="left:110px;top:520px"></div>
+  </section>
+
+  <!-- end card, above the closing sky -->
+  <div id="endc" class="abs" style="inset:0;z-index:80;pointer-events:none">
+    <div class="stamp" id="mc9" style="left:960px;top:330px;font-size:110px;border-color:#22B573;color:#22B573;transform:rotate(-4deg)">MISSION COMPLETE ✓</div>
+    <div id="pt9" class="abs" style="left:0;right:0;top:620px;display:flex;justify-content:center;gap:34px"></div>
+  </div>
+
+</div></div>
+<script type="module">
+import { rocketWorld } from "../../../lib/rocket3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we, pop, every } = EX;
+const { ART } = PAPER;
+const R = ROCKET, INK = "#1B2340", TEAL = "#12A4C4", YEL = "#FFC93D";
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+const L = (a, b, k) => a + (b - a) * k, L3 = (a, b, k) => a.map((v, i) => L(v, b[i], k));
+const fmt = (n) => Math.round(n).toLocaleString("en-IN");
+
+const T = { s1: w("the capsule") - 0.3, rn: w("and the air") - 0.1, s2: w("that's not friction") - 0.3, s4: w("then comes") - 0.2, bt: w("the recovery") - 0.1, s6: w("and the first") - 0.15, s7: w("so countdown") - 0.2, s8: w("please remain") - 0.25, close: we("still falling") + 0.4 };
+const END = T.close + 2.8;
+EX.phaseStart(5, "Return", { t: 0.55, clock: (t) => 9000 + t });
+gsap.set("#s0", { autoAlpha: 1 });
+gsap.set(["#mc9", "#pt9"], { autoAlpha: 0 }); gsap.set("#mc9", { xPercent: -50 });
+
+// ================================================= S0: the way home
+$("#host0").innerHTML = ART.host({ w: 250, id: "h0", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h0Mouth"), { from: 0.3, to: T.s1, open: 14 }); PAPER.blink($("#h0Eyes"), [2.2]);
+gsap.set(["#hl0", "#mt0", "#pc0", "#hd0", "#host0"], { autoAlpha: 0 });
+tl.fromTo("#host0", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.4)", immediateRender: false }, 0.9);
+pop("#hl0", 1.0, { sfx: "pop", gain: 0.14 });
+tl.fromTo("#mt0", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("coming back") - 0.2);
+tl.fromTo("#pc0", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("coming back") + 0.3);
+sfx(w("coming back") + 0.3, "paper", { gain: 0.16 });
+const tH = w("hardest");
+REEL.onFrame((t) => { if (t > T.s1 + 0.8) return; const k = sm((t - w("coming back")) / (tH + 0.4 - w("coming back"))); $("#mbD").style.width = `${(100 * k).toFixed(1)}%`; $("#mbT").textContent = k >= 1 ? "· OFF THE CHART" : ""; });
+tl.fromTo("#hd0", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tH - 0.05);
+sfx(tH + 0.12, "stamp", { gain: 0.3 }); REEL.shake($("#shake"), tH + 0.15, 5);
+
+// ================================================= 3D world
+const W3 = rocketWorld($("#c3"), { w: 1920, h: 1080 });
+const X = 12000, tSp = w("gentle splash") + 0.25, tDr = w("small parachutes"), tMn = w("then big");
+const tBurn = w("fires its") - 0.1, tGl = w("squashed") - 0.3;
+const capZ = (t) => L(58, 30, sm((t - T.s1) / (T.rn - T.s1)));
+const capY = (t) => t < tDr ? L(260, 170, (t - T.s4) / (tDr - T.s4)) : t < tMn ? L(170, 120, (t - tDr) / (tMn - tDr)) : t < tSp ? L(120, -0.9, (t - tMn) / (tSp - tMn)) : -0.9;
+const foam = (t) => { const a = t - tSp; return a < 0 ? { c: [X, 0], k: 0 } : { c: [X, 0], r: 2.4 + a * 5.2, k: Math.max(0, 1 - a / 4.5), churn: Math.min(1, a * 1.5) }; };
+const glowAt = (t) => sm((t - tGl) / 2.2) * (0.85 + 0.15 * Math.sin(t * 7));
+function shot(t) {
+  if (t < T.rn) { const u = sm((t - T.s1) / (T.rn - T.s1)), z = capZ(t);
+    return { t, mood: "space", earthAlt: 400000, earthRot: [0.5, 1.45 + u * 0.03, 0.1], cityLights: 1.6, capsule: { p: [0, 0, z], rot: [-Math.PI / 2, 0, 0], glow: 0.12 * sm((t - tBurn) / 0.5) }, cam: [L(-30, -26, u), L(7, 5, u), z + 12], look: [2, -1, z - 12], fov: 48, shake: 0.04 * sm((t - tBurn) / 0.5), smoke: {} }; }
+  if (t < T.s4) { const u = sm((t - T.rn) / (T.s2 - T.rn)), g = glowAt(t);
+    return { t, mood: "space", earthAlt: L(120000, 80000, u), earthRot: [0.5, 1.95, 0.1], cityLights: 0, capsule: { p: [0, 0, 0], rot: [0, 0, -1.0 + Math.sin(t * 3) * 0.03 * g] , glow: g }, cam: L3([-28, 1, 42], [-22, 0, 33], u), look: [7, 6, 0], fov: 44, shake: 0.12 * g, smoke: {} }; }
+  const dep = (t0) => Math.max(0.01, sm((t - t0) / 0.45));
+  const ch = t < tDr ? 0 : t < tMn ? 1 : 2, d = ch === 1 ? dep(tDr) : ch === 2 ? (t < tSp ? dep(tMn) : Math.max(0.01, 1 - (t - tSp) / 1.1)) : 1;
+  if (t < T.bt) { const y = capY(t), up = Math.max(0, y - 95), u = sm((t - T.s4) / (T.bt - T.s4));
+    return { t, mood: "day", sea: { amp: 1, foam: foam(t) }, capsule: { p: [X, y, 0], rot: [0.05, 0, 0.03], chute: ch, deploy: d, float: t < tSp ? 0 : Math.min(1, (t - tSp) * 2) }, boat: { p: [X + 260, 0, -340], yaw: 2.3 }, pad: false, smoke: { splash: [X, 0, 0, t - tSp] },
+      cam: L3([X + 70, 7 + Math.max(0, y - 30) * 0.9, 64], [X + 46, 4.5, 40], u), look: [X, y < 20 ? L(2, y + 14 * sm(y / 40), y / 20) : y + 14 * sm(y / 40), 0], fov: 40 }; }
+  const u = sm((t - T.bt) / (T.s6 - T.bt + 0.6)), bx = L(X + 140, X + 45, u);
+  return { t, mood: "day", sea: { amp: 1, foam: foam(t) }, capsule: { p: [X, 0, 0], rot: [0.05, 0.4, 0.03], float: 1 }, boat: { p: [bx, 0, -60 + 20 * u], yaw: 2.6 }, pad: false, smoke: { splash: [X, 0, 0, t - tSp] }, cam: L3([X - 14, 2.2, 15], [X - 11, 2.6, 12], u), look: [X + 3, 0.6, -2], fov: 46 };
+}
+const on3d = (t) => (t >= T.s1 - 0.05 && t <= T.s2 + 0.7) || (t >= T.s4 - 0.7 && t <= T.s6 + 0.7);
+const anchor = (el, p, dx = 0, dy = 0) => { const [x, y, z] = W3.project(p); el.style.transform = `translate(${(x + dx).toFixed(1)}px,${(y + dy).toFixed(1)}px)`; el.style.visibility = z < 1 ? "visible" : "hidden"; };
+REEL.onFrame((t) => {
+  if (!on3d(t)) return; W3.frame(shot(t));
+  if (t < T.rn) anchor($("#tgB"), [0, 0, capZ(t)], 70, -30);
+  else if (t < T.s4) anchor($("#tgP"), [0, 0, 0], 120, -110);
+  else if (t < T.bt) { const y = capY(t); anchor($("#tgD"), [X, y + 20, 0], 60, -20); anchor($("#tgM"), [X, y + 30, 0], 80, -20); }
+  else { anchor($("#tgBt"), [L(X + 140, X + 45, sm((t - T.bt) / (T.s6 - T.bt + 0.6))), 6, -60], 50, -20); anchor($("#tgDr"), [X, 2.5, 0], 70, -40); }
+});
+
+// ================================================= S1: deorbit burn → drop into the air → plasma
+EX.iris("#s3d", T.s1, 960, 540, { color: "#0A3A5A" });
+EX.swap("#s0", "#s3d", T.s1);
+gsap.set(["#tgB", "#tgP", "#tgD", "#tgM", "#tgBt", "#tgDr", "#spd", "#tmp", "#loc", "#home"], { autoAlpha: 0 });
+tl.fromTo("#tgB", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tBurn);
+sfx(tBurn, "jet", { gain: 0.2, dur: 1.6 }); sfx(tBurn + 0.1, "pop", { gain: 0.12 });
+tl.fromTo("#spd", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("twenty eight") - 0.3);
+sfx(w("twenty eight"), "ding", { gain: 0.16 });
+tl.to("#tgB", { autoAlpha: 0, duration: 0.2 }, T.rn - 0.25);
+tl.fromTo("#tgP", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, w("plasma") - 0.1);
+sfx(w("plasma"), "whoosh", { gain: 0.2, dur: 0.8 });
+const tT0 = w("glows") - 0.2, tT1 = w("degrees");
+tl.fromTo("#tmp", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, tT0 - 0.4);
+every(tT0, tT1, 0.12, (t) => sfx(t, "tick", { gain: 0.07, pitch: 0.9 + (t - tT0) * 0.25 }));
+sfx(tT1 + 0.05, "ding", { gain: 0.2 }); pop("#tpN", tT1, { sfx: false });
+sfx(tGl, "rumble", { gain: 0.3, dur: T.s2 - tGl + 0.6 });
+REEL.onFrame((t) => {
+  if (t < T.s1 || t > T.s6 + 0.8) return;
+  if (t < T.s4) { const k = sm((t - tBurn) / (T.rn - tBurn)); $("#spN").textContent = fmt(L(28000, 27200, k)); $("#spS").textContent = k > 0.2 ? "🔥 BRAKING… JUST A LITTLE" : "≈ MUMBAI → DELHI IN 3 MIN"; }
+  else { const v = t < tDr ? 600 : t < tMn ? L(600, 220, sm((t - tDr) / 0.8)) : t < tSp ? L(220, 25, sm((t - tMn) / 1.6)) : 0; $("#spN").textContent = fmt(v); $("#spS").textContent = t >= tSp ? "🌊 FLOATING · BOBBING · FINE" : t >= tMn ? "🛺 AUTO-RICKSHAW SPEED" : t >= tDr ? "🐢 SLOWER…" : "🌬️ FALLING FAST"; }
+  const k = sm((t - tT0) / (tT1 - tT0)), c = L(20, 1500, k); $("#tpN").textContent = fmt(c); $("#tpB").style.width = `${(2 + 98 * k).toFixed(1)}%`; $("#tpS").textContent = c > 260 ? `🍳 HOT TAWA × ${Math.max(1, Math.round(c / 250))}` : "🍳 HOT TAWA: 250 °C";
+});
+
+// ================================================= S2: compression, not friction — the heat shield
+EX.smokeWipe(T.s2, { seed: 5 });
+EX.swap("#s3d", "#s2", T.s2);
+$("#rnA").innerHTML = R.reentry({ w: 900, id: "rn" });
+$("#host2").innerHTML = ART.host({ w: 230, id: "h2", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h2Mouth"), { from: T.s2, to: T.s4, open: 14 }); PAPER.blink($("#h2Eyes"), [T.s2 + 2.5]);
+gsap.set(["#why", "#frX", "#cmp", "#hs", "#host2"], { autoAlpha: 0 });
+tl.fromTo("#host2", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, T.s2 + 0.5);
+pop("#why", T.s2 + 0.3, { sfx: "pop", gain: 0.14 });
+const tF = w("friction");
+tl.fromTo("#frX", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tF - 0.05); sfx(tF + 0.12, "stamp", { gain: 0.26 });
+const tC = w("compression");
+tl.fromTo("#cmp", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tC - 0.05); sfx(tC + 0.12, "stamp", { gain: 0.3 }); sfx(tC + 0.18, "chime", { gain: 0.16 });
+tl.to("#frX", { opacity: 0.45, duration: 0.3 }, tC);
+tl.fromTo("#hs", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", immediateRender: false }, w("heat shield") - 0.3);
+const tB0 = w("sacrificed"), tB1 = we("bit by bit");
+const HSB = $$("#hs .hsb");
+HSB.forEach((_, i) => sfx(L(tB0, tB1, i / 5), "pop", { gain: 0.1, pitch: 1.2 - i * 0.08 }));
+REEL.onFrame((t) => {
+  if (t < T.s2 || t > T.s4 + 0.8) return;
+  const pl = $("#rnPlasma"); if (pl) pl.style.opacity = (0.75 + 0.25 * Math.sin(t * 9)).toFixed(2);
+  HSB.forEach((b, i) => { const k = sm((t - L(tB0, tB1, i / 5)) / 0.35); b.style.transform = `scaleY(${(1 - 0.6 * k).toFixed(3)})`; b.style.background = k > 0.5 ? "#3A2A22" : "#C98A4B"; });
+  $("#hsS").textContent = t >= tB1 ? "SACRIFICED, BIT BY BIT 🫡" : t >= tB0 ? "BURNING… ON PURPOSE" : "FULL · READY";
+});
+
+// ================================================= S4: the quiet bit — chutes, splash, welcome home (3D)
+EX.smokeWipe(T.s4, { seed: 8 });
+EX.swap("#s2", "#s3d", T.s4);
+tl.set(["#tmp", "#tgP", "#tgB"], { autoAlpha: 0 }, T.s4);
+tl.set("#spd", { autoAlpha: 1 }, T.s4);
+tl.fromTo("#tgD", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tDr); sfx(tDr, "whoosh", { gain: 0.2, dur: 0.5 }); sfx(tDr + 0.25, "pop", { gain: 0.18 });
+tl.to("#tgD", { autoAlpha: 0, duration: 0.2 }, tMn - 0.1);
+tl.fromTo("#tgM", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, tMn + 0.1); sfx(tMn, "whoosh", { gain: 0.24, dur: 0.6 }); sfx(tMn + 0.3, "pop", { gain: 0.22, pitch: 0.8 });
+tl.to("#tgM", { autoAlpha: 0, duration: 0.25 }, tSp - 0.4);
+sfx(tSp, "water", { gain: 0.34, dur: 2.2 }); sfx(tSp, "impact", { gain: 0.14 });
+pop("#loc", tSp + 0.4, { sfx: "pop", gain: 0.12 });
+const tWh = w("welcome home");
+tl.fromTo("#home", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tWh - 0.05); sfx(tWh + 0.12, "stamp", { gain: 0.3 }); sfx(tWh + 0.2, "chime", { gain: 0.18 });
+tl.to(["#home", "#spd", "#loc"], { autoAlpha: 0, duration: 0.25 }, T.bt);
+tl.fromTo("#tgBt", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, w("boat") - 0.1); sfx(w("boat"), "jet", { gain: 0.1, dur: 1.5 });
+tl.fromTo("#tgDr", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, immediateRender: false }, w("door opens") - 0.1); sfx(w("door opens"), "clunk", { gain: 0.2 });
+sfx(tSp - 0.2, "water", { gain: 0.08, dur: T.s6 - tSp + 0.4 });
+
+// ================================================= S6: the deck — the first request: chai
+EX.stripes(T.s6, { colors: ["#12A4C4", "#FFC93D", "#B07040", "#F2553D", "#22B573"] });
+EX.swap("#s3d", "#s6", T.s6);
+$("#as6").innerHTML = R.astronaut({ w: 300, id: "as" });
+$("#fd6").innerHTML = R.director({ w: 330, id: "fd" });
+gsap.set(["#dk6", "#bb6", "#cup6", "#oc6", "#cc6"], { autoAlpha: 0 });
+pop("#dk6", T.s6 + 0.2, { sfx: false });
+tl.fromTo("#as6", { y: 40 }, { y: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, T.s6);
+tl.fromTo("#fd6", { x: 260 }, { x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, T.s6 + 0.1);
+pop("#bb6", w("first thing") - 0.1, { sfx: "pop", gain: 0.14 });
+const tCh = w("chai");
+tl.fromTo("#cup6", { autoAlpha: 0, y: 80, scale: 0.5 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, tCh - 0.05);
+sfx(tCh, "pour", { gain: 0.16, dur: 0.8 }); sfx(tCh + 0.1, "ding", { gain: 0.18 });
+pop("#cc6", tCh + 0.15, { sfx: false });
+const tOc = w("of course");
+tl.fromTo("#oc6", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tOc - 0.05); sfx(tOc + 0.12, "stamp", { gain: 0.26 });
+sfx(tOc + 0.5, "sip", { gain: 0.28 });
+REEL.onFrame((t) => {
+  if (t < T.s6 || t > T.s7 + 0.8) return;
+  $("#bbT").textContent = t >= tCh - 0.05 ? '"…CHAI. CUTTING CHAI. ☕"' : '"FIRST THING I WANT…"';
+  const lift = sm((t - tCh) / 0.45), arm = $("#fdArm"); if (arm) arm.setAttribute("transform", `rotate(${(-60 * lift + Math.sin(t * 2) * 3 * lift).toFixed(1)} 214 230)`);
+  const head = $("#fdHead"); if (head) head.setAttribute("transform", `rotate(${(Math.sin(t * 1.4) * 4 - 5 * sm((t - tOc) / 0.3)).toFixed(1)} 140 190)`);
+  $("#cc6N").textContent = t >= tOc ? "12" : "11";
+  $("#stm6").style.transform = `translateY(${(-((t * 40) % 30)).toFixed(1)}px)`; $("#stm6").style.opacity = (0.6 + 0.4 * Math.sin(t * 4)).toFixed(2);
+  $("#wv6").setAttribute("transform", `translate(${(-((t * 60) % 240)).toFixed(1)} ${(Math.sin(t * 1.6) * 6).toFixed(1)})`);
+  const as = $("#asAst"); if (as) as.setAttribute("transform", `rotate(${(Math.sin(t * 1.6) * 2).toFixed(1)} 180 300)`);
+});
+
+// ================================================= S7: recap — countdown, liftoff, staging, orbit, return
+EX.iris("#s7", T.s7, 960, 400, { color: "#4B34B8" });
+EX.swap("#s6", "#s7", T.s7);
+$("#host7").innerHTML = ART.host({ w: 250, id: "h7", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h7Mouth"), { from: T.s7, to: T.s8, open: 14 }); PAPER.blink($("#h7Eyes"), [T.s7 + 3.1, T.s7 + 7.4]);
+const PH = $$("#phs .ph"), PCOL = ["#FFF1C9", "#FFE3D3", "#DDF7EA", "#ECE6FF", "#DCEFFF"];
+gsap.set(["#hl7", "#sp7", "#bk7", "#host7", ...$$("#ing .ig")], { autoAlpha: 0 });
+pop("#hl7", T.s7 + 0.2, { sfx: "impact", gain: 0.14 });
+tl.fromTo("#host7", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, T.s7 + 0.4);
+const PHT = [w("countdown"), w("liftoff"), w("staging"), w("orbit return"), w("return", EX.idx("orbit return"))].map((x) => x - 0.05);
+PH.forEach((el, i) => {
+  el.insertAdjacentHTML("beforeend", `<div class="ok">✓</div>`); const ok = $(".ok", el); gsap.set(ok, { autoAlpha: 0 });
+  tl.to(el, { backgroundColor: PCOL[i], color: INK, y: -14, duration: 0.2, ease: "back.out(2)" }, PHT[i]);
+  tl.to($(".ic", el), { filter: "grayscale(0)", opacity: 1, duration: 0.2 }, PHT[i]);
+  tl.fromTo(ok, { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(3)", immediateRender: false }, PHT[i] + 0.05);
+  sfx(PHT[i], "ding", { gain: 0.14, pitch: 0.9 + i * 0.12 });
+});
+[w("nine tenths"), w("one tiny"), w("a very brave")].forEach((tt, i) => { tl.fromTo($$("#ing .ig")[i], { autoAlpha: 0, scale: 0.4, y: 30 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(2.5)", immediateRender: false }, tt - 0.1); sfx(tt, "pop", { gain: 0.16, pitch: 1 + i * 0.12 }); });
+const tSpc = w("space"), tBk = w("and back");
+tl.fromTo("#sp7", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tSpc - 0.05); sfx(tSpc + 0.12, "stamp", { gain: 0.26 });
+tl.fromTo("#bk7", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tBk - 0.05); sfx(tBk + 0.12, "stamp", { gain: 0.3 }); sfx(tBk + 0.2, "chime", { gain: 0.18 });
+
+// ================================================= S8: please remain seated — still falling
+EX.smokeWipe(T.s8, { seed: 14 });
+EX.swap("#s7", "#s8", T.s8);
+$("#host8").innerHTML = ART.host({ w: 250, id: "h8", shirt: TEAL, girl: true });
+PAPER.lipSync($("#h8Mouth"), { from: T.s8, to: T.close, open: 14 }); PAPER.blink($("#h8Eyes"), [T.s8 + 1.6]);
+gsap.set(["#sb8", "#sf8", "#host8"], { autoAlpha: 0 });
+tl.fromTo("#host8", { autoAlpha: 0, y: 300 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.4)", immediateRender: false }, T.s8 + 0.25);
+tl.fromTo("#sb8", { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.8)", immediateRender: false }, w("please remain") - 0.1);
+sfx(w("please remain"), "chime", { gain: 0.2 });
+const tFall = w("technically");
+tl.fromTo("#sf8", { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "power4.in", immediateRender: false }, tFall - 0.05); sfx(tFall + 0.12, "stamp", { gain: 0.26 });
+REEL.onFrame((t) => {
+  if (t < T.s8 || t > T.close + 0.5) return;
+  const a = Math.PI * (1 - ((t - T.s8) * 0.18) % 1), x = 960 + 840 * Math.cos(a), y = 900 - 330 * Math.sin(a);
+  $("#cp8").setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+  const sb = $("#sb8"); sb.style.boxShadow = `0 0 ${(20 + 20 * Math.sin(t * 6)).toFixed(0)}px rgba(255,201,61,.6),0 9px 0 #1B2340`;
+});
+
+// ================================================= close: smoke rises — MISSION COMPLETE
+EX.phaseClose(T.close, { phase: 5 });
+$("#pt9").innerHTML = [1, 2, 3, 4, 5].map((n) => `<div class="pt">${R.patch(n, { w: 150 })}</div>`).join("");
+tl.fromTo("#mc9", { autoAlpha: 0, scale: 2.4 }, { autoAlpha: 1, scale: 1, duration: 0.22, ease: "power4.in", immediateRender: false }, T.close + 0.15);
+sfx(T.close + 0.35, "stamp", { gain: 0.32 }); sfx(T.close + 0.45, "chime", { gain: 0.2 }); REEL.shake($("#shake"), T.close + 0.38, 6);
+tl.set("#pt9", { autoAlpha: 1 }, T.close + 0.5);
+$$("#pt9 .pt").forEach((el, i) => { tl.fromTo(el, { autoAlpha: 0, y: 60, scale: 0.4 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2.2)", immediateRender: false }, T.close + 0.55 + i * 0.16); sfx(T.close + 0.55 + i * 0.16, "pop", { gain: 0.14, pitch: 0.9 + i * 0.12 }); });
+REEL.finish(END);
+</script></body></html>
