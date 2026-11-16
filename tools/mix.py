@@ -285,13 +285,44 @@ def s_jet(d=4.0):
     return norm(x * e, 0.6)
 
 
+def s_rumble(d=2.0):
+    """rocket roar: deep brown-noise rumble with crackle, swelling in and fading out."""
+    t = t_(d)
+    n = noise(d, 91)
+    br = np.cumsum(n); br = br - lp(br, 6, 1); br = br / (np.abs(br).max() + 1e-9)
+    crack = (np.random.default_rng(5).random(len(t)) < 0.003) * noise(d, 6)
+    crack = bp(np.convolve(crack, np.exp(-np.arange(300) / 50), "same"), 500, 4000)
+    x = lp(br, 260) * 1.6 + bp(n, 150, 1500) * 0.25 + crack * 0.6
+    e = np.minimum(1, t / min(0.35, d * 0.3)) * np.minimum(1, (d - t) / min(0.8, d * 0.4))
+    return norm(x * e, 0.7)
+
+
+def s_sip():
+    """a long slurp of hot chai."""
+    d = 1.6
+    t = t_(d)
+    n = noise(d, 12)
+    x = bp(n, 900, 3200) * (0.5 + 0.5 * np.sin(2 * np.pi * 9 * t) ** 2) + bp(n, 300, 900) * 0.3
+    e = np.minimum(1, t / 0.08) * np.minimum(1, (d - t) / 0.4)
+    return norm(x * e, 0.45)
+
+
+def s_water(d=2.0):
+    """deluge: a big gush of water."""
+    t = t_(d)
+    n = noise(d, 31)
+    x = bp(n, 400, 6000) * 0.8 + lp(n, 300) * 0.6
+    e = np.minimum(1, t / 0.25) * np.minimum(1, (d - t) / 0.6)
+    return norm(x * e, 0.55)
+
+
 SFX = {
     "tick": s_tick, "click": s_click, "pop": s_pop, "print": s_print, "stamp": s_stamp, "clunk": s_clunk,
     "ding": s_ding, "whoosh": s_whoosh, "riser": s_riser, "fire": s_fire, "paper": s_paper, "tear": s_tear,
     "swish": s_swish, "impact": s_impact, "glitch": s_glitch, "beep": s_beep, "pistol": s_pistol,
-    "crowd": s_crowd, "slam": s_slam, "roll": s_roll, "bloop": s_bloop, "chime": s_chime, "coin": s_coin, "pour": s_pour, "jet": s_jet,
+    "crowd": s_crowd, "slam": s_slam, "roll": s_roll, "bloop": s_bloop, "chime": s_chime, "coin": s_coin, "pour": s_pour, "jet": s_jet, "rumble": s_rumble, "sip": s_sip, "water": s_water,
 }
-VARIABLE_LEN = {"whoosh", "riser", "fire", "crowd", "pour", "jet"}
+VARIABLE_LEN = {"whoosh", "riser", "fire", "crowd", "pour", "jet", "rumble", "water"}
 _cache = {}
 
 

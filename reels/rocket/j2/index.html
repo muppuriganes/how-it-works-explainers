@@ -1,0 +1,176 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Rocket journey part 2</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+#c3{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.pic{position:absolute;width:600px;height:420px;border-radius:34px;box-shadow:0 0 0 6px #fff,0 22px 50px rgba(0,0,0,.35);overflow:hidden}
+#clk{position:absolute;left:44px;top:36px;padding:8px 20px;border-radius:999px;background:rgba(10,16,44,.55);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,.22);font-family:"JetBrains Mono";font-weight:800;font-size:26px;color:#FFC93D;letter-spacing:.04em}
+#fin{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 115%,#FFB27A 0%,#E06A6A 22%,#3A3A8E 52%,#0B1236 100%)}
+#fin .st{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.85) 1.4px,transparent 2px);background-size:80px 64px;opacity:.55;mask-image:linear-gradient(180deg,#000 30%,transparent 70%)}
+.med{position:absolute;top:560px;width:190px;text-align:center;font-family:Archivo;font-weight:900;font-size:28px;color:#fff;text-shadow:0 3px 0 rgba(8,12,34,.5)}
+.med .c{position:relative;width:130px;height:130px;margin:0 auto 10px;border-radius:50%;background:#fff;border:6px solid #1B2340;box-shadow:0 10px 0 #1B2340;font-size:62px;line-height:118px}
+.med .k{position:absolute;right:-8px;top:-8px;width:52px;height:52px;border-radius:50%;background:#22C77A;border:5px solid #1B2340;color:#fff;font-size:30px;line-height:42px}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script src="words.js"></script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/explainer.js"></script>
+<script src="../../../lib/explainer2.js"></script>
+<script src="../../../lib/iso.js"></script>
+<script src="../../../lib/rocket.js"></script>
+<script src="../../../lib/rocketfx.js"></script>
+<script src="../../../lib/rocket2d.js"></script>
+</head><body>
+<div id="shake"><div id="bgfx"></div><div id="stage">
+  <canvas id="c3" width="1920" height="1080"></canvas>
+  <div id="pMq" class="pic" style="left:1240px;top:330px"></div>
+  <div id="pGs" class="pic" style="left:80px;top:330px"></div>
+  <div id="pDw" class="pic" style="left:1240px;top:330px"></div>
+  <div id="pLd" class="pic" style="left:80px;top:330px"></div>
+  <div id="pNc" class="pic" style="left:1240px;top:300px"></div>
+  <div id="pLp" class="pic" style="left:1240px;top:330px"></div>
+  <div id="pSn" class="pic" style="left:1240px;top:330px"></div>
+  <div id="pFl" class="pic" style="left:1240px;top:330px"></div>
+  <div id="pHt" class="pic" style="left:1240px;top:330px"></div>
+  <div id="rc" class="abs" style="left:260px;top:90px"></div>
+  <div id="cha" class="abs" style="left:0;top:0"></div>
+  <div id="clk">T+01:00</div>
+  <div id="fin"><div class="st"></div>
+    <svg class="abs" style="left:0;top:0" width="1920" height="1080"><path id="fTr" d="M260 1000 C 420 700 640 420 960 330 C 1280 240 1560 380 1660 1000" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="7" stroke-dasharray="18 14"/><g id="fRk"></g></svg>
+    <div id="fT" class="abs" style="left:0;right:0;top:120px;text-align:center;font-family:Archivo;font-weight:900;font-stretch:68%;font-size:150px;line-height:1;color:#fff;text-shadow:0 8px 0 #1B2340,0 0 50px rgba(255,201,61,.45)">MISSION COMPLETE <span style="color:#22C77A">✓</span></div>
+    <div id="fS" class="abs" style="left:0;right:0;top:300px;text-align:center;font-family:Archivo;font-weight:800;font-size:44px;color:#FFE3B8">from the pad, to space, and back home</div>
+    <div id="meds"></div>
+    <div id="fB" class="abs" style="left:0;right:0;top:880px;text-align:center"><span style="display:inline-block;padding:14px 34px;border-radius:999px;background:#FFC93D;border:5px solid #1B2340;box-shadow:0 8px 0 #1B2340;font-family:Archivo;font-weight:900;font-size:40px;color:#1B2340">🚀 Thanks for flying with us!</span></div>
+  </div>
+</div></div>
+<script type="module">
+import { rocketWorld } from "../../../lib/rocket3d.js";
+const { tl, sfx } = REEL;
+const { $, $$, w, we } = EX;
+const D = R2D;
+const clamp = (u) => Math.max(0, Math.min(1, u)), sm = (u) => { u = clamp(u); return u * u * (3 - 2 * u); };
+const L = (a, b, k) => a + (b - a) * k, L3 = (a, b, k) => a.map((v, i) => L(v, b[i], k));
+const STK = 45.4, X = 12000;
+const stack = (bp, th) => [bp[0] - STK * Math.sin(th), bp[1] + STK * Math.cos(th), bp[2]];
+const shift = (c, l, k) => { const f = [l[0] - c[0], l[2] - c[2]], d = Math.hypot(f[0], f[1]) || 1; return [l[0] - (f[1] / d) * k * d, l[1], l[2] + (f[0] / d) * k * d]; };
+
+// ---------------- beats
+const B = { g: w("inside the crew") - 0.3, st: w("two and a half") - 0.3, sep: w("separation") - 0.3, orb: w("a few minutes later") - 0.3, lap: w("that takes about") - 0.3, home: w("when the mission") - 0.3, glow: w("that glow") - 0.25, chute: w("then it gets quiet") - 0.3, spl: w("splash"), rec: w("from a countdown") - 0.2, fin: w("mission complete") - 0.5 };
+const END = we("flying with us") + 2.6;
+const FR = [[1.5, w("and then it's full") - 0.15], [w("an empty tank") - 0.25, B.sep], [w("here's the big") - 0.2, B.lap], [B.glow, B.chute - 0.1]];
+const RAMP = 0.5, spd = (t) => { let s = 1; FR.forEach(([a, b]) => { if (t >= a && t < b) s = Math.min(s, 1 - clamp((t - a) / RAMP)); if (t >= b && t < b + RAMP) s = Math.min(s, clamp((t - b) / RAMP)); }); return s; };
+const MT = [0]; for (let i = 1; i <= Math.ceil(END * 120) + 2; i++) { const t = i / 120; MT.push(MT[i - 1] + spd(t - 1 / 240) / 120); }
+const m = (t) => { const i = Math.max(0, Math.min(MT.length - 2, Math.floor(t * 120))), f = t * 120 - i; return MT[i] + (MT[i + 1] - MT[i]) * f; };
+const frz = (t) => 1 - spd(t);
+
+const W3 = rocketWorld($("#c3"), { w: 1920, h: 1080 });
+const capY = (t) => (t < B.spl ? L(95, -0.9, sm((t - B.chute) / (B.spl - B.chute)) ** 0.7) : -0.9);
+const foam = (t) => { const a = t - B.spl; return a < 0 ? { c: [X, 0], k: 0 } : { c: [X, 0], r: 2.4 + a * 5.2, k: Math.max(0, 1 - a / 4.5), churn: Math.min(1, a * 1.5) }; };
+const STC = [-58, -4, 74];
+function shot(t) {
+  const mm = m(t);
+  if (t < B.g) { const s = mm, th = -0.2, bp = [3000 + 60 * s, 11000 + 300 * s, 0], tp = stack(bp, th), a = L(0.9, 1.7, sm(t / B.g)), ease = sm((mm - w("ease back") + 0.2) / 0.5) * (1 - sm((mm - w("full power") + 0.3) / 0.5));
+    const c = [tp[0] + Math.cos(a) * 82, tp[1] - 14, Math.sin(a) * 82];
+    return { t: mm, mood: "day", mood2: "high", k: 0.35, booster: { p: bp, rot: [0, 0, th], flame: 1 - 0.3 * ease, plumeLen: 1.4 }, upper: { p: tp, rot: [0, 0, th] }, vapor: 0.75 + 0.25 * Math.sin(mm * 9), vaporAt: [tp[0] + 0.3, tp[1] + 1.5, 0], vaporRot: [0, 0, th], smoke: { trail: { y0: bp[1] - 3000, y1: bp[1] - 2, x0: bp[0] - 600, x1: bp[0] - 0.4, n: 500 } }, pad: false, cam: c, look: shift(c, [tp[0] - 4, tp[1] - 8, 0], 0.16), fov: 40, shake: 0.12 * (1 - frz(t)) }; }
+  if (t < B.st) { const s = mm - m(B.g), th = -0.5, bp = [9000 + 400 * s, 30000 + 600 * s, 0], tp = stack(bp, th);
+    const c = [tp[0] + 18, bp[1] + 12, 30]; return { t: mm, mood: "high", mood2: "space", k: 0.3, booster: { p: bp, rot: [0, 0, th], flame: 1, plumeLen: 2 }, upper: { p: tp, rot: [0, 0, th] }, pad: false, smoke: {}, cam: c, look: shift(c, [tp[0], tp[1] + 6, 0], 0.22), fov: 50, shake: 0.08 }; }
+  if (t < B.sep + 0.3) { const s = mm - m(B.st), bp = [0, -STK - 6 + 3 * s, 0], tp = stack(bp, 0);
+    return { t: mm, mood: "space", earthAlt: 75000, earthRot: [0.45, 1.75, 0.12], cityLights: 0, booster: { p: bp, flame: 1, plumeLen: 1.6, vac: 0.6 }, upper: { p: tp }, smoke: {}, cam: STC, look: shift(STC, [0, tp[1] - 10, 0], 0.2), fov: 46 }; }
+  if (t < B.orb) { const sep0 = m(w("separation")), lt = mm - sep0, sep = Math.max(0, lt), ign = sm((mm - m(w("second engine"))) / 0.4), fo = sm((mm - m(w("nose cone")) + 0.2) / 1.1), up = 0.6 * Math.max(0, mm - m(w("second engine"))) ** 2, base0 = 3 * (sep0 - m(B.st)) - 6;
+    const u = sm((t - B.sep - 0.3) / (B.orb - B.sep)), c = L3(STC, [-36, 10, 54], u);
+    return { t: mm, mood: "space", earthAlt: 75000, earthRot: [0.45, 1.75, 0.12], cityLights: 0, booster: { p: [0.4 * sep, -STK + base0 - 1.25 * sep * sep, 0.3 * sep], rot: [0, 0, 0.05 * sep * sep], flame: lt < 0.3 ? 1 : 0, plumeLen: 1.6, vac: 1 }, upper: { p: [0, base0 + up, 0], flame: ign, vac: 0.8, fairing: fo * 0.9, fairingDrift: fo * fo * 6 }, smoke: {}, cam: c, look: shift(c, [0, base0 + up * 0.6, 0], L(0.2, 0, u)), fov: 46 }; }
+  if (t < B.home) { const s = mm - m(B.orb), k = sm((t - B.orb) / (B.home - B.orb)), a = L(2.0, 3.3, k), r = L(26, 32, k);
+    const c = [Math.cos(a) * r, L(8, 3, k), Math.sin(a) * r];
+    return { t: mm, mood: "space", earthAlt: 400000, earthRot: [0.5, 1.45 + s * 0.004, 0.1], cityLights: 1.4, capsule: { p: [0, 0, 0], rot: [0.1 + s * 0.01, 0.5, 1.5] }, smoke: {}, cam: c, look: shift(c, [0, L(-4, -6, k), 0], 0.3), fov: 44 }; }
+  if (t < B.glow) { const u = sm((t - B.home) / (B.glow - B.home)), g = sm((t - w("drops back")) / 1.2);
+    return { t: mm, mood: "space", earthAlt: L(400000, 90000, u), earthRot: [0.5, L(1.6, 1.95, u), 0.1], cityLights: 0.6, capsule: { p: [0, 0, 0], rot: L3([0.1, 0.5, 1.5], [0, 0, -1.0], sm((t - B.home) / 3.5)), glow: g }, smoke: {}, cam: L3([24, 8, 34], [-26.3, 2, 41.2], u), look: [L(0, 8, u), L(-2, 6, u), 0], fov: 44, shake: 0.08 * g }; }
+  if (t < B.chute) { const a = L(-0.2, 0.5, sm((t - B.glow) / (B.chute - B.glow))), c = [Math.sin(a) * 42 - 18, 2, Math.cos(a) * 42];
+    return { t: mm, mood: "space", earthAlt: 80000, earthRot: [0.5, 1.95, 0.1], cityLights: 0, capsule: { p: [0, 0, 0], rot: [0, 0, -1.0 + Math.sin(mm * 3) * 0.03], glow: 0.85 + 0.15 * Math.sin(mm * 7) }, smoke: {}, cam: c, look: shift(c, [7, 6, 0], 0.22), fov: 44, shake: 0.12 * (1 - frz(t)) }; }
+  const sea = { amp: 1, foam: foam(t) }, splA = t - B.spl;
+  const cap = { p: [X, capY(t), 0], rot: [0.05, 0, 0.03], chute: t < w("the big ones") ? 1 : 2, deploy: splA < 0 ? 1 : Math.max(0.01, 1 - splA / 1.1), float: splA < 0 ? 0 : Math.min(1, splA * 2) };
+  if (t < B.spl) return { t: mm, mood: "day", sea, capsule: cap, boat: { p: [X + 260, 0, -340], yaw: 2.3 }, pad: false, smoke: {}, cam: L3([X + 70, 7, 64], [X + 46, 4.5, 40], sm((t - B.chute) / (B.spl - B.chute))), look: [X, L(70, 6, sm((t - B.chute) / (B.spl - B.chute))), 0], fov: 40 };
+  if (t < B.rec) return { t: mm, mood: "day", sea, capsule: cap, boat: { p: [X + 200, 0, -260], yaw: 2.4 }, pad: false, smoke: { splash: [X, 0, 0, splA] }, cam: [X + 26, 4, 30], look: [X, 2, 0], fov: 44 };
+  const u = sm((t - B.rec) / (B.fin - B.rec)), bx = L(X + 150, X + 40, u);
+  return { t: mm, mood: "day", sea, capsule: { ...cap, rot: [0.05, 0.4, 0.03] }, boat: { p: [bx, 0, -70 + 20 * u], yaw: 2.6 }, pad: false, smoke: { splash: [X, 0, 0, splA] }, cam: L3([X - 24, 5, 36], [X - 19, 4, 29], u), look: [X + 6, 2, -4], fov: 44 };
+}
+
+// ---------------- 2D cards
+$("#pMq").innerHTML = D.squeeze({ id: "mq" }); $("#pGs").innerHTML = D.gseat({ id: "gs" }); $("#pDw").innerHTML = D.deadweight({ id: "dw" });
+$("#pLd").innerHTML = D.landing({ id: "ld" }); $("#pNc").innerHTML = D.cannon({ id: "nc" }); $("#pLp").innerHTML = D.lap({ id: "lp" });
+$("#pSn").innerHTML = D.suns({ id: "sn" }); $("#pFl").innerHTML = D.floaty({ id: "fl" }); $("#pHt").innerHTML = D.heat({ id: "ht" });
+$("#rc").innerHTML = D.recap({ w: 1400, id: "rc" }); $("#cha").innerHTML = D.chai({ w: 130, id: "ch" });
+const PAN = [["#pMq", 1.6, B.g - 0.3, 1], ["#pGs", B.g + 0.3, B.st - 0.4, -1], ["#pDw", FR[1][0] + 0.2, B.sep + 0.1, 1], ["#pLd", w("and that first") - 0.2, B.orb - 0.5, -1], ["#pNc", FR[2][0] + 0.4, B.lap - 0.1, 1], ["#pLp", B.lap + 0.2, w("so the crew") - 0.3, 1], ["#pSn", w("so the crew") - 0.1, w("and they float") - 0.3, 1], ["#pFl", w("and they float") - 0.1, B.home - 0.4, 1], ["#pHt", B.glow + 0.4, B.chute - 0.7, 1]];
+gsap.set([...PAN.map((p) => p[0]), "#rc", "#cha", "#fin", "#fT", "#fS", "#fB", ...$$("#rc g[id^=rcI]")], { autoAlpha: 0 });
+PAN.forEach(([el, a, b, d]) => { tl.fromTo(el, { autoAlpha: 0, x: 70 * d, rotation: 3 * d, scale: 0.92 }, { autoAlpha: 1, x: 0, rotation: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)", immediateRender: false }, a); tl.to(el, { autoAlpha: 0, x: 50 * d, scale: 0.95, duration: 0.3, ease: "power2.in" }, b); sfx(a, "whoosh", { gain: 0.08, dur: 0.4 }); sfx(a + 0.25, "pop", { gain: 0.1 }); });
+
+REEL.onFrame((t) => {
+  if (t < B.g + 0.5) { const e = sm((t - w("ease back") + 0.2) / 0.5) * (1 - sm((t - w("full power") + 0.2) / 0.5)), ang = L(0.7, -1.2, e); $("#mqN").setAttribute("x2", (52 * Math.sin(ang)).toFixed(1)); $("#mqN").setAttribute("y2", (-52 * Math.cos(ang)).toFixed(1)); $("#mqAir").setAttribute("transform", `translate(0 ${(Math.sin(t * 10) * 4).toFixed(1)})`); }
+  if (t > B.g && t < B.st + 0.5) { const k = sm((t - w("pressed into") + 0.1) / 0.6), b = Math.sin(t * 6) * 2 * k; $("#gsBody").setAttribute("transform", `translate(0 ${(18 * k + b).toFixed(1)}) translate(290 300) scale(${(1 + 0.05 * k).toFixed(3)} ${(1 - 0.12 * k).toFixed(3)}) translate(-290 -300)`); $("#gsKb").setAttribute("transform", `translate(0 ${(-200 * (1 - sm((t - w("pressed into") + 0.4) / 0.5)) + 18 * k).toFixed(1)})`); }
+  if (t > B.st && t < B.sep + 0.5) { const k = sm((t - w("lets it go") + 0.1) / 1.0); $("#dwTank").setAttribute("transform", `translate(${(-40 * k).toFixed(1)} ${(300 * k * k).toFixed(1)}) rotate(${(-35 * k).toFixed(1)} 250 300)`); $("#dwFl").setAttribute("opacity", k > 0.3 ? 1 : 0); }
+  if (t > B.sep && t < B.orb + 0.5) { const k = clamp((t - w("fly it back") + 0.1) / 4.4), e = sm(k), x = L(110, 400, e), y = 306 - 250 * Math.sin(Math.PI * Math.min(1, e * 1.02)) * (1 - e * 0.25), rot = L(200, 0, sm(k * 1.7 - 0.25)); $("#ldB").setAttribute("transform", `translate(${x.toFixed(1)} ${Math.min(306, y).toFixed(1)}) rotate(${rot.toFixed(1)})`); $("#ldLeg").setAttribute("opacity", k > 0.62 ? 1 : 0); $("#ldF").setAttribute("opacity", k > 0.5 && k < 0.99 ? 1 : 0); $("#ldPuff").setAttribute("opacity", (k > 0.95 ? Math.max(0, 1 - (t - (w("fly it back") + 4.3)) / 1.5) : 0).toFixed(2)); }
+  if (t > B.orb && t < B.lap + 0.5) { const P = [[$("#ncP0"), w("and it falls") - 0.3, 0.9], [$("#ncP1"), w("lands farther") - 0.4, 1.0], [$("#ncP2"), w("curves away") - 0.5, 3.4]]; let ball = null; P.forEach(([p, a, d]) => { const k = sm((t - a) / d), Lp = p.getTotalLength(); p.style.strokeDasharray = `${(Lp * k).toFixed(1)} ${Lp}`; if (t >= a) ball = p.getPointAtLength(Lp * k); }); const b = $("#ncBall"); b.setAttribute("cx", ball ? ball.x.toFixed(1) : 338); b.setAttribute("cy", ball ? ball.y.toFixed(1) : 56); }
+  if (t > B.lap && t < B.home) { const a = ((t - B.lap) / 3.2) * Math.PI * 2; $("#lpDot").setAttribute("transform", `translate(${(300 + 230 * Math.cos(a)).toFixed(1)} ${(200 + 80 * Math.sin(a)).toFixed(1)})`); $("#lpDot").setAttribute("opacity", Math.sin(a) < -0.15 && Math.abs(Math.cos(a)) < 0.45 ? 0.25 : 1);
+    const sr = (t - (w("so the crew") - 0.1)) / 2.6, n = Math.max(1, Math.min(16, Math.floor(sm(sr) * 16) + 1)), ph = (sm(sr) * 16) % 1; $("#snN").textContent = n; $("#snSun").setAttribute("transform", `translate(0 ${(130 - 150 * Math.sin(Math.PI * Math.min(1, ph))).toFixed(1)})`);
+    $("#flAst").setAttribute("transform", `translate(${(230 + Math.sin(t * 1.3) * 22).toFixed(1)} ${(200 + Math.sin(t * 0.9) * 26).toFixed(1)}) rotate(${(Math.sin(t * 0.7) * 16).toFixed(1)}) scale(1.35)`); $("#flPen").setAttribute("transform", `translate(${(360 + Math.sin(t * 1.1) * 20).toFixed(1)} ${(260 + Math.cos(t * 0.8) * 16).toFixed(1)}) rotate(${(t * 40 % 360).toFixed(1)})`); $("#flCup").setAttribute("transform", `translate(${(110 + Math.cos(t * 0.9) * 14).toFixed(1)} ${(120 + Math.sin(t * 1.2) * 18).toFixed(1)}) rotate(${(Math.sin(t) * 25).toFixed(1)})`); }
+  if (t > B.glow && t < B.chute + 0.5) { const k = sm((t - B.glow - 0.5) / 3); $$(".htd").forEach((d, i) => { const col = i % 6, row = Math.floor(i / 6); d.setAttribute("cx", (30 + col * 22 + k * (150 - col * 12) + Math.sin(t * 12 + i) * 2).toFixed(1)); d.setAttribute("cy", (60 + row * 64 + (200 - (60 + row * 64)) * k * 0.4).toFixed(1)); d.setAttribute("fill", k > 0.6 ? "#FFB45A" : "#9FD7FF"); }); const h = sm((t - w("incredibly hot") + 0.3) / 1.8); $("#htGlow").setAttribute("opacity", (0.15 + 0.85 * h).toFixed(2)); $("#htTh").setAttribute("height", (218 * h).toFixed(1)); $("#htTh").setAttribute("y", (6 + 218 * (1 - h)).toFixed(1)); $("#htT").textContent = `${Math.round(1500 * h / 10) * 10 >= 1000 ? Math.floor(Math.round(1500 * h / 10) * 10 / 1000) + "," + String(Math.round(1500 * h / 10) * 10 % 1000).padStart(3, "0") : Math.round(1500 * h / 10) * 10} °C`; [0, 1, 2].forEach((i) => $(`#htL${2 - i}`).setAttribute("opacity", t > w("layer by layer") + i * 0.35 ? 0.12 : 1)); }
+  if (t > B.rec - 0.2 && t < B.fin + 1) { const pc = W3.project([X, 3, 0]); gsap.set("#cha", { x: pc[0] - 65, y: pc[1] - 250 }); $("#chSt").setAttribute("transform", `translate(0 ${(-((t * 18) % 10)).toFixed(1)})`); }
+});
+tl.fromTo("#rc", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, immediateRender: false }, B.rec);
+[w("from a countdown") + 0.2, w("the sky"), w("to space"), w("space and back") + 0.3, w("back in")].forEach((tt, i) => { tl.fromTo(`#rcI${i}`, { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)", immediateRender: false }, tt); sfx(tt, "pop", { gain: 0.14, pitch: 1 + i * 0.1 }); });
+tl.to("#rc", { autoAlpha: 0, duration: 0.4 }, w("and yes") - 0.2);
+tl.fromTo("#cha", { autoAlpha: 0, scale: 0.3, y: "+=40" }, { autoAlpha: 1, scale: 1, y: "-=40", duration: 0.45, ease: "back.out(2.4)", immediateRender: false }, w("is chai") - 0.2); sfx(w("is chai") - 0.1, "sip", { gain: 0.26 }); sfx(w("is chai") + 0.3, "ding", { gain: 0.16 });
+
+// ---------------- finale: smoke rises, the mission board lands
+const MED = [["⏱", "countdown"], ["🔥", "liftoff"], ["✂️", "staging"], ["🌍", "orbit"], ["🪂", "home"]];
+$("#meds").innerHTML = MED.map(([e, n], i) => `<div class="med" id="md${i}" style="left:${330 + i * 270}px"><div class="c">${e}<div class="k">✓</div></div>${n}</div>`).join("");
+$("#fRk").innerHTML = `<g transform="scale(.5)">${ROCKET.rocket({ w: 60, id: "frk", flameOn: true, flameLen: 120 })}</g>`;
+EX.smokeWipe(B.fin, { seed: 31, dur: 1.4 });
+tl.set("#fin", { autoAlpha: 1 }, B.fin);
+tl.fromTo("#fT", { autoAlpha: 0, scale: 1.6, y: -40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, B.fin + 0.3); sfx(B.fin + 0.55, "stamp", { gain: 0.3 }); sfx(B.fin + 0.6, "chime", { gain: 0.2 });
+tl.fromTo("#fTr", { drawSVG: "0%" }, { drawSVG: "100%", duration: 1.6, ease: "power1.inOut", immediateRender: false }, B.fin + 0.4);
+tl.fromTo("#fS", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, immediateRender: false }, B.fin + 0.8);
+MED.forEach((_, i) => { tl.fromTo(`#md${i}`, { autoAlpha: 0, y: 60, scale: 0.6 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, B.fin + 1.0 + i * 0.18); tl.fromTo(`#md${i} .k`, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, B.fin + 1.3 + i * 0.18); sfx(B.fin + 1.0 + i * 0.18, "pop", { gain: 0.14, pitch: 1 + i * 0.1 }); });
+tl.fromTo("#fB", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.8)", immediateRender: false }, w("thanks for") - 0.2); sfx(w("thanks for"), "ding", { gain: 0.18 });
+const fp = $("#fTr"), FLN = fp.getTotalLength();
+REEL.onFrame((t) => { if (t < B.fin) return; const k = sm((t - B.fin - 0.4) / 1.6), p = fp.getPointAtLength(FLN * k), q = fp.getPointAtLength(Math.min(FLN, FLN * k + 3)), a = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI + 90; $("#fRk").setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${a.toFixed(1)}) translate(-15 -60)`); $("#fRk").setAttribute("opacity", k > 0.02 && k < 0.99 ? 1 : 0); $$(".med .c").forEach((c, i) => (c.style.transform = `translateY(${(Math.sin(t * 2.2 + i) * 6).toFixed(1)}px)`)); });
+
+// ---------------- transitions: clouds in, dark irises in space, clouds on the way down
+EX.smokeReveal({ seed: 21 });
+EX.iris("#c3", B.st, 960, 540, { color: "#05081C", dur: 0.4 });
+EX.iris("#c3", B.orb, 960, 540, { color: "#05081C", dur: 0.4 });
+EX.iris("#c3", B.home, 960, 540, { color: "#05081C", dur: 0.4 });
+EX.smokeWipe(B.chute, { seed: 13 });
+
+// ---------------- sound
+sfx(0, "rumble", { gain: 0.42, dur: FR[0][0] + 0.4 }); sfx(FR[0][0], "whoosh", { gain: 0.14 }); sfx(FR[0][0] + 0.3, "rumble", { gain: 0.07, dur: FR[0][1] - FR[0][0] }); sfx(FR[0][1], "rumble", { gain: 0.42, dur: FR[1][0] - FR[0][1] + 0.4 });
+sfx(FR[1][0], "whoosh", { gain: 0.14 }); sfx(FR[1][0] + 0.3, "rumble", { gain: 0.06, dur: FR[1][1] - FR[1][0] });
+sfx(w("separation") - 0.05, "impact", { gain: 0.32 }); sfx(w("separation"), "clunk", { gain: 0.24 }); REEL.shake($("#shake"), w("separation") + 0.02, 6); sfx(w("second engine"), "rumble", { gain: 0.16, dur: B.orb - w("second engine") }); sfx(w("nose cone"), "whoosh", { gain: 0.16 });
+sfx(FR[2][0], "whoosh", { gain: 0.12 }); sfx(B.home, "riser", { gain: 0.1, dur: 1.2 });
+sfx(w("drops back"), "rumble", { gain: 0.3, dur: B.glow - w("drops back") + 0.4 }); sfx(B.glow + 0.3, "rumble", { gain: 0.06, dur: B.chute - B.glow - 0.4 });
+sfx(B.chute + 0.6, "paper", { gain: 0.2 }); sfx(w("the big ones"), "whoosh", { gain: 0.18 }); sfx(B.spl - 0.05, "water", { gain: 0.36, dur: 2.2 }); sfx(B.spl, "impact", { gain: 0.16 });
+sfx(B.spl + 1, "water", { gain: 0.06, dur: B.fin - B.spl - 1 });
+
+// ---------------- freeze look + clock
+const pad = (n) => { n = Math.max(0, Math.floor(n)); return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`; };
+REEL.onFrame((t) => {
+  const z = frz(t), mm = m(t); $("#c3").style.filter = z > 0 ? `saturate(${(1 - 0.45 * z).toFixed(2)}) brightness(${(1 - 0.06 * z).toFixed(2)})` : "none";
+  let s;
+  if (z > 0.5) s = "⏸ TIME HELD";
+  else if (t < B.g) s = `T+${pad(58 + mm)}`;
+  else if (t < B.st) s = `T+${pad(58 + m(B.g) + (t - B.g) * 16)}  ▶▶×16`;
+  else if (t < B.orb) s = `T+${pad(150 + (mm - m(B.st)))}`;
+  else if (t < B.lap) s = `T+${pad(155 + (t - B.orb) * 40)}  ▶▶×40`;
+  else if (t < B.home) s = `T+${pad(540 + (t - B.lap) * 60)}  ▶▶×60`;
+  else if (t < B.spl) s = `RETURN  ▶▶`;
+  else s = "SPLASHDOWN ✓";
+  $("#clk").textContent = s; $("#clk").style.color = z > 0.5 ? "#9FE3F2" : "#FFC93D"; $("#clk").style.opacity = t > B.fin ? 0 : 1;
+  if (t < B.fin + 0.2) W3.frame(shot(t));
+});
+REEL.finish(END);
+</script></body></html>

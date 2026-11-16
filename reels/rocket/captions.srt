@@ -1,0 +1,391 @@
+1
+00:00:00,300 --> 00:00:01,980
+This rocket is about to go to space.
+
+2
+00:00:02,420 --> 00:00:04,020
+And we're going with it, all the way.
+
+3
+00:00:04,540 --> 00:00:06,700
+But before the countdown hits zero, let's
+
+4
+00:00:06,720 --> 00:00:07,520
+look inside.
+
+5
+00:00:07,920 --> 00:00:09,100
+Almost all of it is fuel.
+
+6
+00:00:09,660 --> 00:00:10,780
+About ninety percent.
+
+7
+00:00:10,800 --> 00:00:13,560
+The engines, the tanks, the capsule and
+
+8
+00:00:13,580 --> 00:00:15,916
+the crew all fit in the last ten percent.
+
+9
+00:00:17,416 --> 00:00:18,216
+See that water?
+
+10
+00:00:18,376 --> 00:00:19,896
+A flood of it pours onto the pad.
+
+11
+00:00:20,376 --> 00:00:22,876
+A rocket is so loud, its own noise could
+
+12
+00:00:22,896 --> 00:00:23,856
+shake the pad apart.
+
+13
+00:00:24,496 --> 00:00:25,876
+The water soaks up that noise.
+
+14
+00:00:28,316 --> 00:00:29,076
+Ignition.
+
+15
+00:00:29,096 --> 00:00:29,896
+Notice something?
+
+16
+00:00:30,416 --> 00:00:32,336
+The engines are roaring, but the rocket
+
+17
+00:00:32,356 --> 00:00:33,156
+hasn't moved.
+
+18
+00:00:33,676 --> 00:00:35,456
+That's because the push from the engines
+
+19
+00:00:35,476 --> 00:00:37,356
+has to grow bigger than the rocket's weight.
+
+20
+00:00:37,956 --> 00:00:39,836
+About five hundred tonnes.
+
+21
+00:00:39,856 --> 00:00:41,736
+Only when the push wins, does it rise.
+
+22
+00:00:42,156 --> 00:00:43,036
+And there it goes.
+
+23
+00:00:43,656 --> 00:00:45,136
+It isn't pushing against the ground.
+
+24
+00:00:45,596 --> 00:00:48,136
+It throws hot gas downwards, really fast,
+
+25
+00:00:48,376 --> 00:00:50,116
+and that gas pushes the rocket up.
+
+26
+00:00:50,656 --> 00:00:52,536
+Exactly like a balloon when you let it go.
+
+27
+00:00:53,096 --> 00:00:53,896
+Now watch.
+
+28
+00:00:54,276 --> 00:00:55,336
+It starts to lean over.
+
+29
+00:00:55,776 --> 00:00:56,576
+That's on purpose.
+
+30
+00:00:57,016 --> 00:00:58,696
+Getting high is the easy part.
+
+31
+00:00:59,176 --> 00:01:01,316
+To stay in space, you need to go sideways,
+
+32
+00:01:01,636 --> 00:01:02,436
+incredibly fast.
+
+33
+00:01:02,976 --> 00:01:05,156
+So the rocket slowly turns its climb into
+
+34
+00:01:05,176 --> 00:01:06,136
+a sideways sprint.
+
+35
+00:01:07,333 --> 00:01:09,093
+About a minute in, the air pushes against
+
+36
+00:01:09,113 --> 00:01:10,113
+the rocket the hardest.
+
+37
+00:01:10,653 --> 00:01:12,733
+So the engines ease back for a few seconds,
+
+38
+00:01:13,033 --> 00:01:14,833
+the rocket slips through, and then it's
+
+39
+00:01:14,853 --> 00:01:15,793
+full power again.
+
+40
+00:01:16,483 --> 00:01:18,223
+Inside, the crew are pressed into their
+
+41
+00:01:18,243 --> 00:01:20,823
+seats, around three times heavier than normal.
+
+42
+00:01:21,363 --> 00:01:23,323
+Two and a half minutes in, the first stage
+
+43
+00:01:23,343 --> 00:01:24,323
+is nearly empty.
+
+44
+00:01:24,903 --> 00:01:26,743
+An empty tank is just dead weight.
+
+45
+00:01:27,303 --> 00:01:29,483
+Every kilo you carry needs more fuel to
+
+46
+00:01:29,503 --> 00:01:30,083
+lift.
+
+47
+00:01:30,103 --> 00:01:31,703
+So the rocket simply lets it go.
+
+48
+00:01:32,423 --> 00:01:33,223
+Separation.
+
+49
+00:01:33,443 --> 00:01:35,403
+The second engine lights, and the nose cone
+
+50
+00:01:35,423 --> 00:01:36,223
+opens.
+
+51
+00:01:36,403 --> 00:01:37,283
+And that first stage?
+
+52
+00:01:37,783 --> 00:01:39,763
+Some rockets fly it back, flip it over,
+
+53
+00:01:39,963 --> 00:01:41,763
+and land it on a ship in the ocean, so it
+
+54
+00:01:41,783 --> 00:01:42,583
+can fly again.
+
+55
+00:01:43,183 --> 00:01:44,943
+That's why spaceflight is getting cheaper.
+
+56
+00:01:45,503 --> 00:01:47,043
+A few minutes later, we're in orbit.
+
+57
+00:01:47,543 --> 00:01:48,503
+Here's the big secret.
+
+58
+00:01:49,343 --> 00:01:50,143
+Orbit isn't floating.
+
+59
+00:01:50,363 --> 00:01:51,163
+It's falling.
+
+60
+00:01:51,383 --> 00:01:53,883
+Fire a ball sideways from a very tall mountain,
+
+61
+00:01:54,103 --> 00:01:54,903
+and it falls.
+
+62
+00:01:55,263 --> 00:01:56,723
+Faster, and it lands farther.
+
+63
+00:01:57,283 --> 00:01:59,443
+Fast enough, and the Earth curves away as
+
+64
+00:01:59,463 --> 00:02:00,303
+fast as it falls.
+
+65
+00:02:00,723 --> 00:02:02,683
+It keeps falling, and keeps missing.
+
+66
+00:02:03,383 --> 00:02:05,103
+That takes about twenty eight thousand kilometres
+
+67
+00:02:05,123 --> 00:02:05,923
+an hour.
+
+68
+00:02:06,303 --> 00:02:07,943
+Fast enough to go all the way around the
+
+69
+00:02:07,963 --> 00:02:09,383
+Earth in about ninety minutes.
+
+70
+00:02:09,923 --> 00:02:12,023
+So the crew see around sixteen sunrises,
+
+71
+00:02:12,043 --> 00:02:13,303
+every single day.
+
+72
+00:02:13,703 --> 00:02:15,743
+And they float, not because gravity is gone,
+
+73
+00:02:15,963 --> 00:02:17,583
+but because they are falling too, together
+
+74
+00:02:17,603 --> 00:02:18,523
+with their spacecraft.
+
+75
+00:02:19,223 --> 00:02:21,383
+When the mission is done, coming home starts
+
+76
+00:02:21,403 --> 00:02:22,423
+with slowing down.
+
+77
+00:02:22,963 --> 00:02:24,983
+The capsule turns around, and drops back
+
+78
+00:02:25,003 --> 00:02:25,803
+into the air.
+
+79
+00:02:26,003 --> 00:02:27,243
+That glow isn't friction.
+
+80
+00:02:27,623 --> 00:02:30,163
+The capsule is so fast that the air in front
+
+81
+00:02:30,183 --> 00:02:32,963
+gets squeezed, and squeezed air gets incredibly
+
+82
+00:02:32,983 --> 00:02:33,783
+hot.
+
+83
+00:02:34,043 --> 00:02:35,103
+Around fifteen hundred degrees.
+
+84
+00:02:35,663 --> 00:02:37,403
+The heat shield takes it, burning away,
+
+85
+00:02:37,423 --> 00:02:38,863
+layer by layer, on purpose.
+
+86
+00:02:39,523 --> 00:02:40,323
+Then it gets quiet.
+
+87
+00:02:40,983 --> 00:02:42,823
+Small parachutes first, then the big ones.
+
+88
+00:02:43,383 --> 00:02:44,183
+Slower, and slower.
+
+89
+00:02:44,663 --> 00:02:45,383
+Splash.
+
+90
+00:02:45,403 --> 00:02:46,203
+Welcome home.
+
+91
+00:02:46,503 --> 00:02:48,383
+From a countdown, to the sky, to space,
+
+92
+00:02:48,403 --> 00:02:49,623
+and back, in one trip.
+
+93
+00:02:49,963 --> 00:02:52,403
+Mostly fuel, one tiny capsule, and a whole
+
+94
+00:02:52,423 --> 00:02:53,223
+lot of falling.
+
+95
+00:02:53,623 --> 00:02:55,543
+And yes, the first thing the astronaut asks
+
+96
+00:02:55,563 --> 00:02:56,443
+for, is chai.
+
+97
+00:02:58,243 --> 00:02:59,043
+Mission complete.
+
+98
+00:02:59,623 --> 00:03:00,663
+Thanks for flying with us.
