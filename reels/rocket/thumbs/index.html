@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Rocket thumbnails</title>
+<link rel="stylesheet" href="../../../lib/fonts.css">
+<link rel="stylesheet" href="../../../lib/explainer.css">
+<style>
+#c3{position:absolute;left:0;top:0;width:1920px;height:1080px;filter:saturate(1.25) contrast(1.08) brightness(1.04)}
+.v{position:absolute;inset:0;display:none}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 65% 50%,transparent 45%,rgba(4,6,20,.55) 100%)}
+.big{position:absolute;font-family:Archivo,sans-serif;font-weight:900;font-stretch:72%;line-height:.86;letter-spacing:-.01em;-webkit-text-stroke:16px #0A0E24;paint-order:stroke fill;filter:drop-shadow(0 14px 0 rgba(10,14,36,.85)) drop-shadow(0 0 40px rgba(0,0,0,.35))}
+.tag{position:absolute;padding:14px 34px;border-radius:22px;font-family:Archivo,sans-serif;font-weight:900;font-size:76px;color:#fff;border:7px solid #0A0E24;box-shadow:0 12px 0 #0A0E24;transform:rotate(-4deg)}
+.badge{position:absolute;left:48px;top:40px;padding:10px 24px;border-radius:999px;background:rgba(10,14,36,.75);border:3px solid rgba(255,255,255,.35);font-family:"JetBrains Mono";font-weight:800;font-size:30px;color:#FFC93D;letter-spacing:.08em}
+</style>
+<script src="../../../lib/vendor/gsap.min.js"></script>
+<script src="../../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/SplitText.min.js"></script>
+<script src="../../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script>window.WORDS=[]</script>
+<script src="../../../lib/reel.js"></script>
+<script src="../../../lib/rocket2d.js"></script>
+</head><body>
+<div id="shake"><div id="stage">
+  <canvas id="c3" width="1920" height="1080"></canvas>
+  <!-- A: 90% FUEL?! -->
+  <div class="v" id="vA"><div class="vig"></div>
+    <div id="xrA" class="abs" style="left:1560px;top:90px;filter:drop-shadow(0 0 30px rgba(159,227,242,.8))"></div>
+    <div class="big" style="left:70px;top:140px;font-size:420px;color:#FFD23F">90%</div>
+    <div class="big" style="left:80px;top:520px;font-size:250px;color:#fff">FUEL?!</div>
+    <svg class="abs" style="left:1330px;top:300px;overflow:visible" width="260" height="200"><path d="M10 170 Q 120 150 200 60" fill="none" stroke="#0A0E24" stroke-width="34" stroke-linecap="round"/><path d="M10 170 Q 120 150 200 60" fill="none" stroke="#FFD23F" stroke-width="20" stroke-linecap="round"/><path d="M150 54 L 214 40 L 206 106" fill="none" stroke="#0A0E24" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/><path d="M150 54 L 214 40 L 206 106" fill="none" stroke="#FFD23F" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <!-- B: 1,500°C -->
+  <div class="v" id="vB"><div class="vig"></div>
+    <div class="big" style="left:60px;top:110px;font-size:330px;color:#FFB23A">1,500°C</div>
+    <div class="tag" style="left:90px;top:520px;background:#F2553D">NOT FRICTION?!</div>
+  </div>
+  <!-- C: IT'S FALLING?! -->
+  <div class="v" id="vC"><div class="vig"></div>
+    <div class="big" style="left:70px;top:90px;font-size:200px;color:#fff">ORBIT IS</div>
+    <div class="big" style="left:60px;top:300px;font-size:300px;color:#5CF0A6">FALLING?!</div>
+    <svg class="abs" style="left:1330px;top:470px;overflow:visible" width="120" height="300"><path d="M60 10 L 60 230" stroke="#0A0E24" stroke-width="40" stroke-linecap="round"/><path d="M60 10 L 60 230" stroke="#5CF0A6" stroke-width="24" stroke-linecap="round"/><path d="M14 190 L 60 260 L 106 190" fill="none" stroke="#0A0E24" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 190 L 60 260 L 106 190" fill="none" stroke="#5CF0A6" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div></div>
+<script type="module">
+import { rocketWorld } from "../../../lib/rocket3d.js";
+const W = rocketWorld(document.getElementById("c3"), { w: 1920, h: 1080 });
+document.getElementById("xrA").innerHTML = R2D.xray({ w: 230, id: "xa" });
+const TW = { mood: "dusk", mood2: "night", k: 0.5 };
+const SH = [
+  { v: "vA", p: { t: 3.2, ...TW, booster: { p: [0, 30, 0], flame: 1, plumeLen: 1, light: 1.4 }, upper: { p: [0, 75.4, 0] }, arm: 1, smoke: { liftoff: 1.6, rocketY: 30, fire: 1, sparks: 1.2 }, cam: [-34, 6, 96], look: [-22, 40, 0], fov: 52, bloom: 0.25 } },
+  { v: "vB", p: { t: 5.3, mood: "space", earthAlt: 80000, earthRot: [0.5, 1.95, 0.1], cityLights: 0, capsule: { p: [0, 0, 0], rot: [0, 0, -1.0], glow: 1 }, cam: [-12, -2, 24], look: [-6, 7, 0], fov: 46, bloom: 0.35 } },
+  { v: "vC", p: { t: 2, mood: "space", earthAlt: 400000, earthRot: [0.5, 1.55, 0.1], cityLights: 1.4, capsule: { p: [0, 0, 0], rot: [0.15, 0.5, 1.45] }, cam: [-11, 5, 10], look: [-8, -2.5, 0], fov: 50 } },
+];
+REEL.onFrame((t) => { const i = Math.min(2, Math.floor(t)); SH.forEach((s, k) => (document.getElementById(s.v).style.display = k === i ? "block" : "none")); W.frame(SH[i].p); });
+REEL.finish(3);
+</script></body></html>
