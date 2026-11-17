@@ -1,0 +1,507 @@
+1
+00:00:00,300 --> 00:00:01,440
+You scan a QR code.
+
+2
+00:00:01,580 --> 00:00:02,720
+You type ten rupees.
+
+3
+00:00:02,920 --> 00:00:03,740
+You enter your PIN.
+
+4
+00:00:04,220 --> 00:00:04,740
+Beep.
+
+5
+00:00:04,760 --> 00:00:05,720
+Ten rupees received.
+
+6
+00:00:05,960 --> 00:00:07,500
+And you walk away with your chai, feeling
+
+7
+00:00:07,520 --> 00:00:08,920
+like a total tech genius.
+
+8
+00:00:09,560 --> 00:00:09,820
+Cute.
+
+9
+00:00:09,840 --> 00:00:10,640
+Here's the thing.
+
+10
+00:00:10,760 --> 00:00:12,560
+In those two seconds, two banks, a bunch
+
+11
+00:00:12,580 --> 00:00:14,700
+of computers, and one very serious referee
+
+12
+00:00:14,720 --> 00:00:16,480
+just held an emergency meeting.
+
+13
+00:00:17,160 --> 00:00:17,960
+About your chai.
+
+14
+00:00:18,100 --> 00:00:19,920
+So today, we're crashing that meeting.
+
+15
+00:00:20,400 --> 00:00:21,420
+Hi, I'm your host.
+
+16
+00:00:21,840 --> 00:00:23,440
+And by the end of this video, you'll know
+
+17
+00:00:23,460 --> 00:00:25,480
+exactly where your ten rupees went.
+
+18
+00:00:25,740 --> 00:00:27,780
+And why, sometimes, it goes on a little
+
+19
+00:00:27,800 --> 00:00:28,600
+vacation.
+
+20
+00:00:32,233 --> 00:00:33,193
+First, meet the gang.
+
+21
+00:00:33,433 --> 00:00:35,513
+There's you, holding a phone and a chai.
+
+22
+00:00:35,733 --> 00:00:37,493
+There's your payment app, which, plot twist,
+
+23
+00:00:37,753 --> 00:00:39,153
+does not actually keep your money.
+
+24
+00:00:39,453 --> 00:00:41,353
+It's basically a very polite messenger.
+
+25
+00:00:41,913 --> 00:00:43,373
+There's your bank, where your money actually
+
+26
+00:00:43,393 --> 00:00:44,133
+lives.
+
+27
+00:00:44,153 --> 00:00:45,393
+There's the chai wala's bank.
+
+28
+00:00:46,493 --> 00:00:48,753
+And right in the middle, there's NPCI, the
+
+29
+00:00:48,773 --> 00:00:50,653
+National Payments Corporation of India.
+
+30
+00:00:51,033 --> 00:00:51,993
+Think of it as the referee.
+
+31
+00:00:52,653 --> 00:00:54,433
+Nobody gets paid until the referee says
+
+32
+00:00:54,453 --> 00:00:55,093
+so.
+
+33
+00:00:55,113 --> 00:00:56,913
+Oh, and that QR code on the counter?
+
+34
+00:00:57,233 --> 00:00:59,713
+It's just the chai wala's UPI ID, his name,
+
+35
+00:00:59,733 --> 00:01:01,633
+and sometimes the amount, dressed up as
+
+36
+00:01:01,653 --> 00:01:02,453
+a fancy square.
+
+37
+00:01:02,833 --> 00:01:03,633
+Very fashionable.
+
+38
+00:01:07,433 --> 00:01:09,073
+Now, press pay, and watch closely.
+
+39
+00:01:09,613 --> 00:01:09,993
+Step one.
+
+40
+00:01:10,013 --> 00:01:10,953
+Your app writes a little message.
+
+41
+00:01:11,173 --> 00:01:12,593
+Who's paying, who's getting paid, and how
+
+42
+00:01:12,613 --> 00:01:12,953
+much.
+
+43
+00:01:12,973 --> 00:01:14,453
+It hands it to its partner bank, which passes
+
+44
+00:01:14,473 --> 00:01:15,273
+it to the referee.
+
+45
+00:01:15,413 --> 00:01:16,033
+Step two.
+
+46
+00:01:16,053 --> 00:01:17,833
+The referee looks at the chai wala's UPI
+
+47
+00:01:17,853 --> 00:01:19,673
+ID and asks, which bank is this guy with?
+
+48
+00:01:19,693 --> 00:01:20,893
+Like a phone book, but for money.
+
+49
+00:01:21,293 --> 00:01:21,873
+Step three.
+
+50
+00:01:21,893 --> 00:01:23,273
+The referee goes to your bank and says,
+
+51
+00:01:23,293 --> 00:01:25,013
+this person wants to pay ten rupees.
+
+52
+00:01:25,193 --> 00:01:25,993
+Is that okay?
+
+53
+00:01:26,393 --> 00:01:27,753
+Your bank says, show me the PIN.
+
+54
+00:01:28,353 --> 00:01:28,913
+Step four.
+
+55
+00:01:28,933 --> 00:01:30,713
+Your bank checks the PIN, checks your balance,
+
+56
+00:01:30,853 --> 00:01:32,273
+which, let's be honest, is always a tense
+
+57
+00:01:32,293 --> 00:01:33,753
+moment, and takes out ten rupees.
+
+58
+00:01:34,293 --> 00:01:34,673
+Step five.
+
+59
+00:01:34,693 --> 00:01:36,353
+The referee tells the chai wala's bank,
+
+60
+00:01:36,373 --> 00:01:37,273
+add ten rupees.
+
+61
+00:01:37,473 --> 00:01:38,053
+Step six.
+
+62
+00:01:38,073 --> 00:01:39,173
+Everyone sends everyone a confirmation,
+
+63
+00:01:39,193 --> 00:01:41,173
+and the little speaker shouts, ten rupees
+
+64
+00:01:41,193 --> 00:01:41,873
+received.
+
+65
+00:01:41,893 --> 00:01:43,133
+All of that, in about two seconds.
+
+66
+00:01:43,293 --> 00:01:44,733
+Your chai hasn't even cooled down.
+
+67
+00:01:48,732 --> 00:01:50,012
+Let's talk about your PIN.
+
+68
+00:01:50,672 --> 00:01:52,632
+When you type it, your app can't actually
+
+69
+00:01:52,652 --> 00:01:53,352
+read it.
+
+70
+00:01:53,372 --> 00:01:55,112
+It's locked up right there on your phone,
+
+71
+00:01:55,132 --> 00:01:57,172
+with a lock that only your bank can open.
+
+72
+00:01:57,312 --> 00:01:59,512
+So the app is just carrying a sealed envelope
+
+73
+00:01:59,532 --> 00:02:00,952
+it isn't allowed to peek into.
+
+74
+00:02:01,652 --> 00:02:02,452
+Respect.
+
+75
+00:02:02,872 --> 00:02:04,712
+And now, the most important thing in this
+
+76
+00:02:04,732 --> 00:02:05,532
+entire video.
+
+77
+00:02:05,892 --> 00:02:07,752
+You need your PIN to send money.
+
+78
+00:02:07,992 --> 00:02:09,852
+You never, ever need it to receive money.
+
+79
+00:02:10,092 --> 00:02:12,632
+So if a stranger says, enter your PIN to
+
+80
+00:02:12,652 --> 00:02:14,532
+receive your prize, congratulations.
+
+81
+00:02:14,552 --> 00:02:17,492
+The only prize is them, emptying your account.
+
+82
+00:02:21,498 --> 00:02:22,838
+Now, the million rupee question.
+
+83
+00:02:23,298 --> 00:02:24,198
+Who pays for all of this?
+
+84
+00:02:24,218 --> 00:02:25,958
+When you swipe a card, the shop pays a small
+
+85
+00:02:25,978 --> 00:02:26,898
+fee on every payment.
+
+86
+00:02:26,918 --> 00:02:28,878
+But for regular UPI payments to shops?
+
+87
+00:02:28,898 --> 00:02:29,738
+The fee is zero.
+
+88
+00:02:29,918 --> 00:02:30,938
+The government decided that.
+
+89
+00:02:31,098 --> 00:02:32,278
+The banks were, let's say, not thrilled.
+
+90
+00:02:32,298 --> 00:02:33,798
+So the government gives them some support
+
+91
+00:02:33,818 --> 00:02:34,738
+to keep the lights on.
+
+92
+00:02:34,998 --> 00:02:36,518
+Which means your ten rupee chai payment
+
+93
+00:02:36,538 --> 00:02:37,558
+is low key sponsored.
+
+94
+00:02:37,938 --> 00:02:39,098
+You're welcome, chai wala.
+
+95
+00:02:43,098 --> 00:02:45,238
+And now, the scariest message in India.
+
+96
+00:02:45,838 --> 00:02:46,538
+Money debited.
+
+97
+00:02:46,558 --> 00:02:47,358
+Payment failed.
+
+98
+00:02:47,598 --> 00:02:48,398
+What happened?
+
+99
+00:02:48,418 --> 00:02:50,258
+Usually, your bank did take the money out,
+
+100
+00:02:50,398 --> 00:02:51,918
+but somewhere after that, a confirmation
+
+101
+00:02:51,938 --> 00:02:52,858
+got stuck.
+
+102
+00:02:53,278 --> 00:02:54,498
+Maybe a server was slow.
+
+103
+00:02:54,778 --> 00:02:56,058
+Maybe the network sneezed.
+
+104
+00:02:56,078 --> 00:02:57,918
+So the system isn't sure the chai wala got
+
+105
+00:02:57,938 --> 00:02:58,478
+paid.
+
+106
+00:02:58,498 --> 00:02:59,298
+Don't panic.
+
+107
+00:02:59,898 --> 00:03:00,958
+Your money isn't lost.
+
+108
+00:03:01,138 --> 00:03:02,258
+It's just stuck in traffic.
+
+109
+00:03:02,698 --> 00:03:04,378
+By the rules, it should come back to your
+
+110
+00:03:04,398 --> 00:03:06,358
+account automatically by the next working
+
+111
+00:03:06,378 --> 00:03:07,018
+day.
+
+112
+00:03:07,038 --> 00:03:08,758
+And if the bank takes longer, the rules
+
+113
+00:03:08,778 --> 00:03:11,078
+say it has to pay you a hundred rupees for
+
+114
+00:03:11,098 --> 00:03:12,018
+every extra day.
+
+115
+00:03:12,038 --> 00:03:14,638
+So technically, a slow bank could buy you
+
+116
+00:03:14,658 --> 00:03:15,458
+ten chais.
+
+117
+00:03:19,264 --> 00:03:21,124
+So, the next time you pay for chai, remember.
+
+118
+00:03:21,604 --> 00:03:23,204
+An app, two banks, and a referee just had
+
+119
+00:03:23,224 --> 00:03:24,844
+a two second meeting, all about you.
+
+120
+00:03:25,204 --> 00:03:26,904
+Now multiply that by billions of payments,
+
+121
+00:03:26,924 --> 00:03:27,924
+every single month.
+
+122
+00:03:28,084 --> 00:03:29,684
+That's how a country of over a billion people
+
+123
+00:03:29,704 --> 00:03:30,604
+buys its chai.
+
+124
+00:03:30,884 --> 00:03:32,224
+Anyway, your chai's getting cold.
+
+125
+00:03:32,464 --> 00:03:33,144
+Go drink it.
+
+126
+00:03:33,164 --> 00:03:34,484
+And maybe tip the chai wala.
+
+127
+00:03:34,504 --> 00:03:35,924
+Through UPI, obviously.

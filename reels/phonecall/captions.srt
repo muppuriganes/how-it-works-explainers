@@ -1,0 +1,639 @@
+1
+00:00:00,403 --> 00:00:03,025
+You open your phone, tap a name, and press
+
+2
+00:00:03,045 --> 00:00:03,772
+call.
+
+3
+00:00:03,792 --> 00:00:06,125
+A few seconds later, a phone rings on the
+
+4
+00:00:06,176 --> 00:00:07,349
+other side of the planet.
+
+5
+00:00:07,774 --> 00:00:10,022
+And when your friend says hello, their voice
+
+6
+00:00:10,042 --> 00:00:12,104
+reaches you in about a quarter of a second.
+
+7
+00:00:12,529 --> 00:00:15,357
+In that tiny moment, your voice turns into
+
+8
+00:00:15,377 --> 00:00:18,308
+numbers, flies through the air as invisible
+
+9
+00:00:18,328 --> 00:00:21,002
+waves, races through glass cables under
+
+10
+00:00:21,022 --> 00:00:23,431
+the ocean, and turns back into sound.
+
+11
+00:00:23,857 --> 00:00:26,788
+Let's follow one hello, step by step, from
+
+12
+00:00:26,808 --> 00:00:28,006
+your mouth to their ear.
+
+13
+00:00:32,202 --> 00:00:33,246
+It all starts with sound.
+
+14
+00:00:33,684 --> 00:00:36,339
+When you speak, your voice pushes the air,
+
+15
+00:00:36,648 --> 00:00:38,465
+making tiny waves of pressure.
+
+16
+00:00:38,890 --> 00:00:41,654
+Inside your phone's microphone, a thin layer
+
+17
+00:00:41,674 --> 00:00:44,283
+shakes with those waves, and turns the shaking
+
+18
+00:00:44,303 --> 00:00:45,617
+into an electrical signal.
+
+19
+00:00:46,055 --> 00:00:47,370
+But phones don't send waves.
+
+20
+00:00:47,808 --> 00:00:48,620
+They send numbers.
+
+21
+00:00:49,058 --> 00:00:51,293
+So your phone measures that signal sixteen
+
+22
+00:00:51,313 --> 00:00:53,857
+thousand times every second, and writes
+
+23
+00:00:53,877 --> 00:00:55,939
+down each measurement as a number.
+
+24
+00:00:56,377 --> 00:00:57,370
+This is called sampling.
+
+25
+00:00:57,808 --> 00:01:00,011
+Sending all of those numbers would be wasteful,
+
+26
+00:01:00,398 --> 00:01:02,775
+so a clever program called a codec squeezes
+
+27
+00:01:02,795 --> 00:01:03,595
+them down.
+
+28
+00:01:03,723 --> 00:01:06,216
+Instead of every number, it sends a short
+
+29
+00:01:06,236 --> 00:01:08,754
+description of your voice, twenty milliseconds
+
+30
+00:01:08,774 --> 00:01:09,574
+at a time.
+
+31
+00:01:09,754 --> 00:01:12,182
+That's fifty little packets of voice, every
+
+32
+00:01:12,202 --> 00:01:13,002
+single second.
+
+33
+00:01:13,375 --> 00:01:14,175
+And they are tiny.
+
+34
+00:01:14,522 --> 00:01:16,589
+A whole minute of talking is only about
+
+35
+00:01:16,609 --> 00:01:17,692
+a hundred kilobytes.
+
+36
+00:01:18,117 --> 00:01:19,496
+That's smaller than one photo.
+
+37
+00:01:23,702 --> 00:01:25,661
+Now those packets need to leave your phone.
+
+38
+00:01:26,086 --> 00:01:28,386
+Your phone's antenna turns them into radio
+
+39
+00:01:28,406 --> 00:01:29,206
+waves.
+
+40
+00:01:29,334 --> 00:01:31,221
+You can't see them, but they're the same
+
+41
+00:01:31,241 --> 00:01:33,785
+kind of energy as light, so they travel
+
+42
+00:01:33,805 --> 00:01:35,667
+at three hundred thousand kilometres per
+
+43
+00:01:35,687 --> 00:01:36,487
+second.
+
+44
+00:01:36,524 --> 00:01:38,109
+They head to the nearest cell tower.
+
+45
+00:01:38,535 --> 00:01:40,950
+Your city is divided into small areas called
+
+46
+00:01:40,970 --> 00:01:43,328
+cells, and each cell has a tower.
+
+47
+00:01:43,767 --> 00:01:45,055
+That's why it's called a cell phone.
+
+48
+00:01:45,519 --> 00:01:47,587
+Thousands of phones share each tower at
+
+49
+00:01:47,607 --> 00:01:48,407
+the same time.
+
+50
+00:01:48,779 --> 00:01:51,169
+To keep them apart, the tower gives every
+
+51
+00:01:51,189 --> 00:01:53,927
+phone its own tiny slices of frequency and
+
+52
+00:01:53,947 --> 00:01:56,362
+time, like giving each car its own lane
+
+53
+00:01:56,382 --> 00:01:57,182
+on a highway.
+
+54
+00:01:57,504 --> 00:01:59,455
+And if you're talking while moving, say
+
+55
+00:01:59,475 --> 00:02:02,239
+in a car, your call is quietly passed from
+
+56
+00:02:02,259 --> 00:02:03,560
+one tower to the next.
+
+57
+00:02:03,999 --> 00:02:06,169
+This is called a handover, and it happens
+
+58
+00:02:06,189 --> 00:02:08,161
+so smoothly that you never notice.
+
+59
+00:02:12,370 --> 00:02:13,170
+But wait.
+
+60
+00:02:13,259 --> 00:02:15,708
+Before any voice can travel, the network
+
+61
+00:02:15,849 --> 00:02:17,460
+has to find the person you're calling.
+
+62
+00:02:17,898 --> 00:02:20,005
+When you press call, your phone first sends
+
+63
+00:02:20,025 --> 00:02:22,414
+a request, a small digital message that
+
+64
+00:02:22,434 --> 00:02:24,561
+says: I want to talk to this number.
+
+65
+00:02:24,986 --> 00:02:27,048
+It goes to your operator's core network,
+
+66
+00:02:27,306 --> 00:02:28,646
+the brain of the whole system.
+
+67
+00:02:29,084 --> 00:02:30,894
+The network already knows you're a real
+
+68
+00:02:30,914 --> 00:02:33,368
+customer, because your SIM card proved who
+
+69
+00:02:33,388 --> 00:02:35,025
+you are when your phone switched on.
+
+70
+00:02:35,450 --> 00:02:36,996
+Next, it reads the number.
+
+71
+00:02:37,434 --> 00:02:39,354
+The country code tells it which country,
+
+72
+00:02:39,651 --> 00:02:41,442
+and the rest tells it which operator.
+
+73
+00:02:41,867 --> 00:02:43,961
+So your request is passed across to that
+
+74
+00:02:43,981 --> 00:02:44,781
+operator.
+
+75
+00:02:45,025 --> 00:02:46,468
+But how do they know where the phone is?
+
+76
+00:02:46,893 --> 00:02:48,896
+Every phone that's switched on keeps telling
+
+77
+00:02:48,916 --> 00:02:50,772
+the network which area it's in.
+
+78
+00:02:51,197 --> 00:02:52,782
+So the operator knows where to look.
+
+79
+00:02:53,208 --> 00:02:55,301
+It sends a message through every tower in
+
+80
+00:02:55,321 --> 00:02:57,769
+that area: phone, you have a call.
+
+81
+00:02:58,208 --> 00:03:00,443
+The phone hears it, wakes up, and starts
+
+82
+00:03:00,463 --> 00:03:01,203
+ringing.
+
+83
+00:03:01,223 --> 00:03:03,427
+On your side, you hear the ringing tone.
+
+84
+00:03:03,852 --> 00:03:06,152
+And when your friend picks up, a path opens
+
+85
+00:03:06,172 --> 00:03:07,396
+between the two phones.
+
+86
+00:03:07,821 --> 00:03:10,218
+All of this usually takes just a few seconds.
+
+87
+00:03:14,433 --> 00:03:15,954
+Now the voice packets can flow.
+
+88
+00:03:16,405 --> 00:03:18,447
+From the tower, they don't stay in the air
+
+89
+00:03:18,467 --> 00:03:19,267
+for long.
+
+90
+00:03:19,472 --> 00:03:21,681
+Most towers are connected by fibre optic
+
+91
+00:03:21,701 --> 00:03:22,501
+cables.
+
+92
+00:03:22,655 --> 00:03:24,735
+These are glass threads, thinner than a
+
+93
+00:03:24,755 --> 00:03:27,699
+human hair, that carry data as flashes of
+
+94
+00:03:27,719 --> 00:03:28,519
+light.
+
+95
+00:03:28,544 --> 00:03:31,018
+The light bounces along inside the glass,
+
+96
+00:03:31,315 --> 00:03:34,317
+even around bends, for thousands of kilometres.
+
+97
+00:03:34,742 --> 00:03:37,197
+Along the way, machines called routers read
+
+98
+00:03:37,217 --> 00:03:39,593
+the address on each packet, and send it
+
+99
+00:03:39,613 --> 00:03:41,211
+onward, hop by hop.
+
+100
+00:03:41,650 --> 00:03:43,717
+To cross an ocean, your call doesn't go
+
+101
+00:03:43,737 --> 00:03:44,537
+to space.
+
+102
+00:03:44,871 --> 00:03:45,979
+It dives under the sea.
+
+103
+00:03:46,405 --> 00:03:48,305
+More than ninety five percent of the data
+
+104
+00:03:48,325 --> 00:03:50,728
+between continents travels through cables
+
+105
+00:03:50,748 --> 00:03:52,461
+lying on the ocean floor.
+
+106
+00:03:52,900 --> 00:03:54,606
+There are hundreds of them, more than a
+
+107
+00:03:54,626 --> 00:03:56,315
+million kilometres in total.
+
+108
+00:03:56,753 --> 00:03:58,704
+That's enough to wrap around the Earth thirty
+
+109
+00:03:58,724 --> 00:03:59,524
+times.
+
+110
+00:03:59,742 --> 00:04:02,493
+A call from India to America might travel
+
+111
+00:04:02,513 --> 00:04:05,508
+through the Arabian Sea, past Egypt, across
+
+112
+00:04:05,528 --> 00:04:07,693
+the Mediterranean, and under the Atlantic.
+
+113
+00:04:08,119 --> 00:04:10,831
+Inside the glass, light moves at about two
+
+114
+00:04:10,851 --> 00:04:12,771
+hundred thousand kilometres per second,
+
+115
+00:04:13,093 --> 00:04:15,367
+so even this long trip takes only about
+
+116
+00:04:15,387 --> 00:04:16,392
+a tenth of a second.
+
+117
+00:04:16,830 --> 00:04:19,233
+Satellites can carry calls too, but they
+
+118
+00:04:19,253 --> 00:04:21,784
+orbit thirty six thousand kilometres above
+
+119
+00:04:21,804 --> 00:04:22,570
+us.
+
+120
+00:04:22,590 --> 00:04:24,709
+Going up and coming back down adds about
+
+121
+00:04:24,729 --> 00:04:26,263
+a quarter of a second each way.
+
+122
+00:04:26,701 --> 00:04:27,693
+That's why cables win.
+
+123
+00:04:31,899 --> 00:04:34,044
+On the other side, the packets reach your
+
+124
+00:04:34,064 --> 00:04:36,384
+friend's operator, then the tower near them,
+
+125
+00:04:36,744 --> 00:04:38,407
+and fly through the air to their phone.
+
+126
+00:04:38,871 --> 00:04:41,049
+Here, everything happens in reverse.
+
+127
+00:04:41,487 --> 00:04:44,315
+The codec unpacks each packet and rebuilds
+
+128
+00:04:44,335 --> 00:04:45,135
+the numbers.
+
+129
+00:04:45,417 --> 00:04:47,871
+A converter turns those numbers back into
+
+130
+00:04:47,891 --> 00:04:48,948
+an electrical signal.
+
+131
+00:04:49,386 --> 00:04:51,918
+That signal drives the speaker, which shakes
+
+132
+00:04:51,938 --> 00:04:54,386
+the air, and your friend hears your voice.
+
+133
+00:04:54,824 --> 00:04:56,577
+But networks aren't perfectly smooth.
+
+134
+00:04:57,015 --> 00:04:59,289
+Packets can arrive a little early, a little
+
+135
+00:04:59,309 --> 00:05:00,610
+late, or not at all.
+
+136
+00:05:01,036 --> 00:05:02,936
+So the phone keeps a small waiting area
+
+137
+00:05:02,956 --> 00:05:04,013
+called a jitter buffer.
+
+138
+00:05:04,438 --> 00:05:06,944
+It holds packets for a split second, so
+
+139
+00:05:06,964 --> 00:05:08,510
+it can play them in a steady rhythm.
+
+140
+00:05:08,935 --> 00:05:11,196
+If a packet goes missing, the codec makes
+
+141
+00:05:11,216 --> 00:05:12,956
+a smart guess to fill the gap.
+
+142
+00:05:13,394 --> 00:05:15,526
+But when the network is bad and too many
+
+143
+00:05:15,546 --> 00:05:18,252
+go missing, that's when you hear that robotic,
+
+144
+00:05:18,446 --> 00:05:19,399
+broken voice.
+
+145
+00:05:23,612 --> 00:05:24,772
+So let's put it all together.
+
+146
+00:05:25,197 --> 00:05:26,615
+Your voice becomes numbers.
+
+147
+00:05:27,053 --> 00:05:29,765
+The numbers become radio waves, flying to
+
+148
+00:05:29,785 --> 00:05:30,816
+the nearest tower.
+
+149
+00:05:31,254 --> 00:05:33,115
+The network finds your friend's phone and
+
+150
+00:05:33,135 --> 00:05:33,935
+makes it ring.
+
+151
+00:05:34,140 --> 00:05:36,414
+Your packets race through fibre, and under
+
+152
+00:05:36,434 --> 00:05:37,234
+the ocean.
+
+153
+00:05:37,401 --> 00:05:40,004
+Then back into the air, and back into sound.
+
+154
+00:05:40,429 --> 00:05:42,948
+And all of this happens fifty times every
+
+155
+00:05:42,968 --> 00:05:45,525
+second, in both directions, for the whole
+
+156
+00:05:45,545 --> 00:05:46,324
+call.
+
+157
+00:05:46,344 --> 00:05:48,231
+So the next time you say hello to someone
+
+158
+00:05:48,251 --> 00:05:51,466
+far away, remember: your voice just travelled
+
+159
+00:05:51,486 --> 00:05:53,811
+across the world, and arrived in about a
+
+160
+00:05:53,831 --> 00:05:54,836
+quarter of a second.

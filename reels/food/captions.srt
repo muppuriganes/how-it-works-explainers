@@ -1,0 +1,407 @@
+1
+00:00:00,300 --> 00:00:01,140
+It's ten at night.
+
+2
+00:00:01,540 --> 00:00:02,340
+You're hungry.
+
+3
+00:00:02,600 --> 00:00:04,680
+You tap one button, and thirty minutes later,
+
+4
+00:00:04,840 --> 00:00:06,340
+a biryani shows up at your door.
+
+5
+00:00:06,820 --> 00:00:07,620
+Like magic.
+
+6
+00:00:08,100 --> 00:00:09,560
+Except, it's not magic.
+
+7
+00:00:10,120 --> 00:00:12,260
+It's a restaurant kitchen, a bunch of prediction
+
+8
+00:00:12,280 --> 00:00:14,820
+models, and one rider on a scooter, racing
+
+9
+00:00:14,840 --> 00:00:15,760
+a traffic signal.
+
+10
+00:00:16,200 --> 00:00:18,580
+In India, apps like Swiggy and Zomato deliver
+
+11
+00:00:18,600 --> 00:00:20,840
+millions of food orders every single day.
+
+12
+00:00:21,340 --> 00:00:23,100
+So tonight, we follow one order.
+
+13
+00:00:23,740 --> 00:00:24,540
+One biryani.
+
+14
+00:00:25,140 --> 00:00:27,200
+Five stops on the order tracker, from your
+
+15
+00:00:27,220 --> 00:00:28,020
+tap to your door.
+
+16
+00:00:28,480 --> 00:00:30,340
+Oh, and at some point, the app will tell
+
+17
+00:00:30,360 --> 00:00:32,360
+you: your rider is two minutes away.
+
+18
+00:00:33,100 --> 00:00:33,900
+Start a timer.
+
+19
+00:00:34,180 --> 00:00:34,980
+Order placed.
+
+20
+00:00:37,167 --> 00:00:39,207
+The moment you pay, your order flies to
+
+21
+00:00:39,227 --> 00:00:40,787
+a tablet in the restaurant kitchen.
+
+22
+00:00:41,367 --> 00:00:42,167
+It beeps.
+
+23
+00:00:42,227 --> 00:00:43,027
+Loudly.
+
+24
+00:00:43,227 --> 00:00:44,607
+Until someone taps accept.
+
+25
+00:00:45,307 --> 00:00:47,667
+Now the app has to make a guess: how long
+
+26
+00:00:47,687 --> 00:00:48,827
+will this biryani take?
+
+27
+00:00:49,327 --> 00:00:51,507
+That guess is called food preparation time,
+
+28
+00:00:51,527 --> 00:00:53,587
+and a machine learning model makes it.
+
+29
+00:00:53,867 --> 00:00:56,147
+It looks at what you ordered, how many items,
+
+30
+00:00:56,307 --> 00:00:58,367
+and how busy that kitchen is right now.
+
+31
+00:00:58,927 --> 00:01:00,927
+One biryani on a Tuesday afternoon?
+
+32
+00:01:01,567 --> 00:01:01,687
+Quick.
+
+33
+00:01:01,707 --> 00:01:03,767
+Forty orders on a Friday night?
+
+34
+00:01:03,787 --> 00:01:04,667
+Good luck.
+
+35
+00:01:05,107 --> 00:01:06,987
+And this guess matters more than anything.
+
+36
+00:01:07,477 --> 00:01:09,607
+Because it decides exactly when to send
+
+37
+00:01:09,627 --> 00:01:10,427
+your rider.
+
+38
+00:01:13,167 --> 00:01:14,167
+Here's the clever bit.
+
+39
+00:01:14,727 --> 00:01:16,467
+The app does not grab the nearest rider
+
+40
+00:01:16,487 --> 00:01:17,467
+the second you order.
+
+41
+00:01:17,967 --> 00:01:20,007
+Too early, and the rider stands around the
+
+42
+00:01:20,027 --> 00:01:20,907
+kitchen, waiting.
+
+43
+00:01:21,667 --> 00:01:23,967
+Too late, and your biryani sits on the counter,
+
+44
+00:01:23,987 --> 00:01:24,927
+going cold.
+
+45
+00:01:25,407 --> 00:01:26,567
+So the app times it.
+
+46
+00:01:27,027 --> 00:01:29,327
+It's called just in time assignment: the
+
+47
+00:01:29,347 --> 00:01:31,347
+rider should walk in right as the food is
+
+48
+00:01:31,367 --> 00:01:32,167
+packed.
+
+49
+00:01:32,207 --> 00:01:34,367
+Think of it as two races running at once.
+
+50
+00:01:35,087 --> 00:01:36,507
+Race one, the kitchen cooking.
+
+51
+00:01:37,267 --> 00:01:39,567
+Race two, the rider riding to the restaurant.
+
+52
+00:01:40,167 --> 00:01:42,507
+Your wait is whichever race is slower, plus
+
+53
+00:01:42,527 --> 00:01:43,447
+the ride to your door.
+
+54
+00:01:43,947 --> 00:01:45,807
+And if two orders are going the same way?
+
+55
+00:01:46,247 --> 00:01:47,347
+One rider carries both.
+
+56
+00:01:47,787 --> 00:01:48,927
+That's called batching.
+
+57
+00:01:52,033 --> 00:01:52,833
+Food packed.
+
+58
+00:01:53,073 --> 00:01:53,873
+Bag zipped.
+
+59
+00:01:54,093 --> 00:01:54,893
+Picked up!
+
+60
+00:01:55,033 --> 00:01:56,953
+Now that tiny scooter on your screen starts
+
+61
+00:01:56,973 --> 00:01:58,733
+moving, and that part is real.
+
+62
+00:01:59,413 --> 00:02:01,633
+The rider's phone keeps sending its GPS
+
+63
+00:02:01,653 --> 00:02:04,093
+location, and the app predicts the arrival
+
+64
+00:02:04,113 --> 00:02:06,753
+time using the roads, live traffic, and
+
+65
+00:02:06,773 --> 00:02:07,993
+thousands of past trips.
+
+66
+00:02:08,673 --> 00:02:10,653
+Then comes the last mile, where the plan
+
+67
+00:02:10,673 --> 00:02:11,513
+meets reality.
+
+68
+00:02:11,873 --> 00:02:12,733
+A red signal.
+
+69
+00:02:13,213 --> 00:02:15,053
+A cow, having a meeting in the middle of
+
+70
+00:02:15,073 --> 00:02:15,813
+the road.
+
+71
+00:02:15,833 --> 00:02:17,513
+And the hardest part of the whole trip:
+
+72
+00:02:17,773 --> 00:02:19,253
+the last hundred metres.
+
+73
+00:02:19,273 --> 00:02:20,353
+The security gate.
+
+74
+00:02:20,733 --> 00:02:23,093
+And an address that says: Tower B, behind
+
+75
+00:02:23,113 --> 00:02:24,533
+the temple, near the big tree.
+
+76
+00:02:25,493 --> 00:02:27,253
+Meanwhile, on your screen: your rider is
+
+77
+00:02:27,273 --> 00:02:28,073
+two minutes away.
+
+78
+00:02:28,873 --> 00:02:29,513
+Still.
+
+79
+00:02:29,533 --> 00:02:30,633
+It has been nine minutes.
+
+80
+00:02:33,733 --> 00:02:34,533
+Ding dong.
+
+81
+00:02:34,653 --> 00:02:35,453
+Delivered.
+
+82
+00:02:35,833 --> 00:02:37,353
+Now, where did your three hundred rupees
+
+83
+00:02:37,373 --> 00:02:38,113
+go?
+
+84
+00:02:38,133 --> 00:02:39,773
+The restaurant pays the app a commission,
+
+85
+00:02:40,213 --> 00:02:41,933
+often fifteen to thirty percent.
+
+86
+00:02:41,953 --> 00:02:44,673
+You pay a platform fee, around fifteen to
+
+87
+00:02:44,693 --> 00:02:47,073
+eighteen rupees, plus delivery charges and
+
+88
+00:02:47,093 --> 00:02:47,893
+taxes.
+
+89
+00:02:48,213 --> 00:02:49,013
+The rider?
+
+90
+00:02:49,653 --> 00:02:51,553
+Reports say roughly fifty to seventy rupees
+
+91
+00:02:51,573 --> 00:02:53,633
+an order, and critics say often less.
+
+92
+00:02:54,433 --> 00:02:54,773
+Tips?
+
+93
+00:02:54,793 --> 00:02:56,733
+Only three to five percent of orders get
+
+94
+00:02:56,753 --> 00:02:57,453
+one.
+
+95
+00:02:57,473 --> 00:02:58,533
+So, maybe tip.
+
+96
+00:02:59,033 --> 00:02:59,913
+That's the real trick.
+
+97
+00:02:59,933 --> 00:03:02,813
+Not one magic algorithm, but lots of small
+
+98
+00:03:02,833 --> 00:03:05,093
+predictions, all trying to be right at the
+
+99
+00:03:05,113 --> 00:03:05,913
+same moment.
+
+100
+00:03:06,433 --> 00:03:08,653
+And as you open the bag, your phone buzzes
+
+101
+00:03:08,673 --> 00:03:09,493
+one last time.
+
+102
+00:03:10,013 --> 00:03:11,393
+Your rider is two minutes away.

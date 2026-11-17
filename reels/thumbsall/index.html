@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>All thumbnails</title>
+<link rel="stylesheet" href="../../lib/fonts.css">
+<link rel="stylesheet" href="../../lib/explainer.css">
+<style>
+canvas{position:absolute;left:0;top:0;width:1920px;height:1080px;display:none;filter:saturate(1.2) contrast(1.06)}
+#bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(1.25) contrast(1.06)}
+#shade{position:absolute;inset:0}
+.big{position:absolute;left:70px;font-family:Archivo,sans-serif;font-weight:900;font-stretch:72%;line-height:.88;letter-spacing:-.01em;-webkit-text-stroke:16px #0A0E24;paint-order:stroke fill;filter:drop-shadow(0 14px 0 rgba(10,14,36,.85)) drop-shadow(0 0 40px rgba(0,0,0,.35));white-space:nowrap}
+.tag{position:absolute;left:84px;padding:14px 34px;border-radius:22px;font-family:Archivo,sans-serif;font-weight:900;font-size:74px;color:#fff;border:7px solid #0A0E24;box-shadow:0 12px 0 #0A0E24;transform:rotate(-4deg);white-space:nowrap}
+</style>
+<script src="../../lib/vendor/gsap.min.js"></script>
+<script src="../../lib/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../lib/vendor/SplitText.min.js"></script>
+<script src="../../lib/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../../lib/vendor/CustomEase.min.js"></script>
+<script src="../../lib/vendor/MotionPathPlugin.min.js"></script>
+<script>window.WORDS=[]</script>
+<script src="../../lib/reel.js"></script>
+</head><body>
+<div id="shake"><div id="stage">
+  <div id="bg"></div><canvas id="cp" width="1920" height="1080"></canvas><canvas id="ct" width="1920" height="1080"></canvas>
+  <div id="shade"></div><div id="txt"></div>
+</div></div>
+<script type="module">
+import { planeWorld } from "../../lib/plane3d.js";
+import { trainWorld } from "../../lib/train3d.js";
+const PW = planeWorld(document.getElementById("cp"), { w: 1920, h: 1080 }), G = PW.GROUND;
+const TW = trainWorld(document.getElementById("ct"), { w: 1920, h: 1080 });
+const Y = "#FFD23F", O = "#FFB23A", GN = "#5CF0A6", W = "#fff", R = "#F2553D", B = "#3E7BFA";
+const L = (lines, tag, tagBg = R) => lines.map(([t, fs, c, top]) => `<div class="big" style="top:${top}px;font-size:${fs}px;color:${c}">${t}</div>`).join("") + (tag ? `<div class="tag" style="top:${tag[1]}px;background:${tagBg}">${tag[0]}</div>` : "");
+const left = "linear-gradient(90deg,rgba(6,9,26,.78) 0%,rgba(6,9,26,.45) 42%,rgba(6,9,26,0) 64%)";
+const V = [
+  { out: "plane_A", p3: { p: [0, 1300, 0], pitch: 0.03, gear: 0, flaps: 0, fan: 20, mood: "sunset", clouds: true, cloudY: 820, cam: [36, 1305, 22], look: [-14, 1300.5, -3], fov: 44 }, html: L([["WHY DON'T", 190, W, 110], ["PLANES", 250, Y, 300], ["FALL?", 250, Y, 520]]) },
+  { out: "plane_B", p3: { p: [0, G + 9, 0], pitch: 0.16, gear: 1, flaps: 0.4, fan: 24, mood: "day", cam: [-26, G + 1.6, 34], look: [6, G + 9, 0], fov: 46 }, html: L([["260", 330, Y, 120], ["KM/H", 220, W, 420]], ["TO TAKE OFF?!", 700]) },
+  { out: "bullet_A", t3: { x: 0, cam: [26, 1.6, 9.5], look: [-34, 2.4, -0.5], fov: 38 }, html: L([["320", 340, Y, 110], ["KM/H", 230, W, 410]], ["IN INDIA?!", 700]) },
+  { out: "bullet_B", t3: { x: 0, cam: [44, 9, 46], look: [-26, 2, 0], fov: 40 }, html: L([["A TRAIN", 200, W, 110], ["UNDER", 250, Y, 300], ["THE SEA?!", 250, Y, 520]], ["INDIA'S BULLET TRAIN", 790], B) },
+  { out: "atm_A", bg: "atm_B", html: L([["CASH IN", 190, W, 120], ["10 SEC", 270, Y, 320]], ["HOW?!", 640]) },
+  { out: "atm_B", bg: "atm_A", html: L([["MONEY", 230, W, 120], ["DEBITED?", 230, R, 350]], ["BUT NO CASH 😱", 640], "#7B61FF") },
+  { out: "food_A", bg: "food_A", html: L([["\"2 MIN", 230, W, 110], ["AWAY\"?!", 250, Y, 340]], ["THE TRUTH 👀", 650]) },
+  { out: "food_B", bg: "food_B", html: L([["30 MIN", 260, W, 120], ["DELIVERY", 190, Y, 380]], ["HOW IT REALLY WORKS", 640], B) },
+  { out: "upi_A", bg: "upi_B", html: L([["WHERE DOES", 160, W, 110], ["YOUR ₹10", 230, Y, 280], ["GO?", 230, Y, 500]]) },
+  { out: "upi_B", bg: "upi_A", html: L([["2 SECONDS", 220, W, 130], ["2 BANKS", 220, GN, 360]], ["+ 1 REFEREE?!", 640]) },
+  { out: "phonecall_A", bg: "phonecall_A", html: L([["0.25", 330, Y, 110], ["SECONDS", 200, W, 410]], ["ACROSS THE WORLD?!", 660], B) },
+  { out: "phonecall_B", bg: "phonecall_B", zs: "165%", zp: "70% 100%", html: L([["YOUR VOICE", 180, W, 120], ["UNDER THE", 180, GN, 310], ["OCEAN?!", 230, GN, 490]]) },
+  { out: "meter_A", bg: "meter_A", zp: "60% 40%", html: L([["$1,240", 300, Y, 120], ["MEETING", 210, W, 430]], ["NOBODY SAW THE BILL", 680]) },
+  { out: "meter_B", bg: "meter_B", html: L([["TIME", 280, W, 120], ["IS MONEY", 230, Y, 400]], ["COULD THIS BE AN EMAIL?", 680], "#7B61FF") },
+];
+window.THUMBS = V.map((v) => v.out);
+REEL.onFrame((t) => {
+  const v = V[Math.min(V.length - 1, Math.floor(t))];
+  const cp = document.getElementById("cp"), ct = document.getElementById("ct"), bg = document.getElementById("bg");
+  cp.style.display = v.p3 ? "block" : "none"; ct.style.display = v.t3 ? "block" : "none";
+  bg.style.backgroundImage = v.bg ? `url(bg/${v.bg}.jpg)` : "none"; bg.style.backgroundSize = v.zs || "122%"; bg.style.backgroundPosition = v.zp || "64% 62%";
+  if (v.p3) PW.frame(v.p3); if (v.t3) TW.frame(v.t3);
+  document.getElementById("shade").style.background = left;
+  document.getElementById("txt").innerHTML = v.html;
+});
+REEL.finish(V.length);
+</script></body></html>
